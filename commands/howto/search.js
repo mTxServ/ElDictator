@@ -20,10 +20,10 @@ module.exports = class HowToSearchCommand extends mTxServCommand {
                 },
                 {
                     key: 'locale',
-                    prompt: 'Which language (fr/en)?',
+                    prompt: 'Which language (fr/en/all)?',
                     type: 'string',
                     default: 'all',
-                    validate: text => text.length == 2,
+                    oneOf: ['fr', 'en', 'all'],
                 },
             ],
             throttling: {
