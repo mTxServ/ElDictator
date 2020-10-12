@@ -38,9 +38,8 @@ client.registry
 
 client.once('ready', () => {
     console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
-    //client.user.setActivity('mTxServ.com');
 });
 
 client.on('error', console.error);
 
-client.login(isDev ? process.env.BOT_TOKEN : process.env.BOT_TOKEN_DEV)
+client.login(isDev ? process.env.BOT_TOKEN_DEV : process.env.BOT_TOKEN)
