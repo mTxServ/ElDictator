@@ -5,8 +5,8 @@ module.exports = class NumerixCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'numerix',
-            aliases: ['numerix addons', 'addons', 'tutoriels'],
-            group: 'mtxserv',
+            aliases: ['numerix-addons'],
+            group: 'partner',
             memberName: 'numerix',
             description: 'Show who is Numerix',
             clientPermissions: ['SEND_MESSAGES'],
@@ -25,29 +25,57 @@ module.exports = class NumerixCommand extends mTxServCommand {
             {
                 name: 'Cinematic Intro',
                 link: 'https://mtxserv.com/forums/ressources/release-cinematic-intro-server.1148/',
+                locale: ['fr']
             },
             {
                 name: 'Radio',
-                link: 'https://mtxserv.com/forums/ressources/release-radio-youtube-mp3-soundcloud.1328/,
+                link: 'https://mtxserv.com/forums/ressources/release-radio-youtube-mp3-soundcloud.1328/',
+                locale: ['fr']
             },
             {
                 name: 'F4Menu (Style : Identity)',
                 link: 'https://mtxserv.com/forums/ressources/release-f4menu-style-identity.1133/',
+                locale: ['fr']
             },
             {
                 name: 'Menu Echap (Style : Identity)',
                 link: 'https://mtxserv.com/forums/ressources/release-menu-echap-style-identity.1073/',
+                locale: ['fr']
+            },
+            
+            {
+                name: 'Cinematic Intro',
+                link: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1989480899',
+                locale: ['en']
+            },
+            {
+                name: 'Radio',
+                link: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1989484474',
+                locale: ['en']
+            },
+            {
+                name: 'F4Menu (Identity theme)',
+                link: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1989483709',
+                locale: ['en']
+            },
+            {
+                name: 'Escape Menu (Identity theme)',
+                link: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1989483334',
+                locale: ['en']
             },
         ]
 
         const embed = new Discord.MessageEmbed()
-            .setTitle("Numerix")
+            .setTitle('Numerix")
             .setColor('BLUE')
-        ;
-        
-        embed.addField("Numerix est un développeur et un helpeur. Il a publié différents addons et tutoriels. En voici quelques un :")
+            .addField(lang[')
+       ;
 
         for (const k in links) {
+            if (-1 === links[k]['locale'].indexOf(userLang)) {
+                continue;
+            }
+
             embed.addField(addons[k].name, `${addons[k].link}`)
         }
 
