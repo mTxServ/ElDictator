@@ -29,13 +29,14 @@ fs.readdir('./events/', (err, files) => {
     files.forEach((file) => {
         const eventFunction = require(`./events/${file}`);
         if (eventFunction.disabled) return;
+
         const event = eventFunction.event || file.split('.')[0];
         const emitter = (typeof eventFunction.emitter === 'string' ? client[eventFunction.emitter] : eventFunction.emitter) || client;
         const { once } = eventFunction;
+
         try {
             emitter[once ? 'once' : 'on'](event, (...args) => eventFunction.run(...args));
-        }
-        catch (error) {
+        } catch (error) {
             console.error(error.stack);
         }
     });
