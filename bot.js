@@ -45,11 +45,11 @@ fs.readdir('./events/', (err, files) => {
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['mtxserv', 'Main commands'],
-        ['admin', 'Admin commands'],
-        ['howto', 'How-To commands'],
-        ['partner', 'Partner commands'],
-        ['gameserver', 'Game Server commands'],
+        ['mtxserv', 'Main'],
+        ['admin', 'Admin'],
+        ['howto', 'How-To'],
+        ['partner', 'Partner'],
+        ['gameserver', 'Game Server'],
     ])
     .registerCommandsIn(path.join(__dirname, 'commands'))
 ;

@@ -5,8 +5,8 @@ const Discord = require('discord.js')
 module.exports = class GameServerStatusCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
-            name: 'gs',
-            aliases: ['gstatus', 'status'],
+            name: 'status',
+            aliases: ['gstatus', 'gs'],
             group: 'gameserver',
             memberName: 'gameserver',
             description: 'Check if a game server is online of offline.',
