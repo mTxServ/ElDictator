@@ -13,7 +13,7 @@
     "explain": "We would be very happy to receive help from developers who can help us fix bugs or add new features."
   },
   "bot_stop": {
-    "confirm": "Stopping the bot.. :eyes:"
+    "confirm": "Stopping the bot.. :octagonal_sign:"
   },
   "bot_update": {
     "confirm": "Updating the bot.. :up:"

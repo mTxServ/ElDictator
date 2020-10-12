@@ -6,6 +6,6 @@ module.exports = {
             .users
             .cache
             .get(process.env.BOT_OWNER_ID)
-            .send('Bot is ready')
+            .send('Bot is ready :eyes:')
     }
 };
