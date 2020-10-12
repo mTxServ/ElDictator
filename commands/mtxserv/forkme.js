@@ -28,7 +28,7 @@ module.exports = class SocialCommand extends mTxServCommand {
             .addField("Comment contribuer?", "Nous serions très heureux de recevoir de l'aide de développeurs qui peuvent nous aider à réparer des bogues ou ajouter de nouvelles fonctionnalités.")
             .addField("GitHub", 'https://github.com/mTxServ/ElDictator');
 
-        return msg.channel.send({
+        return msg.say({
             embed
         });
     }
