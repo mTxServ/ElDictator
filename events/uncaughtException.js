@@ -3,11 +3,12 @@ module.exports = {
     run: (error) => {
         if (!error) return;
 
-        const errorMsg = (error ? error.stack || error : '').toString().replace(new RegExp(`${__dirname}\/`, 'g'), './');
+        if (client.channels.cache.has(process.env.LOG_CHANNEL_ID_DEV)) {
+            const errorMsg = (error ? error.stack || error : '').toString().replace(new RegExp(`${__dirname}\/`, 'g'), './');
 
-        if (client.channels.has(process.env.LOG_CHANNEL_ID_DEV)) {
             client
                 .channels
+                .cache
                 .get(isDev ? process.env.LOG_CHANNEL_ID_DEV : process.env.LOG_CHANNEL_ID)
                 .send(null, {
                     embed: {

@@ -3,9 +3,10 @@ module.exports = {
     run: (error) => {
         if (!error) return;
 
-        if (client.channels.has(process.env.LOG_CHANNEL_ID_DEV)) {
+        if (client.channels.cache.has(process.env.LOG_CHANNEL_ID_DEV)) {
             client
                 .channels
+                .cache
                 .get(isDev ? process.env.LOG_CHANNEL_ID_DEV : process.env.LOG_CHANNEL_ID)
                 .send(null, {
                     embed: {

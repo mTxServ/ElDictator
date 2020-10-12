@@ -24,7 +24,7 @@ module.exports = class ExecCommand extends mTxServCommand {
             .then(() => {
                 const results = this.exec('git pull');
                 return msg.reply(stripIndents`
-                    _${results.err ? 'An error occurred:' : 'Successfully executed.'}_
+                    _${results.err ? 'An error occurred:' : 'Successfully updated.'}_
                     \`\`\`sh
                     ${results.std}
                     \`\`\`
