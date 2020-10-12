@@ -11,6 +11,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
             clientPermissions: ['SEND_MESSAGES'],
             ownerOnly: true,
             hidden: true,
+            guarded: true
         });
     }
 
