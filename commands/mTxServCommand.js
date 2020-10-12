@@ -16,7 +16,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
     }
 
     getSuperAdminUser() {
-        const owner = this.client.owners.filter(owner => owner.id === '515178853967331328')
+        const owner = this.client.owners.filter(owner => owner.id === process.env.BOT_OWNER_ID)
         if (!owner.length) {
             throw new Error(`Super administrator not found`)
         }
@@ -26,7 +26,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
     getLangOfMember(member) {
         if (!member) {
-            return 'en';
+            return process.env.DEFAULT_LANG;
         }
 
         return member.roles.cache.some(role => role.name === '🇫🇷') ? 'fr' : 'en';
