@@ -18,5 +18,10 @@
     "search": "Search",
     "no_result": ":no_entry_sign: No result found",
     "check": "See all our tutorials on"
+  },
+  "gs_status": {
+    "invalid_format": ":no_entry_sign: Invalid address, port is probably missing",
+    "offline": ":red_circle: This game server is offline.",
+    "online": ":green_circle: This game server is online."
   }
 }

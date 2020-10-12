@@ -18,5 +18,10 @@
     "search": "Recherche",
     "no_result": ":no_entry_sign: Aucun résultat trouvé",
     "check": "Consultez tous les tutoriels sur"
+  },
+  "gs_status": {
+    "invalid_format": ":no_entry_sign: Adresse invalide, le port est probablement manquant",
+    "offline": ":red_circle: Ce serveur est offline.",
+    "online": ":green_circle: Le serveur est online."
   }
 }
