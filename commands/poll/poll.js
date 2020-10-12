@@ -69,7 +69,7 @@ module.exports = class PollCommand extends mTxServCommand {
             embed.setFooter(`The poll has started and has no end time`);
         }
 
-        //msg.delete(); // Remove the user's command message
+        msg.delete(); // Remove the user's command message
 
         msg.channel.send({embed}) // Definitely use a 2d array here..
             .then(async function (message) {
@@ -81,11 +81,11 @@ module.exports = class PollCommand extends mTxServCommand {
                 if (time) {
                     setTimeout(() => {
                         // Re-fetch the message and get reaction counts
-                        message.channel.fetchMessage(message.id)
+                        message.channel.messages.fetch(message.id)
                             .then(async function (message) {
                                 var reactionCountsArray = [];
                                 for (var i = 0; i < optionsList.length; i++) {
-                                    reactionCountsArray[i] = message.reactions.get(emojiList[i]).count-1;
+                                    reactionCountsArray[i] = message.reactions.cache.get(emojiList[i]).count-1;
                                 }
 
                                 // Find winner(s)
@@ -95,7 +95,6 @@ module.exports = class PollCommand extends mTxServCommand {
                                     else if(reactionCountsArray[i] === max) indexMax.push(i);
 
                                 // Display winner(s)
-                                console.log(reactionCountsArray); // Debugging votes
                                 var winnersText = "";
                                 if (reactionCountsArray[indexMax[0]] == 0) {
                                     winnersText = "No one voted!"
@@ -107,6 +106,7 @@ module.exports = class PollCommand extends mTxServCommand {
                                     }
                                 }
 
+                                embed.setColor('GREEN')
                                 embed.addField("**Winner(s):**", winnersText);
                                 embed.setFooter(`The poll is now closed! It lasted ${time} minute(s)`);
                                 embed.setTimestamp();

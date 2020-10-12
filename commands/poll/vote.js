@@ -62,7 +62,7 @@ module.exports = class VoteCommand extends mTxServCommand {
             embed.setFooter(`The vote has started and has no end time`)
         }
 
-        //msg.delete(); // Remove the user's command message
+        msg.delete(); // Remove the user's command message
 
         msg.channel.send({embed}) // Use a 2d array?
             .then(async function (message) {
@@ -74,11 +74,11 @@ module.exports = class VoteCommand extends mTxServCommand {
                 if (time) {
                     setTimeout(() => {
                         // Re-fetch the message and get reaction counts
-                        message.channel.fetchMessage(message.id)
+                        message.channel.messages.fetch(message.id)
                             .then(async function (message) {
                                 var reactionCountsArray = [];
                                 for (var i = 0; i < reactionArray.length; i++) {
-                                    reactionCountsArray[i] = message.reactions.get(emojiList[i]).count-1;
+                                    reactionCountsArray[i] = message.reactions.cache.get(emojiList[i]).count-1;
                                 }
 
                                 // Find winner(s)
@@ -88,7 +88,6 @@ module.exports = class VoteCommand extends mTxServCommand {
                                     else if(reactionCountsArray[i] === max) indexMax.push(i);
 
                                 // Display winner(s)
-                                console.log(reactionCountsArray); // Debugging votes
                                 var winnersText = "";
                                 if (reactionCountsArray[indexMax[0]] == 0) {
                                     winnersText = "No one voted!"
@@ -98,6 +97,7 @@ module.exports = class VoteCommand extends mTxServCommand {
                                             emojiList[indexMax[i]] + " (" + reactionCountsArray[indexMax[i]] + " vote(s))\n";
                                     }
                                 }
+                                embed.setColor('GREEN')
                                 embed.addField("**Winner(s):**", winnersText);
                                 embed.setFooter(`The vote is now closed! It lasted ${time} minute(s)`);
                                 embed.setTimestamp();
