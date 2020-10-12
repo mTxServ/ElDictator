@@ -15,6 +15,9 @@
   "bot_stop": {
     "confirm": "Arrêt du bot.. :eyes:"
   },
+  "bot_update": {
+    "confirm": "Mise à jour du bot.. :up:"
+  },
   "how_to": {
     "search": "Recherche",
     "no_result": ":no_entry_sign: Aucun résultat trouvé",

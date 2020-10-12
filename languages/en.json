@@ -15,6 +15,9 @@
   "bot_stop": {
     "confirm": "Stopping the bot.. :eyes:"
   },
+  "bot_update": {
+    "confirm": "Updating the bot.. :up:"
+  },
   "how_to": {
     "search": "Search",
     "no_result": ":no_entry_sign: No result found",

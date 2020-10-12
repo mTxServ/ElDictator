@@ -50,7 +50,6 @@ client.registry
         ['howto', 'How-To commands'],
         ['partner', 'Partner commands'],
         ['gameserver', 'Game Server commands'],
-        ['code', 'Code commands'],
     ])
     .registerCommandsIn(path.join(__dirname, 'commands'))
 ;
