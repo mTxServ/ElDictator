@@ -66,13 +66,13 @@ module.exports = class NumerixCommand extends mTxServCommand {
         ]
 
         const embed = new Discord.MessageEmbed()
-            .setTitle('Numerix")
+            .setTitle('Numerix')
             .setColor('BLUE')
-            .addField(lang[')
+            .setDescription(lang['partners']['numerix'])
        ;
 
-        for (const k in links) {
-            if (-1 === links[k]['locale'].indexOf(userLang)) {
+        for (const k in addons) {
+            if (-1 === addons[k]['locale'].indexOf(userLang)) {
                 continue;
             }
 
