@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+
+  bot:
+    build:
+      context: docker/node
+    volumes:
+      - ./:/bot:rw,cached
+    env_file:
+      - .env.dist

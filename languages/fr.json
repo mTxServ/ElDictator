@@ -1,0 +1,12 @@
+{
+  "partners": {
+    "list": ":people_holding_hands: Ils nous font confiance"
+  },
+  "social_links": {
+    "title": ":people_hugging: Rejoignez-nous sur les réseaux sociaux"
+  },
+  "forkme": {
+    "title": "Contribuez à ce bot!",
+    "description": "Le code source de ce bot est disponible sur notre compte GitHub. Vous pouvez y contribuer librement pour ajouter de nouvelles fonctionnalités sur le discord de mTxServ!"
+  }
+}
