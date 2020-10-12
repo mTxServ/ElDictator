@@ -5,8 +5,18 @@
   "social_links": {
     "title": ":people_hugging: Rejoignez-nous sur les réseaux sociaux"
   },
-  "forkme": {
+  "fork_me": {
     "title": "Contribuez à ce bot!",
-    "description": "Le code source de ce bot est disponible sur notre compte GitHub. Vous pouvez y contribuer librement pour ajouter de nouvelles fonctionnalités sur le discord de mTxServ!"
+    "description": "Le code source de ce bot est disponible sur notre compte GitHub. Vous pouvez y contribuer librement pour ajouter de nouvelles fonctionnalités sur le discord de mTxServ!",
+    "how": "Comment contribuer?",
+    "explain": "Nous serions très heureux de recevoir de l'aide de développeurs qui peuvent nous aider à réparer des bogues ou ajouter de nouvelles fonctionnalités."
+  },
+  "bot_stop": {
+    "confirm": "Arrêt du bot.. :eyes:"
+  },
+  "how_to": {
+    "search": "Recherche",
+    "no_result": ":no_entry_sign: Aucun résultat trouvé",
+    "check": "Consultez tous les tutoriels sur"
   }
 }

@@ -18,14 +18,14 @@ module.exports = class SocialCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const lang = require(`../../languages/fr.json`);
+        const lang = require(`../../languages/${this.getLangOfMember(msg.member)}.json`);
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(lang['forkme']['title'])
+            .setTitle(lang['fork_me']['title'])
             .setURL('https://github.com/mTxServ')
             .setColor('BLUE')
-            .setDescription(lang['forkme']['description'])
-            .addField("Comment contribuer?", "Nous serions très heureux de recevoir de l'aide de développeurs qui peuvent nous aider à réparer des bogues ou ajouter de nouvelles fonctionnalités.")
+            .setDescription(lang['fork_me']['description'])
+            .addField(lang['fork_me']['how'], lang['fork_me']['explain'])
             .addField("GitHub", 'https://github.com/mTxServ/ElDictator');
 
         return msg.say({

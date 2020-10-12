@@ -23,4 +23,12 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
         return owner.shift()
     }
+
+    getLangOfMember(member) {
+        if (!member) {
+            return 'en';
+        }
+
+        return member.roles.cache.some(role => role.name === '🇫🇷') ? 'fr' : 'en';
+    }
 };

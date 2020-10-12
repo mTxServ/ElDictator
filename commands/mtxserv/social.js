@@ -18,32 +18,39 @@ module.exports = class SocialCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const lang = require(`../../languages/fr.json`);
+        const userLang = this.getLangOfMember(msg.member);
+        const lang = require(`../../languages/${userLang}.json`);
 
         const links = [
             {
                 platform: ':flag_fr: Twitter',
                 link: 'https://twitter.com/mTxServ',
+                locale: ['fr'],
             },
             {
                 platform: ':flag_us: Twitter',
                 link: 'https://twitter.com/mTxServ_EN',
+                locale: ['en'],
             },
             {
                 platform: ':flag_us: GitHub',
                 link: 'https://github.com/mTxServ',
+                locale: ['fr', 'en'],
             },
             {
                 platform: ':flag_fr: Forums d\'entraide',
                 link: 'https://mtxserv.com/forums/',
+                locale: ['fr'],
             },
             {
                 platform: ':flag_fr: Facebook',
                 link: 'https://www.facebook.com/mtxserv',
+                locale: ['fr'],
             },
             {
                 platform: ':flag_fr: Youtube',
                 link: 'https://www.youtube.com/mtxserv',
+                locale: ['fr'],
             },
         ]
 
@@ -53,6 +60,10 @@ module.exports = class SocialCommand extends mTxServCommand {
         ;
 
         for (const k in links) {
+            if (-1 === links[k]['locale'].indexOf(userLang)) {
+                continue;
+            }
+
             embed.addField(links[k].platform, `${links[k].link}`)
         }
 

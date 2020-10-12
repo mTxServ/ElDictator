@@ -1,0 +1,22 @@
+{
+  "partners": {
+    "list": ":people_holding_hands: They trust us"
+  },
+  "social_links": {
+    "title": ":people_hugging: Join us on social networks"
+  },
+  "fork_me": {
+    "title": "How to contribute?",
+    "description": "The source code for this bot is available on our GitHub account. You can contribute freely to add new features to the mTxServ discord!",
+    "how": "How to contribute?",
+    "explain": "We would be very happy to receive help from developers who can help us fix bugs or add new features."
+  },
+  "bot_stop": {
+    "confirm": "Stopping the bot.. :eyes:"
+  },
+  "how_to": {
+    "search": "Search",
+    "no_result": ":no_entry_sign: No result found",
+    "check": "See all our tutorials on"
+  }
+}

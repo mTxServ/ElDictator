@@ -18,6 +18,13 @@ module.exports = class HowToSearchCommand extends mTxServCommand {
                     type: 'string',
                     validate: text => text.length >= 3,
                 },
+                {
+                    key: 'locale',
+                    prompt: 'Which language (fr/en)?',
+                    type: 'string',
+                    default: 'all',
+                    validate: text => text.length == 2,
+                },
             ],
             throttling: {
                 usages: 2,
@@ -26,25 +33,35 @@ module.exports = class HowToSearchCommand extends mTxServCommand {
         });
     }
 
-    async run(msg, { query }) {
+    async run(msg, { query, locale }) {
+        const userLang = locale === 'all' ? this.getLangOfMember(msg.member) : locale || this.getLangOfMember(msg.member);
+        const lang = require(`../../languages/${userLang}.json`);
+
         const api = new HowToApi()
-        const tutorials = await api.search(query)
+        const results = await api.search(query)
 
         const embed = new Discord.MessageEmbed()
-            .setColor(3447003)
-            .setTitle(`:books: Search *${query}*`)
+            .setTitle(`:mag: ${lang['how_to']['search']} *${query}*`)
+            .setColor('BLUE')
         ;
 
-        if (!tutorials.length) {
-            embed.addField(':flag_us: No result found.', 'Check on <https://mtxserv.com/help>');
-            embed.addField(':flag_fr: Aucun résultat trouvé.', 'Vérifiez sur <https://mtxserv.com/fr/help>');
-        }
+        const tutorials = Object.values(results);
 
-        Object.values(tutorials.slice(0, 3))
+        tutorials
+            .filter(article => {
+                return locale === 'all' || article.locale == userLang
+            })
             .map(article => {
-                embed.addField(`${article.locale.toUpperCase() == 'fr' ? 'flag_fr:' : ':flag_us:'} ${article.title}`, `<${article.link}>` || 'n/a');
+                embed.addField(`${article.locale == 'fr' ? ':flag_fr:' : ':flag_us:'} ${article.title}`, `<${article.link}>` || 'n/a');
             })
         ;
+
+        if (!embed.fields.length) {
+            const helpUrl = userLang == 'fr' ? 'https://mtxserv.com/fr/help': 'https://mtxserv.com/help';
+            embed.addField(lang['how_to']['no_result'], `${lang['how_to']['check']} <${helpUrl}>`);
+        }
+
+        embed.fields = embed.fields.slice(0, 3);
 
         return msg.say({
             embed

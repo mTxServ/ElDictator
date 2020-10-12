@@ -15,8 +15,10 @@ module.exports = class BotStopCommand extends mTxServCommand {
     }
 
     run(msg) {
+        const lang = require(`../../languages/${this.getLangOfMember(msg.member)}.json`);
+
         return msg
-            .say('Stopping the bot.. :eyes:')
+            .say(lang['bot_stop']['confirm'])
             .then(process.exit)
     }
 };

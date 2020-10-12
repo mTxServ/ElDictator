@@ -18,30 +18,35 @@ module.exports = class PartnerCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const lang = require(`../../languages/fr.json`);
+        const userLang = this.getLangOfMember(msg.member);
+        const lang = require(`../../languages/${userLang}.json`);
 
         const partners = [
             {
                 name: ':flag_us: Top Games',
                 websiteUrl: 'https://top-games.net/',
-                description: 'Find the game server that will make your heart fall on one of our Top Servers.'
+                description: 'Find the game server that will make your heart fall on one of our Top Servers.',
+                locale: ['en']
             },
             {
                 name: ':flag_fr: Minecraft.fr',
                 inviteUrl: 'https://discord.com/invite/minecraftfr',
                 websiteUrl: 'https://minecraft.fr',
-                description: 'Première communauté francophone sur le jeu Minecraft.'
+                description: 'Première communauté francophone sur le jeu Minecraft.',
+                locale: ['fr']
             },
             {
                 name: ':flag_fr: Top Serveur',
                 websiteUrl: 'https://top-serveurs.net/',
-                description: 'Trouvez le serveur de jeu qui fera chavirer votre coeur et présentez vos serveurs.'
+                description: 'Trouvez le serveur de jeu qui fera chavirer votre coeur et présentez vos serveurs.',
+                locale: ['fr']
             },
             {
                 name: ':flag_fr: Game Creators Area',
                 inviteUrl: 'https://discord.gg/bjDJJjy',
                 websiteUrl: 'https://g-ca.fr',
-                description: 'GCA a été créé pour offrir un lieu où peuvent se rencontrer les créateurs de contenu.'
+                description: 'GCA a été créé pour offrir un lieu où peuvent se rencontrer les créateurs de contenu.',
+                locale: ['fr']
             },
         ]
 
@@ -52,6 +57,10 @@ module.exports = class PartnerCommand extends mTxServCommand {
         ;
 
         for (const k in partners) {
+            if (-1 === partners[k]['locale'].indexOf(userLang)) {
+                continue;
+            }
+
             embed.addField(partners[k].name, `${partners[k].description}\n:link: ${partners[k].websiteUrl} ${partners[k].inviteUrl?'- ' + partners[k].inviteUrl : ''}`)
         }
 
