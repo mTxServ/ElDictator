@@ -54,10 +54,4 @@ client.registry
     .registerCommandsIn(path.join(__dirname, 'commands'))
 ;
 
-client.once('ready', () => {
-    console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
-});
-
-client.on('error', console.error);
-
 client.login(isDev ? process.env.BOT_TOKEN_DEV : process.env.BOT_TOKEN)
