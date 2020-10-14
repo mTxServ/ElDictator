@@ -60,5 +60,15 @@
     "create": "Ouvrir un ticket",
     "support": "Mes tickets",
     "before": "Avant de nous contacter, consultez le centre d'aide!"
+  },
+  "explain": {
+    "title": ":question: Demander de l'aide",
+    "description": "Avant tout, postez **DANS LE CHANNEL APPROPRIE** !\n\n__Pour vous aider, **merci de bien préciser**__:",
+    "rule_1": "* **consultez les channels #lien-utiles** et tutoriaux du site (<https://mtxserv.com/fr/help>) avant de poster!",
+    "rule_2": "* votre host (game-fr-**XX**) et **votre jeu**",
+    "rule_3": "* de quelle offre disposez-vous (**quantité de RAM**)",
+    "rule_4": "* **décrivez** bien votre problème, et ce que vous utilisez (addons, plugins, mods, etc)",
+    "rule_5": "* **fournissez les messages d'erreurs**",
+    "rule_6": "* **soyez patient**, nous sommes sur un discord communautaire ;)"
   }
 }
