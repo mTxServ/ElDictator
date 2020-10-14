@@ -2,6 +2,12 @@
 
 This bot is developed with `discord.js` and `discord commando`.
 
+![Help Command](doc/help.png)
+![GameServer Command](doc/server.png)
+![Minecraft Version & Modpack Command](doc/version.png)
+![HowTo Command](doc/howto.png)
+
+
 ## Installation
 
 ```
