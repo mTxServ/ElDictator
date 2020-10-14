@@ -27,5 +27,10 @@
     "invalid_format": ":no_entry_sign: Invalid address, port is probably missing",
     "offline": ":red_circle: This game server is offline.",
     "online": ":green_circle: This game server is online."
+  },
+  "help": {
+    "dm_closed": "Unable to send you the help DM. You probably have DMs disabled.",
+    "sent_dm": "Sent you a DM with information.",
+    "multiple_commands": "Multiple commands found. Please be more specific."
   }
 }

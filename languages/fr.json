@@ -27,5 +27,10 @@
     "invalid_format": ":no_entry_sign: Adresse invalide, le port est probablement manquant",
     "offline": ":red_circle: Ce serveur est offline.",
     "online": ":green_circle: Le serveur est online."
+  },
+  "help": {
+    "dm_closed": "Impossible de vous envoyer le DM d'aide. Vous avez probablement des DM désactivés.",
+    "sent_dm": "Liste des commandes envoyée en DM.",
+    "multiple_commands": "Plusieurs commandes ont été trouvées. Soyez plus précis."
   }
 }
