@@ -4,10 +4,6 @@ const makeURL = (game, host, port) => `https://mtxserv.com/api/v1/viewers/game?i
 
 class GameServerApi {
     async status(game, host, port) {
-        if (game === 'gmod') {
-            game = 'garry-s-mod';
-        }
-
         const res = await got(makeURL(game, host, port), {
             responseType: 'json'
         })
