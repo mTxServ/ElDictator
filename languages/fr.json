@@ -73,5 +73,10 @@
   },
   "news": {
     "title": ":newspaper: Dernièrs articles sur %about%"
+  },
+  "wiki": {
+    "search": "Recherche",
+    "no_result": ":no_entry_sign: Aucun résultat trouvé",
+    "check": "Aller sur le wiki: "
   }
 }

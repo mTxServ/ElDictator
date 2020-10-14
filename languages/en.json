@@ -73,5 +73,10 @@
   },
   "news": {
     "title": ":newspaper: Latest posts about %about%"
+  },
+  "wiki": {
+    "search": "Search",
+    "no_result": ":no_entry_sign: No result found",
+    "check": "Go to the wiki: "
   }
 }

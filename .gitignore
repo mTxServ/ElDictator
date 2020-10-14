@@ -2,4 +2,4 @@
 *.log
 .idea
 node_modules/
-
+*.sqlite3
