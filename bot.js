@@ -49,7 +49,9 @@ client.registry
         ['admin', 'Admin'],
         ['howto', 'How-To'],
         ['partner', 'Partner'],
+        ['minecraft', 'Minecraft Server'],
         ['gameserver', 'Game Server'],
+        ['gameserverstatus', 'Game Server Status'],
     ])
     .registerCommandsIn(path.join(__dirname, 'commands'))
 ;

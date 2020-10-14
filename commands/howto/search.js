@@ -58,7 +58,9 @@ module.exports = class HowToSearchCommand extends mTxServCommand {
 
         if (!embed.fields.length) {
             const helpUrl = userLang == 'fr' ? 'https://mtxserv.com/fr/help': 'https://mtxserv.com/help';
-            embed.addField(lang['how_to']['no_result'], `${lang['how_to']['check']} <${helpUrl}>`);
+            embed
+                .setColor('RED')
+                .addField(lang['how_to']['no_result'], `${lang['how_to']['check']} <${helpUrl}>`);
         }
 
         embed.fields = embed.fields.slice(0, 3);

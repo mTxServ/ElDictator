@@ -37,5 +37,10 @@
     "dm_closed": "Impossible de vous envoyer le DM d'aide. Vous avez probablement des DM désactivés.",
     "sent_dm": "Liste des commandes envoyée en DM.",
     "multiple_commands": "Plusieurs commandes ont été trouvées. Soyez plus précis."
+  },
+  "software_search": {
+    "search": "Recherche",
+    "no_result": ":no_entry_sign: Aucun résultat trouvé",
+    "check": "Consultez toutes les versions & modpacks sur"
   }
 }

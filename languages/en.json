@@ -37,5 +37,10 @@
     "dm_closed": "Unable to send you the help DM. You probably have DMs disabled.",
     "sent_dm": "Sent you a DM with information.",
     "multiple_commands": "Multiple commands found. Please be more specific."
+  },
+  "software_search": {
+    "search": "Search",
+    "no_result": ":no_entry_sign: No result found",
+    "check": "See all our versions & modpacks on"
   }
 }
