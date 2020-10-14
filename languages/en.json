@@ -52,5 +52,13 @@
     "title_vps_game": ":bar_chart: GAME VPS",
     "title_vps": ":bar_chart: SSD VPS",
     "state": "Stock Levels:"
+  },
+  "support": {
+    "title": ":question: How to contact support",
+    "description": "Our staff is at your disposal if need help or have a question.",
+    "report": "Report a message",
+    "create": "Create a ticket",
+    "support": "View my tickets",
+    "before": "Before contacting us, check the help center!"
   }
 }
