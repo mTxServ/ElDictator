@@ -2,7 +2,7 @@ const mTxServCommand = require('../mTxServCommand.js');
 const HytaleOfficialApi = require('../../api/HytaleOfficialApi')
 const Discord = require('discord.js');
 
-module.exports = class SupportCommand extends mTxServCommand {
+module.exports = class NewsHytaleOfficialCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'hytale',
@@ -19,9 +19,6 @@ module.exports = class SupportCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const userLang = this.resolveLangOfMessage(msg)
-        const lang = require(`../../languages/${userLang}.json`)
-
         const api = new HytaleOfficialApi();
         const articles = await api.latest();
 
