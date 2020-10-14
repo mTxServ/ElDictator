@@ -60,7 +60,7 @@ module.exports = class HelpCommand extends mTxServCommand {
 				}
 
 				try {
-					if(msg.channel.type !== 'dm') await msg.reply(['help']['sent_dm']);
+					if(msg.channel.type !== 'dm') await msg.reply(lang['help']['sent_dm']);
 
 					return msg.author.send({
 						embed
@@ -107,7 +107,7 @@ module.exports = class HelpCommand extends mTxServCommand {
 				`)
 				;
 
-				if(msg.channel.type !== 'dm') await msg.reply(['help']['sent_dm']);
+				if(msg.channel.type !== 'dm') await msg.reply(lang['help']['sent_dm']);
 
 				return msg.author.send({
 					embed
