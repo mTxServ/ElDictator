@@ -31,16 +31,20 @@ This bot is developed with `discord.js` and `discord commando`.
 * `numerix`: Show who is Numerix
 * `partners`: Show partners
 
+### GMod Server
+* `darkrp`: Search in DarkRP official wiki
+* `glua`: Search in GMod official wiki
+
 ### Minecraft Server
-* `bukkit`: Show Bukkit version.
-* `fabric`: Show Fabric version.
-* `forge`: Show Forge version.
-* `magma`: Show Magma version.
-* `mohist`: Show Mohist version.
-* `paper`: Show Paper version.
-* `snapshot`: Show Minecraft Snapshot version.
-* `spigot`: Show Spigot version.
-* `vanilla`: Show Minecraft Vanilla version.
+* `bukkit`: Show Bukkit infos + latest version.
+* `fabric`: Show Fabric infos + latest version.
+* `forge`: Show Forge infos + latest version.
+* `magma`: Show Magma infos + latest version.
+* `mohist`: Show Mohist infos + latest version.
+* `paper`: Show Paper infos + latest version.
+* `snapshot`: Show Minecraft Snapshot infos + latest version.
+* `spigot`: Show Spigot infos + latest version.
+* `vanilla`: Show Minecraft Vanilla infos + latest version.
 
 ### Game Server
 * `version`: Search a minecraft version or modpack.
