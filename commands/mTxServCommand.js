@@ -25,7 +25,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
     }
 
     resolveLangOfMessage(msg) {
-        if (msg.channel) {
+        if (msg.channel.type !== 'dm') {
             return this.getLangOfChannel(msg.channel)
         }
 
@@ -33,7 +33,11 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
     }
 
     getLangOfChannel(channel) {
-        if (!channel || !channel.parentID) {
+        if (!channel) {
+            return process.env.DEFAULT_LANG;
+        }
+
+        if (!channel.parentID) {
             return -1 !== channel.name.indexOf('[FR]') ? 'fr' : 'en';
         }
 
