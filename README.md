@@ -20,7 +20,9 @@ This bot is developed with `discord.js` and `discord commando`.
 * `support`: Get support informations
 
 ### News
-* `hytale`: Show latest blog posts from Hytale official website
+* `hytale`: Show latest blog posts from Hytale official website (EN).
+* `hytalefr`: Show latest blog posts from [minecraft.fr](https://minecraft.fr) website (FR).
+* `minecraftfr`: Show latest blog posts from [hytale](https://hytale.game) website (FR).
 
 ### How-To
 * `howto`: Search a tutorial.
