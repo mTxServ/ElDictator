@@ -22,7 +22,6 @@ module.exports = class SocialCommand extends mTxServCommand {
 
         const embed = new Discord.MessageEmbed()
             .setTitle(lang['fork_me']['title'])
-            .setURL('https://github.com/mTxServ/ElDictator')
             .setColor('BLUE')
             .setDescription(lang['fork_me']['description'])
             .addField(lang['fork_me']['how'], lang['fork_me']['explain'])
