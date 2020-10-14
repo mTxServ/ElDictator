@@ -35,6 +35,8 @@ module.exports = class GameServerStatusCommand extends mTxServCommand {
     async run(msg, { game, address}) {
         const lang = require(`../../languages/${this.getLangOfMember(msg.member)}.json`);
 
+        game = game.toLowerCase();
+        
         if (game === 'gmod') {
             game = 'garry-s-mod';
         }
