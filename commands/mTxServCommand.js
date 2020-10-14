@@ -33,12 +33,8 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
     }
 
     getLangOfChannel(channel) {
-        if (!channel) {
+        if (!channel || !channel.parentID) {
             return process.env.DEFAULT_LANG;
-        }
-
-        if (!channel.parentID) {
-            return -1 !== channel.name.indexOf('[FR]') ? 'fr' : 'en';
         }
 
         const parentChannel = this.client.channels.cache.get(channel.parentID)
