@@ -33,7 +33,7 @@ module.exports = class GameServerStatusCommand extends mTxServCommand {
 
     async run(msg, { game, address}) {
         const api = new GameServerApi()
-        const embed = await api.generateEmbed(msg, game, address, this.getLangOfMember(msg.member))
+        const embed = await api.generateEmbed(msg, game, address, this.resolveLangOfMessage(msg))
 
         return msg.say({
             embed

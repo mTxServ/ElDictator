@@ -24,6 +24,27 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
         return owner.shift()
     }
 
+    resolveLangOfMessage(msg) {
+        if (msg.channel) {
+            return this.getLangOfChannel(msg.channel)
+        }
+
+        return this.getLangOfMember(msg.member)
+    }
+
+    getLangOfChannel(channel) {
+        if (!channel || !channel.parentID) {
+            return process.env.DEFAULT_LANG;
+        }
+
+        const parentChannel = this.client.channels.cache.get(channel.parentID)
+        if (!parentChannel) {
+            return process.env.DEFAULT_LANG;
+        }
+
+        return -1 !== parentChannel.name.indexOf('[FR]') ? 'fr' : 'en';
+    }
+
     getLangOfMember(member) {
         if (!member) {
             return process.env.DEFAULT_LANG;

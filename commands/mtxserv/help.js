@@ -30,7 +30,7 @@ module.exports = class HelpCommand extends mTxServCommand {
 		const commands = this.client.registry.findCommands(args.command, false, msg);
 		const showAll = args.command && args.command.toLowerCase() === 'all';
 
-		const lang = require(`../../languages/${this.getLangOfMember(msg.member)}.json`);
+		const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`);
 
 		if(args.command && !showAll) {
 			if(commands.length === 1) {

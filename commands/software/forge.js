@@ -14,7 +14,7 @@ module.exports = class GameSoftwareForgeCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const userLang = this.getLangOfMember(msg.member);
+        const userLang = this.resolveLangOfMessage(msg);
         const lang = require(`../../languages/${userLang}.json`);
         const baseUrl = userLang == 'fr' ? 'https://mtxserv.com/fr/minecraft-versions': 'https://mtxserv.com/minecraft-versions';
 

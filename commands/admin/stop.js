@@ -16,7 +16,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
     }
 
     run(msg) {
-        const lang = require(`../../languages/${this.getLangOfMember(msg.member)}.json`);
+        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`);
 
         return msg
             .say(lang['bot_stop']['confirm'])
