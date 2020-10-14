@@ -18,6 +18,11 @@
   "bot_update": {
     "confirm": "Updating the bot.. :up:"
   },
+  "invite": {
+    "title": ":love_letter: Invitation Link",
+    "description": "To invite your friends to join this this server, use this invitation link:",
+    "link": "Invitation"
+  },
   "how_to": {
     "search": "Search",
     "no_result": ":no_entry_sign: No result found",

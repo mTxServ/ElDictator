@@ -4,11 +4,11 @@ const Discord = require('discord.js');
 module.exports = class SocialCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
-            name: 'forkme',
-            aliases: ['fork', 'bot'],
+            name: 'invite',
+            aliases: ['invite-link'],
             group: 'mtxserv',
-            memberName: 'forkme',
-            description: 'Contribute to this bot!',
+            memberName: 'invite',
+            description: 'Get invitation link to join mTxServ discord',
             clientPermissions: ['SEND_MESSAGES'],
             throttling: {
                 usages: 2,
@@ -21,12 +21,10 @@ module.exports = class SocialCommand extends mTxServCommand {
         const lang = require(`../../languages/${this.getLangOfMember(msg.member)}.json`);
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(lang['fork_me']['title'])
-            .setURL('https://github.com/mTxServ/ElDictator')
+            .setTitle(lang['invite']['title'])
             .setColor('BLUE')
-            .setDescription(lang['fork_me']['description'])
-            .addField(lang['fork_me']['how'], lang['fork_me']['explain'])
-            .addField("GitHub", 'https://github.com/mTxServ/ElDictator');
+            .setDescription(lang['invite']['description'])
+            .addField(lang['invite']['link'], this.client.options.invite);
 
         return msg.say({
             embed

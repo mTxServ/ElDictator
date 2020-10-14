@@ -70,7 +70,7 @@ module.exports = class GameServerStatusCommand extends mTxServCommand {
         }
 
         const iconUrl = `https://mtxserv.com/build/manager-game/img/game/${game}.png`;
-        
+
         embed
             .setColor('GREEN')
             .setAuthor(`${results.params.host_name.toUpperCase()}`, iconUrl)

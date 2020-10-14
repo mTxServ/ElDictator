@@ -18,6 +18,11 @@
   "bot_update": {
     "confirm": "Mise à jour du bot.. :up:"
   },
+  "invite": {
+    "title": ":love_letter: Lien d'invitation",
+    "description": "Vous pouvez diffuser le lien d'invitation discord suivant pour inviter vos amis:",
+    "link": "Invitation"
+  },
   "how_to": {
     "search": "Recherche",
     "no_result": ":no_entry_sign: Aucun résultat trouvé",
