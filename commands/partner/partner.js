@@ -32,7 +32,7 @@ module.exports = class PartnerCommand extends mTxServCommand {
                 name: ':flag_fr: HYTALE.game',
                 inviteUrl: 'https://discord.gg/2UPCQn3',
                 websiteUrl: 'https://hytale.game',
-                description: 'Toutes les news, màj et astuces sur Hytale, 1ère communauté :flag_fr:.',
+                description: 'Toutes les news, màj et astuces sur Hytale, 1ère communauté :flag_fr:',
                 locale: ['fr']
             },
             {
