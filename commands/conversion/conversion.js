@@ -6,7 +6,7 @@ module.exports = class ConversionCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'conversion',
-            aliases: ['search', 'tuto'],
+            aliases: [],
             group: 'conversion',
             memberName: 'conversion',
             description: 'Convert Youtube Videos or SoundCloud Music',
@@ -27,32 +27,40 @@ module.exports = class ConversionCommand extends mTxServCommand {
     }
 
     async run(msg, { query }) {
-        const userLang = locale === 'all' ? this.resolveLangOfMessage(msg) : locale || this.resolveLangOfMessage(msg);
-        const lang = require(`../../languages/${userLang}.json`);
-
         const api = new ConversionAPI()
         var yt = false
         
-        var video_id = window.location.search.split('v=')[1];
+        var video_id = query.split('v=')[1] || query;
         var ampersandPosition = video_id.indexOf('&');
         if(ampersandPosition != -1) {
           video_id = video_id.substring(0, ampersandPosition);
         }
         
-        if ( video_id ) {
+        if ( video_id != query ) {
           var query = video_id
           yt = true 
         }
-        
+
+        msg.react('✅');
+
         const results = await api.conversion(query, yt)
 
+        if ( results.error && results.error != "" ) {
+            msg.react('❌');
+            msg.reactions.cache.get('✅').remove().catch(error => console.error('Failed to remove reactions: ', error));
+            return
+        }
+
+        const phrase = results.title && results.author ? `*${results.title}* fait par *${results.author}*` : query
         const embed = new Discord.MessageEmbed()
-            .setTitle(`Convertion de *${query}*`)
+            .setTitle(`Conversion de : ${phrase}`)
             .setColor('BLUE')
-            .setLink(results["link"])
+            .setTimestamp()
         ;
 
-        embed.addField("La musique est disponible : " `${results["links"]}`);
+        console.log(results.link)
+
+        embed.addField('La musique est disponible :', results.link);
 
         return msg.say({
             embed
