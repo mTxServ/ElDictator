@@ -55,6 +55,13 @@ module.exports = class PartnerCommand extends mTxServCommand {
                 description: 'Numerix est un déveleppeur et un helpeur. Il a mis à disposition gratuitement différents addons et tutoriels disponibles sur mTxServ.',
                 locale: ['fr']
             },
+            {
+                name: ':crown: Metropia: Roleplay Minecraft Imagination',
+                inviteUrl: 'https://discord.com/invite/gCkTQS8',
+                websiteUrl: 'https://metropia.cf/',
+                description: 'Découvrez le premier serveur Minecraft Roleplay francophone imagination et sans limite!',
+                locale: ['fr']
+            },
         ]
 
         const embed = new Discord.MessageEmbed()
