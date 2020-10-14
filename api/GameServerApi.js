@@ -1,4 +1,5 @@
 const got = require('got');
+const Discord = require('discord.js')
 
 const makeURL = (game, host, port) => `https://mtxserv.com/api/v1/viewers/game?ip=${encodeURIComponent(host)}&port=${encodeURIComponent(port)}&type=${encodeURIComponent(game)}`;
 
@@ -13,6 +14,58 @@ class GameServerApi {
         }
 
         return res.body
+    }
+
+    async generateEmbed(msg, game, address, language) {
+        const lang = require(`../languages/${language}.json`);
+        game = game.toLowerCase();
+        if (game === 'gmod') {
+            game = 'garry-s-mod';
+        }
+
+        const split = address.split(':')
+        const embed = new Discord.MessageEmbed();
+
+        if (split.length !== 2) {
+            return embed
+                .setColor('RED')
+                .setTitle(address.toUpperCase())
+                .setDescription(lang['gs_status']['invalid_format'])
+            ;
+        }
+
+        const results = await this.status(game, split[0], split[1])
+
+        if (!results['is_online']) {
+            return embed
+                .setColor('RED')
+                .setTitle(address.toUpperCase())
+                .setDescription(lang['gs_status']['offline'])
+            ;
+        }
+
+        const iconUrl = `https://mtxserv.com/build/manager-game/img/game/${game}.png`;
+
+        embed
+            .setColor('GREEN')
+            .setAuthor(`${results.params.host_name.toUpperCase()}`, iconUrl)
+            .setTimestamp()
+            .addField('Address', `\`${address.toUpperCase()}\``)
+            .addField('Players', `${results.params.used_slots}/${results.params.max_slots}`, true)
+            .addField('Game', results.params.type, true)
+            .addField('Map', results.params.map, true)
+        ;
+
+        if (results.params.joinlink) {
+            embed.setDescription(`\`${results.params.joinlink}\``);
+
+        }
+
+        if (results.params.plugins) {
+            embed.addField('Plugins', results.params.plugins);
+        }
+
+        return embed;
     }
 }
 

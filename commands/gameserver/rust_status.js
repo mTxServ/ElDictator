@@ -1,23 +1,17 @@
 const mTxServCommand = require('../mTxServCommand.js')
 const GameServerApi = require('../../api/GameServerApi')
 
-module.exports = class GameServerStatusCommand extends mTxServCommand {
+module.exports = class GameServerStatusRustCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
-            name: 'status',
-            aliases: ['gs'],
-            examples: ['status minecraft game-pl-02.MTXSERV.COM:27080', 'status gmod 51.75.51.29:27030'],
+            name: 'rust',
+            aliases: ['rust-status', 'rust-server'],
+            examples: ['rust game-pl-02.MTXSERV.COM:27080', 'rust 51.75.51.29:27030'],
             group: 'gameserver',
-            memberName: 'gameserver',
-            description: 'Check if a game server is online or offline.',
+            memberName: 'rust',
+            description: 'Check if a Rust game server is online or offline.',
             clientPermissions: ['SEND_MESSAGES'],
             args: [
-                {
-                    key: 'game',
-                    prompt: 'Game (minecraft/gmod/ark/rust/onset/arma3)?',
-                    type: 'string',
-                    oneOf: ['minecraft', 'gmod', 'ark', 'rust', 'onset', 'arma3'],
-                },
                 {
                     key: 'address',
                     prompt: 'Address of server (eg: game.fr.01.mtxserv.com:27030)?',
@@ -33,7 +27,7 @@ module.exports = class GameServerStatusCommand extends mTxServCommand {
 
     async run(msg, { game, address}) {
         const api = new GameServerApi()
-        const embed = await api.generateEmbed(msg, game, address, this.getLangOfMember(msg.member))
+        const embed = await api.generateEmbed(msg, 'rust', address, this.getLangOfMember(msg.member))
 
         return msg.say({
             embed
