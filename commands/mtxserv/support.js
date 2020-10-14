@@ -5,7 +5,7 @@ module.exports = class SupportCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'support',
-            aliases: ['supports', 'ticket', 'tickets'],
+            aliases: ['supports', 'ticket', 'tickets', 's'],
             group: 'mtxserv',
             memberName: 'support',
             description: 'Get support informations',
