@@ -26,9 +26,10 @@ module.exports = class SupportCommand extends mTxServCommand {
         const articles = await api.latest();
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(lang['news']['title'].replace('%about%', 'Hytale'))
+            .setDescription(`<https://hytale.com>`)
             .setColor('BLUE')
             .setTimestamp()
+            .setAuthor('Hytale Official', 'https://hytale.com/favicon.ico')
         ;
 
         for (const k in articles.slice(0, 3)) {
