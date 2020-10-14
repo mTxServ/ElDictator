@@ -44,7 +44,6 @@ module.exports = class HelpCommand extends mTxServCommand {
 						${commands[0].nsfw ? ' (NSFW)' : ''}
 					`}`)
 					.addField('Format', `${msg.anyUsage(`${commands[0].name}${commands[0].format ? `${commands[0].format}` : ''}`)}`)
-					.addField('Group', `${commands[0].group.name} (\`${commands[0].groupID}:${commands[0].memberName}\`)`)
 				;
 
 

@@ -7,9 +7,10 @@ module.exports = class GameServerStatusCommand extends mTxServCommand {
         super(client, {
             name: 'status',
             aliases: ['gstatus', 'gs'],
+            examples: ['status minecraft game-fr-01.mtxserv.com:27030', 'status gmod game-fr-02.mtxserv.com:27130'],
             group: 'gameserver',
             memberName: 'gameserver',
-            description: 'Check if a game server is online of offline.',
+            description: 'Check if a game server is online or offline.',
             clientPermissions: ['SEND_MESSAGES'],
             args: [
                 {
