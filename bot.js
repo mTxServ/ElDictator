@@ -46,6 +46,7 @@ client.registry
     .registerDefaultTypes()
     .registerGroups([
         ['mtxserv', 'Main'],
+        ['news', 'News'],
         ['admin', 'Admin'],
         ['howto', 'How-To'],
         ['partner', 'Partner'],

@@ -70,5 +70,8 @@
     "rule_4": "* **describe** your problem, and what you are using (addons, plugins, mods, etc.)",
     "rule_5": "* **provide error messages**",
     "rule_6": "* **be patient**, we are on a community server ;)"
+  },
+  "news": {
+    "title": ":newspaper: Latest posts about %about%"
   }
 }

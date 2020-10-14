@@ -70,5 +70,8 @@
     "rule_4": "* **décrivez** bien votre problème, et ce que vous utilisez (addons, plugins, mods, etc)",
     "rule_5": "* **fournissez les messages d'erreurs**",
     "rule_6": "* **soyez patient**, nous sommes sur un discord communautaire ;)"
+  },
+  "news": {
+    "title": ":newspaper: Dernièrs articles sur %about%"
   }
 }
