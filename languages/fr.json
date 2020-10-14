@@ -44,7 +44,13 @@
     "check": "Consultez toutes les versions & modpacks sur"
   },
   "rules": {
-    "title": ":scroll: Règlement",
+    "title": ":loudspeaker: Règlement",
     "description": "Bienvenue sur le discord communautaire mTxServ. Cet espace est dédié à **l'entraide entre membres** de la communauté.\n\n:writing_hand:  Le **support officiel** est uniquement sur notre site internet, nous n'avons aucun moyen de vérifier l'identité d'un utilisateur ici -> <https://mtxserv.com/fr/support/list>. Aucune demande par message privé ne sera traitée, hormis dans les cas de divulgation d'informations sensibles/privées\n\n:writing_hand:  **Avant de poster une demande d'aide**, consultez channels **liens utiles**, **les messages épinglés** et **les tutoriaux** avant de poser vos questions (<https://mtxserv.com/fr/help>).\n\n:writing_hand:  **Pour toute demande d'aide**, postez dans le **channel adéquat** (défouloir __**n'est pas le channel adéquat!**__) avec toutes les infos utiles. Au minima l'host (GAME-XX-XX), la version du serveur et le log d'erreur dispo dans la console (en cas de crash). __***J'ai un problème***__ ne permet pas de vous aider!\n\n:writing_hand:  Ce Discord est un **espace communautaire**: la **convivialité est primordiale** envers les personnes qui prennent de leur temps pour vous aider.\n\n:writing_hand:  **Tout comportement irrespectueux** pourra être sanctionné d'un kick ou ban\n\n:writing_hand:  **La pub** est **UNIQUEMENT** autorisée dans les channels **présentation-serveur**. Toute pub en dehors de ces channels ou par message privée = ban\n\n:writing_hand:  Contenu inapproprié (addon leak, infos personnelles, images inappropriées, conversation privée, etc) = ban"
+  },
+  "stock": {
+    "title_game": ":bar_chart: Serveur de Jeu",
+    "title_vps_game": ":bar_chart: VPS GAME",
+    "title_vps": ":bar_chart: VPS SSD",
+    "state": "Etat des stocks :"
   }
 }

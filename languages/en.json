@@ -44,7 +44,13 @@
     "check": "See all our versions & modpacks on"
   },
   "rules": {
-    "title": ":scroll: Rules",
+    "title": ":loudspeaker: Rules",
     "description": "Welcome on the mTxServ community discord. It's dedicated to **mutual support between members** of the community.\n\n:writing_hand:  The **official support** is only provided on our website, we can't verify informations about user's identity here -> <https://mtxserv.com/support/list>. No question through private message will be processed, except in case of private/sensitive information disclosure.\n\n:writing_hand:  **Before posting any help request**, check **helpful links** channels, **pinned messages** and **tutorials** (<https://mtxserv.com/help>).\n\n:writing_hand:  **For any help request**, post in the **relevant channel** (general __**is not the relevant channel!**__) with any useful information. At least the host (GAME-XX-XX), the server version and error log available in console (in case of crash). __***I've got a problem***__ doesn't allow to help you out!\n\n:writing_hand:  This Discord is a **community space**: the **friendliness is important**, especially towards the other people that takes time to help you.\n\n:writing_hand:  **Any disrespectful behavior** may be punished with a kick or a ban.\n\n:writing_hand:  **Advertising** is **ONLY** allowed in **server-presentations** channels. Any advertisement out of these channels or through private messages = ban.\n\n:writing_hand:  Inappropriate content (leaked addon, personal informations, inappropriate images, private conversation, etc) = ban."
+  },
+  "stock": {
+    "title_game": ":bar_chart: Game Server",
+    "title_vps_game": ":bar_chart: GAME VPS",
+    "title_vps": ":bar_chart: SSD VPS",
+    "state": "Stock Levels:"
   }
 }
