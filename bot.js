@@ -61,7 +61,7 @@ client.registry
         ['minecraft', 'Minecraft Server'],
         ['gameserver', 'Game Server'],
         ['gameserverstatus', 'Game Server Status'],
-        ['conversion', 'Conversion'],
+        ['convert', 'Conversion'],
     ])
     .registerCommandsIn(path.join(__dirname, 'commands'))
 ;
