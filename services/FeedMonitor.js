@@ -27,15 +27,20 @@ class FeedMonitor {
     async process() {
         console.log('Check feeds')
 
+        const links = [];
         let oldArticles = client.settings.get('feed_articles', [])
+
         for (const feed of this.feeds) {
             const results = await this.rssFeeder.get(feed.url)
             const articles = Object.values(results.items)
 
             for (const article of articles) {
+                links.push(article.link)
+
                 if (-1 !== oldArticles.indexOf(article.link)) {
                     continue
                 }
+
                 const embed = new Discord.MessageEmbed()
                     .setAuthor(results.title, feed.icon, article.link)
                     .setTitle(`:newspaper: ${article.title}`)
@@ -72,6 +77,8 @@ class FeedMonitor {
                 }
             }
         }
+
+        client.settings.set('feed_articles', links)
     }
 }
 
