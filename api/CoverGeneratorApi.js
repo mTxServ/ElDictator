@@ -107,8 +107,13 @@ class CoverGeneratorApi {
                 .setImage(result.image_url)
                 .setColor('GREEN')
                 .addField('Title', `\`${title}\``, true)
-                .addField('Background Url', `\`${backgroundUrl}\``, true)
-                .addField('Image URL', `${result.image_url}`)
+            ;
+
+            if (backgroundUrl) {
+                embed.addField('Background Url', `\`${backgroundUrl}\``, true)
+            }
+
+            embed.addField('Image URL', `${result.image_url}`)
 
             notificationMessage.edit(embed);
         }
