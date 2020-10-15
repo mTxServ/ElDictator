@@ -3,11 +3,11 @@ const RssFeederApi = require('../../api/RssFeederApi')
 const Discord = require('discord.js');
 const striptags = require('striptags')
 
-module.exports = class NewsMinecraftFrCommand extends mTxServCommand {
+module.exports = class NewsGmodCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'gmod-news',
-            aliases: ['garrysmod'],
+            aliases: ['garrysmod', 'news-gmod'],
             group: 'news',
             memberName: 'gmod',
             description: 'Show latest blog posts from gmod.facepunch.com',
