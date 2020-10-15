@@ -1752,6 +1752,13 @@ sshpk@^1.7.0:
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
 
+steam-workshop@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/steam-workshop/-/steam-workshop-0.0.5.tgz#0340e7a27043b858013318833136990ac321cf7c"
+  integrity sha512-nUF6MxFzksGr1QfKYnIGeKNWl0KHMDULQxYmKdPvut36jrJ2HC2N79Jz6NW5dLvKXvSvlbdXcOes57bpJCqrNg==
+  dependencies:
+    request "^2.88.2"
+
 string-width@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-1.0.2.tgz#118bdf5b8cdc51a2a7e70d211e07e2b0b9b107d3"
@@ -2040,6 +2047,11 @@ ws@^7.2.3, ws@^7.3.1:
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.3.1.tgz#d0547bf67f7ce4f12a72dfe31262c68d7dc551c8"
   integrity sha512-D3RuNkynyHmEJIpD2qrgVkc9DQ23OrN/moAwZX4L8DfvszsJxpjQuUq3LMx6HoYji9fbIOBY18XWBsAux1ZZUA==
+
+xbbcode-parser@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/xbbcode-parser/-/xbbcode-parser-0.1.2.tgz#06ce60a40f566a0673eab211d36e238292607467"
+  integrity sha1-Bs5gpA9WagZz6rIR024jgpJgdGc=
 
 xml2js@^0.4.19:
   version "0.4.23"

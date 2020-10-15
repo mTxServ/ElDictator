@@ -15,7 +15,9 @@
     "puppeteer": "^5.3.1",
     "rss-parser": "^3.9.0",
     "sqlite": "3",
-    "striptags": "^3.1.1"
+    "steam-workshop": "^0.0.5",
+    "striptags": "^3.1.1",
+    "xbbcode-parser": "^0.1.2"
   },
   "devDependencies": {
     "eslint": "^7.11.0"
