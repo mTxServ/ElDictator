@@ -25,10 +25,10 @@ module.exports = class NewsHytaleGameCommand extends mTxServCommand {
         const articles = Object.values(feed.items)
 
         const embed = new Discord.MessageEmbed()
-            .setDescription(`${feed.description}\n<${feed.link}>`)
+            .setDescription(`${feed.description}`)
             .setColor('BLUE')
             .setTimestamp()
-            .setAuthor(feed.title, 'https://hytale.com/favicon.ico')
+            .setAuthor(feed.title, 'https://hytale.com/favicon.ico', 'https://hytale.game')
         ;
 
         for (const k in articles.slice(0, 3)) {

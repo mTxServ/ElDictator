@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const dotenv = require('dotenv')
 const { SQLiteProvider, Client } = require('discord.js-commando');
+const sqlite = require('sqlite');
 
 // load local env configuration
 const envConfig = dotenv.parse(fs.readFileSync('.env'))
@@ -24,8 +25,9 @@ const client = global.client = new Client({
     }
 });
 
-const db = require('better-sqlite3')('settings.db');
-client.setProvider(new SQLiteProvider(db));
+client.setProvider(
+    sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => new SQLiteProvider(db))
+).catch(console.error);
 
 fs.readdir('./events/', (err, files) => {
     if (err) return console.error(err);

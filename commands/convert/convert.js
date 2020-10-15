@@ -67,7 +67,7 @@ module.exports = class ConvertCommand extends mTxServCommand {
         // Traitement du message
         const phrase = results.title && results.author ? `*${results.title}* fait par *${results.author}*` : query
         const embed = new Discord.MessageEmbed()
-            .setTitle(`Conversion de : ${phrase}`)
+            .setAuthor(`Conversion de : ${phrase}`)
             .setColor('BLUE')
             .setTimestamp()
         ;
@@ -86,7 +86,7 @@ module.exports = class ConvertCommand extends mTxServCommand {
                             .fetch(message.id)
                             .then(async function (message) {
                                 const embed2 = new Discord.MessageEmbed()
-                                    .setTitle(`Conversion de : ${phrase}`)
+                                    .setAuthor(`Conversion de : ${phrase}`)
                                     .setColor('BLUE')
                                     .setTimestamp()
                                 ;

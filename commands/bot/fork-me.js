@@ -22,7 +22,7 @@ module.exports = class ForkMeCommand extends mTxServCommand {
         const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`);
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(lang['fork_me']['title'])
+            .setAuthor(lang['fork_me']['title'], 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', 'https://github.com/mTxServ/ElDictator')
             .setColor('BLUE')
             .setDescription(lang['fork_me']['description'])
             .addField(lang['fork_me']['how'], lang['fork_me']['explain'])
