@@ -15,6 +15,7 @@ module.exports = class ConvertCommand extends mTxServCommand {
             ownerOnly: true,
             hidden: true,
             args: [
+                
                 {
                     key: 'query',
                     prompt: 'Which music (Youtube or SoundCloud URL) do you want to convert?',
