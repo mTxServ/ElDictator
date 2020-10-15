@@ -6,7 +6,7 @@ const striptags = require('striptags')
 module.exports = class NewsMinecraftFrCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
-            name: 'gmod',
+            name: 'gmod-news',
             aliases: ['garrysmod'],
             group: 'news',
             memberName: 'gmod',
@@ -28,7 +28,7 @@ module.exports = class NewsMinecraftFrCommand extends mTxServCommand {
             .setDescription(`${feed.description}\n<${feed.link}>`)
             .setColor('BLUE')
             .setTimestamp()
-            .setAuthor(feed.title, `https://mtxserv.com/build/manager-game/img/game/minecraft.png`)
+            .setAuthor(feed.title, `https://mtxserv.com/build/manager-game/img/game/garry-s-mod.png`)
         ;
 
         for (const k in articles.slice(0, 3)) {
