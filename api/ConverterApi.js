@@ -1,29 +1,31 @@
 const got = require('got');
 
-const baseUrl = 'http://92.222.234.121:8080';
-const makeURLYT = (query) => `${baseUrl}/${encodeURIComponent(query)}`;
-const makeURLYTStatus = (query) => `${baseUrl}/logs/${encodeURIComponent(query)}.txt`;
-const makeURLSC = (query) => `${baseUrl}/soundcloud/download.php?url=${encodeURIComponent(query)}`;
+const makeURLYoutube = (query) => `http://92.222.234.121:8080/${encodeURIComponent(query)}`;
+const makeURLSoundcloud = (query) => `http://92.222.234.121/soundcloud/download.php?url=${encodeURIComponent(query)}`;
+const makeURLYTStatus = (query) => `http://92.222.234.121:8080/logs/${encodeURIComponent(query)}.txt`;
 
 class ConverterApi {
-    async conversion(query, yt) {
-        if (yt) {
-            if ( query.length == 11 ) {
-                var res = await got(makeURLYT(query), {
-                    responseType: 'json'
-                })
-            }
-        } else {
-            var res = await got(makeURLSC(query), {
-                responseType: 'json'
-            })
-        }
+    async convertYoutube(query) {
+        const res = await got(makeURLYoutube(query), {
+            responseType: 'json'
+        })
 
         if (!res || !res.body) {
-            return ""
+            throw new Error('Invalid response of Conversion API')
         }
-        
-        console.log(res.body)
+
+        return res.body
+    }
+
+    async convertSoundcloud(query) {
+        const res = await got(makeURLSoundcloud(query), {
+            responseType: 'json'
+        })
+
+        if (!res || !res.body) {
+            throw new Error('Invalid response of Conversion API')
+        }
+
         return res.body
     }
 
@@ -33,10 +35,9 @@ class ConverterApi {
         })
 
         if (!res || !res.body) {
-            throw new Error('Invalid response of Numerix API')
+            throw new Error('Invalid response of Conversion API')
         }
 
-        console.log(res.body)
         return res.body
     }
 }
