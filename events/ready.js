@@ -2,6 +2,9 @@ module.exports = {
     run: () => {
         console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
 
+        console.log('Warmup feed monitor')
+        client.feedMonitor.warmup()
+
         client.setInterval(async () => {
             try {
                 await client.feedMonitor.process()

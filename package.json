@@ -9,6 +9,7 @@
     "flexsearch": "^0.6.32",
     "get-urls": "^10.0.0",
     "got": "^11.7.0",
+    "grabity": "^1.0.5",
     "js-video-url-parser": "^0.4.2",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",

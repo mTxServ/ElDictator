@@ -27,28 +27,33 @@ const client = global.client = new Client({
     feeds: [
         {
             url: 'https://hytale.game/p/index.rss',
-            channelId: '726178171858190340',
-            locale: ['fr']
+            channels: ['694460936748269609'],
+            icon: 'https://hytale.com/favicon.ico'
         },
         {
             url: 'https://minecraft.fr/feed/',
-            channelId: '726178171858190340',
-            locale: ['fr']
+            channels: ['694460936748269609'],
+            icon: 'https://mtxserv.com/build/manager-game/img/game/minecraft.png'
         },
         {
             url: 'https://gmod.facepunch.com/rss/blog',
-            channelId: '726178171858190340',
-            locale: ['en']
+            channels: ['703151209833299980'],
+            icon: 'https://mtxserv.com/build/manager-game/img/game/garry-s-mod.png'
         },
         {
             url: 'https://rust.facepunch.com/rss/blog',
-            channelId: '726178171858190340',
-            locale: ['en', 'fr']
+            channels: ['766367859210977310'],
+            icon: 'https://mtxserv.com/build/manager-game/img/game/rust.png'
         },
         {
             url: 'https://sandbox.facepunch.com/rss/news',
-            channelId: '726178171858190340',
-            locale: ['en', 'fr']
+            channels: ['703151209833299980'],
+            icon: null
+        },
+        {
+            url: 'https://ark-france.fr/rss/1-flux-rss-news.xml/',
+            channels: ['751700547928850493'],
+            icon: 'https://mtxserv.com/build/manager-game/img/game/ark.png'
         }
     ]
 });
