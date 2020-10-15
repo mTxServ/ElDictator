@@ -31,8 +31,6 @@ class CoverGeneratorApi {
             }
         }
 
-        console.log(options.json)
-
         const res = await got.post(makeURL(templateId), options)
 
         if (!res || !res.body) {
@@ -60,10 +58,13 @@ class CoverGeneratorApi {
     async start (userLang, msg, title, backgroundUrl) {
         const lang = require(`../languages/${userLang}.json`);
 
+        msg.delete();
+
         const embed = new Discord.MessageEmbed()
             .setTitle(`:arrows_clockwise: ${lang['cover']['launch'].replace('%text%', title)}`)
             .setColor('WARNING')
             .setTimestamp()
+            .addField('Options', `\`${msg.content.split(' ').join(' ')}\``)
         ;
 
         const notificationMessage = await msg.say({
@@ -106,14 +107,7 @@ class CoverGeneratorApi {
                 .setTitle(`:frame_photo: ${lang['cover']['success']}`)
                 .setImage(result.image_url)
                 .setColor('GREEN')
-                .addField('Title', `\`${title}\``, true)
-            ;
-
-            if (backgroundUrl) {
-                embed.addField('Background Url', `\`${backgroundUrl}\``, true)
-            }
-
-            embed.addField('Image URL', `${result.image_url}`)
+                .addField('Image URL', `${result.image_url}`)
 
             notificationMessage.edit(embed);
         }
