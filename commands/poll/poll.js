@@ -1,5 +1,4 @@
 const mTxServCommand = require('../mTxServCommand.js');
-const oneLine = require('common-tags').oneLine;
 const Discord = require('discord.js');
 
 module.exports = class PollCommand extends mTxServCommand {
@@ -9,7 +8,7 @@ module.exports = class PollCommand extends mTxServCommand {
             group: 'admin',
             memberName: 'poll',
             description: 'Creates a poll with up to 10 choices.',
-            examples: ["!poll \"What\'s your favourite food?\" \"Hot Dogs,Pizza,Burgers,Fruits,Veggies\" 10"],
+            examples: ["!poll \"What's your favourite food?\" \"Hot Dogs,Pizza,Burgers,Fruits,Veggies\" 10"],
             ownerOnly: true,
             hidden: true,
             guarded: true,
@@ -52,7 +51,7 @@ module.exports = class PollCommand extends mTxServCommand {
         var optionsList = options.split(",");
 
         var optionsText = "";
-        for (var i = 0; i < optionsList.length; i++) {
+        for (let i = 0; i < optionsList.length; i++) {
             optionsText += emojiList[i] + " " + optionsList[i] + "\n";
         }
 
@@ -74,7 +73,7 @@ module.exports = class PollCommand extends mTxServCommand {
         msg.channel.send({embed}) // Definitely use a 2d array here..
             .then(async function (message) {
                 var reactionArray = [];
-                for (var i = 0; i < optionsList.length; i++) {
+                for (let i = 0; i < optionsList.length; i++) {
                     reactionArray[i] = await message.react(emojiList[i]);
                 }
 
@@ -84,13 +83,13 @@ module.exports = class PollCommand extends mTxServCommand {
                         message.channel.messages.fetch(message.id)
                             .then(async function (message) {
                                 var reactionCountsArray = [];
-                                for (var i = 0; i < optionsList.length; i++) {
+                                for (let i = 0; i < optionsList.length; i++) {
                                     reactionCountsArray[i] = message.reactions.cache.get(emojiList[i]).count-1;
                                 }
 
                                 // Find winner(s)
                                 var max = -Infinity, indexMax = [];
-                                for(var i = 0; i < reactionCountsArray.length; ++i)
+                                for(let i = 0; i < reactionCountsArray.length; ++i)
                                     if(reactionCountsArray[i] > max) max = reactionCountsArray[i], indexMax = [i];
                                     else if(reactionCountsArray[i] === max) indexMax.push(i);
 
@@ -99,7 +98,7 @@ module.exports = class PollCommand extends mTxServCommand {
                                 if (reactionCountsArray[indexMax[0]] == 0) {
                                     winnersText = "No one voted!"
                                 } else {
-                                    for (var i = 0; i < indexMax.length; i++) {
+                                    for (let i = 0; i < indexMax.length; i++) {
                                         winnersText +=
                                             emojiList[indexMax[i]] + " " + optionsList[indexMax[i]] +
                                             " (" + reactionCountsArray[indexMax[i]] + " vote(s))\n";

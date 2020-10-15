@@ -1,5 +1,4 @@
 const got = require('got');
-const Discord = require('discord.js')
 
 const makeURL = () => `https://hytale.com/api/blog/post/published`;
 

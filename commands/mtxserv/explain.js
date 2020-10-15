@@ -17,7 +17,7 @@ module.exports = class SupportCommand extends mTxServCommand {
         });
     }
 
-    async run(msg, { type }) {
+    async run(msg) {
         const userLang = this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 

@@ -74,7 +74,7 @@ Copy the `.env.dist` to `.env`. Don't forget to edit it.
 cp .env.dist .env
 ```
 
-## Dev
+### Dev
 
 If the `dev` flag, the `BOT_TOKEN_DEV` will be used tu run the bot:
 
@@ -82,8 +82,14 @@ If the `dev` flag, the `BOT_TOKEN_DEV` will be used tu run the bot:
 nodejs bot.js -dev
 ```
 
-## Prod
+### Prod
 
 ```
 nodejs bot.js
+```
+
+## Lint
+
+```
+yarn run eslint . --ignore-path .gitignore
 ```

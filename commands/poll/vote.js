@@ -1,4 +1,3 @@
-const oneLine = require('common-tags').oneLine;
 const mTxServCommand = require('../mTxServCommand.js');
 const Discord = require('discord.js');
 
@@ -77,13 +76,13 @@ module.exports = class VoteCommand extends mTxServCommand {
                         message.channel.messages.fetch(message.id)
                             .then(async function (message) {
                                 var reactionCountsArray = [];
-                                for (var i = 0; i < reactionArray.length; i++) {
+                                for (let i = 0; i < reactionArray.length; i++) {
                                     reactionCountsArray[i] = message.reactions.cache.get(emojiList[i]).count-1;
                                 }
 
                                 // Find winner(s)
                                 var max = -Infinity, indexMax = [];
-                                for(var i = 0; i < reactionCountsArray.length; ++i)
+                                for(let i = 0; i < reactionCountsArray.length; ++i)
                                     if(reactionCountsArray[i] > max) max = reactionCountsArray[i], indexMax = [i];
                                     else if(reactionCountsArray[i] === max) indexMax.push(i);
 
@@ -92,7 +91,7 @@ module.exports = class VoteCommand extends mTxServCommand {
                                 if (reactionCountsArray[indexMax[0]] == 0) {
                                     winnersText = "No one voted!"
                                 } else {
-                                    for (var i = 0; i < indexMax.length; i++) {
+                                    for (let i = 0; i < indexMax.length; i++) {
                                         winnersText +=
                                             emojiList[indexMax[i]] + " (" + reactionCountsArray[indexMax[i]] + " vote(s))\n";
                                     }

@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const dotenv = require('dotenv')
-const { CommandoClient, SQLiteProvider, Client } = require('discord.js-commando');
+const { SQLiteProvider, Client } = require('discord.js-commando');
 const sqlite = require('sqlite');
 
 // load local env configuration

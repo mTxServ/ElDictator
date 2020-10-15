@@ -1,5 +1,4 @@
-const Discord = require('discord.js')
-const Parser = require('rss-parser');
+const Parser = require('rss-parser')
 
 class RssFeederApi {
     async get(feedUrl) {
