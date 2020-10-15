@@ -1,11 +1,11 @@
 const got = require('got');
 
-const makeURLYT = (query) => `http://92.222.234.121:8080/${encodeURIComponent(query)}`;
-const makeURLYTStatus = (query) => `http://92.222.234.121:8080/logs/${encodeURIComponent(query)}.txt`;
+const baseUrl = 'http://92.222.234.121:8080';
+const makeURLYT = (query) => `${baseUrl}/${encodeURIComponent(query)}`;
+const makeURLYTStatus = (query) => `${baseUrl}/logs/${encodeURIComponent(query)}.txt`;
+const makeURLSC = (query) => `${baseUrl}/soundcloud/download.php?url=${encodeURIComponent(query)}`;
 
-const makeURLSC = (query) => `http://92.222.234.121/soundcloud/download.php?url=${encodeURIComponent(query)}`;
-
-class ConversionAPI {
+class ConverterApi {
     async conversion(query, yt) {
         if (yt) {
             if ( query.length == 11 ) {
@@ -13,8 +13,7 @@ class ConversionAPI {
                     responseType: 'json'
                 })
             }
-        }
-        else {
+        } else {
             var res = await got(makeURLSC(query), {
                 responseType: 'json'
             })
@@ -42,4 +41,4 @@ class ConversionAPI {
     }
 }
 
-module.exports = ConversionAPI;
+module.exports = ConverterApi;

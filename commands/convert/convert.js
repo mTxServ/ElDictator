@@ -1,20 +1,20 @@
 const mTxServCommand = require('../mTxServCommand.js')
-const ConversionAPI = require('../../api/ConversionAPI')
+const ConverterApi = require('../../api/ConverterApi.js')
 const Discord = require('discord.js')
 
-module.exports = class ConversionCommand extends mTxServCommand {
+module.exports = class ConvertCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
-            name: 'conversion',
-            aliases: [],
-            group: 'conversion',
-            memberName: 'conversion',
-            description: 'Convert Youtube Videos or SoundCloud Music',
+            name: 'convert-mp3',
+            aliases: ['conversion-mp3', 'mp3'],
+            group: 'convert',
+            memberName: 'convert-mp3',
+            description: 'Convert Youtube Videos or SoundCloud Music to MP3',
             clientPermissions: ['SEND_MESSAGES'],
             args: [
                 {
                     key: 'query',
-                    prompt: 'Which music do you want to convert?',
+                    prompt: 'Which music (Youtube or SoundCloud URL) do you want to convert?',
                     type: 'string',
                     validate: text => text.length >= 3,
                 },
@@ -27,7 +27,7 @@ module.exports = class ConversionCommand extends mTxServCommand {
     }
 
     async run(msg, { query }) {
-        const api = new ConversionAPI()
+        const api = new ConverterApi()
         var yt = false
         
         var video_id = query.split('v=')[1] || query; // On récupère l'ID YT ou on garde le lien soundcloud
