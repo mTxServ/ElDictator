@@ -23,6 +23,8 @@ module.exports = class CatCommand extends mTxServCommand {
 
     async run(msg) {
         try {
+            await msg.delete();
+
             const res = await got('https://api.thecatapi.com/v1/images/search?limit=1', {
                 responseType: 'json',
             })
