@@ -12,7 +12,10 @@ module.exports = class ConvertCommand extends mTxServCommand {
             memberName: 'convert-mp3',
             description: 'Convert Youtube Videos or SoundCloud Music to MP3',
             clientPermissions: ['SEND_MESSAGES'],
+            ownerOnly: true,
+            hidden: true,
             args: [
+                
                 {
                     key: 'query',
                     prompt: 'Which music (Youtube or SoundCloud URL) do you want to convert?',
