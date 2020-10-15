@@ -49,6 +49,7 @@ client.registry
     .registerDefaultTypes()
     .registerGroups([
         ['mtxserv', 'Main'],
+        ['bot', 'Bot'],
         ['news', 'News'],
         ['admin', 'Admin'],
         ['howto', 'How-To'],
@@ -58,6 +59,7 @@ client.registry
         ['gameserver', 'Game Server'],
         ['gameserverstatus', 'Game Server Status'],
         ['convert', 'Conversion'],
+        ['image', 'Image'],
     ])
     .registerCommandsIn(path.join(__dirname, 'commands'))
 ;

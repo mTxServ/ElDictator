@@ -1,6 +1,6 @@
 const mTxServCommand = require('../mTxServCommand.js');
 const Discord = require('discord.js');
-const { dependencies } = require('../../package');
+const { dependencies } = require('../../package.json');
 const moment = require('moment');
 require('moment-duration-format');
 
@@ -8,7 +8,7 @@ module.exports = class BotStatusCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'bot-status',
-            group: 'admin',
+            group: 'bot',
             memberName: 'bot-status',
             description: 'Display bot status.',
             guarded: true,

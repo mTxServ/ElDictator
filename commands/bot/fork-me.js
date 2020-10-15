@@ -1,15 +1,16 @@
 const mTxServCommand = require('../mTxServCommand.js');
 const Discord = require('discord.js');
 
-module.exports = class SocialCommand extends mTxServCommand {
+module.exports = class ForkMeCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'forkme',
             aliases: ['fork', 'bot'],
-            group: 'mtxserv',
+            group: 'bot',
             memberName: 'forkme',
             description: 'Contribute to this bot!',
             clientPermissions: ['SEND_MESSAGES'],
+            guarded: true,
             throttling: {
                 usages: 2,
                 duration: 5,
