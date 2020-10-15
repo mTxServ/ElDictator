@@ -23,7 +23,7 @@ module.exports = class DogCommand extends mTxServCommand {
 
     async run(msg) {
         try {
-            await msg.delete();
+            msg.delete();
 
             const res = await got('https://dog.ceo/api/breeds/image/random', {
                 responseType: 'json',
