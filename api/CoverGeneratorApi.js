@@ -61,8 +61,8 @@ class CoverGeneratorApi {
         msg.delete();
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(`:arrows_clockwise: ${lang['cover']['launch'].replace('%text%', title)}`)
-            .setColor('WARNING')
+            .setAuthor(`${lang['cover']['launch'].replace('%text%', title)}`)
+            .setColor('ORANGE')
             .setFooter(msg.content.split(' ').join(' '))
         ;
 
@@ -76,7 +76,7 @@ class CoverGeneratorApi {
             console.error(result)
 
             embed
-                .setTitle(`${lang['cover']['error']}`)
+                .setAuthor(`${lang['cover']['error']}`)
                 .setColor('RED')
                 .setDescription(lang['cover']['error_message'])
 
@@ -103,7 +103,7 @@ class CoverGeneratorApi {
             }
 
             embed
-                .setTitle(`:frame_photo: ${lang['cover']['success']}`)
+                .setAuthor(title, null, result.image_url)
                 .setImage(result.image_url)
                 .setColor('GREEN')
                 .setDescription(result.image_url)

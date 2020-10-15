@@ -60,6 +60,7 @@ client.registry
         ['gameserverstatus', 'Game Server Status'],
         ['convert', 'Conversion'],
         ['image', 'Image'],
+        ['random', 'Random'],
     ])
     .registerCommandsIn(path.join(__dirname, 'commands'))
 ;
