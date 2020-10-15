@@ -3,7 +3,7 @@ const RssFeederApi = require('../../api/RssFeederApi')
 const Discord = require('discord.js');
 const striptags = require('striptags')
 
-module.exports = class NewsMinecraftFrCommand extends mTxServCommand {
+module.exports = class NewsSandboxCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'sandbox',
@@ -28,7 +28,7 @@ module.exports = class NewsMinecraftFrCommand extends mTxServCommand {
             .setDescription(`${feed.description}\n<${feed.link}>`)
             .setColor('BLUE')
             .setTimestamp()
-            .setAuthor(feed.title, `https://mtxserv.com/build/manager-game/img/game/minecraft.png`)
+            .setAuthor(feed.title)
         ;
 
         for (const k in articles.slice(0, 3)) {
