@@ -25,7 +25,7 @@ module.exports = class GameServerStatusRustCommand extends mTxServCommand {
         });
     }
 
-    async run(msg, { game, address}) {
+    async run(msg, { address}) {
         const api = new GameServerApi()
         const embed = await api.generateEmbed(msg, 'rust', address, this.resolveLangOfMessage(msg))
 

@@ -25,7 +25,7 @@ module.exports = class GameServerStatusGModCommand extends mTxServCommand {
         });
     }
 
-    async run(msg, { game, address}) {
+    async run(msg, { address}) {
         const api = new GameServerApi()
         const embed = await api.generateEmbed(msg, 'gmod', address, this.resolveLangOfMessage(msg))
 

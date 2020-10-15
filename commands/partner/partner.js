@@ -29,6 +29,13 @@ module.exports = class PartnerCommand extends mTxServCommand {
                 locale: ['en']
             },
             {
+                name: ':flag_fr: HYTALE.game',
+                inviteUrl: 'https://discord.gg/2UPCQn3',
+                websiteUrl: 'https://hytale.game',
+                description: 'Toutes les news, màj et astuces sur Hytale, 1ère communauté :flag_fr:',
+                locale: ['fr']
+            },
+            {
                 name: ':flag_fr: Minecraft.fr',
                 inviteUrl: 'https://discord.com/invite/minecraftfr',
                 websiteUrl: 'https://minecraft.fr',
@@ -53,6 +60,13 @@ module.exports = class PartnerCommand extends mTxServCommand {
                 inviteUrl: 'https://discord.gg/dCsjxaZ',
                 websiteUrl: 'https://mtxserv.com/forums/ressources/authors/numerix.49891/',
                 description: 'Numerix est un déveleppeur et un helpeur. Il a mis à disposition gratuitement différents addons et tutoriels disponibles sur mTxServ.',
+                locale: ['fr']
+            },
+            {
+                name: ':crown: Metropia: Roleplay Minecraft Imagination',
+                inviteUrl: 'https://discord.com/invite/gCkTQS8',
+                websiteUrl: 'https://metropia.cf/',
+                description: 'Découvrez le premier serveur Minecraft Roleplay francophone imagination et sans limite!',
                 locale: ['fr']
             },
         ]

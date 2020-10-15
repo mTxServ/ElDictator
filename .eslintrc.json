@@ -1,0 +1,17 @@
+{
+	"extends": "eslint:recommended",
+	"env": {
+		"node": true,
+		"es6": true
+	},
+	"parserOptions": {
+		"ecmaVersion": 2019
+	},
+	"rules": {
+		"no-useless-escape": ["off"]
+	},
+	"globals": {
+		"isDev": false,
+		"client": null
+	}
+}

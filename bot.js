@@ -1,7 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 const dotenv = require('dotenv')
-const { Client } = require('discord.js-commando');
+const { SQLiteProvider, Client } = require('discord.js-commando');
+const sqlite = require('sqlite');
 
 // load local env configuration
 const envConfig = dotenv.parse(fs.readFileSync('.env'))
@@ -23,6 +24,12 @@ const client = global.client = new Client({
         }
     }
 });
+
+sqlite
+    .open(path.join(__dirname, "settings.sqlite3"))
+    .then((db) => {
+        client.setProvider(new SQLiteProvider(db));
+    });
 
 fs.readdir('./events/', (err, files) => {
     if (err) return console.error(err);
@@ -46,9 +53,11 @@ client.registry
     .registerDefaultTypes()
     .registerGroups([
         ['mtxserv', 'Main'],
+        ['news', 'News'],
         ['admin', 'Admin'],
         ['howto', 'How-To'],
         ['partner', 'Partner'],
+        ['gmod', 'GMod Server'],
         ['minecraft', 'Minecraft Server'],
         ['gameserver', 'Game Server'],
         ['gameserverstatus', 'Game Server Status'],

@@ -5,7 +5,7 @@ module.exports = class SupportCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'support',
-            aliases: ['supports', 'ticket', 'tickets'],
+            aliases: ['supports', 'ticket', 'tickets', 's'],
             group: 'mtxserv',
             memberName: 'support',
             description: 'Get support informations',
@@ -17,7 +17,7 @@ module.exports = class SupportCommand extends mTxServCommand {
         });
     }
 
-    async run(msg, { type }) {
+    async run(msg) {
         const userLang = this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
