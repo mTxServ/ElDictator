@@ -25,8 +25,8 @@ This bot is developed with `discord.js` and `discord commando`.
 
 ### News
 * `hytale`: Show latest blog posts from Hytale official website (EN).
-* `hytalefr`: Show latest blog posts from [minecraft.fr](https://minecraft.fr) website (FR).
-* `minecraftfr`: Show latest blog posts from [hytale](https://hytale.game) website (FR).
+* `hytalefr`: Show latest blog posts from [hytale](https://hytale.game) website (FR).
+* `minecraftfr`: Show latest blog posts from [minecraft.fr](https://minecraft.fr) website (FR).
 * `gmod-news` : Show latest blog posts from [gmod](https://gmod.facepunch.com) website (FR).
 * `rust-news` : Show latest blog posts from [rust](https://rust.facepunch.com) website (FR).
 * `sandbox` : Show latest blog posts from [sandbox](https://sandbox.facepunch.com) website (FR).
