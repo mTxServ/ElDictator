@@ -3,11 +3,11 @@ const RssFeederApi = require('../../api/RssFeederApi')
 const Discord = require('discord.js');
 const striptags = require('striptags')
 
-module.exports = class NewsMinecraftFrCommand extends mTxServCommand {
+module.exports = class NewsRustCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
-            name: 'rust',
-            aliases: ['rust'],
+            name: 'rust-news',
+            aliases: ['news-rust'],
             group: 'news',
             memberName: 'rust',
             description: 'Show latest blog posts from rust.facepunch.com',
