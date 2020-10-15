@@ -100,11 +100,11 @@ module.exports = class HelpCommand extends mTxServCommand {
 						.map(grp => stripIndents`
 							**__${grp.name}__**
 							${grp.commands.filter(cmd => !cmd.hidden && cmd.isUsable(msg))
-							.map(cmd => `**${cmd.name}:** ${cmd.description}${cmd.nsfw ? ' (NSFW)' : ''}`).join('\n')
+							.map(cmd => `**${cmd.name}:** ${cmd.description.substr(0, 20)}..${cmd.nsfw ? ' (NSFW)' : ''}`).join('\n')
 						}
 						`).join('\n\n')
 					}
-				`)
+				`.substr(0, 2048))
 				;
 
 				if(msg.channel.type !== 'dm') await msg.reply(lang['help']['sent_dm']);
