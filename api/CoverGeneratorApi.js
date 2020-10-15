@@ -64,7 +64,7 @@ class CoverGeneratorApi {
             .setTitle(`:arrows_clockwise: ${lang['cover']['launch'].replace('%text%', title)}`)
             .setColor('WARNING')
             .setTimestamp()
-            .addField('Options', `\`${msg.content.split(' ').join(' ')}\``)
+            .setFooter(msg.content.split(' ').join(' '))
         ;
 
         const notificationMessage = await msg.say({
@@ -107,7 +107,7 @@ class CoverGeneratorApi {
                 .setTitle(`:frame_photo: ${lang['cover']['success']}`)
                 .setImage(result.image_url)
                 .setColor('GREEN')
-                .addField('Image URL', `${result.image_url}`)
+                .setDescription(result.image_url)
 
             notificationMessage.edit(embed);
         }
