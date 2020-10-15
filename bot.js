@@ -1,8 +1,9 @@
-const path = require('path');
-const fs = require('fs');
+const path = require('path')
+const fs = require('fs')
 const dotenv = require('dotenv')
-const { SQLiteProvider, Client } = require('discord.js-commando');
-const sqlite = require('sqlite');
+const { SQLiteProvider } = require('discord.js-commando')
+const sqlite = require('sqlite')
+const Client = require('./client/client')
 
 // load local env configuration
 const envConfig = dotenv.parse(fs.readFileSync('.env'))
@@ -22,7 +23,34 @@ const client = global.client = new Client({
             name: `${process.env.BOT_COMMAND_PREFIX}help | mTxServ.com`,
             type: 0
         }
-    }
+    },
+    feeds: [
+        {
+            url: 'https://hytale.game/p/index.rss',
+            channelId: '726178171858190340',
+            locale: ['fr']
+        },
+        {
+            url: 'https://minecraft.fr/feed/',
+            channelId: '726178171858190340',
+            locale: ['fr']
+        },
+        {
+            url: 'https://gmod.facepunch.com/rss/blog',
+            channelId: '726178171858190340',
+            locale: ['en']
+        },
+        {
+            url: 'https://rust.facepunch.com/rss/blog',
+            channelId: '726178171858190340',
+            locale: ['en', 'fr']
+        },
+        {
+            url: 'https://sandbox.facepunch.com/rss/news',
+            channelId: '726178171858190340',
+            locale: ['en', 'fr']
+        }
+    ]
 });
 
 client.setProvider(
