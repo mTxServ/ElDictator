@@ -63,7 +63,6 @@ class CoverGeneratorApi {
         const embed = new Discord.MessageEmbed()
             .setTitle(`:arrows_clockwise: ${lang['cover']['launch'].replace('%text%', title)}`)
             .setColor('WARNING')
-            .setTimestamp()
             .setFooter(msg.content.split(' ').join(' '))
         ;
 
