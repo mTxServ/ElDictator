@@ -84,5 +84,9 @@
     "success": "Cover generated",
     "launch": "Starting to generate image..",
     "error_message": ":no_entry_sign: An error occured with the generator. Try again."
+  },
+  "login": {
+    "title": ":lock: Link this account with mTxServ.com account",
+    "description": "Pour lier votre compte *Discord* avec votre compte *mTxServ.com* afin de pouvoir bénéficier de toutes les fonctionnalitées, vous devez entrer vos paramètres API.\n\nPour récupérer votre `client_id`, `client_secret` et `api_key`, rendez-vous sur:"
   }
 }

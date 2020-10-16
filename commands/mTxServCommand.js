@@ -64,6 +64,17 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
         });
     }
 
+    sayAuthorSuccess(msg, title) {
+        const embed = new Discord.MessageEmbed()
+            .setTitle(title)
+            .setColor('GREEN')
+        ;
+
+        return msg.author.send({
+            embed: embed
+        });
+    }
+
     sayError(msg, title) {
         const embed = new Discord.MessageEmbed()
             .setTitle(title)
@@ -75,6 +86,17 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
         });
     }
 
+    sayAuthorError(msg, title) {
+        const embed = new Discord.MessageEmbed()
+            .setTitle(title)
+            .setColor('RED')
+        ;
+
+        return msg.author.send({
+            embed: embed
+        });
+    }
+
     askConfirmation(msg, title) {
         const embed = new Discord.MessageEmbed()
             .setTitle(title)
@@ -83,6 +105,39 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
         return msg.say({
             embed
+        });
+    }
+
+    askAuthorConfirmation(msg, title) {
+        const embed = new Discord.MessageEmbed()
+            .setTitle(title)
+            .setColor('ORANGE')
+        ;
+
+        return msg.author.send({
+            embed: embed
+        });
+    }
+
+    ask(msg, title) {
+        const embed = new Discord.MessageEmbed()
+            .setTitle(title)
+            .setColor('ORANGE')
+        ;
+
+        return msg.say({
+            embed
+        });
+    }
+
+    askAuthor(msg, title) {
+        const embed = new Discord.MessageEmbed()
+            .setTitle(title)
+            .setColor('ORANGE')
+        ;
+
+        return msg.author.send({
+            embed: embed
         });
     }
 };
