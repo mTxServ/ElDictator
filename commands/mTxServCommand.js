@@ -52,4 +52,37 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
         return member.roles.cache.some(role => role.name === '🇫🇷') ? 'fr' : 'en';
     }
+
+    saySuccess(msg, title) {
+        const embed = new Discord.MessageEmbed()
+            .setTitle(title)
+            .setColor('GREEN')
+        ;
+
+        return msg.say({
+            embed
+        });
+    }
+
+    sayError(msg, title) {
+        const embed = new Discord.MessageEmbed()
+            .setTitle(title)
+            .setColor('RED')
+        ;
+
+        return msg.say({
+            embed
+        });
+    }
+
+    askConfirmation(msg, title) {
+        const embed = new Discord.MessageEmbed()
+            .setTitle(title)
+            .setColor('ORANGE')
+        ;
+
+        return msg.say({
+            embed
+        });
+    }
 };
