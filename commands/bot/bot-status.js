@@ -7,10 +7,11 @@ require('moment-duration-format');
 module.exports = class BotStatusCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
-            name: 'bot-status',
+            name: 'bot-info',
+            aliases: ['bot-status'],
             group: 'bot',
-            memberName: 'bot-status',
-            description: 'Display bot status.',
+            memberName: 'bot-info',
+            description: 'Display bot infos.',
             guarded: true,
         });
     }
