@@ -6,7 +6,7 @@ module.exports = class DocGluaCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'sys',
-            aliases: ['system'],
+            aliases: ['system', 'vps-howto', 'howto-vps', 'vps'],
             group: 'howto',
             memberName: 'glua',
             description: 'Search administration system guide',
