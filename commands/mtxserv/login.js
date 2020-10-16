@@ -46,7 +46,11 @@ module.exports = class SupportCommand extends mTxServCommand {
             apiKey: null
         }
 
-        return this.getInput(msg, 'Avez-vous créé vos identifiants (yes) ?', function() {
+        return this.getInput(msg, 'Avez-vous créé vos identifiants (yes) ?', function(collected) {
+            if (collected.first().content.toLowerCase() !== 'yes') {
+                return self.sayError(msg, 'Operation canceled.')
+            }
+
             self.getInput(msg, 'Quel est votre `client_id` ?', function(collected) {
                 credentials.clientId = collected.first().content.trim()
                 self.getInput(msg, 'Quel est votre `client_secret` ?', function(collected) {
