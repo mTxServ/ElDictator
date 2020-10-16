@@ -25,10 +25,10 @@ module.exports = class NewsSandboxCommand extends mTxServCommand {
         const articles = Object.values(feed.items)
 
         const embed = new Discord.MessageEmbed()
-            .setDescription(`${feed.description}\n<${feed.link}>`)
+            .setDescription(`${feed.description}`)
             .setColor('BLUE')
             .setTimestamp()
-            .setAuthor(feed.title)
+            .setAuthor(feed.title.toUpperCase(), null, feed.link)
         ;
 
         for (const k in articles.slice(0, 3)) {

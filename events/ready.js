@@ -11,7 +11,7 @@ module.exports = {
             } catch (err) {
                 console.error(err);
             }
-        }, 5000);
+        }, 1000 * 60 * 15);
 
         client
             .users
