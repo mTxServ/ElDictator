@@ -28,12 +28,12 @@ module.exports = class SuggestCommand extends mTxServCommand {
         const userLang = this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
-        const channelId = userLang == 'fr' ? '766962228657389618' : '766962228657389618'
+        const channelId = userLang == 'fr' ? '726178171858190338' : '726178171858190338'
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(`${msg.author.tag}`, `${msg.author.displayAvatarURL()}`)
             .setColor('DARK_BLUE')
-            .setDescription(suggestion.trim())
+            .setDescription(Discord.Util.removeMentions(suggestion.trim()))
             .setTimestamp();
 
         if (msg.channel.type !== 'dm') {
