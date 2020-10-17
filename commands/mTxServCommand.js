@@ -2,8 +2,8 @@ const DiscordCommando = require('discord.js-commando');
 const Discord = require('discord.js');
 
 module.exports = class mTxServCommand extends DiscordCommando.Command {
-    onError(err, message, args, fromPattern, result) { // eslint-disable-line no-unused-vars
-        console.error(err);
+    onError(error, message, args, fromPattern, result) { // eslint-disable-line no-unused-vars
+        console.error(error);
 
         const description = error.stack ? `\`\`\`x86asm\n${error.stack.substr(0, 2048)}\n\`\`\`` : `\`${error.toString().substr(0, 2048)}\``
         const embed = new Discord.MessageEmbed()
@@ -52,6 +52,17 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
         }
 
         return member.roles.cache.some(role => role.name === '🇫🇷') ? 'fr' : 'en';
+    }
+
+    sayWarning(msg, title) {
+        const embed = new Discord.MessageEmbed()
+            .setDescription(title)
+            .setColor('ORANGE')
+        ;
+
+        return msg.say({
+            embed
+        });
     }
 
     saySuccess(msg, title) {

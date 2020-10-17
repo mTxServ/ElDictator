@@ -1,4 +1,5 @@
 const mTxServCommand = require('../mTxServCommand.js');
+const Discord = require('discord.js')
 
 module.exports = class BotStopCommand extends mTxServCommand {
     constructor(client) {
@@ -18,8 +19,20 @@ module.exports = class BotStopCommand extends mTxServCommand {
     run(msg) {
         const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`);
 
-        return msg
-            .say(lang['bot_stop']['confirm'])
+        const embed = new Discord.MessageEmbed()
+            .setAuthor(`${this.client.user.tag}`, `${this.client.user.displayAvatarURL()}`)
+            .setColor('RED')
+            .setDescription(':red_circle: Bot is offline')
+            .setTimestamp();
+
+        client
+            .channels.cache.get(process.env.LOG_CHANNEL_ID)
+            .send({
+                embed: embed
+            })
+
+        return this
+            .sayError(msg, lang['bot_stop']['confirm'])
             .then(process.exit)
     }
 };

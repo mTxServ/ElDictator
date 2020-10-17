@@ -1,6 +1,7 @@
 const mTxServCommand = require('../mTxServCommand.js');
 const { execSync } = require('child_process');
 const { stripIndents } = require('common-tags');
+const Discord = require('discord.js')
 
 module.exports = class ExecCommand extends mTxServCommand {
     constructor(client) {
@@ -19,16 +20,26 @@ module.exports = class ExecCommand extends mTxServCommand {
     run(msg) {
         const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`);
 
-        return msg
-            .say(lang['bot_update']['confirm'])
+        return this
+            .sayWarning(msg, lang['bot_update']['confirm'])
             .then(() => {
                 const results = this.exec('git pull');
-                return msg.reply(stripIndents`
-                    _${results.err ? 'An error occurred:' : 'Successfully updated.'}_
-                    \`\`\`sh
-                    ${results.std}
-                    \`\`\`
-                `);
+
+                const embed = new Discord.MessageEmbed()
+                    .setAuthor(`${this.client.user.tag}`, `${this.client.user.displayAvatarURL()}`)
+                    .setColor(results.err ? 'RED' : 'GREEN')
+                    .setDescription(`:up: Updating bot..\`\`\`sh\n${results.std}\n\`\`\``)
+                    .setTimestamp();
+
+                client
+                    .channels.cache.get(process.env.LOG_CHANNEL_ID)
+                    .send({
+                        embed: embed
+                    })
+
+                return msg.say({
+                    embed
+                });
             })
     }
 

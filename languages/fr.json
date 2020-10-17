@@ -13,10 +13,10 @@
     "explain": "Nous serions très heureux de recevoir de l'aide de développeurs qui peuvent nous aider à réparer des bogues ou ajouter de nouvelles fonctionnalités."
   },
   "bot_stop": {
-    "confirm": "Arrêt du bot.. :octagonal_sign:"
+    "confirm": ":octagonal_sign: Arrêt du bot.."
   },
   "bot_update": {
-    "confirm": "Mise à jour du bot.. :up:"
+    "confirm": ":up: Mise à jour du bot.."
   },
   "invite": {
     "title": ":love_letter: Lien d'invitation",
