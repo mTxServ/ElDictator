@@ -88,5 +88,9 @@
   "login": {
     "title": ":lock: Lier son compte avec mTxServ.com",
     "description": "Pour lier votre compte *Discord* avec votre compte *mTxServ.com* afin de pouvoir bénéficier de toutes les fonctionnalitées, vous devez entrer vos paramètres API.\n\nPour récupérer votre `client_id`, `client_secret` et `api_key`, rendez-vous sur:"
+  },
+  "logout": {
+    "success": "Déconnexion réussie",
+    "not_logged": "Votre compte n'est pas relié à mTxServ"
   }
 }

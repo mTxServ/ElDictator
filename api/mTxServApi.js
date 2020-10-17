@@ -14,13 +14,19 @@ class mTxServApi {
             responseType: 'json'
         })
 
-        console.log(res.body)
-
         if (!res || !res.body) {
             throw new Error('Invalid response of mtxserv oauth API')
         }
 
         return res.body
+    }
+
+    isAuthenticated(authorId) {
+        return client.settings.get(`auth_${authorId}`, false)
+    }
+
+    logout(authorId) {
+        return client.settings.remove(`auth_${authorId}`)
     }
 }
 

@@ -2,7 +2,7 @@ const mTxServCommand = require('../mTxServCommand.js')
 const Discord = require('discord.js')
 const mTxServApi = require('../../api/mTxServApi')
 
-module.exports = class SupportCommand extends mTxServCommand {
+module.exports = class LoginCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'login',
