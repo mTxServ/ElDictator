@@ -5,11 +5,11 @@ module.exports = {
         try {
             console.error(error.stack);
 
-            if (client.channels.cache.has(process.env.LOG_CHANNEL_ID_DEV)) {
+            if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
                 client
                     .cache
                     .channels
-                    .get(isDev ? process.env.LOG_CHANNEL_ID_DEV : process.env.LOG_CHANNEL_ID)
+                    .get(isDev ? process.env.LOG_CHANNEL_ID : process.env.LOG_CHANNEL_ID)
                     .send(null, {
                         embed: {
                             color: 15684432,

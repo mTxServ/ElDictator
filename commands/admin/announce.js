@@ -57,7 +57,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
             return msg.say(`This command is only available is DM`)
         }
 
-        const channelId = locale === 'fr' ? '563305777222385665' : '692128629668315177'
+        const channelId = locale === 'fr' ? process.env.ANNOUNCE_CHANNEL_ID_FR : process.env.ANNOUNCE_CHANNEL_ID_EN
         const channel = await this.client.channels.cache.get(channelId)
         if (!channel) {
             return msg.say(`Channel ${channelId} not found`)

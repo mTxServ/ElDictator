@@ -16,7 +16,7 @@ const isDev = global.isDev = process.argv.includes('-dev')
 // create discord bot
 const client = global.client = new Client({
     commandPrefix: process.env.BOT_COMMAND_PREFIX,
-    owner: process.env.BOT_OWNER_ID,
+    owner: process.env.BOT_OWNER_ID.split(','),
     invite: process.env.BOT_INVITE_URL,
     disableMentions: 'everyone',
     presence: {

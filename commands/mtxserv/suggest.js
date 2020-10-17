@@ -28,7 +28,7 @@ module.exports = class SuggestCommand extends mTxServCommand {
         const userLang = this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
-        const channelId = userLang == 'fr' ? '766962228657389618' : '766962228657389618'
+        const channelId = userLang == 'fr' ? process.env.SUGGEST_CHANNEL_ID_FR : process.env.SUGGEST_CHANNEL_ID_EN
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(`${msg.author.tag}`, `${msg.author.displayAvatarURL()}`)
