@@ -54,6 +54,7 @@ class GameServerApi {
             .addField('Players', `${results.params.used_slots}/${results.params.max_slots}`, true)
             .addField('Game', results.params.type, true)
             .addField('Map', results.params.map, true)
+            .setFooter('by mTxServ.com')
         ;
 
         if (results.params.joinlink) {
