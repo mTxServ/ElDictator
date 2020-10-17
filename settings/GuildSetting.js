@@ -11,16 +11,16 @@ module.exports = class GuildSetting {
     }
 
     gameServers(guidId) {
-        return client.settings.get(LANGUAGE.replace('%id%', guidId), [])
+        return client.settings.get(GAME_SERVER_LIST.replace('%id%', guidId), [])
     }
 
     addGameServer(guidId, gameServer) {
-        const gameServers = client.settings.get(LANGUAGE.replace('%id%', guidId), [])
+        const gameServers = client.settings.get(GAME_SERVER_LIST.replace('%id%', guidId), [])
         gameServers.push(gameServer)
-        client.settings.set(LANGUAGE.replace('%id%', guidId), gameServers)
+        client.settings.set(GAME_SERVER_LIST.replace('%id%', guidId), gameServers)
     }
 
     clearGameServers(guidId) {
-        client.settings.set(LANGUAGE.replace('%id%', guidId), [])
+        client.settings.set(GAME_SERVER_LIST.replace('%id%', guidId), [])
     }
 };
