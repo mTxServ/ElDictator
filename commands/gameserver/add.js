@@ -82,7 +82,7 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
             return this.sayError(msg, 'Ce serveur n\'existe pas.')
         }
 
-        this.saySuccess(msg, 'Le serveur a été ajouté!')
+        this.saySuccess(msg, 'Le serveur a été ajouté, utilisez `m!servers` pour voir le statut!')
 
         this.client.guildSettings.addGameServer(msg.guild.id, {
             game: invoices[serverKey].game,
