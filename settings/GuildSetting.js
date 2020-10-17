@@ -19,4 +19,8 @@ module.exports = class GuildSetting {
         gameServers.push(gameServer)
         client.settings.set(LANGUAGE.replace('%id%', guidId), gameServers)
     }
+
+    clearGameServers(guidId) {
+        client.settings.set(LANGUAGE.replace('%id%', guidId), [])
+    }
 };

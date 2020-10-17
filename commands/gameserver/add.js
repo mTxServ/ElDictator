@@ -69,7 +69,7 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
             })
         }
 
-        embed.setDescription(list.map((item, key) => `**${key}.** ❯ \`${item.status.params.used_slots||0}/${item.status.params.max_slots||0}\` - \`${item.invoice.address.toUpperCase()}\` - \`${item.status.params.host_name||item.invoice.cache_hostname||item.invoice.name}\``))
+        embed.setDescription(list.map((item, key) => `**${++key}.** ❯ \`${item.status.params.used_slots||0}/${item.status.params.max_slots||0}\` - \`${item.invoice.address.toUpperCase()}\` - \`${item.status.params.host_name||item.invoice.cache_hostname||item.invoice.name}\``))
 
         await msg.say({
             embed
