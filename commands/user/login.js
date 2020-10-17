@@ -23,6 +23,18 @@ module.exports = class LoginCommand extends mTxServCommand {
         const userLang = this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
+        const api = new mTxServApi()
+        if (api.isAuthenticated(msg.author.id)) {
+            const embed = new Discord.MessageEmbed()
+                .setDescription(lang['login']['already_connected'])
+                .setColor('BLUE')
+            ;
+
+            return msg.say({
+                embed
+            });
+        }
+
         if (msg.channel.type !== 'dm') {
             const embed = new Discord.MessageEmbed()
                 .setDescription(lang['login']['sent_dm'])
@@ -46,7 +58,6 @@ module.exports = class LoginCommand extends mTxServCommand {
             embed: embed
         })
 
-        const self = this
         const credentials = {
             clientId: null,
             clientSecret: null,
@@ -62,10 +73,8 @@ module.exports = class LoginCommand extends mTxServCommand {
         credentials.clientSecret = await this.getInput(msg, 'Quel est votre `client_secret` ?');
         credentials.apiKey = await this.getInput(msg, 'Quel est votre `api_key` ?');
 
-        const api = new mTxServApi(credentials.clientId, credentials.clientSecret, credentials.apiKey)
-
         try {
-            await api.login();
+            await api.login(credentials.clientId, credentials.clientSecret, credentials.apiKey);
             api.setCredential(msg.author.id, credentials)
 
             this.sayAuthorSuccess(msg, 'Login successfull!')

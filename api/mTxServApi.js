@@ -3,14 +3,8 @@ const got = require('got');
 const makeAuthURL = (clientId, clientSecret, apiKey) => `https://mtxserv.com/oauth/v2/token?grant_type=${encodeURIComponent('https://mtxserv.com/grants/api_key')}&client_id=${encodeURIComponent(clientId)}&client_secret=${encodeURIComponent(clientSecret)}&api_key=${encodeURIComponent(apiKey)}`;
 
 class mTxServApi {
-    constructor(clientId, clientSecret, apiKey) {
-        this.clientId = clientId
-        this.clientSecret = clientSecret
-        this.apiKey = apiKey
-    }
-
-    async login() {
-        const res = await got(makeAuthURL(this.clientId, this.clientSecret, this.apiKey), {
+    async login(clientId, clientSecret, apiKey) {
+        const res = await got(makeAuthURL(clientId, clientSecret, apiKey), {
             responseType: 'json'
         })
 
@@ -30,7 +24,7 @@ class mTxServApi {
     }
 
     logout(authorId) {
-        return client.settings.remove(`auth_${authorId}`)
+        client.settings.remove(`auth_${authorId}`)
     }
 }
 
