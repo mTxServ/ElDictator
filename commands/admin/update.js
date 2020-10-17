@@ -23,7 +23,7 @@ module.exports = class ExecCommand extends mTxServCommand {
         return this
             .sayWarning(msg, lang['bot_update']['confirm'])
             .then(() => {
-                const results = this.exec('git pull && yarn install');
+                const results = this.exec('git pull && yarn install --silent');
 
                 const embed = new Discord.MessageEmbed()
                     .setAuthor(`${this.client.user.tag}`, `${this.client.user.displayAvatarURL()}`)
