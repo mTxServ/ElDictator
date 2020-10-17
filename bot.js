@@ -103,6 +103,7 @@ client.registry
         ['convert', 'Conversion'],
         ['image', 'Image'],
         ['random', 'Random'],
+        ['util', 'Util'],
     ])
     .registerCommandsIn(path.join(__dirname, 'commands'))
 ;
