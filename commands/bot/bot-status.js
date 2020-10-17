@@ -8,7 +8,7 @@ module.exports = class BotStatusCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'bot',
-            aliases: ['bot-status', 'info', 'bot-info', 'bot', 'fork', 'forkme'],
+            aliases: ['bot-status', 'info', 'bot-info', 'bot', 'fork', 'forkme', 'bot-invite', 'invite'],
             group: 'bot',
             memberName: 'bot-info',
             description: 'Display bot infos.',
@@ -25,15 +25,17 @@ module.exports = class BotStatusCommand extends mTxServCommand {
             .setDescription(lang['fork_me']['description'])
             .addField(lang['fork_me']['how'], lang['fork_me']['explain'])
             .addField('❯ Home', `[mTxServ.com](https://mtxserv.com)`, true)
+            .addField('❯ Discord', `[Join us](${this.client.options.invite})`, true)
+            .addField('❯ Invite Bot', '[Invite the bot](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=8&scope=bot)', true)
             .addField('❯ Source Code', '[mTxServ/ElDictator](https://github.com/mTxServ/ElDictator)', true)
-            .addField('❯ Discord', `[Join mTxServ server](${this.client.options.invite})`, true)
             .addField('❯ Servers', this.formatNumber(this.client.guilds.cache.size), true)
-            .addField('❯ Uptime', moment.duration(this.client.uptime).format('hh:mm:ss', { trim: false }), true)
             .setFooter(`${this.formatNumber(this.client.registry.commands.size)} commands - by mTxServ.com`)
         ;
 
         if (msg.channel.type === 'dm') {
-            embed.addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
+            embed
+                .addField('❯ Uptime', moment.duration(this.client.uptime).format('hh:mm:ss', { trim: false }), true)
+                .addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
         } else {
             const language = this.client.guildSettings.language(msg.guild.id)
             embed.addField('❯ Language', `:flag_${language == 'fr' ? language : 'us'}:`, true)
