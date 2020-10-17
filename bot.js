@@ -51,6 +51,11 @@ const client = global.client = new Client({
             icon: null
         },
         {
+            url: 'https://survivetheark.com/index.php?/rss/3-ark-news.xml/',
+            channels: ['751700547928850493'],
+            icon: 'https://mtxserv.com/build/manager-game/img/game/ark.png'
+        },
+        {
             url: 'https://ark-france.fr/rss/1-flux-rss-news.xml/',
             channels: ['751700547928850493'],
             icon: 'https://mtxserv.com/build/manager-game/img/game/ark.png'
