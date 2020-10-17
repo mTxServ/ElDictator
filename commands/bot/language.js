@@ -12,8 +12,8 @@ module.exports = class LanguageCommand extends mTxServCommand {
             description: 'Set bot language bot infos.',
             guarded: true,
             guildOnly: true,
-            clientpermissions: ['SEND_MESSAGES'],
-            userpermissions: ['ADMINISTRATOR'],
+            userPermissions: ['ADMINISTRATOR'],
+            clientPermissions: ['SEND_MESSAGES'],
             args: [
                 {
                     key: 'language',

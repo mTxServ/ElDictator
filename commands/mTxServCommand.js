@@ -153,8 +153,12 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
         });
     }
 
-    async getInput(msg, inputMsg) {
-        await this.askAuthor(msg, inputMsg)
+    async getInput(msg, inputMsg, sendInChannel) {
+        if (!(sendInChannel||false)) {
+            await this.askAuthor(msg, inputMsg)
+        } else {
+            await this.ask(msg, inputMsg)
+        }
 
         const collected = await msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1, time: 40000});
         const userInput = collected.first()

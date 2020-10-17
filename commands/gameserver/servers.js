@@ -3,7 +3,7 @@ const GameServerApi = require('../../api/GameServerApi')
 const Discord = require('discord.js')
 const paginationEmbed = require('discord.js-pagination');
 
-module.exports = class AccountCommand extends mTxServCommand {
+module.exports = class GameServerListCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'servers',
@@ -43,12 +43,8 @@ module.exports = class AccountCommand extends mTxServCommand {
 
         const pages = []
         for (const gameServer of gameServers) {
-            const embed = await api
-                .generateEmbed(msg, gameServer.game, `${gameServer.host}:${gameServer.port}`, userLang);
-
-            embed
-                .setFooter(lang['servers']['how_to'])
-
+            const embed = await api.generateEmbed(msg, gameServer.game, gameServer.address, userLang);
+            embed.setFooter(lang['servers']['how_to'])
             pages.push(embed)
         }
 

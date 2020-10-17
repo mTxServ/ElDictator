@@ -89,7 +89,7 @@
     "title": ":lock: Lier son compte avec mTxServ.com",
     "description": "Pour lier votre compte *Discord* avec votre compte *mTxServ.com* afin de pouvoir bénéficier de toutes les fonctionnalitées, vous devez entrer vos paramètres API.\n\nPour récupérer votre `client_id`, `client_secret` et `api_key`, rendez-vous sur:",
     "cancelled": "Operation canceled.",
-    "sent_dm": "Pour lier votre compte, envoyez la commande `login` en DM au bot.",
+    "sent_dm": "Pour lier votre compte, envoyez la commande `login` en **DM** au bot.",
     "already_connected": "Votre compte est déjà relié à votre compte mTxServ. Déconnectez-vous avec `m!logout`."
   },
   "logout": {
@@ -121,5 +121,10 @@
     "how_to": "Pour ajouter votre serveur, m!add-server",
     "no_result": "Aucun serveur de jeu configuré",
     "no_result_more": "__Pour ajouter votre serveur__, utilisez la commande `m!add-server`.\n__Vous devez avoir relié votre compte__ mTxServ avec `m!login`, pour vérifier utilisez `m!me`."
+  },
+  "server_add": {
+    "not_logged": "Pour ajouter votre serveur, __vous devez avoir relié votre compte__ mTxServ avec `m!login`, pour vérifier utilisez `m!me`.",
+    "no_result": "Vous n'avez aucun serveur de jeu.",
+    "sent_dm": "Pour ajouter un serveur, envoyez la commande `add-server` **en DM** au bot."
   }
 }
