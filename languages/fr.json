@@ -105,5 +105,8 @@
   },
   "suggest": {
     "confirm": "Merci pour votre suggestion %name%! Nous apprécions tous les feedbacks."
+  },
+  "ark_version": {
+    "message": "La dernière version des **serveurs ARK** est là `%version%`."
   }
 }

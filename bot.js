@@ -94,6 +94,7 @@ client.registry
         ['admin', 'Admin'],
         ['howto', 'How-To'],
         ['partner', 'Partner'],
+        ['ark', 'ARK Server'],
         ['gmod', 'GMod Server'],
         ['minecraft', 'Minecraft Server'],
         ['gameserver', 'Game Server'],
