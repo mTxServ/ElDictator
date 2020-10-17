@@ -560,6 +560,11 @@ discord.js-commando@discordjs/Commando:
     common-tags "^1.8.0"
     require-all "^3.0.0"
 
+discord.js-pagination@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/discord.js-pagination/-/discord.js-pagination-1.0.2.tgz#fb33846e26d46aeb7d29021c608e4e305bfabb34"
+  integrity sha512-PdhDXxKSyfmyYhTNkmsWmxbydh+FiidWQM6gKWhSXI3x+h59fwlhkE2wqExq4KC5qlm4WoZdndy0pRpSO8yc9g==
+
 discord.js@^12.3.1:
   version "12.3.1"
   resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-12.3.1.tgz#8f58ac17d29b068dbfeb6c01fc7777bacd5324cf"

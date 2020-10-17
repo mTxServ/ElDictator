@@ -116,5 +116,10 @@
   },
   "language": {
     "updated": "La langue du bot est désormais `%lang%`."
+  },
+  "servers": {
+    "how_to": "Pour ajouter votre serveur, m!add-server",
+    "no_result": "Aucun serveur de jeu configuré",
+    "no_result_more": "__Pour ajouter votre serveur__, utilisez la commande `m!add-server`.\n__Vous devez avoir relié votre compte__ mTxServ avec `m!login`, pour vérifier utilisez `m!me`."
   }
 }

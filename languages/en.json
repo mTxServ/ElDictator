@@ -116,5 +116,10 @@
   },
   "language": {
     "updated": "Language has been change to `%lang%`."
+  },
+  "servers": {
+    "how_to": "To add your game server, m!add-server",
+    "no_result": "No set server configured yet",
+    "no_result_more": "__To add your server__, use the command `m!add-server`.\n__You must have connected your__ mTxServ account with `m!login`, to verify use `m!me`."
   }
 }
