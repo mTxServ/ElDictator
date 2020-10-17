@@ -28,7 +28,8 @@ module.exports = class ExecCommand extends mTxServCommand {
                 const embed = new Discord.MessageEmbed()
                     .setAuthor(`${this.client.user.tag}`, `${this.client.user.displayAvatarURL()}`)
                     .setColor(results.err ? 'RED' : 'GREEN')
-                    .setTitle(`:up: Updating bot..\n\`\`\`sh\n${results.std}\n\`\`\``)
+                    .setTitle(`:up: Updating bot..`)
+                    .setDescription(`\`\`\`sh\n${results.std}\n\`\`\``)
                     .setTimestamp();
 
                 client
