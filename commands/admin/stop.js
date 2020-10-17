@@ -22,7 +22,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
         const embed = new Discord.MessageEmbed()
             .setAuthor(`${this.client.user.tag}`, `${this.client.user.displayAvatarURL()}`)
             .setColor('RED')
-            .setDescription(':red_circle: Bot is offline')
+            .setTitle(':red_circle: Bot is offline')
             .setTimestamp();
 
         client

@@ -18,7 +18,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
             .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`)
             .setColor('GREEN')
-            .setDescription(':green_circle: Bot is online')
+            .setTitle(':green_circle: Bot is online')
             .setTimestamp();
 
         client
