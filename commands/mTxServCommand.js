@@ -55,7 +55,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
     saySuccess(msg, title) {
         const embed = new Discord.MessageEmbed()
-            .setTitle(title)
+            .setDescription(title)
             .setColor('GREEN')
         ;
 
@@ -66,7 +66,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
     sayAuthorSuccess(msg, title) {
         const embed = new Discord.MessageEmbed()
-            .setTitle(title)
+            .setDescription(title)
             .setColor('GREEN')
         ;
 
@@ -77,7 +77,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
     sayError(msg, title) {
         const embed = new Discord.MessageEmbed()
-            .setTitle(title)
+            .setDescription(title)
             .setColor('RED')
         ;
 
@@ -88,7 +88,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
     sayAuthorError(msg, title) {
         const embed = new Discord.MessageEmbed()
-            .setTitle(title)
+            .setDescription(title)
             .setColor('RED')
         ;
 
@@ -99,7 +99,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
     askConfirmation(msg, title) {
         const embed = new Discord.MessageEmbed()
-            .setTitle(title)
+            .setDescription(title)
             .setColor('ORANGE')
         ;
 
@@ -110,7 +110,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
     askAuthorConfirmation(msg, title) {
         const embed = new Discord.MessageEmbed()
-            .setTitle(title)
+            .setDescription(title)
             .setColor('ORANGE')
         ;
 
@@ -121,7 +121,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
     ask(msg, title) {
         const embed = new Discord.MessageEmbed()
-            .setTitle(title)
+            .setDescription(title)
             .setColor('ORANGE')
         ;
 
@@ -132,7 +132,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
     async askAuthor(msg, title) {
         const embed = new Discord.MessageEmbed()
-            .setTitle(title)
+            .setDescription(title)
             .setColor('ORANGE')
         ;
 
