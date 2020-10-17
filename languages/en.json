@@ -102,5 +102,8 @@
   },
   "dm": {
     "closed": "Your DMs are closed!"
+  },
+  "suggest": {
+    "confirm": "Thank you for your suggestion %name%! We appreciates all feedback."
   }
 }
