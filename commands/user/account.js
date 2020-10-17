@@ -50,8 +50,6 @@ module.exports = class AccountCommand extends mTxServCommand {
         const countWebHosting = invoices.filter(invoice => invoice.type_id === 3).length
         const countVps = invoices.filter(invoice => invoice.type_id === 5).length
 
-        console.log(invoices)
-
         embed.setDescription(lang['me']['logged'].replace('%name%', me.username))
         embed.setAuthor(`${msg.author.tag}`, `${msg.author.displayAvatarURL()}`)
         embed.addField('game servers'.toUpperCase(), countGameServers, true)
