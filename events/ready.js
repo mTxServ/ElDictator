@@ -1,3 +1,5 @@
+const Discord = require('discord.js')
+
 module.exports = {
     run: () => {
         console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
@@ -13,10 +15,16 @@ module.exports = {
             }
         }, 1000 * 60 * 15);
 
+        const embed = new Discord.MessageEmbed()
+            .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`)
+            .setColor('GREEN')
+            .setDescription(':green_circle: Bot is online')
+            .setTimestamp();
+
         client
-            .users
-            .cache
-            .get(process.env.BOT_OWNER_ID)
-            .send('Bot is ready :eyes:')
+            .channels.cache.get(process.env.LOG_CHANNEL_ID)
+            .send({
+                embed: embed
+            })
     }
 };

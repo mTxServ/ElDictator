@@ -27,7 +27,7 @@ module.exports = class LanguageCommand extends mTxServCommand {
     run(msg, {language}) {
         const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
 
-        this.guildSettings.setLanguage(msg.guild.id, language)
+        this.client.guildSettings.setLanguage(msg.guild.id, language)
 
         return this.saySuccess(msg, `La langue du bot est désormais \`${language}\``)
     }

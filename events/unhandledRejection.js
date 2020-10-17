@@ -7,7 +7,7 @@ module.exports = {
             client
                 .channels
                 .cache
-                .get(isDev ? process.env.LOG_CHANNEL_ID : process.env.LOG_CHANNEL_ID)
+                .get(process.env.LOG_CHANNEL_ID)
                 .send(null, {
                     embed: {
                         color: 15684432,

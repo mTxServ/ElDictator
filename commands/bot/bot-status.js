@@ -35,7 +35,7 @@ module.exports = class BotStatusCommand extends mTxServCommand {
         if (msg.channel.type === 'dm') {
             embed.addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
         } else {
-            const language = this.guildSettings.language(msg.guild.id)
+            const language = this.client.guildSettings.language(msg.guild.id)
             embed.addField('❯ Language', `:flag_${language == 'fr' ? language : 'us'}:`, true)
         }
 

@@ -1,33 +1,26 @@
 const DiscordCommando = require('discord.js-commando');
 const Discord = require('discord.js');
-const GuildSetting = require('../settings/GuildSetting')
 
 module.exports = class mTxServCommand extends DiscordCommando.Command {
-    constructor(client, info) {
-        super(client, info);
-        this.guildSettings = new GuildSetting()
-    }
-
     onError(err, message, args, fromPattern, result) { // eslint-disable-line no-unused-vars
         console.error(err);
 
+        const description = error.stack ? `\`\`\`x86asm\n${error.stack.substr(0, 2048)}\n\`\`\`` : `\`${error.toString().substr(0, 2048)}\``
         const embed = new Discord.MessageEmbed()
             .setColor('RED')
             .setTimestamp()
-            .setTitle('An error occured with the bot')
-            .setDescription(`StackTrace: \n\`\`\`${err.stack}\`\`\``)
+            .setTitle('Error')
+            .setDescription(description)
             .addField('Command:', `${message.content.split(' ').join(' ')}`);
 
-        return this.getSuperAdminUser().send({ embed })
-    }
-
-    getSuperAdminUser() {
-        const owner = this.client.owners.filter(owner => owner.id === process.env.BOT_OWNER_ID)
-        if (!owner.length) {
-            throw new Error(`Super administrator not found`)
-        }
-
-        return owner.shift()
+        this.client
+            .channels
+            .cache
+            .get(process.env.LOG_CHANNEL_ID)
+            .send({
+                embed: embed
+            })
+        ;
     }
 
     resolveLangOfMessage(msg) {
@@ -39,7 +32,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
     }
 
     getLangOfChannel(channel) {
-        const guildConf = this.guildSettings.language(channel.guild.id)
+        const guildConf = this.client.guildSettings.language(channel.guild.id)
 
         if (!channel || !channel.parentID) {
             return guildConf;
