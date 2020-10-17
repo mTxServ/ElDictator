@@ -15,12 +15,25 @@ class mTxServApi {
         return res.body
     }
 
+    async loginFromCredentials(authorId) {
+        const credentials = this.getCredential(authorId)
+        return this.login(credentials.clientId, credentials.clientSecret, credentials.apiKey)
+    }
+
+    getCredential(authorId) {
+        if (!this.isAuthenticated(authorId)) {
+            throw new Error(`user ${authorId} isn't authenticated, can't get credentials`)
+        }
+
+        return client.settings.get(`auth_${authorId}`)
+    }
+
     setCredential(authorId, credentials) {
         client.settings.set(`auth_${authorId}`, credentials)
     }
 
     isAuthenticated(authorId) {
-        return client.settings.get(`auth_${authorId}`, false)
+        return client.settings.get(`auth_${authorId}`, false) !== false
     }
 
     logout(authorId) {

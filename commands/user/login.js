@@ -27,7 +27,7 @@ module.exports = class LoginCommand extends mTxServCommand {
         if (api.isAuthenticated(msg.author.id)) {
             const embed = new Discord.MessageEmbed()
                 .setDescription(lang['login']['already_connected'])
-                .setColor('BLUE')
+                .setColor('GREEN')
             ;
 
             return msg.say({
@@ -77,10 +77,10 @@ module.exports = class LoginCommand extends mTxServCommand {
             await api.login(credentials.clientId, credentials.clientSecret, credentials.apiKey);
             api.setCredential(msg.author.id, credentials)
 
-            this.sayAuthorSuccess(msg, 'Login successfull!')
+            return this.sayAuthorSuccess(msg, 'Login successfull!')
         } catch (err) {
             console.error(err)
-            this.sayError(msg, `Vos accès sonts invalides, impossible d'authentifier votre compte mTxServ.`)
+            return this.sayError(msg, `Vos accès sonts invalides, impossible d'authentifier votre compte mTxServ.`)
         }
     }
 };

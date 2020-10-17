@@ -94,11 +94,11 @@
   },
   "logout": {
     "success": "Successfull disconnect",
-    "not_logged": "Your discord account isn't linked with your mTxServ account"
+    "not_logged": "Your discord account isn't linked with your mTxServ account."
   },
   "me": {
-    "logged": "Your discord is linked to your mTxServ account",
-    "not_logged": "Your discord account isn't linked to your mTxServ account"
+    "logged": "Your discord is linked to your mTxServ account.",
+    "not_logged": "Your discord account isn't linked to your mTxServ account."
   },
   "dm": {
     "closed": "Your DMs are closed!"

@@ -17,16 +17,22 @@ module.exports = class AccountCommand extends mTxServCommand {
         });
     }
 
-    run(msg) {
+    async run(msg) {
         const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
 
         const api = new mTxServApi()
-        const isAuthenticated = api.isAuthenticated(msg.author.id)
 
+        const isAuthenticated = api.isAuthenticated(msg.author.id)
         if (!isAuthenticated) {
             return this.sayError(msg, lang['me']['not_logged'])
         }
 
-        return this.saySuccess(msg, lang['me']['logged'])
+        try {
+            const oauth = await api.loginFromCredentials(msg.author.id)
+            return this.saySuccess(msg, lang['me']['logged'])
+        } catch(err) {
+            console.error(err)
+            return this.sayError(msg, 'Impossible de se connecter à votre compte mTxServ.')
+        }
     }
 };
