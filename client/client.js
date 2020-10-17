@@ -10,7 +10,6 @@ module.exports = class mTxServClient extends CommandoClient {
         this.guildSettings = new GuildSetting()
 
         this.statusUpdater = new StatusUpdater(this, [
-            { type: 'WATCHING', name: '{guilds} servers' },
             { type: 'PLAYING', name: `${process.env.BOT_COMMAND_PREFIX}help | mTxServ.com`},
             { type: 'PLAYING', name: 'Server by mTxServ.com' },
         ])
