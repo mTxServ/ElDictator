@@ -87,7 +87,9 @@
   },
   "login": {
     "title": ":lock: Lier son compte avec mTxServ.com",
-    "description": "Pour lier votre compte *Discord* avec votre compte *mTxServ.com* afin de pouvoir bénéficier de toutes les fonctionnalitées, vous devez entrer vos paramètres API.\n\nPour récupérer votre `client_id`, `client_secret` et `api_key`, rendez-vous sur:"
+    "description": "Pour lier votre compte *Discord* avec votre compte *mTxServ.com* afin de pouvoir bénéficier de toutes les fonctionnalitées, vous devez entrer vos paramètres API.\n\nPour récupérer votre `client_id`, `client_secret` et `api_key`, rendez-vous sur:",
+    "cancelled": "Operation canceled.",
+    "sent_dm": "Pour lier votre compte, envoyez la commande `login` en DM au bot."
   },
   "logout": {
     "success": "Déconnexion réussie",
@@ -96,5 +98,8 @@
   "me": {
     "logged": "Votre compte Discord est relié avec votre compte mTxServ",
     "not_logged": "Votre compte Discord n'est pas relié avec votre compte mTxServ"
+  },
+  "dm": {
+    "closed": "Vos DMs ne sont pas ouvert!"
   }
 }

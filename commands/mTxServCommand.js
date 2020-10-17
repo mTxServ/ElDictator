@@ -130,14 +130,27 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
         });
     }
 
-    askAuthor(msg, title) {
+    async askAuthor(msg, title) {
         const embed = new Discord.MessageEmbed()
             .setTitle(title)
             .setColor('ORANGE')
         ;
 
-        return msg.author.send({
+        return await msg.author.send({
             embed: embed
         });
+    }
+
+    async getInput(msg, inputMsg) {
+        await this.askAuthor(msg, inputMsg)
+
+        const collected = await msg.channel.awaitMessages(m => m.author.id == msg.author.id, {max: 1, time: 40000});
+        const userInput = collected.first()
+
+        if (!userInput) {
+            return await this.sayAuthorError(msg, 'No answer after 40 seconds, operation canceled.')
+        }
+
+        return userInput.content.trim()
     }
 };

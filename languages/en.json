@@ -87,7 +87,9 @@
   },
   "login": {
     "title": ":lock: Link this account with mTxServ.com account",
-    "description": "To link your *Discord* account with your *mTxServ.com* account in order to be able to benefit from all functionalities, you must enter your API settings.\n\nGet your `client_id', `client_secret' and `api_key':"
+    "sent_dm": "To link your Discord account with your mTxServ account, sent `login` in DM to the bot.",
+    "description": "To link your *Discord* account with your *mTxServ.com* account in order to be able to benefit from all functionalities, you must enter your API settings.\n\nGet your `client_id`, `client_secret` and `api_key`:",
+    "cancelled": "Operation canceled."
   },
   "logout": {
     "success": "Successfull disconnect",
@@ -96,5 +98,8 @@
   "me": {
     "logged": "Your discord is linked to your mTxServ account",
     "not_logged": "Your discord account isn't linked to your mTxServ account"
+  },
+  "dm": {
+    "closed": "Your DMs are closed!"
   }
 }

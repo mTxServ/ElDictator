@@ -24,7 +24,14 @@ module.exports = class LoginCommand extends mTxServCommand {
         const lang = require(`../../languages/${userLang}.json`)
 
         if (msg.channel.type !== 'dm') {
-            await this.saySuccess(msg, 'Consultez vos DM pour lier votre compte mTxServ à votre compte Discord.')
+            const embed = new Discord.MessageEmbed()
+                .setDescription(lang['login']['sent_dm'])
+                .setColor('BLUE')
+            ;
+
+            return msg.say({
+                embed
+            });
         }
 
         const embed = new Discord.MessageEmbed()
@@ -46,45 +53,25 @@ module.exports = class LoginCommand extends mTxServCommand {
             apiKey: null
         }
 
-        return this.getInput(msg, 'Avez-vous créé vos identifiants (yes) ?', function(collected) {
-            if (collected.first().content.toLowerCase() !== 'yes') {
-                return self.sayError(msg, 'Operation canceled.')
-            }
+        const userInput = await this.getInput(msg, 'Avez-vous créé vos identifiants (yes) ?');
+        if (userInput !== 'yes' && userInput !== 'oui') {
+            return await this.sayError(msg, lang['login']['cancelled'])
+        }
 
-            self.getInput(msg, 'Quel est votre `client_id` ?', function(collected) {
-                credentials.clientId = collected.first().content.trim()
-                self.getInput(msg, 'Quel est votre `client_secret` ?', function(collected) {
-                    credentials.clientSecret = collected.first().content.trim()
-                    self.getInput(msg, 'Quel est votre `api_key` ?', function(collected) {
-                        credentials.apiKey = collected.first().content.trim()
+        credentials.clientId = await this.getInput(msg, 'Quel est votre `client_id` ?');
+        credentials.clientSecret = await this.getInput(msg, 'Quel est votre `client_secret` ?');
+        credentials.apiKey = await this.getInput(msg, 'Quel est votre `api_key` ?');
 
-                        const api = new mTxServApi(credentials.clientId, credentials.clientSecret, credentials.apiKey)
-                        api.login()
-                            .then(function(result) {
-                                self.client.settings.set(`auth_${msg.author.id}`, credentials)
-                                self.sayAuthorSuccess(msg, 'Login successfull!')
-                            })
-                            .catch(err => self.sayError(msg, `Vos accès sonts incorrects, impossible de s'identifier.`))
-                    })
-                })
-            })
-        })
-    }
+        const api = new mTxServApi(credentials.clientId, credentials.clientSecret, credentials.apiKey)
 
-    async getInput(msg, inputMsg, cb) {
-        return await this.askAuthor(msg, inputMsg, cb)
-            .then(() => {
-                msg.channel
-                    .awaitMessages(m => m.author.id == msg.author.id, {max: 1, time: 30000})
-                    .then(collected => {
-                        if(cb) {
-                            cb(collected)
-                        }
-                    }).catch((err) => {
-                        console.error(err)
-                        this.sayAuthorError(msg, 'No answer after 30 seconds, operation canceled.')
-                    })
-                ;
-            })
+        try {
+            await api.login();
+            api.setCredential(msg.author.id, credentials)
+
+            this.sayAuthorSuccess(msg, 'Login successfull!')
+        } catch (err) {
+            console.error(err)
+            this.sayError(msg, `Vos accès sonts invalides, impossible d'authentifier votre compte mTxServ.`)
+        }
     }
 };

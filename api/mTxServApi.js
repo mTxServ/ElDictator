@@ -21,6 +21,10 @@ class mTxServApi {
         return res.body
     }
 
+    setCredential(authorId, credentials) {
+        client.settings.set(`auth_${authorId}`, credentials)
+    }
+
     isAuthenticated(authorId) {
         return client.settings.get(`auth_${authorId}`, false)
     }
