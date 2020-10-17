@@ -28,10 +28,16 @@ module.exports = class BotStatusCommand extends mTxServCommand {
             .addField('❯ Source Code', '[mTxServ/ElDictator](https://github.com/mTxServ/ElDictator)', true)
             .addField('❯ Discord', `[Join mTxServ server](${this.client.options.invite})`, true)
             .addField('❯ Servers', this.formatNumber(this.client.guilds.cache.size), true)
-            .addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
             .addField('❯ Uptime', moment.duration(this.client.uptime).format('hh:mm:ss', { trim: false }), true)
             .setFooter(`${this.formatNumber(this.client.registry.commands.size)} commands - by mTxServ.com`)
         ;
+
+        if (msg.channel.type === 'dm') {
+            embed.addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
+        } else {
+            const language = this.guildSettings.language(msg.guild.id)
+            embed.addField('❯ Language', `:flag_${language == 'fr' ? language : 'us'}:`, true)
+        }
 
         if(this.parseDependencies().length < 1024) {
             embed.addField('❯ Dependencies', this.parseDependencies());

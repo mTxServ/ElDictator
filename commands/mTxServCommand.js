@@ -1,7 +1,13 @@
 const DiscordCommando = require('discord.js-commando');
 const Discord = require('discord.js');
+const GuildSetting = require('../settings/GuildSetting')
 
 module.exports = class mTxServCommand extends DiscordCommando.Command {
+    constructor(client, info) {
+        super(client, info);
+        this.guildSettings = new GuildSetting()
+    }
+
     onError(err, message, args, fromPattern, result) { // eslint-disable-line no-unused-vars
         console.error(err);
 
@@ -33,16 +39,18 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
     }
 
     getLangOfChannel(channel) {
+        const guildConf = this.guildSettings.language(channel.guild.id)
+
         if (!channel || !channel.parentID) {
-            return process.env.DEFAULT_LANG;
+            return guildConf;
         }
 
         const parentChannel = this.client.channels.cache.get(channel.parentID)
         if (!parentChannel) {
-            return process.env.DEFAULT_LANG;
+            return guildConf;
         }
 
-        return -1 !== parentChannel.name.indexOf('[FR]') ? 'fr' : 'en';
+        return -1 !== parentChannel.name.indexOf('[FR]') ? 'fr' : guildConf;
     }
 
     getLangOfMember(member) {
