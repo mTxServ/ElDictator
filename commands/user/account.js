@@ -1,15 +1,14 @@
 const mTxServCommand = require('../mTxServCommand.js')
-const Discord = require('discord.js')
 const mTxServApi = require('../../api/mTxServApi')
 
-module.exports = class LogoutCommand extends mTxServCommand {
+module.exports = class AccountCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
-            name: 'logout',
-            aliases: ['exit'],
+            name: 'me',
+            aliases: ['account'],
             group: 'mtxserv',
-            memberName: 'logout',
-            description: 'Remove link of your discord account with your mTxServ account',
+            memberName: 'me',
+            description: 'Show my user profile',
             clientPermissions: ['SEND_MESSAGES'],
             throttling: {
                 usages: 2,
@@ -25,11 +24,9 @@ module.exports = class LogoutCommand extends mTxServCommand {
         const isAuthenticated = api.isAuthenticated(msg.author.id)
 
         if (!isAuthenticated) {
-            return this.sayError(msg, lang['logout']['not_logged'])
+            return this.sayError(msg, lang['me']['not_logged'])
         }
 
-        api.logout(msg.author.id)
-
-        return this.saySuccess(msg, lang['logout']['success'])
+        return this.saySuccess(msg, lang['me']['logged'])
     }
 };

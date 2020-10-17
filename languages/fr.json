@@ -92,5 +92,9 @@
   "logout": {
     "success": "Déconnexion réussie",
     "not_logged": "Votre compte n'est pas relié à mTxServ"
+  },
+  "me": {
+    "logged": "Votre compte Discord est relié avec votre compte mTxServ",
+    "not_logged": "Votre compte Discord n'est pas relié avec votre compte mTxServ"
   }
 }
