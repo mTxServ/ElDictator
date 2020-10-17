@@ -4,16 +4,13 @@ module.exports = {
     run: () => {
         console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
 
-        console.log('Warmup feed monitor')
         client.feedMonitor.warmup()
         client.statusUpdater.updateStatus()
 
-        client.setInterval(() => bot.emit('updateStatus'), 10 * 10000)
+        client.setInterval(() => client.statusUpdater.updateStatus(), 1000 * 60)
 
         client.setInterval(async () => {
-            console.log('up')
             try {
-                client.statusUpdater.updateStatus()
                 await client.feedMonitor.process()
             } catch (err) {
                 console.error(err);
