@@ -10,6 +10,7 @@ module.exports = class SupportCommand extends mTxServCommand {
             memberName: 'support',
             description: 'Get support informations',
             clientPermissions: ['SEND_MESSAGES'],
+            guarded: true,
             throttling: {
                 usages: 2,
                 duration: 5,

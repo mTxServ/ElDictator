@@ -10,6 +10,7 @@ module.exports = class NumerixCommand extends mTxServCommand {
             memberName: 'numerix',
             description: 'Show who is Numerix',
             clientPermissions: ['SEND_MESSAGES'],
+            guarded: true,
             throttling: {
                 usages: 2,
                 duration: 5,

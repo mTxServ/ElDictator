@@ -10,6 +10,7 @@ module.exports = class SocialCommand extends mTxServCommand {
             memberName: 'social',
             description: 'Show social links',
             clientPermissions: ['SEND_MESSAGES'],
+            guarded: true,
             throttling: {
                 usages: 2,
                 duration: 5,

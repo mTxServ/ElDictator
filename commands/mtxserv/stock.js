@@ -10,6 +10,7 @@ module.exports = class StockCommand extends mTxServCommand {
             memberName: 'stock',
             description: 'Get Stock of mTxServ',
             clientPermissions: ['SEND_MESSAGES'],
+            guarded: true,
             args: [
                 {
                     key: 'type',

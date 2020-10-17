@@ -11,6 +11,7 @@ module.exports = class HowToSearchCommand extends mTxServCommand {
             memberName: 'howto',
             description: 'Search a tutorial.',
             clientPermissions: ['SEND_MESSAGES'],
+            guarded: true,
             args: [
                 {
                     key: 'query',

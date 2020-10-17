@@ -11,6 +11,7 @@ module.exports = class AccountCommand extends mTxServCommand {
             memberName: 'me',
             description: 'Show my user profile',
             clientPermissions: ['SEND_MESSAGES'],
+            guarded: true,
             throttling: {
                 usages: 2,
                 duration: 5,

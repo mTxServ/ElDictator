@@ -10,6 +10,7 @@ module.exports = class PartnerCommand extends mTxServCommand {
             memberName: 'partners',
             description: 'Show partners',
             clientPermissions: ['SEND_MESSAGES'],
+            guarded: true,
             throttling: {
                 usages: 2,
                 duration: 5,

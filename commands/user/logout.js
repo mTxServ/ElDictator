@@ -10,6 +10,7 @@ module.exports = class LogoutCommand extends mTxServCommand {
             memberName: 'logout',
             description: 'Remove link of your discord account with your mTxServ account',
             clientPermissions: ['SEND_MESSAGES'],
+            guarded: true,
             throttling: {
                 usages: 2,
                 duration: 5,

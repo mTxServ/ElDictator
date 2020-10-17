@@ -10,6 +10,7 @@ module.exports = class GCACommand extends mTxServCommand {
             memberName: 'gca',
             description: 'Show who is gca',
             clientPermissions: ['SEND_MESSAGES'],
+            guarded: true,
             throttling: {
                 usages: 2,
                 duration: 5,

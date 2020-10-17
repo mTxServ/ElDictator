@@ -11,6 +11,7 @@ module.exports = class LoginCommand extends mTxServCommand {
             memberName: 'login',
             description: 'Link your discord account with your mTxServ account',
             clientPermissions: ['SEND_MESSAGES'],
+            guarded: true,
             throttling: {
                 usages: 2,
                 duration: 5,

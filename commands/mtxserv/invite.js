@@ -10,6 +10,7 @@ module.exports = class SocialCommand extends mTxServCommand {
             memberName: 'invite',
             description: 'Get invitation link to join mTxServ discord',
             clientPermissions: ['SEND_MESSAGES'],
+            guarded: true,
             throttling: {
                 usages: 2,
                 duration: 5,
