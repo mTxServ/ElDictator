@@ -110,5 +110,8 @@
   },
   "ark_version": {
     "message": "La dernière version des **serveurs ARK** est là `%version%`."
+  },
+  "gca": {
+    "description": "Mappeur, modélisateur, graphiste, développeur ou même configurateur de serveur… Ce serveur est fait pour toi !"
   }
 }
