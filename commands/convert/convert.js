@@ -54,7 +54,7 @@ module.exports = class ConvertCommand extends mTxServCommand {
         }
 
         // Traitement du message
-        var phrase = results.title && results.author ? `*${results.title}* fait par *${results.author}*` : query
+        let phrase = results.title && results.author ? `*${results.title}* fait par *${results.author}*` : query
         const embed = new Discord.MessageEmbed()
             .setTitle(`Conversion de : ${phrase}`)
             .setColor('BLUE')
