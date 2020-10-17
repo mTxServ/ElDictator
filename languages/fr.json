@@ -97,7 +97,7 @@
     "not_logged": "Votre compte n'est pas relié à mTxServ."
   },
   "me": {
-    "logged": "Votre compte `%name%` is lié à votre compte Discord.",
+    "logged": "Votre compte `%name%` est lié à votre compte Discord.",
     "not_logged": "Votre compte Discord n'est pas relié avec votre compte mTxServ.",
     "username": "Utilisateur",
     "cant_fetch": "Impossible de se connecter à votre compte mTxServ."
