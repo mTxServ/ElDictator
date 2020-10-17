@@ -72,8 +72,12 @@ module.exports = class ShareLinkCommand extends mTxServCommand {
             }
         }
 
-        return msg.say({
+        const resMsg = await msg.say({
             embed
         })
+        
+        resMsg.react('👍');
+        resMsg.react('👎');
+        resMsg.react('🤷');
     }
 };
