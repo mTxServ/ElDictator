@@ -113,5 +113,8 @@
   },
   "gca": {
     "description": "Mappeur, modélisateur, graphiste, développeur ou même configurateur de serveur… Ce serveur est fait pour toi !"
+  },
+  "language": {
+    "updated": "Language has been change to `%lang%`."
   }
 }
