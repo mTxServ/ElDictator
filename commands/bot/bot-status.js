@@ -7,8 +7,8 @@ require('moment-duration-format');
 module.exports = class BotStatusCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
-            name: 'bot-info',
-            aliases: ['bot-status'],
+            name: 'bot',
+            aliases: ['bot-status', 'info', 'bot-info', 'bot', 'fork', 'forkme'],
             group: 'bot',
             memberName: 'bot-info',
             description: 'Display bot infos.',
@@ -17,14 +17,20 @@ module.exports = class BotStatusCommand extends mTxServCommand {
     }
 
     async run(msg) {
+        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
+
         const embed = new Discord.MessageEmbed()
-            .setColor("BLUE")
-            .addField('❯ Commands', this.client.registry.commands.size, true)
+            .setAuthor(lang['fork_me']['title'], 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', 'https://github.com/mTxServ/ElDictator')
+            .setColor('BLUE')
+            .setDescription(lang['fork_me']['description'])
+            .addField(lang['fork_me']['how'], lang['fork_me']['explain'])
             .addField('❯ Home', `[mTxServ.com](https://mtxserv.com)`, true)
             .addField('❯ Source Code', '[mTxServ/ElDictator](https://github.com/mTxServ/ElDictator)', true)
+            .addField('❯ Discord', `[Join mTxServ server](${this.client.options.invite})`, true)
+            .addField('❯ Servers', this.formatNumber(this.client.guilds.cache.size), true)
             .addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
             .addField('❯ Uptime', moment.duration(this.client.uptime).format('hh:mm:ss', { trim: false }), true)
-            .addField('❯ Node Version', process.version, true)
+            .setFooter(`${this.formatNumber(this.client.registry.commands.size)} commands - by mTxServ.com`)
         ;
 
         if(this.parseDependencies().length < 1024) {
