@@ -1,5 +1,6 @@
 const mTxServCommand = require('../mTxServCommand.js')
 const mTxServApi = require('../../api/mTxServApi')
+const Discord = require('discord.js')
 
 module.exports = class AccountCommand extends mTxServCommand {
     constructor(client) {
@@ -27,12 +28,38 @@ module.exports = class AccountCommand extends mTxServCommand {
             return this.sayError(msg, lang['me']['not_logged'])
         }
 
+        const embed = new Discord.MessageEmbed()
+            .setColor('GREEN')
+        ;
+
+        let oauth
+
         try {
-            const oauth = await api.loginFromCredentials(msg.author.id)
-            return this.saySuccess(msg, lang['me']['logged'])
+            oauth = await api.loginFromCredentials(msg.author.id)
         } catch(err) {
             console.error(err)
-            return this.sayError(msg, 'Impossible de se connecter à votre compte mTxServ.')
+            return this.sayError(msg, lang['me']['cant_fetch'])
         }
+
+        const me = await api.call(oauth['access_token'], 'user/me')
+        const invoices = await api.call(oauth['access_token'], 'invoices')
+
+        const countGameServers = invoices.filter(invoice => invoice.type_id === 1).length
+        const countVoiceServers = invoices.filter(invoice => invoice.type_id === 2).length
+        const countWebHosting = invoices.filter(invoice => invoice.type_id === 3).length
+        const countVps = invoices.filter(invoice => invoice.type_id === 5).length
+
+        console.log(invoices)
+
+        embed.setDescription(lang['me']['logged'].replace('%name%', me.username))
+        embed.setAuthor(`${msg.author.tag}`, `${msg.author.displayAvatarURL()}`)
+        embed.addField('game servers'.toUpperCase(), countGameServers, true)
+        embed.addField('voice servers'.toUpperCase(), countVoiceServers, true)
+        embed.addField('web hosting'.toUpperCase(), countWebHosting, true)
+        embed.addField('vps'.toUpperCase(), countVps, true)
+
+        return msg.say({
+            embed
+        });
     }
 };
