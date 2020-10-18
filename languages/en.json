@@ -125,6 +125,11 @@
   "server_add": {
     "not_logged": "To add your server, \n__you must have connected your__ mTxServ account with `m!login`, to verify use `m!me`.",
     "no_result": "You didn't have any game server.",
-    "sent_dm": "To add you server, sent `add-server` **in DM** to the bot."
+    "sent_dm": "To add you server, sent `add-server` **in DM** to the bot.",
+    "fetch": "Retrieving game servers, please wait..",
+    "not_found": "Game server not found.",
+    "which": "Which server ID do you want to add (eg: `1`)?",
+    "added": "Game server added, use `m!servers` to view server status!",
+    "permissions": "You must be **administrator** of this discord server to use this command."
   }
 }

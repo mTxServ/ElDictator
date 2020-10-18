@@ -125,6 +125,11 @@
   "server_add": {
     "not_logged": "Pour ajouter votre serveur, __vous devez avoir relié votre compte__ mTxServ avec `m!login`, pour vérifier utilisez `m!me`.",
     "no_result": "Vous n'avez aucun serveur de jeu.",
-    "sent_dm": "Pour ajouter un serveur, envoyez la commande `add-server` **en DM** au bot."
+    "sent_dm": "Pour ajouter un serveur, envoyez la commande `add-server` **en DM** au bot.",
+    "fetch": "Récupération de vos serveurs, veuillez patienter..",
+    "not_found": "Ce serveur n'existe pas.",
+    "which": "Quel serveur voulez-vous ajouter (ex: `1`) ?",
+    "added": "Le serveur a été ajouté, utilisez `m!servers` pour voir le statut!",
+    "permissions": "Vous devez être **administrateur** de ce serveur Discord pour utiliser cette commande."
   }
 }

@@ -164,7 +164,11 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
         const userInput = collected.first()
 
         if (!userInput) {
-            return await this.sayAuthorError(msg, 'No answer after 40 seconds, operation canceled.')
+            if (!(sendInChannel||false)) {
+                return await this.sayAuthorError(msg, 'No answer after 40 seconds, operation canceled.')
+            } else {
+                return await this.sayError(msg, 'No answer after 40 seconds, operation canceled.')
+            }
         }
 
         return userInput.content.trim()
