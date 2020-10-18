@@ -20,10 +20,11 @@ module.exports = class BotStatusCommand extends mTxServCommand {
         const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
 
         const embed = new Discord.MessageEmbed()
-            .setAuthor(lang['fork_me']['title'], 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', 'https://github.com/mTxServ/ElDictator')
+            .setAuthor(`${this.client.user.tag}`, `${this.client.user.displayAvatarURL()}`, 'https://mtxserv.com')
             .setColor('BLUE')
             .setDescription(lang['fork_me']['description'])
             .addField(lang['fork_me']['how'], lang['fork_me']['explain'])
+            .addField(lang['fork_me']['configure'], lang['fork_me']['configure_explain'])
             .addField('❯ Home', `[mTxServ.com](https://mtxserv.com)`, true)
             .addField('❯ Discord', `[Join us](${this.client.options.invite})`, true)
             .addField('❯ Invite Bot', '[Invite the bot](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=8&scope=bot)', true)

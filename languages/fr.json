@@ -7,9 +7,11 @@
     "title": ":people_hugging: Rejoignez-nous sur les réseaux sociaux"
   },
   "fork_me": {
-    "title": "Contribuez à ce bot!",
+    "title": "BOT",
     "description": "Le code source de ce bot est disponible sur notre compte GitHub. Vous pouvez y contribuer librement pour ajouter de nouvelles fonctionnalités sur le discord de mTxServ!",
     "how": "Comment contribuer?",
+    "configure": "Comment configurer le bot?",
+    "configure_explain": "`m!bot-lang` `m!add-server` `m!feeds` `m!add-feed`",
     "explain": "Nous serions très heureux de recevoir de l'aide de développeurs qui peuvent nous aider à réparer des bogues ou ajouter de nouvelles fonctionnalités."
   },
   "bot_stop": {
