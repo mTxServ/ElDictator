@@ -66,6 +66,10 @@ class FeedMonitor {
                 for (const tagName of feed.tags) {
                     const servers = client.guildSettings.susbribedServersOfTag(tagName)
                     for (const server of servers) {
+                        if (server.locale !== 'all' && -1 === feed.languages.indexOf(server.locale)) {
+                            continue
+                        }
+
                         if (!client.channels.cache.has(server.channelId)) {
                             console.error(`Channel ${server.channelId} not found`)
                             continue

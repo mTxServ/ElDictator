@@ -28,6 +28,13 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
                     type: 'string',
                     validate: text => text.length >= 10,
                 },
+                {
+                    key: 'locale',
+                    prompt: 'Which language?',
+                    type: 'string',
+                    default: 'all',
+                    oneOf: ['fr', 'en', 'all'],
+                },
             ],
             throttling: {
                 usages: 2,
@@ -36,7 +43,7 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
         });
     }
 
-    async run(msg, {tag, channelId}) {
+    async run(msg, {tag, channelId, locale}) {
         const userLang = this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
@@ -50,8 +57,8 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
         }
 
         const channel = this.client.channels.cache.get(channelId)
-        this.client.guildSettings.subscribeToTag(msg.guild.id, tag, channelId)
+        this.client.guildSettings.subscribeToTag(msg.guild.id, tag, channelId, locale)
 
-        return this.saySuccess(msg, `New articles about **${tag.toUpperCase()}** will be post in channel **${channel.name}**.`)
+        return this.saySuccess(msg, `New articles about **${tag.toUpperCase()}** in **${locale === 'all' ? 'all languages' : locale.toUpperCase()}** will be post in channel **${channel.name}**.`)
     }
 };

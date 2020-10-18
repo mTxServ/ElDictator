@@ -23,37 +23,44 @@ const client = global.client = new Client({
         {
             url: 'https://hytale.game/p/index.rss',
             icon: 'https://hytale.com/favicon.ico',
-            tags: ['game', 'hytale']
+            tags: ['game', 'hytale'],
+            languages: ['fr']
         },
         {
             url: 'https://minecraft.fr/feed/',
             icon: 'https://mtxserv.com/build/manager-game/img/game/minecraft.png',
-            tags: ['game', 'minecraft']
+            tags: ['game', 'minecraft'],
+            languages: ['fr']
         },
         {
             url: 'https://gmod.facepunch.com/rss/blog',
             icon: 'https://mtxserv.com/build/manager-game/img/game/garry-s-mod.png',
-            tags: ['game', 'gmod']
+            tags: ['game', 'gmod'],
+            languages: ['en']
         },
         {
             url: 'https://rust.facepunch.com/rss/blog',
             icon: 'https://mtxserv.com/build/manager-game/img/game/rust.png',
-            tags: ['game', 'rust']
+            tags: ['game', 'rust'],
+            languages: ['en']
         },
         {
             url: 'https://sandbox.facepunch.com/rss/news',
             icon: null,
-            tags: ['game', 'sandbox']
+            tags: ['game', 'sandbox'],
+            languages: ['en']
         },
         {
             url: 'https://survivetheark.com/index.php?/rss/3-ark-news.xml/',
             icon: 'https://mtxserv.com/build/manager-game/img/game/ark.png',
-            tags: ['game', 'ark']
+            tags: ['game', 'ark'],
+            languages: ['en']
         },
         {
             url: 'https://ark-france.fr/rss/1-flux-rss-news.xml/',
             icon: 'https://mtxserv.com/build/manager-game/img/game/ark.png',
-            tags: ['game', 'ark']
+            tags: ['game', 'ark'],
+            languages: ['fr']
         }
     ]
 });

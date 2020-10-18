@@ -32,13 +32,14 @@ module.exports = class GuildSetting {
         return client.settings.get(FEED_SUB_CHANNELS.replace('%tag%', tagName), [])
     }
 
-    subscribeToTag(guildId, tagName, channelId) {
+    subscribeToTag(guildId, tagName, channelId, locale) {
         const servers = this.susbribedServersOfTag(tagName)
             .filter(server => server.guildId !== guildId)
 
         servers.push({
             guildId: guildId,
-            channelId: channelId
+            channelId: channelId,
+            locale: locale
         })
 
         client.settings.set(FEED_SUB_CHANNELS.replace('%tag%', tagName), servers)
@@ -55,5 +56,10 @@ module.exports = class GuildSetting {
         return this.susbribedServersOfTag(tagName)
             .filter(server => server.guildId === guildId)
             .length > 0
+    }
+
+    getSubscribeToTag(guildId, tagName) {
+        return this.susbribedServersOfTag(tagName)
+            .filter(server => server.guildId === guildId)
     }
 };

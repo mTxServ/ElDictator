@@ -91,7 +91,18 @@ module.exports = class FeedCommand extends mTxServCommand {
         ;
 
         for (const game of games) {
-            embed.addField(`❯ ${game.name}`, this.client.guildSettings.hasSubscribeToTag(msg.guild.id, game.key) ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
+            const subscription = this.client.guildSettings.getSubscribeToTag(msg.guild.id, game.key)
+
+            let description = subscription.length ? lang['feeds']['follow'] : lang['feeds']['unfollow']
+            if (subscription.length) {
+                if (subscription[0].locale === 'all') {
+                    description = `:flag_us: :flag_fr: ${description}`
+                } else {
+                    description = `:flag_${subscription[0].locale == 'fr' ? subscription[0].locale : 'us'}: ${description}`
+                }
+            }
+
+            embed.addField(`❯ ${game.name}`, description, true)
         }
 
         return msg.say({
