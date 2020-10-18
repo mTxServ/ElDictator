@@ -65,6 +65,18 @@ class FeedMonitor {
 
                 for (const tagName of feed.tags) {
                     const servers = client.guildSettings.susbribedServersOfTag(tagName)
+                    for (const channelId of feed.channels) {
+                        if (!client.channels.cache.has(channelId)) {
+                            console.error(`Channel ${channelId} not found`)
+                            continue
+                        }
+
+                        const channel = client.channels.cache.get(channelId);
+                        channel.send({
+                            embed: embed
+                        })
+                    }
+
                     for (const server of servers) {
                         if (server.locale !== 'all' && -1 === feed.languages.indexOf(server.locale)) {
                             continue
@@ -76,7 +88,6 @@ class FeedMonitor {
                         }
 
                         const channel = client.channels.cache.get(server.channelId);
-
                         channel.send({
                             embed: embed
                         })
