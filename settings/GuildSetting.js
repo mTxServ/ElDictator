@@ -15,8 +15,12 @@ module.exports = class GuildSetting {
     }
 
     addGameServer(guidId, gameServer) {
-        const gameServers = client.settings.get(GAME_SERVER_LIST.replace('%id%', guidId), [])
+        const gameServers = client.settings
+            .get(GAME_SERVER_LIST.replace('%id%', guidId), [])
+            .filter(gs => gs.address !== gameServer.address)
+
         gameServers.push(gameServer)
+        
         client.settings.set(GAME_SERVER_LIST.replace('%id%', guidId), gameServers)
     }
 
