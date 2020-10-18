@@ -22,38 +22,38 @@ const client = global.client = new Client({
     feeds: [
         {
             url: 'https://hytale.game/p/index.rss',
-            channels: ['694460936748269609'],
-            icon: 'https://hytale.com/favicon.ico'
+            icon: 'https://hytale.com/favicon.ico',
+            tags: ['game', 'hytale']
         },
         {
             url: 'https://minecraft.fr/feed/',
-            channels: ['694460936748269609'],
-            icon: 'https://mtxserv.com/build/manager-game/img/game/minecraft.png'
+            icon: 'https://mtxserv.com/build/manager-game/img/game/minecraft.png',
+            tags: ['game', 'minecraft']
         },
         {
             url: 'https://gmod.facepunch.com/rss/blog',
-            channels: ['703151209833299980'],
-            icon: 'https://mtxserv.com/build/manager-game/img/game/garry-s-mod.png'
+            icon: 'https://mtxserv.com/build/manager-game/img/game/garry-s-mod.png',
+            tags: ['game', 'gmod']
         },
         {
             url: 'https://rust.facepunch.com/rss/blog',
-            channels: ['766367859210977310'],
-            icon: 'https://mtxserv.com/build/manager-game/img/game/rust.png'
+            icon: 'https://mtxserv.com/build/manager-game/img/game/rust.png',
+            tags: ['game', 'rust']
         },
         {
             url: 'https://sandbox.facepunch.com/rss/news',
-            channels: ['703151209833299980'],
-            icon: null
+            icon: null,
+            tags: ['game', 'sandbox']
         },
         {
             url: 'https://survivetheark.com/index.php?/rss/3-ark-news.xml/',
-            channels: ['751700547928850493'],
-            icon: 'https://mtxserv.com/build/manager-game/img/game/ark.png'
+            icon: 'https://mtxserv.com/build/manager-game/img/game/ark.png',
+            tags: ['game', 'ark']
         },
         {
             url: 'https://ark-france.fr/rss/1-flux-rss-news.xml/',
-            channels: ['751700547928850493'],
-            icon: 'https://mtxserv.com/build/manager-game/img/game/ark.png'
+            icon: 'https://mtxserv.com/build/manager-game/img/game/ark.png',
+            tags: ['game', 'ark']
         }
     ]
 });

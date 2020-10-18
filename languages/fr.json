@@ -134,5 +134,11 @@
   },
   "stats": {
     "servers": "Je suis présent sur **%count% serveurs** :heart:"
+  },
+  "feeds": {
+    "title": "Vos feeds",
+    "description": "Pour recevoir **les news de vos jeux favoris __dans un channel spécifié__**, abonnez-vous aux listes avec `m!feed-add`, par exemple `m!feed-add minecraft IDDUCHANNEL` (__admin uniquement__).",
+    "follow": "**Suivi**",
+    "unfollow": "Non suivi"
   }
 }

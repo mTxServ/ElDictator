@@ -1,5 +1,6 @@
 const LANGUAGE = `g_lang_%id%`
 const GAME_SERVER_LIST = `g_gs_list_%id%`
+const FEED_SUB_CHANNELS = `feed_sub_%tag%`
 
 module.exports = class GuildSetting {
     language(guidId) {
@@ -15,8 +16,7 @@ module.exports = class GuildSetting {
     }
 
     addGameServer(guidId, gameServer) {
-        const gameServers = client.settings
-            .get(GAME_SERVER_LIST.replace('%id%', guidId), [])
+        const gameServers = this.gameServers(guidId)
             .filter(gs => gs.address !== gameServer.address)
 
         gameServers.push(gameServer)
@@ -26,5 +26,24 @@ module.exports = class GuildSetting {
 
     clearGameServers(guidId) {
         client.settings.set(GAME_SERVER_LIST.replace('%id%', guidId), [])
+    }
+
+    susbribedServersOfTag(tagName) {
+        return client.settings.get(FEED_SUB_CHANNELS.replace('%tag%', tagName), [])
+    }
+
+    subscribeToTag(guidId, tagName) {
+        const servers = this.susbribedServersOfTag(tagName)
+            .filter(server => server.guildId !== guidId)
+
+        servers.push(guidId)
+
+        client.settings.set(FEED_SUB_CHANNELS.replace('%id%', guidId), servers)
+    }
+
+    hasSubscribeToTag(guidId, tagName) {
+        return this.susbribedServersOfTag(tagName)
+            .filter(server => server === guidId)
+            .length > 0
     }
 };

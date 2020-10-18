@@ -25,8 +25,6 @@ class FeedMonitor {
     }
 
     async process() {
-        console.log('Check feeds')
-
         const links = [];
         let oldArticles = client.settings.get('feed_articles', [])
 
@@ -65,15 +63,20 @@ class FeedMonitor {
 
                 embed.setDescription(`${content}\n${article.link}`)
 
-                for (const channelId of feed.channels) {
-                    const channel = client.channels.cache.get(channelId);
-                    if (!channel) {
-                        throw new Error(`Channel ${channelId} not found`)
-                    }
+                for (const tagName of feed.tags) {
+                    const servers = client.guildSettings.susbribedServersOfTag(tagName)
+                    for (const server of servers) {
+                        if (!client.channels.cache.has(server.channelId)) {
+                            console.error(`Channel ${server.channelId} not found`)
+                            continue
+                        }
 
-                    channel.send({
-                        embed: embed
-                    })
+                        const channel = client.channels.cache.get(server.channelId);
+
+                        channel.send({
+                            embed: embed
+                        })
+                    }
                 }
             }
         }
