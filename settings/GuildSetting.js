@@ -11,39 +11,49 @@ module.exports = class GuildSetting {
         client.settings.set(LANGUAGE.replace('%id%', guildId), language)
     }
 
-    gameServers(guidId) {
-        return client.settings.get(GAME_SERVER_LIST.replace('%id%', guidId), [])
+    gameServers(guildId) {
+        return client.settings.get(GAME_SERVER_LIST.replace('%id%', guildId), [])
     }
 
-    addGameServer(guidId, gameServer) {
-        const gameServers = this.gameServers(guidId)
+    addGameServer(guildId, gameServer) {
+        const gameServers = this.gameServers(guildId)
             .filter(gs => gs.address !== gameServer.address)
 
         gameServers.push(gameServer)
         
-        client.settings.set(GAME_SERVER_LIST.replace('%id%', guidId), gameServers)
+        client.settings.set(GAME_SERVER_LIST.replace('%id%', guildId), gameServers)
     }
 
-    clearGameServers(guidId) {
-        client.settings.set(GAME_SERVER_LIST.replace('%id%', guidId), [])
+    clearGameServers(guildId) {
+        client.settings.set(GAME_SERVER_LIST.replace('%id%', guildId), [])
     }
 
     susbribedServersOfTag(tagName) {
         return client.settings.get(FEED_SUB_CHANNELS.replace('%tag%', tagName), [])
     }
 
-    subscribeToTag(guidId, tagName) {
+    subscribeToTag(guildId, tagName, channelId) {
         const servers = this.susbribedServersOfTag(tagName)
-            .filter(server => server.guildId !== guidId)
+            .filter(server => server.guildId !== guildId)
 
-        servers.push(guidId)
+        servers.push({
+            guildId: guildId,
+            channelId: channelId
+        })
 
-        client.settings.set(FEED_SUB_CHANNELS.replace('%id%', guidId), servers)
+        client.settings.set(FEED_SUB_CHANNELS.replace('%tag%', tagName), servers)
     }
 
-    hasSubscribeToTag(guidId, tagName) {
+    unsubscribeToTag(guildId, tagName) {
+        const servers = this.susbribedServersOfTag(tagName)
+            .filter(server => server.guildId !== guildId)
+
+        client.settings.set(FEED_SUB_CHANNELS.replace('%tag%', tagName), servers)
+    }
+
+    hasSubscribeToTag(guildId, tagName) {
         return this.susbribedServersOfTag(tagName)
-            .filter(server => server === guidId)
+            .filter(server => server.guildId === guildId)
             .length > 0
     }
 };

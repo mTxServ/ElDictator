@@ -1,8 +1,5 @@
 const mTxServCommand = require('../mTxServCommand.js');
 const Discord = require('discord.js');
-const { dependencies } = require('../../package.json');
-const moment = require('moment');
-require('moment-duration-format');
 
 module.exports = class FeedCommand extends mTxServCommand {
     constructor(client) {
@@ -20,27 +17,82 @@ module.exports = class FeedCommand extends mTxServCommand {
     async run(msg) {
         const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
 
+        const games = [
+            {
+                name: 'Minecraft',
+                key: 'minecraft'
+            },
+            {
+                name: 'Hytale',
+                key: 'hytale'
+            },
+            {
+                name: 'GMod',
+                key: 'gmod'
+            },
+            {
+                name: 'Rust',
+                key: 'rust'
+            },
+            {
+                name: 'ARK',
+                key: 'ark'
+            },
+            {
+                name: 'FiveM',
+                key: 'fivem'
+            },
+            {
+                name: 'CS:GO',
+                key: 'csgo'
+            },
+            {
+                name: 'Valorant',
+                key: 'valorant'
+            },
+            {
+                name: 'League of Legends',
+                key: 'lol'
+            },
+            {
+                name: 'Overwatch',
+                key: 'overwatch'
+            },
+            {
+                name: 'Fortnite',
+                key: 'fortnite'
+            },
+            {
+                name: 'Rocket League',
+                key: 'rocketleague'
+            },
+            {
+                name: 'Fifa 21',
+                key: 'fifa21'
+            },
+            {
+                name: 'Call of Duty',
+                key: 'cod'
+            },
+            {
+                name: 'Onset',
+                key: 'onset'
+            },
+            {
+                name: 'S&Box',
+                key: 'sandbox'
+            },
+        ]
+
         const embed = new Discord.MessageEmbed()
             .setAuthor(lang['feeds']['title'])
             .setColor('BLUE')
             .setDescription(lang['feeds']['description'])
-            .addField('❯ Minecraft', this.client.guildSettings.hasSubscribeToTag('minecraft') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ Hytale', this.client.guildSettings.hasSubscribeToTag('hytale') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ GMod', this.client.guildSettings.hasSubscribeToTag('gmod') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ Rust', this.client.guildSettings.hasSubscribeToTag('rust') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ ARK', this.client.guildSettings.hasSubscribeToTag('ark') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ FiveM', this.client.guildSettings.hasSubscribeToTag('fivem') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ CS:GO', this.client.guildSettings.hasSubscribeToTag('csgo') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ Valorant', this.client.guildSettings.hasSubscribeToTag('valorant') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ League of Legends', this.client.guildSettings.hasSubscribeToTag('lol') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ Overwatch', this.client.guildSettings.hasSubscribeToTag('overwatch') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ Fornite', this.client.guildSettings.hasSubscribeToTag('fornite') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ Rocket League', this.client.guildSettings.hasSubscribeToTag('rocketleague') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ Fifa 21', this.client.guildSettings.hasSubscribeToTag('fifa21') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ Call of Duty', this.client.guildSettings.hasSubscribeToTag('cod') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ Onset', this.client.guildSettings.hasSubscribeToTag('onset') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .addField('❯ S&Box', this.client.guildSettings.hasSubscribeToTag('sandbox') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
         ;
+
+        for (const game of games) {
+            embed.addField(`❯ ${game.name}`, this.client.guildSettings.hasSubscribeToTag(msg.guild.id, game.key) ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
+        }
 
         return msg.say({
             embed
