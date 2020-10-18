@@ -5,6 +5,7 @@
   "dependencies": {
     "@tmware/status-rotate": "^1.0.5",
     "cheerio": "^1.0.0-rc.3",
+    "discord-backup": "^2.2.5",
     "discord.js": "^12.3.1",
     "discord.js-commando": "discordjs/Commando",
     "discord.js-pagination": "^1.0.2",

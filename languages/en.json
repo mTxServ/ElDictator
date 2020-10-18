@@ -131,5 +131,8 @@
     "which": "Which server ID do you want to add (eg: `1`)?",
     "added": "Game server added, use `m!servers` to view server status!",
     "permissions": "You must be **administrator** of this discord server to use this command."
+  },
+  "stats": {
+    "servers": "**%count% servers** are using me :heart:"
   }
 }

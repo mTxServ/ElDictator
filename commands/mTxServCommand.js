@@ -54,6 +54,17 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
         return member.roles.cache.some(role => role.name === '🇫🇷') ? 'fr' : 'en';
     }
 
+    sayMessage(msg, title) {
+        const embed = new Discord.MessageEmbed()
+            .setDescription(title)
+            .setColor('BLUE')
+        ;
+
+        return msg.say({
+            embed
+        });
+    }
+
     sayWarning(msg, title) {
         const embed = new Discord.MessageEmbed()
             .setDescription(title)

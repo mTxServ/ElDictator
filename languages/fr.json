@@ -131,5 +131,8 @@
     "which": "Quel serveur voulez-vous ajouter (ex: `1`) ?",
     "added": "Le serveur a été ajouté, utilisez `m!servers` pour voir le statut!",
     "permissions": "Vous devez être **administrateur** de ce serveur Discord pour utiliser cette commande."
+  },
+  "stats": {
+    "servers": "Je suis présent sur **%count% serveurs** :heart:"
   }
 }
