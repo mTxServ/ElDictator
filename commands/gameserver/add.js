@@ -93,6 +93,7 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
             game: invoices[serverKey].game,
             address: invoices[serverKey].address,
             isHostedOnMtxServ: true,
+            creatorId: msg.author.id
         })
 
         embed = await gsApi.generateEmbed(msg, invoices[serverKey].game, invoices[serverKey].address, userLang)
