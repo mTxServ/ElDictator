@@ -13,6 +13,7 @@ module.exports = class FeedCommand extends mTxServCommand {
             memberName: 'feeds',
             description: 'Display feeds list.',
             guarded: true,
+            guildOnly: true,
         });
     }
 
