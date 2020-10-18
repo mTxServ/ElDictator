@@ -29,7 +29,6 @@ module.exports = class FeedCommand extends mTxServCommand {
             .addField('❯ Rust', this.client.guildSettings.hasSubscribeToTag('rust') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
             .addField('❯ ARK', this.client.guildSettings.hasSubscribeToTag('ark') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
             .addField('❯ S&Box', this.client.guildSettings.hasSubscribeToTag('sandbox') ? lang['feeds']['follow'] : lang['feeds']['unfollow'], true)
-            .setFooter(`by mTxServ.com`)
         ;
 
         return msg.say({
