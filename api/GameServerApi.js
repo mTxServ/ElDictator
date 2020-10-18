@@ -13,6 +13,10 @@ class GameServerApi {
             throw new Error('Invalid response of mtxserv API')
         }
 
+        if (res.body.is_online && res.body.params.host_name && res.body.params.host_name.length) {
+            res.body.params.host_name = res.body.params.host_name.replace(/\u00A7[0-9A-FK-OR]/ig,'').replace('\n', '').trim()
+        }
+
         return res.body
     }
 
@@ -48,7 +52,7 @@ class GameServerApi {
 
         embed
             .setColor('GREEN')
-            .setAuthor(`${results.params.host_name.toUpperCase()}`, iconUrl)
+            .setAuthor(`${results.params.host_name}`, iconUrl)
             .setTimestamp()
             .addField('Address', `\`${address.toUpperCase()}\``)
             .addField('Players', `${results.params.used_slots}/${results.params.max_slots}`, true)

@@ -7,7 +7,7 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'clear-servers',
-            aliases: ['server-clear', 'server-clear'],
+            aliases: ['server-clear', 'servers-clear'],
             group: 'gameserver',
             memberName: 'clear-server',
             description: 'Clear all game servers',
