@@ -39,6 +39,11 @@ module.exports = {
                                 name: 'Guild ID',
                                 value: `\`${guild.id}\``,
                                 inline: true
+                            },
+                            {
+                                name: 'Members',
+                                value: `\`${guild.memberCount}\``,
+                                inline: true
                             }
                         ]
                     }
