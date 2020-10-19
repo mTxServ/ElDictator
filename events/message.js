@@ -6,17 +6,19 @@ const { stripInvites, extractInviteLink } = require('../util/Util');
 
 module.exports = {
     run: async (msg) => {
-        if (msg.author.bot) return;
         if (msg.channel.type !== 'text') return;
 
         // share/img channels
         if (msg.channel.id === process.env.SHARE_CHANNEL_ID_FR
             || msg.channel.id === process.env.SHARE_CHANNEL_ID_EN) {
-
-            msg.react('👍');
-            msg.react('👎');
-            msg.react('🤷');
+            if (-1 === msg.content.indexOf('m!img') && -1 === msg.content.indexOf('m!url')) {
+                msg.react('👍').catch(console.error);
+                msg.react('👎').catch(console.error);
+                msg.react('🤷').catch(console.error);
+            }
         }
+
+        if (msg.author.bot) return;
 
         // gameservers pub
         if (
