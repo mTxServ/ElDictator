@@ -1,5 +1,6 @@
 const mTxServCommand = require('../mTxServCommand.js');
 const Discord = require('discord.js');
+const { formatNumber } = require('../../util/Util');
 const { dependencies } = require('../../package.json');
 const moment = require('moment');
 require('moment-duration-format');
@@ -38,9 +39,9 @@ module.exports = class BotStatusCommand extends mTxServCommand {
             .addField('❯ Uptime', moment.duration(this.client.uptime).format('hh:mm:ss', { trim: false }), true)
             .addField('❯ Language', `:flag_${language == 'fr' ? language : 'us'}:`, true)
             .addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
-            .addField('❯ Servers Discord', this.formatNumber(this.client.guilds.cache.size), true)
-            .addField('❯ Members Discord', this.formatNumber(memberTotal), true)
-            .setFooter(`${this.formatNumber(this.client.registry.commands.size)} commands - by mTxServ.com`)
+            .addField('❯ Servers Discord', formatNumber(this.client.guilds.cache.size), true)
+            .addField('❯ Members Discord', formatNumber(memberTotal), true)
+            .setFooter(`${formatNumber(this.client.registry.commands.size)} commands - by mTxServ.com`)
         ;
 
         if(this.parseDependencies().length < 1024) {

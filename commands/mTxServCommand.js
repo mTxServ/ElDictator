@@ -184,11 +184,4 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
 
         return userInput.content.trim()
     }
-
-    formatNumber(number, minimumFractionDigits = 0) {
-        return Number.parseFloat(number).toLocaleString(undefined, {
-            minimumFractionDigits,
-            maximumFractionDigits: 2
-        });
-    }
 };

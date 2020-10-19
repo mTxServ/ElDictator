@@ -1,4 +1,5 @@
 const mTxServCommand = require('../mTxServCommand.js');
+const { formatNumber } = require('../../util/Util');
 require('moment-duration-format');
 
 module.exports = class BotStatsCommand extends mTxServCommand {
@@ -15,6 +16,6 @@ module.exports = class BotStatsCommand extends mTxServCommand {
 
     run(msg) {
         const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
-        return this.sayMessage(msg, lang['stats']['servers'].replace('%count%', this.formatNumber(this.client.guilds.cache.size)))
+        return this.sayMessage(msg, lang['stats']['servers'].replace('%count%', formatNumber(this.client.guilds.cache.size)))
     }
 };
