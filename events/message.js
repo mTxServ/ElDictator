@@ -79,11 +79,21 @@ module.exports = {
                     metadata = await Grabity.grabIt(item.value)
                     if (metadata && metadata.title) {
                         let title = metadata.title
+
                         if (-1 !== item.value.indexOf('top-serveurs.net')) {
                             title = 'Top Serveurs'
                         }
 
-                        embed.addField(title, `[${metadata.title}](${item.value})`, true)
+                        if (-1 !== item.value.indexOf('steamcommunity.com') ) {
+                            if (-1 !== metadata.title.indexOf('Steam Workshop::')) {
+                                title = 'Steam Workshop'
+                            } else if (-1 !== metadata.title.indexOf('Steam Community :: Group')) {
+                                title = 'Steam Group'
+                            }
+                        }
+
+                        const description = title !== metadata.title ? `[View ${title}](${item.value})` : `[${title}](${item.value})`
+                        embed.addField(title, description, true)
                     }
                 } catch (err) {
 
