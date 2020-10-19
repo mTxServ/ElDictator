@@ -17,30 +17,31 @@ module.exports = class BotStatusCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
+        let language = this.resolveLangOfMessage(msg)
+        const lang = require(`../../languages/${language}.json`)
+
+        const memberTotal = this.client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)
+
+        if (msg.channel.type !== 'dm') {
+            language = this.client.guildSettings.language(msg.guild.id)
+        }
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(`${this.client.user.tag}`, `${this.client.user.displayAvatarURL()}`, 'https://mtxserv.com')
             .setColor('BLUE')
-            .setDescription(lang['fork_me']['description'])
-            .addField(lang['fork_me']['how'], lang['fork_me']['explain'])
             .addField(lang['fork_me']['configure'], lang['fork_me']['configure_explain'])
+            .addField(lang['fork_me']['how'], lang['fork_me']['description'])
             .addField('❯ Home', `[mTxServ.com](https://mtxserv.com)`, true)
             .addField('❯ Discord', `[Join us](${this.client.options.invite})`, true)
             .addField('❯ Invite Bot', '[Invite the bot](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=8&scope=bot)', true)
             .addField('❯ Source Code', '[mTxServ/ElDictator](https://github.com/mTxServ/ElDictator)', true)
-            .addField('❯ Servers', this.formatNumber(this.client.guilds.cache.size), true)
+            .addField('❯ Uptime', moment.duration(this.client.uptime).format('hh:mm:ss', { trim: false }), true)
+            .addField('❯ Language', `:flag_${language == 'fr' ? language : 'us'}:`, true)
+            .addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
+            .addField('❯ Servers Discord', this.formatNumber(this.client.guilds.cache.size), true)
+            .addField('❯ Members Discord', this.formatNumber(memberTotal), true)
             .setFooter(`${this.formatNumber(this.client.registry.commands.size)} commands - by mTxServ.com`)
         ;
-
-        if (msg.channel.type === 'dm') {
-            embed
-                .addField('❯ Uptime', moment.duration(this.client.uptime).format('hh:mm:ss', { trim: false }), true)
-                .addField('❯ Memory Usage', `${Math.round(process.memoryUsage().heapUsed / 1024 / 1024)}MB`, true)
-        } else {
-            const language = this.client.guildSettings.language(msg.guild.id)
-            embed.addField('❯ Language', `:flag_${language == 'fr' ? language : 'us'}:`, true)
-        }
 
         if(this.parseDependencies().length < 1024) {
             embed.addField('❯ Dependencies', this.parseDependencies());

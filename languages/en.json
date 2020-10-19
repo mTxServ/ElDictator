@@ -8,10 +8,10 @@
   },
   "fork_me": {
     "title": "BOT",
-    "description": "The source code for this bot is available on our GitHub account. You can contribute freely to add new features to the mTxServ discord!",
+    "description": "The source code for this bot is available on our GitHub account. You can contribute freely to add new features to the mTxServ bot.",
     "how": "How to contribute?",
     "configure": "How to configure?",
-    "configure_explain": "`m!bot-lang` `m!add-server` `m!feeds` `m!add-feed`",
+    "configure_explain": "To see all commands, use `m!help`. Set the main language for your server with `m!bot-lang en` or `m!bot-lang fr` in a channel.\n\nTo enable the command `m!servers` on your discord server, use `m!add-server` to configure it, in a channel.\n\nThe bot can post new articles in english or/and french, about your favorites games, in a specified channel. To configure it, use `m!feeds` in a channel.",
     "explain": "We would be very happy to receive help from developers who can help us fix bugs or add new features."
   },
   "bot_stop": {

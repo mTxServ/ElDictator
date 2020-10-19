@@ -8,7 +8,7 @@
   },
   "fork_me": {
     "title": "BOT",
-    "description": "Le code source de ce bot est disponible sur notre compte GitHub. Vous pouvez y contribuer librement pour ajouter de nouvelles fonctionnalités sur le discord de mTxServ!",
+    "description": "Le code source de ce bot est disponible sur notre compte GitHub. Vous pouvez y contribuer librement pour ajouter de nouvelles fonctionnalités sur le bot discord.",
     "how": "Comment contribuer?",
     "configure": "Comment configurer le bot?",
     "configure_explain": "`m!bot-lang` `m!add-server` `m!feeds` `m!add-feed`",
