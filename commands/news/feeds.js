@@ -67,18 +67,6 @@ module.exports = class FeedCommand extends mTxServCommand {
                 key: 'rocketleague'
             },
             {
-                name: 'Fifa 21',
-                key: 'fifa21'
-            },
-            {
-                name: 'Call of Duty',
-                key: 'cod'
-            },
-            {
-                name: 'Onset',
-                key: 'onset'
-            },
-            {
                 name: 'S&Box',
                 key: 'sandbox'
             },

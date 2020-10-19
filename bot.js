@@ -68,6 +68,83 @@ const client = global.client = new Client({
             tags: ['game', 'ark'],
             languages: ['fr'],
             channels: []
+        },
+        {
+            url: 'http://feeds2.feedburner.com/vakarm',
+            icon: 'https://mtxserv.com/build/manager-game/img/game/counter-strike-global-offensive.png',
+            tags: ['game', 'csgo'],
+            languages: ['fr'],
+            channels: []
+        },
+        {
+            url: 'https://blog.counter-strike.net/fr/index.php/feed/',
+            icon: 'https://mtxserv.com/build/manager-game/img/game/counter-strike-global-offensive.png',
+            tags: ['game', 'csgo'],
+            languages: ['fr'],
+            channels: []
+        },
+        {
+            url: 'https://blog.counter-strike.net/index.php/feed/',
+            icon: 'https://mtxserv.com/build/manager-game/img/game/counter-strike-global-offensive.png',
+            tags: ['game', 'csgo'],
+            languages: ['en'],
+            channels: []
+        },
+        {
+            url: 'https://www.mandatory.gg/news/feed/',
+            icon: null,
+            tags: ['game', 'valorant'],
+            languages: ['fr'],
+            channels: []
+        },
+        {
+            url: 'https://www.mandatory.gg/en/news/feed/',
+            icon: null,
+            tags: ['game', 'valorant'],
+            languages: ['fr'],
+            channels: []
+        },
+        {
+            url: 'https://docs.fivem.net/docs/index.xml',
+            icon: null,
+            tags: ['game', 'fivem'],
+            languages: ['en'],
+            channels: []
+        },
+        {
+            url: 'https://feeds.win.gg/news/rss',
+            icon: null,
+            tags: ['game', 'lol'],
+            languages: ['en'],
+            channels: []
+        },
+        {
+            url: 'https://www.over.gg/rss',
+            icon: null,
+            tags: ['game', 'overwatch'],
+            languages: ['en'],
+            channels: []
+        },
+        {
+            url: 'https://fortniteinsider.com/feed/',
+            icon: null,
+            tags: ['game', 'fortnite'],
+            languages: ['en'],
+            channels: []
+        },
+        {
+            url: 'https://fortnite.jeuxonline.info/rss/actualites/rss.xml',
+            icon: null,
+            tags: ['game', 'fortnite'],
+            languages: ['fr'],
+            channels: []
+        },
+        {
+            url: 'https://www.rocketbaguette.com/feed/',
+            icon: null,
+            tags: ['game', 'rocketleague'],
+            languages: ['fr'],
+            channels: []
         }
     ]
 });
