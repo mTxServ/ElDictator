@@ -24,13 +24,13 @@ module.exports = {
         ) {
             const inviteLink = extractInviteLink(msg.content)
 
-            let content = Discord.Util.removeMentions(stripInvites(msg.content)).trim()
+            let content = Discord.Util.removeMentions(msg.content).trim()
             if (!content) {
                 return
             }
 
-            const urls = getUrls(content);
-            const link = inviteLink ? inviteLink : urls.values().next().value || null;
+            const urls = getUrls(stripInvites(content));
+            const link = inviteLink ? inviteLink : (urls.values().next().value || null);
 
             const embed = new Discord.MessageEmbed()
                 .setAuthor(`${msg.author.tag}`, `${msg.author.displayAvatarURL()}`, link)
@@ -67,19 +67,27 @@ module.exports = {
             const items = urls.values()
             let item = items.next()
 
+            let metadata
             do {
-                if (!item.value) {
-                    break
-                }
+                try {
+                    if (!item.value) {
+                        break
+                    }
 
-                const metadata = await Grabity.grabIt(item.value)
-                if (metadata && metadata.title) {
-                    content = content.split(item.value).join('')
-                    embed.addField('Top Serveur', `[${metadata.title}](${item.value})`, true)
+                    metadata = await Grabity.grabIt(item.value)
+                    if (metadata && metadata.title) {
+                        let title = metadata.title
+                        if (-1 !== item.value.indexOf('top-serveurs.net')) {
+                            title = 'Top Serveurs'
+                        }
+
+                        embed.addField(title, `[${metadata.title}](${item.value})`, true)
+                    }
+                } catch (err) {
+
                 }
             }
             while (item = items.next())
-
             embed.setDescription(content)
 
             const attachments = msg.attachments.map(attachment => attachment)

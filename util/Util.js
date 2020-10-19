@@ -1,4 +1,4 @@
-const inviteRegex = /(https?:\/\/)?discord(\.gg|(app)?\.com\/invite|\.me)\/([^ ]+)\/?/gi;
+const inviteRegex = /(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li|club)|discordapp\.com\/invite|discord\.com\/invite)\/.+[a-z]/gi;
 const botInvRegex = /(https?:\/\/)?discord(app)?\.com\/(api\/)?oauth2\/authorize\?([^ ]+)\/?/gi;
 
 module.exports = class Util {
