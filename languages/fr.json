@@ -11,7 +11,7 @@
     "description": "Le code source de ce bot est disponible sur notre compte GitHub. Vous pouvez y contribuer librement pour ajouter de nouvelles fonctionnalités sur le bot discord.",
     "how": "Comment contribuer?",
     "configure": "Comment configurer le bot?",
-    "configure_explain": "`m!bot-lang` `m!add-server` `m!feeds` `m!add-feed`",
+    "configure_explain": "Pour afficher toutes les commandes, utilisez `m!help`. Définissez la langue principale de votre serveur avec `m!bot-lang en` ou `m!bot-lang fr`.\n\nPour activer la commande `m!servers` qui affiche vos serveurs de jeux, utilisez `m!add-server` pour la configurer, dans un canal.\n\nLe bot peut publier de nouveaux articles en anglais ou/et français, sur vos jeux favoris, dans un canal spécifié. Pour le configurer, utilisez `m!feeds` dans un canal.",
     "explain": "Nous serions très heureux de recevoir de l'aide de développeurs qui peuvent nous aider à réparer des bogues ou ajouter de nouvelles fonctionnalités."
   },
   "bot_stop": {
