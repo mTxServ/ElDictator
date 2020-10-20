@@ -1,4 +1,4 @@
-<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="mTxServ" src="https://mtxserv.com/build/core/img/logo.png">  
+<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="mTxServ" src="https://mtxserv.com/uploads/banners/3a248c2f6160778239c4c30d7cebb57d34e5c71c.png">  
 
 # El Dictator Bot
 [![Discord](https://discordapp.com/api/guilds/529605510219956233/embed.png)](https://discord.gg/hQNpp7c)
