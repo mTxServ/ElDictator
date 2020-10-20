@@ -3,9 +3,11 @@
 This bot is developed with `discord.js` and `discord commando`.
 
 ![Help Command](doc/help.png)
-![GameServer Command](doc/server.png)
+![GameServer Command](doc/servers.png)
+![Feed Command](doc/feeds.png)
 ![Minecraft Version & Modpack Command](doc/version.png)
 ![HowTo Command](doc/howto.png)
+![Bot Command](doc/bot.png)
 
 ## Available commands in this DM
 
