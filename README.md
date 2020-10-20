@@ -178,5 +178,5 @@ yarn run eslint . --ignore-path .gitignore
 ## Credit
 
 - [mTxServ](https://mtxserv.com)
-- [xiao](https://github.com/dragonfire535/xiao)
+- [Xiao](https://github.com/dragonfire535/xiao)
 - [LenoxBot](https://github.com/LenoxBot/LenoxBot)
