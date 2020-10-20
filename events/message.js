@@ -22,7 +22,7 @@ module.exports = {
 
         // gameservers pub
         if (
-            ( -1 !== msg.channel.name.indexOf('-pub-serveurs') || -1 !== msg.channel.name.indexOf('-servers-pub') )
+            ( -1 !== msg.channel.name.indexOf('-pub-serveurs') || -1 !== msg.channel.name.indexOf('-servers-pub') || -1 !== msg.channel.name.indexOf('-pub-addons') )
         ) {
             const inviteLink = extractInviteLink(msg.content)
 
