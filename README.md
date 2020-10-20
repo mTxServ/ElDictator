@@ -11,11 +11,11 @@ Main features:
 * create your gameservers list on discord for your members
 * auto-post of games news
 * link your account with mTxServ
-* Show & search in minecraft server versions and modpacks
-* Search how-to in vps ou gameservers sections
-* Search in officials gmod & darkrp wiki
-* Search map and addon in the STEAM Workshop
-* Multi-languages (fr/en)
+* show & search in minecraft server versions and modpacks
+* search how-to in vps ou gameservers sections
+* search in officials gmod & darkrp wiki
+* search map and addon in the STEAM Workshop
+* multi-languages (fr/en)
 
 This bot was created with `discord.js` and `discord commando`.
 
