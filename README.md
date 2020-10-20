@@ -1,15 +1,33 @@
-# mTxServ Official Discord Bot
+<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="mTxServ" src="https://mtxserv.com/uploads/banners/3a248c2f6160778239c4c30d7cebb57d34e5c71c.png">  
 
-This bot is developed with `discord.js` and `discord commando`.
+# El Dictator Bot
+[![Discord](https://discordapp.com/api/guilds/529605510219956233/embed.png)](https://discord.gg/hQNpp7c)
 
-![Help Command](doc/help.png)
+El Dictator is the official bot of [mTxServ.com](https://mtxserv.com), he contain a lot of commands to help you to manage your game servers (minecraft, ark, gmod, rust, fivem, etc) and your vps.
+
+Main features:
+* create your gameservers list on discord for your members
+* auto-post of games news
+* link your account with mTxServ
+* Show & search in minecraft server versions and modpacks
+* Search how-to in vps ou gameservers sections
+* Search in officials gmod & darkrp wiki
+* Search map and addon in the STEAM Workshop
+* Multi-languages (fr/en)
+
+This bot was created with `discord.js` and `discord commando`.
+
+![Bot Command](doc/bot.png)
+
+## Screenshots
 ![GameServer Command](doc/servers.png)
 ![Feed Command](doc/feeds.png)
 ![Minecraft Version & Modpack Command](doc/version.png)
 ![HowTo Command](doc/howto.png)
-![Bot Command](doc/bot.png)
 
 ## Available commands in this DM
+
+![Help Command](doc/help.png)
 
 ### Main
 * `explain`: Display explain message
