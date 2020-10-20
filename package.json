@@ -1,7 +1,17 @@
 {
-  "name": "bot",
+  "name": "eldictator",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "El Dictator is a discord bot with a lot of commands to help you to manage your game servers (minecraft, ark, gmod, rust, fivem, hytale, etc) and your vps.",
+  "main": "bot.js",
+  "author": "mTxServ.com",
+  "homepage": "https://mtxserv.com",
+  "bug": { 
+    "url" : "https://github.com/mTxServ/ElDictator/issues"
+  },
+  "script": {
+    "start": "nodejs bot.js",
+    "start-dev": "nodejs bot.js -dev"
+  },
   "dependencies": {
     "@tmware/status-rotate": "^1.0.5",
     "cheerio": "^1.0.0-rc.3",
