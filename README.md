@@ -5,7 +5,7 @@
 
 El Dictator is the official bot of [mTxServ.com](https://mtxserv.com), he contain a lot of commands to help you to manage your game servers (minecraft, ark, gmod, rust, fivem, etc) and your vps.
 
-You can invite the bot in your own discord server with this [link](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=8&scope=bot).
+You can invite the bot in your own discord server with this [link](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=604892353&scope=bot).
 
 Main features:
 * create your gameservers list on discord for your members
@@ -21,13 +21,49 @@ This bot was created with `discord.js` and `discord commando`.
 
 ![Bot Command](doc/bot.png)
 
+## Table of Contents
+
+- [Copyright](#copyright)
+- [Invite](#invite)
+- [Screenshots](#screenshots)
+- [Permissions](#permissions)
+- [Commands](#commands)
+- [Installation](#installation)
+- [Configuration](#configuration)
+
+## Copyright
+
+- ©2020 mTxServ\`Seb#7508
+- mTxServ.com
+
+## Invite
+
+- [Home Server](https://discord.gg/hQNpp7c)
+- [Invite](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=604892353&scope=bot)
+
 ## Screenshots
 ![GameServer Command](doc/servers.png)
 ![Feed Command](doc/feeds.png)
 ![Minecraft Version & Modpack Command](doc/version.png)
 ![HowTo Command](doc/howto.png)
 
-## Available commands in this DM
+## Permissions
+
+El Dictator needs several permissions to be able to do what she does.
+
+- **Create Instant Invite**
+- **View Audit Log**
+- **Change Nickname**
+- **View Channels**
+- **Send Messages**
+- **Manage Messages**
+- **Embed Links**
+- **Attach Files**
+- **Read Message History**
+- **Use External Emojis**
+- **Add Reactions**
+
+## Commands
 
 ![Help Command](doc/help.png)
 
@@ -132,7 +168,7 @@ nodejs bot.js -dev
 nodejs bot.js
 ```
 
-## Lint
+### Lint
 
 ```
 yarn run eslint . --ignore-path .gitignore
