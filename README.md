@@ -39,7 +39,7 @@ This bot was created with `discord.js` and `discord commando`.
 
 ## Invite
 
-- [Home Server](https://discord.gg/hQNpp7c)
+- [Support Server](https://discord.gg/hQNpp7c)
 - [Invite](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=604892353&scope=bot)
 
 ## Screenshots
