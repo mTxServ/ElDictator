@@ -21,7 +21,7 @@ Main features:
 
 This bot was created with `discord.js` and `discord commando`.
 
-![Bot Command](doc/bot.png)
+![Bot Command](https://github.com/mTxServ/ElDictator/raw/main/doc/bot.png)
 
 ## Table of Contents
 
@@ -45,10 +45,10 @@ This bot was created with `discord.js` and `discord commando`.
 - [Invite](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=604892353&scope=bot)
 
 ## Screenshots
-![GameServer Command](doc/servers.png)
-![Feed Command](doc/feeds.png)
-![Minecraft Version & Modpack Command](doc/version.png)
-![HowTo Command](doc/howto.png)
+![GameServer Command](https://github.com/mTxServ/ElDictator/raw/main/doc/servers.png)
+![Feed Command](https://github.com/mTxServ/ElDictator/raw/main/doc/feeds.png)
+![Minecraft Version & Modpack Command](https://github.com/mTxServ/ElDictator/raw/main/doc/version.png)
+![HowTo Command](https://github.com/mTxServ/ElDictator/raw/main/doc/howto.png)
 
 ## Permissions
 
