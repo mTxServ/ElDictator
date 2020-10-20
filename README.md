@@ -30,6 +30,7 @@ This bot was created with `discord.js` and `discord commando`.
 - [Commands](#commands)
 - [Installation](#installation)
 - [Configuration](#configuration)
+- [Credit](#credit)
 
 ## Copyright
 
@@ -173,3 +174,9 @@ nodejs bot.js
 ```
 yarn run eslint . --ignore-path .gitignore
 ```
+
+## Credit
+
+- [mTxServ](https://mtxserv.com)
+- [xiao](https://github.com/dragonfire535/xiao)
+- [LenoxBot](https://github.com/LenoxBot/LenoxBot)
