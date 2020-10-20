@@ -97,11 +97,12 @@ module.exports = class HelpCommand extends mTxServCommand {
 					__**${showAll ? 'All commands' : `Available commands in ${msg.guild || 'this DM'}`}**__
 
 					${groups.filter(grp => grp.commands.some(cmd => !cmd.hidden && cmd.isUsable(msg)))
-						.map(grp => stripIndents`**❯  __${grp.name}__**
+						.map(grp => stripIndents`
+							**❯  __${grp.name}__**
 							${grp.commands.filter(cmd => !cmd.hidden && cmd.isUsable(msg))
 							.map(cmd => `\`${cmd.name}\``)
 						}
-						`).join('\n\n')
+						`).join('\n')
 					}
 				`.substr(0, 2048))
 				;
