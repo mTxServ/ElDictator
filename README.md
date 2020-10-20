@@ -2,8 +2,8 @@
 
 # El Dictator Bot
 [![npm version](https://badge.fury.io/js/eldictator.svg)](https://badge.fury.io/js/eldictator) 
-[![GitHub last commit](https://img.shields.io/github/last-commit/mTxServ/ElDictator.svg)
-[![Discord](https://discordapp.com/api/guilds/529605510219956233/embed.png)](https://discord.gg/hQNpp7c)
+![GitHub last commit](https://img.shields.io/github/last-commit/mTxServ/ElDictator.svg)
+![Discord](https://discordapp.com/api/guilds/529605510219956233/embed.png)](https://discord.gg/hQNpp7c)
 
 El Dictator is the official bot of [mTxServ.com](https://mtxserv.com), he contain a lot of commands to help you to manage your game servers (minecraft, ark, gmod, rust, fivem, etc) and your vps.
 
