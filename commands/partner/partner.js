@@ -6,7 +6,7 @@ module.exports = class PartnerCommand extends mTxServCommand {
         super(client, {
             name: 'partners',
             aliases: ['partenaires', 'partenaire', 'partner'],
-            group: 'partner',
+            group: 'mtxserv',
             memberName: 'partners',
             description: 'Show partners',
             clientPermissions: ['SEND_MESSAGES'],

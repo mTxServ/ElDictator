@@ -6,7 +6,7 @@ module.exports = class GCACommand extends mTxServCommand {
         super(client, {
             name: 'gca',
             aliases: ['g-ca'],
-            group: 'partner',
+            group: 'mtxserv',
             memberName: 'gca',
             description: 'Show who is gca',
             clientPermissions: ['SEND_MESSAGES'],

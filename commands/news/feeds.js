@@ -5,7 +5,7 @@ module.exports = class FeedCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'feeds',
-            aliases: ['feed'],
+            aliases: ['feed', 'news'],
             group: 'news',
             memberName: 'feeds',
             description: 'Display feeds list.',

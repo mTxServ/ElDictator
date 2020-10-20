@@ -174,20 +174,17 @@ fs.readdir('./events/', (err, files) => {
 client.registry
     .registerDefaultTypes()
     .registerGroups([
-        ['mtxserv', 'Main'],
+        ['mtxserv', 'mTxServ.com'],
         ['bot', 'Bot'],
-        ['news', 'News'],
-        ['admin', 'Admin'],
-        ['howto', 'How-To'],
-        ['partner', 'Partner'],
-        ['ark', 'ARK Server'],
-        ['gmod', 'GMod Server'],
-        ['minecraft', 'Minecraft Server'],
+        ['news', 'Games News'],
         ['gameserver', 'Game Server'],
         ['gameserverstatus', 'Game Server Status'],
-        ['convert', 'Conversion'],
+        ['admin', 'Admin'],
+        ['howto', 'How-To'],
+        ['gmod', 'GMod Servers'],
+        ['minecraft', 'Minecraft Server'],
+        ['ark', 'ARK Server'],
         ['image', 'Image'],
-        ['random', 'Random'],
         ['util', 'Util'],
     ])
     .registerCommandsIn(path.join(__dirname, 'commands'))

@@ -8,7 +8,7 @@ module.exports = class ConvertCommand extends mTxServCommand {
         super(client, {
             name: 'convert-mp3',
             aliases: ['conversion-mp3', 'mp3'],
-            group: 'convert',
+            group: 'util',
             memberName: 'convert-mp3',
             description: 'Convert Youtube Videos or SoundCloud Music to MP3',
             clientPermissions: ['SEND_MESSAGES'],

@@ -6,7 +6,7 @@ module.exports = class CatCommand extends mTxServCommand {
         super(client, {
             name: 'cat',
             aliases: ['meow'],
-            group: 'random',
+            group: 'image',
             memberName: 'cat',
             description: 'Responds with a random cat image.',
             clientPermissions: ['ATTACH_FILES'],

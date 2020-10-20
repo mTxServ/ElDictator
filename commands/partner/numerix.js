@@ -6,7 +6,7 @@ module.exports = class NumerixCommand extends mTxServCommand {
         super(client, {
             name: 'numerix',
             aliases: ['numerix-addons'],
-            group: 'partner',
+            group: 'mtxserv',
             memberName: 'numerix',
             description: 'Show who is Numerix',
             clientPermissions: ['SEND_MESSAGES'],

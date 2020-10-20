@@ -6,7 +6,7 @@ module.exports = class ShareImageCommand extends mTxServCommand {
         super(client, {
             name: 'img',
             aliases: ['image'],
-            group: 'util',
+            group: 'image',
             memberName: 'img',
             description: 'Share an image',
             clientPermissions: ['SEND_MESSAGES'],

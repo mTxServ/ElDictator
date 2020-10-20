@@ -5,16 +5,16 @@ const Discord = require('discord.js')
 module.exports = class GameSoftwareSearchCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
-            name: 'version',
-            aliases: ['versions', 'software', 'softwares', 'modpack', 'modpacks'],
-            group: 'gameserver',
-            memberName: 'version',
+            name: 'modpacks',
+            aliases: ['modpack', 'modpacks'],
+            group: 'minecraft',
+            memberName: 'modpacks',
             description: 'Search a minecraft version or modpack.',
             clientPermissions: ['SEND_MESSAGES'],
             args: [
                 {
                     key: 'query',
-                    prompt: 'Which tutorial did you search?',
+                    prompt: 'Which modpack did you search?',
                     type: 'string',
                     validate: text => text.length >= 3,
                 },

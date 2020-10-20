@@ -7,7 +7,7 @@ module.exports = class HelpCommand extends mTxServCommand {
 	constructor(client) {
 		super(client, {
 			name: 'help',
-			group: 'mtxserv',
+			group: 'bot',
 			memberName: 'help',
 			aliases: ['commands'],
 			description: 'Displays a list of available commands, or detailed information for a specified command.',
