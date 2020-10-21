@@ -8,14 +8,21 @@ module.exports = {
     run: async (msg) => {
         if (msg.channel.type !== 'text') return;
 
+            if (-1 !== msg.content.indexOf('m!img') 
+                || -1 !== msg.content.indexOf('m!url') 
+                || -1 !== msg.content.indexOf('m!cat') 
+                || -1 !== msg.content.indexOf('m!dog')
+               ) {
+                return;
+            }
+        
         // share/img channels
         if (msg.channel.id === process.env.SHARE_CHANNEL_ID_FR
             || msg.channel.id === process.env.SHARE_CHANNEL_ID_EN) {
-            if (-1 === msg.content.indexOf('m!img') && -1 === msg.content.indexOf('m!url') && -1 === msg.content.indexOf('m!cat') && -1 === msg.content.indexOf('m!dog')) {
                 msg.react('👍').catch(console.error);
                 msg.react('👎').catch(console.error);
                 msg.react('🤷').catch(console.error);
-            }
+                return;
         }
 
         if (msg.author.bot) return;
@@ -117,6 +124,7 @@ module.exports = {
             embedMsg.react('👎');
 
             msg.delete()
+            return;
         }
     }
 };
