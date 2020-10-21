@@ -25,7 +25,7 @@ module.exports = {
                 return;
         }
 
-        if (msg.author.bot) return;
+        if (msg.author.bot && msg.author.username !== 'BoardBot') return;
 
         // gameservers pub
         if (
