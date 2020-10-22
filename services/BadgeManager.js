@@ -37,7 +37,7 @@ class BadgeManager {
         }
 
         if (user.nickname !== newNickname) {
-            user.setNickname(newNickname).catch(console.error);
+            user.setNickname(newNickname);
         }
     }
 
@@ -48,7 +48,7 @@ class BadgeManager {
 
             case 'admin':
             case 'staff':
-                return '🌟';
+                return '👁';
 
             default:
                 throw new Error(`Badge ${badgeName} not found`)
