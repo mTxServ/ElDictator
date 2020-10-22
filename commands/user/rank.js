@@ -22,7 +22,7 @@ module.exports = class RankCommand extends mTxServCommand {
     run(msg) {
         const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
 
-        const scores = this.client.ranker.getScoresOfUser(msg.guild.id, msg.author, true)
+        const userScores = this.client.ranker.getScoresOfUser(msg.guild.id, msg.author, true)
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(msg.author.tag, msg.author.avatarURL())
@@ -30,39 +30,14 @@ module.exports = class RankCommand extends mTxServCommand {
             .setColor('#A4F2DF')
         ;
 
-        let allMembersArray = [];
-        let rank = 0;
+        const allMembers = Object.values(this.client.ranker.getScoresOfGuild(msg.guild.id))
 
-        const scoresOfAllMembers = this.client.ranker.getScoresOfGuild(msg.guild.id);
-        for (const key in scoresOfAllMembers) {
-            const settings = {
-                userId: key,
-                points: scoresOfAllMembers[key].points
-            };
-            if (settings.userId !== 'global') {
-                allMembersArray.push(settings);
-            }
-        }
+        const filteredMembers = Object.values(this.client.ranker.getScoresOfGuild(msg.guild.id))
+            .filter(scores => scores.points >= userScores.points)
 
-        for (let i = 0; i < allMembersArray.length; i += 1) {
-            if (allMembersArray[i].userId === msg.author.id) {
-                rank = i + 1;
-            }
-        }
-
-        allMembersArray = allMembersArray.sort((a, b) => {
-            if (a.points < b.points) {
-                return 1;
-            }
-            if (a.points > b.points) {
-                return -1;
-            }
-            return 0;
-        });
-
-        embed.addField('Points', scores.points, true);
-        embed.addField('Level', scores.level, true);
-        embed.addField('Rank', `${rank}/${allMembersArray.length}`);
+        embed.addField('Points', userScores.points, true);
+        embed.addField('Level', userScores.level, true);
+        embed.addField('Rank', `${filteredMembers.length}/${allMembers.length}`);
 
         return msg.say({
             embed

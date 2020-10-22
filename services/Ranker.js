@@ -34,7 +34,7 @@ class Ranker {
         // increments scores
         currentScores.points += 1;
 
-        const newLevel = Math.floor(0.3 * Math.sqrt(currentScores.points + 1));
+        const newLevel = Math.floor(0.3 * Math.sqrt(currentScores.points));
         currentScores.level = newLevel;
 
         // save
