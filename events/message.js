@@ -10,7 +10,7 @@ module.exports = {
 
         if (
             msg.channel.type !== 'dm' && (msg.guild.id === '529605510219956233' || msg.guild.id === '726178170314817630')) {
-            client.badger.processMessage(msg)
+            //client.badger.processMessage(msg)
 
             if (!msg.author.bot && msg.member.nickname) {
                 client.ranker.processMessage(msg)
