@@ -29,7 +29,7 @@ class BadgeManager {
             return
         }
 
-        let newNickname = `${user.nickname} `
+        let newNickname = `${user.nickname||user.username} `
         for (const badge of badges) {
             if (-1 === newNickname.indexOf(badge)) {
                 newNickname = `${newNickname}${badge}`
