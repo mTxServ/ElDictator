@@ -8,32 +8,38 @@ module.exports = {
     run: async (msg) => {
         if (msg.channel.type !== 'text') return;
 
-            if (-1 !== msg.content.indexOf('m!img') 
-                || -1 !== msg.content.indexOf('m!url') 
-                || -1 !== msg.content.indexOf('m!cat') 
-                || -1 !== msg.content.indexOf('m!dog')
-               ) {
-                return;
-            }
-        
+        if (
+            (msg.guild.id === '529605510219956233' || msg.guild.id === '726178170314817630')
+                && msg.channel.type !== 'dm' && !msg.author.bot) {
+            client.ranker.processMessage(msg)
+        }
+
+        if (-1 !== msg.content.indexOf('m!img')
+            || -1 !== msg.content.indexOf('m!url')
+            || -1 !== msg.content.indexOf('m!cat')
+            || -1 !== msg.content.indexOf('m!dog')
+        ) {
+            return;
+        }
+
         // share/img channels
         if (msg.channel.id === process.env.SHARE_CHANNEL_ID_FR
             || msg.channel.id === process.env.SHARE_CHANNEL_ID_EN) {
-                msg.react('👍').catch(console.error);
-                msg.react('👎').catch(console.error);
-                msg.react('🤷').catch(console.error);
-                return;
+            msg.react('👍').catch(console.error);
+            msg.react('👎').catch(console.error);
+            msg.react('🤷').catch(console.error);
+            return;
         }
 
         if (msg.author.bot) return;
 
         // gameservers pub
         if (
-            ( -1 !== msg.channel.name.indexOf('-pub-serveurs') 
-             || -1 !== msg.channel.name.indexOf('-servers-pub') 
-             || -1 !== msg.channel.name.indexOf('-pub-addons') 
-             || -1 !== msg.channel.name.indexOf('-family') 
-             || -1 !== msg.channel.name.indexOf('-giveaways') 
+            ( -1 !== msg.channel.name.indexOf('-pub-serveurs')
+                || -1 !== msg.channel.name.indexOf('-servers-pub')
+                || -1 !== msg.channel.name.indexOf('-pub-addons')
+                || -1 !== msg.channel.name.indexOf('-family')
+                || -1 !== msg.channel.name.indexOf('-giveaways')
             )
         ) {
             const inviteLink = extractInviteLink(msg.content)

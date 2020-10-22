@@ -1,6 +1,7 @@
 const LANGUAGE = `g_lang_%id%`
 const GAME_SERVER_LIST = `g_gs_list_%id%`
 const FEED_SUB_CHANNELS = `feed_sub_%tag%`
+const RANK_SCORES = `g_scores_%id%`
 
 module.exports = class GuildSetting {
     language(guidId) {
@@ -61,5 +62,13 @@ module.exports = class GuildSetting {
     getSubscribeToTag(guildId, tagName) {
         return this.susbribedServersOfTag(tagName)
             .filter(server => server.guildId === guildId)
+    }
+
+    getScoresOfGuild(guidId) {
+        return JSON.parse(client.settings.get(RANK_SCORES.replace('%id%', guidId), '{}'))
+    }
+
+    setScoresOfGuild(guidId, scores) {
+        client.settings.set(RANK_SCORES.replace('%id%', guidId), JSON.stringify(scores))
     }
 };

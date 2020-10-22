@@ -149,9 +149,14 @@ const client = global.client = new Client({
     ]
 });
 
-client.setProvider(
-    sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => new SQLiteProvider(db))
-).catch(console.error);
+
+const setProvider = async () => {
+    await client.setProvider(
+        sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => new SQLiteProvider(db)).catch(console.error)
+    ).catch(console.error);
+}
+
+setProvider();
 
 fs.readdir('./events/', (err, files) => {
     if (err) return console.error(err);
