@@ -18,6 +18,7 @@ Main features:
 * search in officials gmod & darkrp wiki
 * search map and addon in the STEAM Workshop
 * multi-languages (fr/en)
+* ranking system
 
 This bot was created with `discord.js` and `discord commando`.
 
