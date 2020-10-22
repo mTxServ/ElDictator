@@ -17,17 +17,24 @@ module.exports = class SyncRankCommand extends mTxServCommand {
         });
     }
 
-    async run(msg, {backupId}) {
+    async run(msg) {
         const api = new CarlGGApi()
 
         let page = 0
         let players = []
+
+        this.client.ranker.resetScoresOfGuild(msg.guild.id)
 
         do {
             console.log(`fetch page ${page}`)
             players = await api.getPlayersPage(page)
 
             for (const player of players) {
+                const user = await this.client.users.cache.get(player.id)
+                if (!user) {
+                    continue
+                }
+
                 const level = Math.floor(0.3 * Math.sqrt(player.message_count));
                 const scores = {
                     points: player.message_count,

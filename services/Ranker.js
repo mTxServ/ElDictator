@@ -5,6 +5,10 @@ class Ranker {
         return client.guildSettings.getScoresOfGuild(guildId)
     }
 
+    resetScoresOfGuild(guildId) {
+        return client.guildSettings.setScoresOfGuild(guildId, {})
+    }
+
     getScoresOfUser(guildId, user, initIfNotFound) {
         const currentScores = this.getScoresOfGuild(guildId)
         if (initIfNotFound && typeof currentScores[user.id] === 'undefined') {

@@ -2,6 +2,7 @@ const LANGUAGE = `g_lang_%id%`
 const GAME_SERVER_LIST = `g_gs_list_%id%`
 const FEED_SUB_CHANNELS = `feed_sub_%tag%`
 const RANK_SCORES = `g_scores_%id%`
+const USER_BADGES = `u_badges_%id%_%userid%`
 
 module.exports = class GuildSetting {
     language(guidId) {
@@ -70,5 +71,13 @@ module.exports = class GuildSetting {
 
     setScoresOfGuild(guidId, scores) {
         client.settings.set(RANK_SCORES.replace('%id%', guidId), JSON.stringify(scores))
+    }
+
+    getBadgesOfUser(guidId, userId) {
+        return client.settings.get(USER_BADGES.replace('%id%', guidId).replace('%userid%', userId), [])
+    }
+
+    setBadgesOfUser(guidId, userId, badges) {
+        client.settings.set(USER_BADGES.replace('%id%', guidId).replace('%userid%', userId), badges)
     }
 };

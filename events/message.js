@@ -9,9 +9,12 @@ module.exports = {
         if (msg.channel.type !== 'text') return;
 
         if (
-            (msg.guild.id === '529605510219956233' || msg.guild.id === '726178170314817630')
-                && msg.channel.type !== 'dm' && !msg.author.bot) {
-            client.ranker.processMessage(msg)
+            msg.channel.type !== 'dm' && (msg.guild.id === '529605510219956233' || msg.guild.id === '726178170314817630')) {
+            client.badger.processMessage(msg)
+
+            if (!msg.author.bot && msg.member.nickname) {
+                client.ranker.processMessage(msg)
+            }
         }
 
         if (-1 !== msg.content.indexOf('m!img')
