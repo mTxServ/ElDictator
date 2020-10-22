@@ -5,8 +5,8 @@
   "main": "bot.js",
   "author": "mTxServ.com",
   "homepage": "https://mtxserv.com",
-  "bug": { 
-    "url" : "https://github.com/mTxServ/ElDictator/issues"
+  "bug": {
+    "url": "https://github.com/mTxServ/ElDictator/issues"
   },
   "script": {
     "start": "nodejs bot.js",
@@ -25,6 +25,7 @@
     "got": "^11.7.0",
     "grabity": "^1.0.5",
     "js-video-url-parser": "^0.4.2",
+    "mc-achievements": "^1.0.2",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "puppeteer": "^5.3.1",

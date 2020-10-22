@@ -19,6 +19,7 @@ Main features:
 * search map and addon in the STEAM Workshop
 * multi-languages (fr/en)
 * ranking system
+* generate your minecraft achievements
 
 This bot was created with `discord.js` and `discord commando`.
 
