@@ -182,5 +182,7 @@ yarn run eslint . --ignore-path .gitignore
 ## Credit
 
 - [mTxServ](https://mtxserv.com)
+- [Discord Hytale](https://hytale-discord.fr/)
+- [Hytale FR](https://hytale.game/)
 - [Xiao](https://github.com/dragonfire535/xiao)
 - [LenoxBot](https://github.com/LenoxBot/LenoxBot)
