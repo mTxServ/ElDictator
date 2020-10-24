@@ -43,6 +43,7 @@ module.exports = {
                 || -1 !== msg.channel.name.indexOf('-servers-pub')
                 || -1 !== msg.channel.name.indexOf('-pub-addons')
                 || -1 !== msg.channel.name.indexOf('-family')
+                || -1 !== msg.channel.name.indexOf('-hytale-recrute')
                 || -1 !== msg.channel.name.indexOf('-giveaways')
             )
         ) {
