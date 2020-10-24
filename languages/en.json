@@ -65,7 +65,7 @@
   },
   "explain": {
     "title": ":question: Need help",
-    "description": "Post in **IN THE APPROPRIATE CHANNEL** !\n\nTo help you, **please specify**__:",
+    "description": "Post in **IN THE APPROPRIATE CHANNEL** !\n\nTo help you, **please**:",
     "rule_1": "* **check the knowledge base** (<https://mtxserv.com/help>) before posting!",
     "rule_2": "* provide the node (game-**XX-XX**) and your **game**",
     "rule_3": "* what offer do you have (**name**, **RAM**, etc)",
