@@ -44,7 +44,7 @@ module.exports = class ShareLinkCommand extends mTxServCommand {
             let icon = null
             const embed = new Discord.MessageEmbed()
                 .setColor('BLUE')
-                .setDescription(`${(metadata.content || metadata.description)}\n<${link}>`)
+                .setDescription(`${(metadata.content || metadata.description || '')}\n<${link}>`)
                 .setTimestamp()
                 .setFooter(`${url.hostname} - ${msg.author.tag}`)
             ;
