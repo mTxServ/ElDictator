@@ -89,41 +89,44 @@ module.exports = {
                     }
                 }
             }
+            
+            if (-1 === msg.channel.name.indexOf('-lien-utiles')) {
+                const items = urls.values()
+                let item = items.next()
 
-            const items = urls.values()
-            let item = items.next()
-
-            let metadata
-            do {
-                try {
-                    if (!item.value) {
-                        break
-                    }
-
-                    metadata = await Grabity.grabIt(item.value)
-                    if (metadata && metadata.title) {
-                        let title = metadata.title
-
-                        if (-1 !== item.value.indexOf('top-serveurs.net')) {
-                            title = 'Top Serveurs'
+                let metadata
+                do {
+                    try {
+                        if (!item.value) {
+                            break
                         }
 
-                        if (-1 !== item.value.indexOf('steamcommunity.com') ) {
-                            if (-1 !== metadata.title.indexOf('Steam Workshop::')) {
-                                title = 'Steam Workshop'
-                            } else if (-1 !== metadata.title.indexOf('Steam Community :: Group')) {
-                                title = 'Steam Group'
+                        metadata = await Grabity.grabIt(item.value)
+                        if (metadata && metadata.title) {
+                            let title = metadata.title
+
+                            if (-1 !== item.value.indexOf('top-serveurs.net')) {
+                                title = 'Top Serveurs'
                             }
+
+                            if (-1 !== item.value.indexOf('steamcommunity.com') ) {
+                                if (-1 !== metadata.title.indexOf('Steam Workshop::')) {
+                                    title = 'Steam Workshop'
+                                } else if (-1 !== metadata.title.indexOf('Steam Community :: Group')) {
+                                    title = 'Steam Group'
+                                }
+                            }
+
+                            const description = title !== metadata.title ? `[View ${title}](${item.value})` : `[${title}](${item.value})`
+                            embed.addField(title, description, true)
                         }
+                    } catch (err) {
 
-                        const description = title !== metadata.title ? `[View ${title}](${item.value})` : `[${title}](${item.value})`
-                        embed.addField(title, description, true)
                     }
-                } catch (err) {
-
                 }
+                while (item = items.next())
             }
-            while (item = items.next())
+            
             embed.setDescription(content)
 
             const attachments = msg.attachments.map(attachment => attachment)
