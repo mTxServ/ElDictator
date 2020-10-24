@@ -9,7 +9,7 @@ module.exports = {
         if (msg.channel.type !== 'text') return;
 
         if (
-            msg.channel.type !== 'dm' && (msg.guild.id === '529605510219956233' || msg.guild.id === '726178170314817630')) {
+            msg.channel.type !== 'dm' && (msg.guild.id === '529605510219956233' || msg.guild.id === '726178170314817630' || msg.guild.id === '539501579137581071')) {
             //client.badger.processMessage(msg)
 
             if (!msg.author.bot && msg.member.nickname) {
@@ -38,7 +38,8 @@ module.exports = {
 
         // gameservers pub
         if (
-            ( -1 !== msg.channel.name.indexOf('-pub-serveurs')
+            (msg.guild.id === '529605510219956233' || msg.guild.id === '726178170314817630' || msg.guild.id === '539501579137581071')
+            && ( -1 !== msg.channel.name.indexOf('-pub-serveurs')
                 || -1 !== msg.channel.name.indexOf('-servers-pub')
                 || -1 !== msg.channel.name.indexOf('-pub-addons')
                 || -1 !== msg.channel.name.indexOf('-family')
