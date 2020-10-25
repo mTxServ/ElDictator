@@ -147,7 +147,7 @@
     "title": "Classement Serveurs %game%",
     "no_result": "Aucun serveur dans le classement %game%.",
     "view": ":mag: Voir",
-    "view_ranking": ":new_verified: Classement",
+    "view_ranking": ":chart_with_upwards_trend: Classement",
     "players_ranking": ":video_game: Note des joueurs",
     "rank": ":medal: Classement",
     "view_more": "Voir la fiche serveur"
