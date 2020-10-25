@@ -74,7 +74,7 @@ module.exports = class GameServerListCommand extends mTxServCommand {
                 .setColor('GREEN')
                 .setFooter(baseUrl.replace('https://', ''))
                 .addField(lang['top-servers']['view'], `[${lang['top-servers']['view_more']}](${gameServer.top_url})`)
-                .addField(lang['top-servers']['view_ranking'], `[${lang['top-servers']['view_ranking']} ${game}](${gameServer.ranking_url})`, true)
+                .addField(`:chart_with_upwards_trend: ${lang['top-servers']['view_ranking']}`, `[${lang['top-servers']['view_ranking']} ${game}](${gameServer.ranking_url})`, true)
                 .addField(lang['top-servers']['rank'], gameServer.rank, true)
             ;
 

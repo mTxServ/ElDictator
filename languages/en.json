@@ -147,7 +147,7 @@
     "title": "%game% Servers Ranking",
     "no_result": "The %game% ranking is currently empty.",
     "view": ":mag: View",
-    "view_ranking": ":chart_with_upwards_trend: View Ranking",
+    "view_ranking": "View Ranking",
     "players_ranking": ":video_game: Players Rating",
     "rank": ":medal: Rank",
     "view_more": "View the server"
