@@ -142,5 +142,14 @@
     "description": "Pour recevoir **les news de vos jeux favoris __dans un channel spécifié__**, abonnez-vous aux listes avec `m!feed-add`, par exemple `m!feed-add minecraft IDDUCHANNEL` (__admin uniquement__).",
     "follow": "**Suivi**",
     "unfollow": "Non suivi"
+  },
+  "top-servers": {
+    "title": "Classement Serveurs %game%",
+    "no_result": "Aucun serveur dans le classement %game%.",
+    "view": ":mag: Voir",
+    "view_ranking": ":new_verified: Classement",
+    "players_ranking": ":video_game: Note des joueurs",
+    "rank": ":medal: Classement",
+    "view_more": "Voir la fiche serveur"
   }
 }

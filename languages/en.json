@@ -121,7 +121,7 @@
   },
   "servers": {
     "how_to": "To add your game server, m!add-server",
-    "no_result": "No set server configured yet",
+    "no_result": "Servers not configured",
     "no_result_more": "__To add your server__, use the command `m!add-server`.\n__You must have connected your__ mTxServ account with `m!login`, to verify use `m!me`."
   },
   "server_add": {
@@ -142,5 +142,14 @@
     "description": "To receive **news from your favorite games __in a specified channel__**, subscribe to the lists with `m!feed-add`, for example `m!feed-add minecraft IDOfChannel` (__admin only__).",
     "follow": "**Follow**",
     "unfollow": "Unfollowed"
+  },
+  "top-servers": {
+    "title": "%game% Servers Ranking",
+    "no_result": "The %game% ranking is currently empty.",
+    "view": ":mag: View",
+    "view_ranking": ":new_verified: View Ranking",
+    "players_ranking": ":video_game: Players Rating",
+    "rank": ":medal: Rank",
+    "view_more": "View the server"
   }
 }
