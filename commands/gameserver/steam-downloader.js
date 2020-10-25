@@ -47,6 +47,6 @@ module.exports = class SteamDownloaderCommand extends mTxServCommand {
             return this.sayError(msg, 'Can\'t download this addon from the workshop.\n**Only addons can be downloaded.**')
         }
 
-        return this.saySuccess(msg, `You can download this resource [here](${downloadLink}).`)
+        return this.saySuccess(msg, `You can download this addon of STEAM Workshop [here](${downloadLink}).`)
     }
 };

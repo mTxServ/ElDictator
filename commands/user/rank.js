@@ -65,6 +65,8 @@ module.exports = class RankCommand extends mTxServCommand {
             twitch_url: null,
             website_url: null,
             workshop_url: null,
+            tutorial_add_link: null,
+            tutorials: [],
         }
 
         if (isAuthenticated) {
@@ -88,14 +90,22 @@ module.exports = class RankCommand extends mTxServCommand {
         embed.setAuthor(`${user.username} profile`, null, profile.website_url)
         embed.addField(':star: Points', userScores.points, true);
         embed.addField(':chart_with_upwards_trend: Level', userScores.level, true);
-        embed.addField(':medal: Rank', `${filteredMembers.length}/${allMembers.length}`, true);
-        embed.addField('Account linked', isAuthenticated ? ':white_check_mark:':':red_circle:', true);
+        embed.addField(':medal: Rank', `${filteredMembers.length}`, true);
+        embed.addField(':paperclips: Linked', isAuthenticated ? '✓':'✗', true);
 
-        if (profile.about) {
-            embed.setDescription(`${profile.about}${input.length ? '' : '\n[Edit my profile](https://mtxserv.com/fr/mon-compte)'}`)
-        } else {
-            embed.setDescription(`[Edit my profile](https://mtxserv.com/fr/mon-compte)`)
+        let description = profile.about || ''
+
+        if (profile.tutorials.length) {
+            description += `\n\n**Latest tutos by ${user.username}** ([how to write a tuto?](${profile.tutorial_add_link}))`
         }
+
+        for (const tutorial of profile.tutorials) {
+            description += `\n✓ [${tutorial.title}](${tutorial.link})`
+        }
+
+        description = profile.about ? description : description + "\n\n[Edit my profile](https://mtxserv.com/fr/mon-compte)"
+
+        embed.setDescription(description)
 
         if (profile.is_admin) {
             embed.setFooter(`💫 ${user.username} is admin`)
