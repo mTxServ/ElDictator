@@ -69,7 +69,7 @@ module.exports = class RankCommand extends mTxServCommand {
 
         if (isAuthenticated) {
             try {
-                const oauth = await api.loginFromCredentials(msg.author.id)
+                const oauth = await api.loginFromCredentials(user.id)
                 profile = await api.call(oauth['access_token'], 'user/me')
                 isAuthenticated = true
             } catch(err) {
