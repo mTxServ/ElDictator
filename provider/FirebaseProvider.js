@@ -19,7 +19,7 @@ class FirebaseProvider extends SettingProvider {
     }
 
     init() {
-
+        console.log('init provider')
     }
 
     /**
@@ -53,7 +53,7 @@ class FirebaseProvider extends SettingProvider {
      * @param {string} key - The key to delete.
      * @returns {Promise<Statement>}
      */
-    delete(id, key) {
+    remove(id, key) {
         return this.rootRef.child(id || 'global').child(key).remove()
     }
 
