@@ -81,9 +81,9 @@ module.exports = class RankCommand extends mTxServCommand {
         }
 
         // scores
-        const allMembers = Object.values(this.client.ranker.getScoresOfGuild(msg.guild.id))
+        const allMembers = Object.values(await this.client.ranker.getScoresOfGuild(msg.guild.id))
 
-        const filteredMembers = Object.values(this.client.ranker.getScoresOfGuild(msg.guild.id))
+        const filteredMembers = allMembers
             .filter(scores => scores.points >= userScores.points)
 
         // embed
