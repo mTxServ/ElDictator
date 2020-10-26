@@ -95,7 +95,7 @@ module.exports = class RankCommand extends mTxServCommand {
 
         let description = profile.about || ''
 
-        if (typeof profile.tutorials === 'array' && profile.tutorials.length) {
+        if (typeof profile.tutorials !== 'undefined' && profile.tutorials.length) {
             description += `\n\n**Latest tutos by ${user.username}** ([how to write a tuto?](${profile.tutorial_add_link}))`
 
             for (const tutorial of profile.tutorials) {
