@@ -22,8 +22,6 @@ class FeedMonitor {
         }
 
         await client.databaseRef.child('feeds_cache').set(links)
-
-        await this.process()
     }
 
     async process() {
