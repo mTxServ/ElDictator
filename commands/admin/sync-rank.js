@@ -23,7 +23,7 @@ module.exports = class SyncRankCommand extends mTxServCommand {
         let page = 0
         let players = []
 
-        await this.client.ranker.resetScoresOfGuild(msg.guild.id)
+        //await this.client.ranker.resetScoresOfGuild(msg.guild.id)
 
         do {
             console.log(`fetch page ${page}`)
