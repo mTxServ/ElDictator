@@ -52,7 +52,6 @@ module.exports = class GiveawayCommand extends mTxServCommand {
             embed.addField('Comment participer?', `[Participer au giveaway](${this.client.options.invite})`)
         }
 
-
         const giveawayMsg = await msg.say({
             embed
         });
