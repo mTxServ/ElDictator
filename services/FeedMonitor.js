@@ -21,12 +21,16 @@ class FeedMonitor {
             }
         }
 
-        client.settings.set('feed_articles', links)
+        await client.databaseRef.child('feeds_cache').set(links)
+
+        await this.process()
     }
 
     async process() {
         const links = [];
-        let oldArticles = client.settings.get('feed_articles', [])
+
+        const snapshot = await client.databaseRef.child('feeds_cache').once("value")
+        let oldArticles = snapshot.val()
 
         for (const feed of this.feeds) {
             const results = await this.rssFeeder.get(feed.url)
@@ -96,7 +100,7 @@ class FeedMonitor {
             }
         }
 
-        client.settings.set('feed_articles', links)
+        await client.databaseRef.child('feeds_cache').set(links)
     }
 }
 

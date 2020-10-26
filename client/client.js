@@ -17,5 +17,11 @@ module.exports = class mTxServClient extends CommandoClient {
             { type: 'PLAYING', name: `${process.env.BOT_COMMAND_PREFIX}help | mTxServ.com`},
             { type: 'PLAYING', name: 'Server by mTxServ.com' },
         ])
+
+        const { firebaseApp, database, databaseRef } = require('../firebase.js');
+
+        this.firebaseApp = firebaseApp
+        this.database = database
+        this.databaseRef = databaseRef
     }
 };

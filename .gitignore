@@ -4,4 +4,4 @@
 node_modules/
 *.sqlite3
 *.db
-
+firebase-account.json

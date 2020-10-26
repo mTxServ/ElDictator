@@ -9,3 +9,4 @@ services:
       - ./:/bot:rw,cached
     env_file:
       - .env.dist
+    dns: 1.1.1.1

@@ -22,7 +22,6 @@ const client = global.client = new Client({
     feeds: require('./feeds.json')
 });
 
-
 const setProvider = async () => {
     await client.setProvider(
         sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => new SQLiteProvider(db)).catch(console.error)

@@ -8,7 +8,7 @@
   "bug": {
     "url": "https://github.com/mTxServ/ElDictator/issues"
   },
-  "script": {
+  "scripts": {
     "start": "nodejs bot.js",
     "start-dev": "nodejs bot.js -dev"
   },
@@ -20,6 +20,7 @@
     "discord.js-commando": "discordjs/Commando",
     "discord.js-pagination": "^1.0.2",
     "dotenv": "^8.2.0",
+    "firebase-admin": "^9.3.0",
     "flexsearch": "^0.6.32",
     "get-urls": "^10.0.0",
     "got": "^11.7.0",
