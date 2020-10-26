@@ -23,16 +23,16 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
         ;
     }
 
-    resolveLangOfMessage(msg) {
+    async resolveLangOfMessage(msg) {
         if (msg.channel.type !== 'dm') {
-            return this.getLangOfChannel(msg.channel)
+            return await this.getLangOfChannel(msg.channel)
         }
 
         return this.getLangOfMember(msg.member)
     }
 
-    getLangOfChannel(channel) {
-        const guildConf = this.client.guildSettings.language(channel.guild.id)
+    async getLangOfChannel(channel) {
+        const guildConf = await this.client.provider.get(channel.guild.id, 'language', process.env.DEFAULT_LANG)
 
         if (!channel || !channel.parentID) {
             return guildConf;

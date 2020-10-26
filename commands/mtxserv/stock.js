@@ -27,7 +27,7 @@ module.exports = class StockCommand extends mTxServCommand {
     }
 
     async run(msg, { type }) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`);
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`);
 
         const pop = [
             {

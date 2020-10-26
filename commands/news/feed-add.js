@@ -44,7 +44,7 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
     }
 
     async run(msg, {tag, channelId, locale}) {
-        const userLang = this.resolveLangOfMessage(msg)
+        const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
         const isAllowed = msg.member.hasPermission('ADMINISTRATOR')

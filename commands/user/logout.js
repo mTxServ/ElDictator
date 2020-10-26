@@ -18,8 +18,8 @@ module.exports = class LogoutCommand extends mTxServCommand {
         });
     }
 
-    run(msg) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
+    async run(msg) {
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`)
 
         const api = new mTxServApi()
         const isAuthenticated = api.isAuthenticated(msg.author.id)

@@ -27,7 +27,7 @@ module.exports = class DocDarkRPCommand extends mTxServCommand {
     }
 
     async run(msg, { query }) {
-        const userLang = this.resolveLangOfMessage(msg)
+        const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`);
 
         const api = new DarkRPApi();

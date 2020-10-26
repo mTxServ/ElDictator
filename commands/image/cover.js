@@ -33,6 +33,6 @@ module.exports = class CoverGeneratorCommand extends mTxServCommand {
 
     async run(msg, { title, backgroundUrl }) {
         const api = new CoverGeneratorApi();
-        return api.start(this.resolveLangOfMessage(msg), msg, title, backgroundUrl);
+        return api.start(await this.resolveLangOfMessage(msg), msg, title, backgroundUrl);
     }
 };

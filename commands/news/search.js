@@ -35,7 +35,7 @@ module.exports = class HowToSearchCommand extends mTxServCommand {
     }
 
     async run(msg, { query, locale }) {
-        const userLang = locale === 'all' ? this.resolveLangOfMessage(msg) : locale || this.resolveLangOfMessage(msg);
+        const userLang = locale === 'all' ? await this.resolveLangOfMessage(msg) : locale || await this.resolveLangOfMessage(msg);
         const lang = require(`../../languages/${userLang}.json`);
 
         const api = new HowToApi()

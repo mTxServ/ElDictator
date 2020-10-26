@@ -15,7 +15,7 @@ module.exports = class FeedCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`)
 
         const games = [
             {

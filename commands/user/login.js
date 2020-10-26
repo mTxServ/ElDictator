@@ -21,7 +21,7 @@ module.exports = class LoginCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const userLang = this.resolveLangOfMessage(msg)
+        const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
         const api = new mTxServApi()

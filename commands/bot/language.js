@@ -26,7 +26,7 @@ module.exports = class LanguageCommand extends mTxServCommand {
     }
 
     run(msg, {language}) {
-        this.client.guildSettings.setLanguage(msg.guild.id, language)
+        this.client.provider.set(msg.guild.id, 'language', language)
         const lang = require(`../../languages/${language}.json`)
         return this.saySuccess(msg, lang['language']['updated'].replace('%lang%', language))
     }

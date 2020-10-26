@@ -27,7 +27,7 @@ module.exports = class DocGluaCommand extends mTxServCommand {
     }
 
     async run(msg, { query }) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`);
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`);
 
         const api = new HostingerApi()
         const results = await api.search(query)

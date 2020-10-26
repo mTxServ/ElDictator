@@ -27,7 +27,7 @@ module.exports = class GameServerStatusARKCommand extends mTxServCommand {
 
     async run(msg, { address}) {
         const api = new GameServerApi()
-        const embed = await api.generateEmbed(msg, 'ark', address, this.resolveLangOfMessage(msg))
+        const embed = await api.generateEmbed(msg, 'ark', address, await this.resolveLangOfMessage(msg))
 
         return msg.say({
             embed

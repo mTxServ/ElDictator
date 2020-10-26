@@ -18,7 +18,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`);
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`);
 
         const prizes = [
             '1x [VPS SSD 4 Go](https://mtxserv.com/fr/vps-ssd) - 1 mois',

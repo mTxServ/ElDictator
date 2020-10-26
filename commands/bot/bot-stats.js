@@ -14,8 +14,8 @@ module.exports = class BotStatsCommand extends mTxServCommand {
         });
     }
 
-    run(msg) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
+    async run(msg) {
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`)
         return this.sayMessage(msg, lang['stats']['servers'].replace('%count%', formatNumber(this.client.guilds.cache.size)))
     }
 };

@@ -29,7 +29,7 @@ module.exports = class GameServerListCommand extends mTxServCommand {
     }
 
     async run(msg, {game}) {
-        const userLang = this.resolveLangOfMessage(msg)
+        const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
         game = GameApi.translateGameSlug(game.toLowerCase())

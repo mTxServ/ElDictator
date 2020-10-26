@@ -22,7 +22,7 @@ module.exports = class GameServerListCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const userLang = this.resolveLangOfMessage(msg)
+        const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
         let gameServers = this.client.guildSettings.gameServers(msg.guild.id)

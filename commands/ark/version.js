@@ -20,7 +20,7 @@ module.exports = class ArkVersionCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`)
 
         const api = new ARKApi()
         const latestVersion = await api.latestVersion()

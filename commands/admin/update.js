@@ -17,8 +17,8 @@ module.exports = class ExecCommand extends mTxServCommand {
         });
     }
 
-    run(msg) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`);
+    async run(msg) {
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`);
 
         return this
             .sayWarning(msg, lang['bot_update']['confirm'])

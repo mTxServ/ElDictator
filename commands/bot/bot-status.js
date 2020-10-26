@@ -18,13 +18,13 @@ module.exports = class BotStatusCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        let language = this.resolveLangOfMessage(msg)
+        let language = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${language}.json`)
 
         const memberTotal = this.client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)
 
         if (msg.channel.type !== 'dm') {
-            language = this.client.guildSettings.language(msg.guild.id)
+            language = await this.client.provider.get(msg.guild.id, 'language', process.env.DEFAULT_LANG)
         }
 
         const embed = new Discord.MessageEmbed()

@@ -28,7 +28,7 @@ module.exports = class DocGluaCommand extends mTxServCommand {
     }
 
     async run(msg, { query }) {
-        const userLang = this.resolveLangOfMessage(msg)
+        const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`);
         const url = "https://wiki.facepunch.com/gmod/";
 

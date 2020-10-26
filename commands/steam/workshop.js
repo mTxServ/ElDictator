@@ -29,8 +29,8 @@ module.exports = class WorkshopCommand extends mTxServCommand {
         });
     }
 
-    run(msg, { query }) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg) }.json`);
+    async run(msg, { query }) {
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg) }.json`);
         const steamWorkshop = new SteamWorkshop()
 
         steamWorkshop.queryFiles({

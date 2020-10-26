@@ -5,14 +5,6 @@ const RANK_SCORES = `g_scores_%id%`
 const USER_BADGES = `u_badges_%id%_%userid%`
 
 module.exports = class GuildSetting {
-    language(guidId) {
-        return client.provider.sqlite.get(null, LANGUAGE.replace('%id%', guidId), process.env.DEFAULT_LANG)
-    }
-
-    setLanguage(guildId, language) {
-        client.provider.sqlite.set(null, LANGUAGE.replace('%id%', guildId), language)
-    }
-
     gameServers(guildId) {
         return client.provider.sqlite.get(null, GAME_SERVER_LIST.replace('%id%', guildId), [])
     }

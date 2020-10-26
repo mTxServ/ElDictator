@@ -14,7 +14,7 @@ module.exports = class GameSoftwareSnapshotCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const userLang = this.resolveLangOfMessage(msg);
+        const userLang = await this.resolveLangOfMessage(msg);
         const lang = require(`../../languages/${userLang}.json`);
         const baseUrl = userLang == 'fr' ? 'https://mtxserv.com/fr/minecraft-versions': 'https://mtxserv.com/minecraft-versions';
 

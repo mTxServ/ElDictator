@@ -19,7 +19,7 @@ module.exports = class SupportCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const userLang = this.resolveLangOfMessage(msg)
+        const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
         const embed = new Discord.MessageEmbed()

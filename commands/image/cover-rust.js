@@ -26,6 +26,6 @@ module.exports = class CoverGeneratorRustCommand extends mTxServCommand {
 
     async run(msg, { title}) {
         const api = new CoverGeneratorApi();
-        return api.start(this.resolveLangOfMessage(msg), msg, title, api.getRandomBackgroundOfGame('rust'));
+        return api.start(await this.resolveLangOfMessage(msg), msg, title, api.getRandomBackgroundOfGame('rust'));
     }
 };

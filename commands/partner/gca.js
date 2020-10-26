@@ -19,7 +19,7 @@ module.exports = class GCACommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`)
 
         const embed = new Discord.MessageEmbed()
             .setAuthor('Game Creators Area', 'https://g-ca.fr/favicon.ico', 'https://discord.gg/bjDJJjy')

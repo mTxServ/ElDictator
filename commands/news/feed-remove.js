@@ -28,7 +28,7 @@ module.exports = class FeedAddCommand extends mTxServCommand {
     }
 
     async run(msg, {tag, channelId}) {
-        const userLang = this.resolveLangOfMessage(msg)
+        const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
         const isAllowed = msg.member.hasPermission('ADMINISTRATOR')

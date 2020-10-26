@@ -16,8 +16,8 @@ module.exports = class BotStopCommand extends mTxServCommand {
         });
     }
 
-    run(msg) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`);
+    async run(msg) {
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`);
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(`${this.client.user.tag}`, `${this.client.user.displayAvatarURL()}`)

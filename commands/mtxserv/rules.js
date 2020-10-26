@@ -18,7 +18,7 @@ module.exports = class SocialCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`);
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`);
 
         const embed = new Discord.MessageEmbed()
             .setTitle(lang['rules']['title'])

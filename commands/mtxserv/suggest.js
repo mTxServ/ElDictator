@@ -25,7 +25,7 @@ module.exports = class SuggestCommand extends mTxServCommand {
     }
 
     async run(msg, {suggestion}) {
-        const userLang = this.resolveLangOfMessage(msg)
+        const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
         const channelId = userLang == 'fr' ? process.env.SUGGEST_CHANNEL_ID_FR : process.env.SUGGEST_CHANNEL_ID_EN

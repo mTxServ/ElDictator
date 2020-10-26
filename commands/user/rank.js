@@ -33,7 +33,7 @@ module.exports = class RankCommand extends mTxServCommand {
     }
 
     async run(msg, {user}) {
-        const lang = require(`../../languages/${this.resolveLangOfMessage(msg)}.json`)
+        const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`)
         const input = user
 
         if (user.length) {
