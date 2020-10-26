@@ -97,10 +97,10 @@ module.exports = class RankCommand extends mTxServCommand {
 
         if (typeof profile.tutorials === 'array' && profile.tutorials.length) {
             description += `\n\n**Latest tutos by ${user.username}** ([how to write a tuto?](${profile.tutorial_add_link}))`
-        }
 
-        for (const tutorial of profile.tutorials) {
-            description += `\n✓ [${tutorial.title}](${tutorial.link})`
+            for (const tutorial of profile.tutorials) {
+                description += `\n✓ [${tutorial.title}](${tutorial.link})`
+            }
         }
 
         description = profile.about ? description : description + "\n\n[Edit my profile](https://mtxserv.com/fr/mon-compte)"
