@@ -6,15 +6,15 @@ const USER_BADGES = `u_badges_%id%_%userid%`
 
 module.exports = class GuildSetting {
     language(guidId) {
-        return client.settings.get(LANGUAGE.replace('%id%', guidId), process.env.DEFAULT_LANG)
+        return client.provider.sqlite.get(null, LANGUAGE.replace('%id%', guidId), process.env.DEFAULT_LANG)
     }
 
     setLanguage(guildId, language) {
-        client.settings.set(LANGUAGE.replace('%id%', guildId), language)
+        client.provider.sqlite.set(null, LANGUAGE.replace('%id%', guildId), language)
     }
 
     gameServers(guildId) {
-        return client.settings.get(GAME_SERVER_LIST.replace('%id%', guildId), [])
+        return client.provider.sqlite.get(null, GAME_SERVER_LIST.replace('%id%', guildId), [])
     }
 
     addGameServer(guildId, gameServer) {
@@ -22,16 +22,16 @@ module.exports = class GuildSetting {
             .filter(gs => gs.address !== gameServer.address)
 
         gameServers.push(gameServer)
-        
-        client.settings.set(GAME_SERVER_LIST.replace('%id%', guildId), gameServers)
+
+        client.provider.sqlite.set(null, GAME_SERVER_LIST.replace('%id%', guildId), gameServers)
     }
 
     clearGameServers(guildId) {
-        client.settings.set(GAME_SERVER_LIST.replace('%id%', guildId), [])
+        client.provider.sqlite.set(null, GAME_SERVER_LIST.replace('%id%', guildId), [])
     }
 
     susbribedServersOfTag(tagName) {
-        return client.settings.get(FEED_SUB_CHANNELS.replace('%tag%', tagName), [])
+        return client.provider.sqlite.get(null, FEED_SUB_CHANNELS.replace('%tag%', tagName), [])
     }
 
     subscribeToTag(guildId, tagName, channelId, locale) {
@@ -44,14 +44,14 @@ module.exports = class GuildSetting {
             locale: locale
         })
 
-        client.settings.set(FEED_SUB_CHANNELS.replace('%tag%', tagName), servers)
+        client.provider.sqlite.set(null, FEED_SUB_CHANNELS.replace('%tag%', tagName), servers)
     }
 
     unsubscribeToTag(guildId, tagName) {
         const servers = this.susbribedServersOfTag(tagName)
             .filter(server => server.guildId !== guildId)
 
-        client.settings.set(FEED_SUB_CHANNELS.replace('%tag%', tagName), servers)
+        client.provider.sqlite.set(null, FEED_SUB_CHANNELS.replace('%tag%', tagName), servers)
     }
 
     hasSubscribeToTag(guildId, tagName) {
@@ -66,18 +66,18 @@ module.exports = class GuildSetting {
     }
 
     getScoresOfGuild(guidId) {
-        return JSON.parse(client.settings.get(RANK_SCORES.replace('%id%', guidId), '{}'))
+        return JSON.parse(client.provider.sqlite.get(null, RANK_SCORES.replace('%id%', guidId), '{}'))
     }
 
     setScoresOfGuild(guidId, scores) {
-        client.settings.set(RANK_SCORES.replace('%id%', guidId), JSON.stringify(scores))
+        client.provider.sqlite.set(null, RANK_SCORES.replace('%id%', guidId), JSON.stringify(scores))
     }
 
     getBadgesOfUser(guidId, userId) {
-        return client.settings.get(USER_BADGES.replace('%id%', guidId).replace('%userid%', userId), [])
+        return client.provider.sqlite.get(null, USER_BADGES.replace('%id%', guidId).replace('%userid%', userId), [])
     }
 
     setBadgesOfUser(guidId, userId, badges) {
-        client.settings.set(USER_BADGES.replace('%id%', guidId).replace('%userid%', userId), badges)
+        client.provider.sqlite.set(null, USER_BADGES.replace('%id%', guidId).replace('%userid%', userId), badges)
     }
 };

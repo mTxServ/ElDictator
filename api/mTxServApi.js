@@ -26,19 +26,19 @@ class mTxServApi {
             throw new Error(`user ${authorId} isn't authenticated, can't get credentials`)
         }
 
-        return client.settings.get(`auth_${authorId}`)
+        return client.provider.sqlite.get(null, `auth_${authorId}`)
     }
 
     setCredential(authorId, credentials) {
-        client.settings.set(`auth_${authorId}`, credentials)
+        client.provider.sqlite.set(null, `auth_${authorId}`, credentials)
     }
 
     isAuthenticated(authorId) {
-        return client.settings.get(`auth_${authorId}`, false) !== false
+        return client.provider.sqlite.get(null, `auth_${authorId}`, false) !== false
     }
 
     logout(authorId) {
-        client.settings.remove(`auth_${authorId}`)
+        client.provider.sqlite.remove(`auth_${authorId}`)
     }
 
     async call(accessToken, uri) {

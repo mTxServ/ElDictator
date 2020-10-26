@@ -33,7 +33,8 @@ module.exports = class DocGluaCommand extends mTxServCommand {
         const url = "https://wiki.facepunch.com/gmod/";
 
         try {
-            let hrefs = this.client.settings.get('glua', false)
+            let hrefs = await this.client.settings.get('cache_glua', false)
+
             if (!hrefs) {
                 const browser = await puppeteer.launch({
                     headless: true,
@@ -50,7 +51,7 @@ module.exports = class DocGluaCommand extends mTxServCommand {
                 }));
                 await browser.close();
 
-                this.client.settings.set('glua', hrefs)
+                this.client.settings.set('cache_glua', hrefs)
             }
 
             const index = new FlexSearch();

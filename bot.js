@@ -1,8 +1,6 @@
 const path = require('path')
 const fs = require('fs')
 const dotenv = require('dotenv')
-const { SQLiteProvider } = require('discord.js-commando')
-const sqlite = require('sqlite')
 const Client = require('./client/client')
 
 // load local env configuration
@@ -22,13 +20,7 @@ const client = global.client = new Client({
     feeds: require('./feeds.json')
 });
 
-const setProvider = async () => {
-    await client.setProvider(
-        sqlite.open(path.join(__dirname, 'settings.sqlite3')).then(db => new SQLiteProvider(db)).catch(console.error)
-    ).catch(console.error);
-}
-
-setProvider();
+client.initProvider()
 
 fs.readdir('./events/', (err, files) => {
     if (err) return console.error(err);
