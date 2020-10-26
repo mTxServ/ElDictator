@@ -1,16 +1,23 @@
 const Discord = require('discord.js')
 
 class Ranker {
-    getScoresOfGuild(guildId) {
-        return client.guildSettings.getScoresOfGuild(guildId)
+    async getScoresOfGuild(guildId) {
+        return await client.provider.get(guildId, 'scores', [])
     }
 
-    resetScoresOfGuild(guildId) {
-        return client.guildSettings.setScoresOfGuild(guildId, {})
+    async resetScoresOfGuild(guildId) {
+        return await client.provider.remove(guildId, 'scores')
     }
 
-    getScoresOfUser(guildId, user, initIfNotFound) {
-        const currentScores = this.getScoresOfGuild(guildId)
+    async setScoresOfUser(guildId, userId, scores) {
+        const currentScores = await this.getScoresOfGuild(guildId)
+        currentScores[userId] = scores
+
+        await client.provider.set(guildId, 'scores', currentScores)
+    }
+
+    async getScoresOfUser(guildId, user, initIfNotFound) {
+        const currentScores = await this.getScoresOfGuild(guildId)
         if (initIfNotFound && typeof currentScores[user.id] === 'undefined') {
             return {
                 points: 0,
@@ -24,15 +31,8 @@ class Ranker {
         return typeof currentScores[user.id] !== 'undefined' ? currentScores[user.id] : null;
     }
 
-    setScoresOfUser(guildId, userId, scores) {
-        const currentScores = this.getScoresOfGuild(guildId)
-        currentScores[userId] = scores
-
-        client.guildSettings.setScoresOfGuild(guildId, currentScores)
-    }
-
-    processMessage(msg) {
-        const currentScores = client.ranker.getScoresOfUser(msg.guild.id, msg.author, true)
+    async processMessage(msg) {
+        const currentScores = await this.getScoresOfUser(msg.guild.id, msg.author, true)
         const oldLevel = currentScores.level
 
         // increments scores
@@ -42,7 +42,7 @@ class Ranker {
         currentScores.level = newLevel;
 
         // save
-        this.setScoresOfUser(msg.guild.id, msg.author.id, currentScores)
+        await this.setScoresOfUser(msg.guild.id, msg.author.id, currentScores)
 
         // notify levels
         if (currentScores.level > oldLevel) {

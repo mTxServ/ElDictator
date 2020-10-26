@@ -23,7 +23,7 @@ module.exports = class SyncRankCommand extends mTxServCommand {
         let page = 0
         let players = []
 
-        this.client.ranker.resetScoresOfGuild(msg.guild.id)
+        await this.client.ranker.resetScoresOfGuild(msg.guild.id)
 
         do {
             console.log(`fetch page ${page}`)
@@ -44,7 +44,7 @@ module.exports = class SyncRankCommand extends mTxServCommand {
                     lastMessage: new Date().getTime()
                 }
 
-                this.client.ranker.setScoresOfUser(msg.guild.id, player.id, scores)
+                await this.client.ranker.setScoresOfUser(msg.guild.id, player.id, scores)
             }
 
             page++

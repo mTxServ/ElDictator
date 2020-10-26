@@ -21,7 +21,7 @@ module.exports = class RanksCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        const topMembers = Object.values(this.client.ranker.getScoresOfGuild(msg.guild.id))
+        const topMembers = Object.values(await this.client.ranker.getScoresOfGuild(msg.guild.id))
             .sort((a, b) => (a.points < b.points) ? 1 : -1 )
             .slice(0, 10)
 

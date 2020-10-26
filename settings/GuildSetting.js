@@ -56,20 +56,4 @@ module.exports = class GuildSetting {
         return this.susbribedServersOfTag(tagName)
             .filter(server => server.guildId === guildId)
     }
-
-    getScoresOfGuild(guidId) {
-        return JSON.parse(client.provider.sqlite.get(null, RANK_SCORES.replace('%id%', guidId), '{}'))
-    }
-
-    setScoresOfGuild(guidId, scores) {
-        client.provider.sqlite.set(null, RANK_SCORES.replace('%id%', guidId), JSON.stringify(scores))
-    }
-
-    getBadgesOfUser(guidId, userId) {
-        return client.provider.sqlite.get(null, USER_BADGES.replace('%id%', guidId).replace('%userid%', userId), [])
-    }
-
-    setBadgesOfUser(guidId, userId, badges) {
-        client.provider.sqlite.set(null, USER_BADGES.replace('%id%', guidId).replace('%userid%', userId), badges)
-    }
 };

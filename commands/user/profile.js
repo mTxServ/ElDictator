@@ -45,7 +45,7 @@ module.exports = class RankCommand extends mTxServCommand {
 
         user = user ? user : msg.author
 
-        const userScores = this.client.ranker.getScoresOfUser(msg.guild.id, user, true)
+        const userScores = await this.client.ranker.getScoresOfUser(msg.guild.id, user, true)
         const embed = new Discord.MessageEmbed()
             .setThumbnail(user.avatarURL())
             .setColor('#A4F2DF')

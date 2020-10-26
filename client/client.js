@@ -3,7 +3,6 @@ const FeedMonitor = require('../services/FeedMonitor')
 const GuildSetting = require('../settings/GuildSetting')
 const StatusUpdater = require('@tmware/status-rotate')
 const Ranker = require('../services/Ranker')
-const BadgeManager = require('../services/BadgeManager')
 const FirebaseProvider = require('../provider/FirebaseProvider')
 const sqlite = require('sqlite')
 const path = require('path')
@@ -15,7 +14,6 @@ module.exports = class mTxServClient extends CommandoClient {
         this.feedMonitor = new FeedMonitor(options.feeds);
         this.guildSettings = new GuildSetting()
         this.ranker = new Ranker()
-        this.badger = new BadgeManager()
 
         this.statusUpdater = new StatusUpdater(this, [
             { type: 'PLAYING', name: `${process.env.BOT_COMMAND_PREFIX}help | mTxServ.com`},
