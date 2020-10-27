@@ -11,8 +11,9 @@ module.exports = {
             .setDescription(`Thanks for adding me, i successfully joined your server \`${guild.name}\`. To see all commands, use \`m!help\`.\n\nSet the main language for your server with \`m!bot-lang en\` or \`m!bot-lang fr\` in a channel.\n\n**__Game Server Status__**\nTo enable the command \`m!servers\` on your discord server, use \`m!add-server\` to configure it, in a channel.\n\n**__Follow your favorites games__**\nThe bot can post new articles in english or/and french, about your favorites games, in a specified channel. To configure it, use \`m!feeds\` in a channel.`)
         ;
 
-        guild
-            .ownerID
+        const owner = client.users.cache.get(guild.ownerID)
+
+        owner
             .send({
                 embed: embed
             })
