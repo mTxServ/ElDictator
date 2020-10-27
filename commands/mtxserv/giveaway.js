@@ -33,6 +33,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
             '> **+10 points**・Retweetez le [message sur twitter](https://twitter.com/mTxServ) et suivez le compte [@mTxServ](https://twitter.com/mTxServ)',
             '> **+10 points**・Partager le giveaway sur discord  avec \`m!giveaway\` (le <#769619263078006844> doit être sur votre serveur)',
             '> **+30 points**・Boostez le serveur discord de mTxServ',
+            '> **+30 points**・Suivez le channel <#563304015924953108> sur votre serveur discord',
         ]
 
         const reaction = ':alarm_clock:'
