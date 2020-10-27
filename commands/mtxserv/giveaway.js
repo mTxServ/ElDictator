@@ -47,7 +47,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
         ;
 
         if (this.client.isMainGuild(msg.guild.id)) {
-            embed.setDescription(`Tirage au sort le **${endDate}**\n\n:four_leaf_clover: **Participer et Augmenter ses chances** :four_leaf_clover:\n\n${actions.join('\n')}\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
+            embed.setDescription(`@everyone Tirage au sort le **${endDate}**\n\n:four_leaf_clover: **Participer et Augmenter ses chances** :four_leaf_clover:\n\n${actions.join('\n')}\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
         } else {
             embed.setDescription(`**Pour participer** au giveaway organisé par [mTxServ](https://mtxserv.com/fr/), rendez-vous dans <#563304015924953108> (ou utilisez cette [invitation pour le discord du giveaway](${this.client.options.invite})).\n\n${reaction} Tirage au sort le **${endDate}**\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
             embed.addField('Comment participer?', `[Rejoindre le discord du giveaway](${this.client.options.invite})`)
