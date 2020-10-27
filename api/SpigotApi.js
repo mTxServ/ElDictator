@@ -1,6 +1,6 @@
 const got = require('got');
 
-const makeURL = (query) => `https://mtxserv.com/api/v1/articles/?query=${encodeURIComponent(query)}`;
+const makeURL = (query) => `https://mtxserv.com/api/v1/spigot/search?query=${encodeURIComponent(query)}`;
 
 class SpigotAPi {
     async search(query) {
