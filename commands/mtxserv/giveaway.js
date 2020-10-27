@@ -49,6 +49,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
         let giveawayMsg = null
 
         if (this.client.isMainGuild(msg.guild.id)) {
+            return
             giveawayMsg = await msg.channel.send(
                 `Tirage au sort le **${endDate}**\n\n:four_leaf_clover: **Participer et Augmenter ses chances** :four_leaf_clover:\n\n${actions.join('\n')}\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`
             )
