@@ -1,5 +1,5 @@
 const mTxServCommand = require('../mTxServCommand.js')
-const HowToApi = require('../../api/HowToApi')
+const SpigotApi = require('../../api/SpigotApi.js')
 const Discord = require('discord.js')
 
 module.exports = class SpigotSearchCommand extends mTxServCommand {
@@ -35,7 +35,7 @@ module.exports = class SpigotSearchCommand extends mTxServCommand {
         const results = await api.search(query)
 
         const embed = new Discord.MessageEmbed()
-            .setTitle(`:mag: ${lang['spigot_search']['search']} *${query}*`)
+            .setTitle(`:mag: ${lang['plugin_search']['search']} *${query}*`)
             .setColor('BLUE')
         ;
 
@@ -44,16 +44,16 @@ module.exports = class SpigotSearchCommand extends mTxServCommand {
         plugins
             .map(plugin => {
                 embed.addField(`${plugin.name}`, `<${plugin.view_url}>` || 'n/a');
-                embed.addField(`${lang['spigot_search']['description']}`, `${plugin.description}` || 'n/a');
+                embed.addField(`${lang['plugin_search']['description']}`, `${plugin.description}` || 'n/a');
             })
         ;
 
-        if (!embed.fields.length) {
-            const helpUrl = userLang == 'fr' ? 'https://mtxserv.com/fr/help': 'https://mtxserv.com/help';
-            embed
-                .setColor('RED')
-                .addField(lang['spigot_search']['no_result'], `${lang['spigot_search']['check']} <${helpUrl}>`);
-        }
+//         if (!embed.fields.length) {
+//             const helpUrl = userLang == 'fr' ? 'https://mtxserv.com/fr/help': 'https://mtxserv.com/help';
+//             embed
+//                 .setColor('RED')
+//                 .addField(lang['spigot_search']['no_result'], `${lang['plugin_search']['check']} <${helpUrl}>`);
+//         }
 
         embed.fields = embed.fields.slice(0, 3);
 
