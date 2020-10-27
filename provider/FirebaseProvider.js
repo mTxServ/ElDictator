@@ -18,9 +18,7 @@ class FirebaseProvider extends SettingProvider {
         this.sqlite = sqliteProvider
     }
 
-    init() {
-        console.log('init provider')
-    }
+    init() {}
 
     /**
      * Gets a value.

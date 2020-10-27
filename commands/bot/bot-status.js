@@ -44,6 +44,12 @@ module.exports = class BotStatusCommand extends mTxServCommand {
             .setFooter(`${formatNumber(this.client.registry.commands.size)} commands - by mTxServ.com`)
         ;
 
+        const suggestsConfig = await this.client.provider.get(msg.guild.id, 'suggest-config', {})
+        const suggestFr = suggestsConfig['fr'] ? `:flag_fr: <#${suggestsConfig['fr']}>` : ':flag_fr: __not configured__'
+        const suggestEn = suggestsConfig['en'] ? `:flag_us: <#${suggestsConfig['en']}>` : ':flag_us: __not configured__'
+
+        embed.addField(`❯ Feedbacks`, `\`m!suggest-set-channel\` to configure.\n・${suggestFr}\n・${suggestEn}`, true)
+
         if(this.parseDependencies().length < 1024) {
             embed.addField('❯ Dependencies', this.parseDependencies());
         } else {

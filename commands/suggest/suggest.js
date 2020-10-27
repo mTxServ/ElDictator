@@ -6,7 +6,7 @@ module.exports = class SuggestCommand extends mTxServCommand {
         super(client, {
             name: 'suggest',
             aliases: ['feedback'],
-            group: 'mtxserv',
+            group: 'bot',
             memberName: 'suggest',
             description: 'Submit a feedback',
             clientPermissions: ['SEND_MESSAGES'],
@@ -28,7 +28,15 @@ module.exports = class SuggestCommand extends mTxServCommand {
         const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
-        const channelId = userLang == 'fr' ? process.env.SUGGEST_CHANNEL_ID_FR : process.env.SUGGEST_CHANNEL_ID_EN
+        const currentConfig = await this.client.provider.get(msg.guild.id, 'suggest-config', {})
+
+        if (typeof currentConfig[userLang] === 'undefined') {
+            return this.sayError(msg, 'Feedbacks are not configured on this server. Use `m!suggest-set-channel` to configure it.')
+        }
+
+        if (!this.client.channels.cache.has(currentConfig[userLang])) {
+            return this.sayError(msg, `The feedback channel \`${currentConfig[userLang]}\` doesn't exist. Use \`m!suggest-set-channel ${userLang}\` to reconfigure it.`)
+        }
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(`${msg.author.tag}`, `${msg.author.displayAvatarURL()}`)
@@ -46,7 +54,7 @@ module.exports = class SuggestCommand extends mTxServCommand {
         msg.delete()
 
         const resMsg = await this.client.channels.cache
-            .get(channelId)
+            .get(currentConfig[userLang])
             .send({ embed })
         ;
 
