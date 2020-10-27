@@ -151,5 +151,10 @@
     "players_ranking": ":video_game: Note des joueurs",
     "rank": ":medal: Classement",
     "view_more": "Voir la fiche serveur"
+  },
+  "plugin_search": {
+    "search": "Recherche",
+    "no_result": ":no_entry_sign: Aucun résultat trouvé",
+    "description": "Description :",
   }
 }
