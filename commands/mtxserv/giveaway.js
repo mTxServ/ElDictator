@@ -64,6 +64,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
         if (!this.client.isMainGuild(msg.guild.id)) {
             await this.client.provider.set(isDev ? 'giveaway_msg_dev' : 'giveaway_msg', msg.author.id, {
                 guildId: msg.guild.id,
+                guildName: msg.guild.name,
                 messageId: giveawayMsg.id
             })
         }
