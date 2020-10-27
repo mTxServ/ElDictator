@@ -7,7 +7,7 @@
 
 El Dictator is the official bot of [mTxServ.com](https://mtxserv.com), he contain a lot of commands to help you to manage your game servers (minecraft, ark, gmod, rust, fivem, etc) and your vps.
 
-You can invite the bot in your own discord server with this [link](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=604892353&scope=bot).
+You can invite the bot in your own discord server with this [link](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot).
 
 Main features:
 * create your gameservers list on discord for your members
@@ -44,7 +44,7 @@ This bot was created with `discord.js`, `discord commando` and use a `firebase` 
 ## Invite
 
 - [Support Server](https://discord.gg/hQNpp7c)
-- [Invite](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=604892353&scope=bot)
+- [Invite](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot)
 
 ## Screenshots
 ![GameServer Command](https://github.com/mTxServ/ElDictator/raw/main/doc/servers.png)
