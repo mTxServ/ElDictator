@@ -25,8 +25,10 @@ module.exports = {
         }
 
         // share/img channels
-        if (msg.channel.id === process.env.SHARE_CHANNEL_ID_FR
-            || msg.channel.id === process.env.SHARE_CHANNEL_ID_EN) {
+        if (
+            client.isMainGuild(msg.guild.id)
+            && ( -1 !== msg.channel.name.indexOf('-stream') || -1 !== msg.channel.name.indexOf('-images-liens'))
+        ) {
             msg.react('👍').catch(console.error);
             msg.react('👎').catch(console.error);
             msg.react('🤷').catch(console.error);
@@ -37,7 +39,7 @@ module.exports = {
 
         // gameservers pub
         if (
-            (msg.guild.id === '529605510219956233' || msg.guild.id === '726178170314817630' || msg.guild.id === '539501579137581071')
+            client.isMainGuild(msg.guild.id)
             && ( -1 !== msg.channel.name.indexOf('-pub-serveurs')
                 || -1 !== msg.channel.name.indexOf('-servers-pub')
                 || -1 !== msg.channel.name.indexOf('-pub-addons')

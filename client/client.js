@@ -19,6 +19,12 @@ module.exports = class mTxServClient extends CommandoClient {
             { type: 'PLAYING', name: `${process.env.BOT_COMMAND_PREFIX}help | mTxServ.com`},
             { type: 'PLAYING', name: 'Server by mTxServ.com' },
         ])
+
+        this.mainGuilds = [
+            '529605510219956233',
+            '726178170314817630',
+            '539501579137581071'
+        ]
     }
 
     async initProvider() {
@@ -32,5 +38,9 @@ module.exports = class mTxServClient extends CommandoClient {
                 const provider = new FirebaseProvider(sqlite)
                 self.setProvider(provider).catch(console.error)
             })
+    }
+
+    isMainGuild(guildId) {
+        return -1 !== this.mainGuilds.indexOf(guildId)
     }
 };
