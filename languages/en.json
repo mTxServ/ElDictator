@@ -151,5 +151,10 @@
     "players_ranking": ":video_game: Players Rating",
     "rank": ":medal: Rank",
     "view_more": "View the server"
+  },
+  "plugin_search": {
+    "search": "Search",
+    "no_result": ":no_entry_sign: No result found",
+    "description": "Description :",
   }
 }
