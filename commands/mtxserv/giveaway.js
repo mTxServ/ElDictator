@@ -61,7 +61,10 @@ module.exports = class GiveawayCommand extends mTxServCommand {
         msg.delete()
 
         if (!this.client.isMainGuild(msg.guild.id)) {
-            await this.client.provider.set(isDev ? 'giveaway_dev' : 'giveaway', msg.guild.id, giveawayMsg.id)
+            await this.client.provider.set(isDev ? 'giveaway_dev' : 'giveaway', msg.author.id, {
+                guildId: msg.guild.id,
+                messageId: giveawayMsg.id
+            })
         }
 
         return giveawayMsg
