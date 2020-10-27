@@ -10,7 +10,7 @@ module.exports = class AchievmentCommand extends mTxServCommand {
         super(client, {
             name: 'mc-achievment',
             aliases: ['achievment'],
-            group: 'mtxserv',
+            group: 'minecraft',
             memberName: 'mc-achievment',
             description: 'Create minecraft achievment',
             clientPermissions: ['SEND_MESSAGES'],

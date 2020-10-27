@@ -155,6 +155,6 @@
   "plugin_search": {
     "search": "Recherche",
     "no_result": ":no_entry_sign: Aucun résultat trouvé",
-    "description": "Description :",
+    "description": "Description :"
   }
 }

@@ -8,7 +8,7 @@ module.exports = class BukkitSearchCommand extends mTxServCommand {
             name: 'bukkit-search',
             aliases: ['bukkit-plugin'],
             group: 'minecraft',
-            memberName: 'minecraft',
+            memberName: 'bukkit-search',
             description: 'Search a Bukkit plugin.',
             clientPermissions: ['SEND_MESSAGES'],
             guarded: true,
@@ -39,21 +39,11 @@ module.exports = class BukkitSearchCommand extends mTxServCommand {
             .setColor('BLUE')
         ;
 
-        const plugins = Object.values(results);
-
-        plugins
+        Object.values(results)
             .map(plugin => {
-                embed.addField(`${plugin.name}`, `<${plugin.view_url}>` || 'n/a');
-                embed.addField(`${lang['plugin_search']['description']}`, `${plugin.description_en}` || 'n/a');
+                embed.addField(`・ ${plugin.name}`, `${plugin.description_en}\n<${plugin.view_url}>` || 'n/a');
             })
         ;
-
-//         if (!embed.fields.length) {
-//             const helpUrl = userLang == 'fr' ? 'https://mtxserv.com/fr/help': 'https://mtxserv.com/help';
-//             embed
-//                 .setColor('RED')
-//                 .addField(lang['spigot_search']['no_result'], `${lang['plugin_search']['check']} <${helpUrl}>`);
-//         }
 
         embed.fields = embed.fields.slice(0, 3);
 
