@@ -2,127 +2,127 @@
   {
     "url":"https://hytale.game/p/index.rss",
     "icon":"https://hytale.com/favicon.ico",
-    "tags":["game","hytale"],
-    "languages":["fr"],
+    "tags":["hytale"],
+    "language": "fr",
     "channels":[]
   },
   {
     "url":"https://minecraft.fr/feed/",
     "icon":"https://mtxserv.com/build/manager-game/img/game/minecraft.png",
-    "tags":["game","minecraft"],
-    "languages":["fr"],
+    "tags":["minecraft"],
+    "language": "fr",
     "channels":[]
   },
   {
     "url":"https://gmod.facepunch.com/rss/blog",
     "icon":"https://mtxserv.com/build/manager-game/img/game/garry-s-mod.png",
-    "tags":["game","gmod"],
-    "languages":["en"],
+    "tags":["gmod"],
+    "language": "en",
     "channels":[]
   },
   {
     "url":"https://rust.facepunch.com/rss/blog",
     "icon":"https://mtxserv.com/build/manager-game/img/game/rust.png",
-    "tags":["game","rust"],
-    "languages":["en"],
+    "tags":["rust"],
+    "language": "en",
     "channels":[]
   },
   {
     "url":"https://sandbox.facepunch.com/rss/news",
     "icon":null,
-    "tags":["game","sandbox"],
-    "languages":["en"],
+    "tags":["sandbox"],
+    "language": "en",
     "channels":[]
   },
   {
     "url":"https://survivetheark.com/index.php?/rss/3-ark-news.xml/",
     "icon":"https://mtxserv.com/build/manager-game/img/game/ark.png",
-    "tags":["game","ark"],
-    "languages":["en"],
+    "tags":["ark"],
+    "language": "en",
     "channels":[]
   },
   {
     "url":"https://ark-france.fr/rss/1-flux-rss-news.xml/",
     "icon":"https://mtxserv.com/build/manager-game/img/game/ark.png",
-    "tags":["game","ark"],
-    "languages":["fr"],
+    "tags":["ark"],
+    "language": "fr",
     "channels":[]
   },
   {
     "url":"http://feeds2.feedburner.com/vakarm",
     "icon":"https://mtxserv.com/build/manager-game/img/game/counter-strike-global-offensive.png",
-    "tags":["game","csgo"],
-    "languages":["fr"],
+    "tags":["csgo"],
+    "language": "fr",
     "channels":[]
   },
   {
     "url":"https://blog.counter-strike.net/fr/index.php/feed/",
     "icon":"https://mtxserv.com/build/manager-game/img/game/counter-strike-global-offensive.png",
-    "tags":["game","csgo"],
-    "languages":["fr"],
+    "tags":["csgo"],
+    "language": "fr",
     "channels":[]
   },
   {
     "url":"https://blog.counter-strike.net/index.php/feed/",
     "icon":"https://mtxserv.com/build/manager-game/img/game/counter-strike-global-offensive.png",
-    "tags":["game","csgo"],
-    "languages":["en"],
+    "tags":["csgo"],
+    "language": "en",
     "channels":[]
   },
   {
     "url":"https://www.mandatory.gg/news/feed/",
     "icon":null,
-    "tags":["game","valorant"],
-    "languages":["fr"],
+    "tags":["valorant"],
+    "language": "fr",
     "channels":[]
   },
   {
     "url":"https://www.mandatory.gg/en/news/feed/",
     "icon":null,
-    "tags":["game","valorant"],
-    "languages":["fr"],
+    "tags":["valorant"],
+    "language": "fr",
     "channels":[]
   },
   {
     "url":"https://docs.fivem.net/docs/index.xml",
     "icon":null,
-    "tags":["game","fivem"],
-    "languages":["en"],
+    "tags":["fivem"],
+    "language": "en",
     "channels":[]
   },
   {
     "url":"https://feeds.win.gg/news/rss",
     "icon":null,
-    "tags":["game","lol"],
-    "languages":["en"],
+    "tags":["lol"],
+    "language": "en",
     "channels":[]
   },
   {
     "url":"https://www.over.gg/rss",
     "icon":null,
-    "tags":["game","overwatch"],
-    "languages":["en"],
+    "tags":["overwatch"],
+    "language": "en",
     "channels":[]
   },
   {
     "url":"https://fortniteinsider.com/feed/",
     "icon":null,
-    "tags":["game","fortnite"],
-    "languages":["en"],
+    "tags":["fortnite"],
+    "language": "en",
     "channels":[]
   },
   {
     "url":"https://fortnite.jeuxonline.info/rss/actualites/rss.xml",
     "icon":null,
-    "tags":["game","fortnite"],
-    "languages":["fr"],
+    "tags":["fortnite"],
+    "language": "fr",
     "channels":[]
   },
   {
     "url":"https://www.rocketbaguette.com/feed/",
     "icon":null,
-    "tags":["game","rocketleague"],
-    "languages":["fr"],
+    "tags":["rocketleague"],
+    "language": "fr",
     "channels":[]
   }
 ]

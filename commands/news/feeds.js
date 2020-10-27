@@ -1,5 +1,6 @@
 const mTxServCommand = require('../mTxServCommand.js');
 const Discord = require('discord.js');
+const FeedMonitor = require('../../services/FeedMonitor');
 
 module.exports = class FeedCommand extends mTxServCommand {
     constructor(client) {
@@ -78,15 +79,27 @@ module.exports = class FeedCommand extends mTxServCommand {
             .setDescription(lang['feeds']['description'])
         ;
 
-        for (const game of games) {
-            const subscription = this.client.guildSettings.getSubscribeToTag(msg.guild.id, game.key)
 
-            let description = subscription.length ? lang['feeds']['follow'] : lang['feeds']['unfollow']
-            if (subscription.length) {
-                if (subscription[0].locale === 'all') {
-                    description = `:flag_us: :flag_fr: ${description}`
-                } else {
-                    description = `:flag_${subscription[0].locale == 'fr' ? subscription[0].locale : 'us'}: ${description}`
+        for (const game of games) {
+            const followFR = await FeedMonitor.isFollowing(msg.guild.id, game.key, 'fr', false)
+            const followEN = await FeedMonitor.isFollowing(msg.guild.id, game.key, 'en', false)
+            const followAll = await FeedMonitor.isFollowing(msg.guild.id, game.key, 'all', false)
+
+            let description = ''
+
+            if (!followFR && !followEN && !followAll) {
+                description = `*${lang['feeds']['unfollow']}*`
+            } else {
+                if (followAll) {
+                    description = description + `:flag_us: :flag_fr: <#${followAll}>`
+                }
+
+                if(followFR) {
+                    description = description + `${followAll ? '\n' : ''}:flag_fr: <#${followFR}>`
+                }
+
+                if(followEN) {
+                    description = description + `${followAll || followFR ? '\n' : ''}:flag_us: <#${followEN}>`
                 }
             }
 

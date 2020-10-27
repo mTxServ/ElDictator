@@ -17,16 +17,15 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
             guildOnly: true,
             args: [
                 {
-                    key: 'tag',
+                    key: 'game',
                     prompt: 'Which game do you want to follow?',
                     type: 'string',
                     oneOf: ['minecraft', 'ark', 'rust', 'gmod', 'sandbox', 'hytale', 'fivem', 'csgo', 'valorant', 'lol', 'overwatch', 'fortnite', 'rocketleague'],
                 },
                 {
-                    key: 'channelId',
-                    prompt: 'In which channel ID post new articles?',
-                    type: 'string',
-                    validate: text => text.length >= 10,
+                    key: 'channel',
+                    prompt: 'In which channel do you want to post new articles?',
+                    type: 'channel',
                 },
                 {
                     key: 'locale',
@@ -43,7 +42,7 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
         });
     }
 
-    async run(msg, {tag, channelId, locale}) {
+    async run(msg, {game, channel, locale}) {
         const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
@@ -52,13 +51,13 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
             return this.sayError(msg, lang['server_add']['permissions'])
         }
 
-        if (!this.client.channels.cache.has(channelId)) {
-            return this.sayError(msg, 'No channel found with this ID')
-        }
+        await this.client.provider.rootRef
+            .child(msg.guild.id)
+            .child('feeds_suscribed')
+            .child(game)
+            .child(locale)
+            .set(channel.id)
 
-        const channel = this.client.channels.cache.get(channelId)
-        this.client.guildSettings.subscribeToTag(msg.guild.id, tag, channelId, locale)
-
-        return this.saySuccess(msg, `New articles about **${tag.toUpperCase()}** in **${locale === 'all' ? 'all languages' : locale.toUpperCase()}** will be post in channel **${channel.name}**.`)
+        return this.saySuccess(msg, `New articles about **${game.toUpperCase()}** in **${locale === 'all' ? 'all languages' : locale.toUpperCase()}** will be post in channel **${channel.name}**.`)
     }
 };

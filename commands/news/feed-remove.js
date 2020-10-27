@@ -14,7 +14,7 @@ module.exports = class FeedAddCommand extends mTxServCommand {
             guildOnly: true,
             args: [
                 {
-                    key: 'tag',
+                    key: 'game',
                     prompt: 'Which game do you want to follow?',
                     type: 'string',
                     oneOf: ['minecraft', 'ark', 'rust', 'gmod', 'sandbox', 'hytale', 'fivem', 'csgo', 'valorant', 'lol', 'overwatch', 'fortnite', 'rocketleague', 'fifa21', 'cod', 'onset'],
@@ -27,7 +27,7 @@ module.exports = class FeedAddCommand extends mTxServCommand {
         });
     }
 
-    async run(msg, {tag, channelId}) {
+    async run(msg, {game}) {
         const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
@@ -36,8 +36,12 @@ module.exports = class FeedAddCommand extends mTxServCommand {
             return this.sayError(msg, lang['server_add']['permissions'])
         }
 
-        this.client.guildSettings.unsubscribeToTag(msg.guild.id, tag, channelId)
+        await this.client.provider.rootRef
+            .child(msg.guild.id)
+            .child('feeds_suscribed')
+            .child(game)
+            .remove()
 
-        return this.saySuccess(msg, `Game **${tag.toUpperCase()}** unfollowed.`)
+        return this.saySuccess(msg, `Game **${game.toUpperCase()}** unfollowed.`)
     }
 };

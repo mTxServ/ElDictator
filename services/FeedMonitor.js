@@ -9,6 +9,10 @@ class FeedMonitor {
         this.rssFeeder = new RssFeederApi()
     }
 
+    getCacheKey() {
+        return isDev ? 'feeds_cache_dev' : 'feeds_cache'
+    }
+
     async warmup() {
         const links = [];
 
@@ -21,13 +25,13 @@ class FeedMonitor {
             }
         }
 
-        await client.settings.set('feeds_cache', links)
+        await client.settings.set(this.getCacheKey(), links)
     }
 
     async process() {
         const links = [];
 
-        let oldArticles = await client.settings.get('feeds_cache', [])
+        let oldArticles = await client.settings.get(this.getCacheKey(), [])
 
         for (const feed of this.feeds) {
             const results = await this.rssFeeder.get(feed.url)
@@ -64,8 +68,13 @@ class FeedMonitor {
 
                 embed.setDescription(`${content}\n${article.link}`)
 
-                for (const tagName of feed.tags) {
-                    const servers = client.guildSettings.susbribedServersOfTag(tagName)
+                const primaryTag = feed.tags[0]
+
+                for (const guild of client.guilds.cache.array()) {
+                    const followAll = await FeedMonitor.isFollowing(guild.id, primaryTag, 'all', false)
+                    const followLocalized = await FeedMonitor.isFollowing(guild.id, primaryTag, feed.language, false)
+
+                    // send to specified channels configured in feeds.json
                     for (const channelId of feed.channels) {
                         if (!client.channels.cache.has(channelId)) {
                             console.error(`Channel ${channelId} not found`)
@@ -78,18 +87,25 @@ class FeedMonitor {
                         })
                     }
 
-                    for (const server of servers) {
-                        if (server.locale !== 'all' && -1 === feed.languages.indexOf(server.locale)) {
+                    // send to specified guild channel (user conf)
+                    if (followAll) {
+                        if (!client.channels.cache.has(followAll)) {
+                            console.error(`Channel ${followAll} not found`)
                             continue
                         }
 
-                        if (!client.channels.cache.has(server.channelId)) {
-                            console.error(`Channel ${server.channelId} not found`)
+                        client.channels.cache.get(followAll).send({
+                            embed: embed
+                        })
+                    }
+
+                    if (followLocalized) {
+                        if (!client.channels.cache.has(followLocalized)) {
+                            console.error(`Channel ${followLocalized} not found`)
                             continue
                         }
 
-                        const channel = client.channels.cache.get(server.channelId);
-                        channel.send({
+                        client.channels.cache.get(followLocalized).send({
                             embed: embed
                         })
                     }
@@ -97,7 +113,20 @@ class FeedMonitor {
             }
         }
 
-        client.settings.set('feeds_cache', links)
+        client.settings.set(this.getCacheKey(), links)
+    }
+
+    static async isFollowing(guildId, game, language, defaultValue) {
+        const snapshot = await client.provider.rootRef
+            .child(guildId)
+            .child('feeds_suscribed')
+            .child(game)
+            .child(language)
+            .once("value")
+
+        const value = snapshot.val()
+
+        return value == null ? defaultValue : value;
     }
 }
 
