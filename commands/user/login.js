@@ -25,7 +25,7 @@ module.exports = class LoginCommand extends mTxServCommand {
         const lang = require(`../../languages/${userLang}.json`)
 
         const api = new mTxServApi()
-        if (api.isAuthenticated(msg.author.id)) {
+        if (await api.isAuthenticated(msg.author.id)) {
             const embed = new Discord.MessageEmbed()
                 .setDescription(lang['login']['already_connected'])
                 .setColor('GREEN')

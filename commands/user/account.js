@@ -24,7 +24,7 @@ module.exports = class AccountCommand extends mTxServCommand {
 
         const api = new mTxServApi()
 
-        const isAuthenticated = api.isAuthenticated(msg.author.id)
+        const isAuthenticated = await api.isAuthenticated(msg.author.id)
         if (!isAuthenticated) {
             return this.sayError(msg, lang['me']['not_logged'])
         }

@@ -10,35 +10,39 @@ class mTxServApi {
         })
 
         if (!res || !res.body) {
-            throw new Error('Invalid response of mtxserv oauth API')
+            throw new Error('Invalid response of OAuth2 API')
         }
 
         return res.body
     }
 
-    async loginFromCredentials(authorId) {
-        const credentials = this.getCredential(authorId)
-        return this.login(credentials.clientId, credentials.clientSecret, credentials.apiKey)
-    }
-
-    getCredential(authorId) {
-        if (!this.isAuthenticated(authorId)) {
-            throw new Error(`user ${authorId} isn't authenticated, can't get credentials`)
+    async loginFromCredentials(userId) {
+        const credentials = await this.getCredential(userId)
+        if (credentials) {
+            return await this.login(credentials.clientId, credentials.clientSecret, credentials.apiKey)
         }
 
-        return client.provider.sqlite.get(null, `auth_${authorId}`)
+        throw new Error(`Credentials not found for ${userId}`)
     }
 
-    setCredential(authorId, credentials) {
-        client.provider.sqlite.set(null, `auth_${authorId}`, credentials)
+    async getCredential(userId) {
+        if (!await this.isAuthenticated(userId)) {
+            throw new Error(`User ${userId} isn't authenticated, can't get credentials`)
+        }
+
+        return await client.provider.get('users', userId, false)
     }
 
-    isAuthenticated(authorId) {
-        return client.provider.sqlite.get(null, `auth_${authorId}`, false) !== false
+    async setCredential(userId, credentials) {
+        await client.provider.set('users', userId, credentials)
     }
 
-    logout(authorId) {
-        client.provider.sqlite.remove(`auth_${authorId}`)
+    async isAuthenticated(userId) {
+        return await client.provider.get('users', userId, false) !== false
+    }
+
+    async logout(userId) {
+        return await client.provider.remove('users', userId)
     }
 
     async call(accessToken, uri) {

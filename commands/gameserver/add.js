@@ -32,7 +32,7 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
         }
 
         const api = new mTxServApi()
-        const isAuthenticated = api.isAuthenticated(msg.author.id)
+        const isAuthenticated = await api.isAuthenticated(msg.author.id)
         if (!isAuthenticated) {
             return this.sayError(msg, lang['server_add']['not_logged'])
         }

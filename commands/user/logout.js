@@ -22,13 +22,13 @@ module.exports = class LogoutCommand extends mTxServCommand {
         const lang = require(`../../languages/${await this.resolveLangOfMessage(msg)}.json`)
 
         const api = new mTxServApi()
-        const isAuthenticated = api.isAuthenticated(msg.author.id)
+        const isAuthenticated = await api.isAuthenticated(msg.author.id)
 
         if (!isAuthenticated) {
             return this.sayError(msg, lang['logout']['not_logged'])
         }
 
-        api.logout(msg.author.id)
+        await api.logout(msg.author.id)
 
         return this.saySuccess(msg, lang['logout']['success'])
     }

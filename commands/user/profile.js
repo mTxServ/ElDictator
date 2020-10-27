@@ -53,7 +53,7 @@ module.exports = class RankCommand extends mTxServCommand {
 
         // me
         const api = new mTxServApi()
-        let isAuthenticated = api.isAuthenticated(user.id)
+        let isAuthenticated = await api.isAuthenticated(user.id)
         let profile = {
             about: false,
             is_admin: false,
