@@ -33,7 +33,7 @@ module.exports = {
                         fields: [
                             {
                                 name: 'Owner',
-                                value: owner.user.tag,
+                                value: owner.tag,
                                 inline: true
                             },
                             {
