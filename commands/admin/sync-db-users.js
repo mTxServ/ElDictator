@@ -2,14 +2,14 @@ const mTxServCommand = require('../mTxServCommand.js');
 const sqlite = require('sqlite')
     const path = require('path')
 
-module.exports = class SyncDBFeedsCommand extends mTxServCommand {
+module.exports = class SyncDBUsersCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
-            name: 'sync-feeds',
-            aliases: ['sync-feeds'],
+            name: 'sync-users',
+            aliases: ['sync-users'],
             group: 'admin',
-            memberName: 'sync-feeds',
-            description: 'Sync sqlite feeds database with firebase',
+            memberName: 'sync-users',
+            description: 'Sync sqlite users database with firebase',
             clientPermissions: ['SEND_MESSAGES'],
             ownerOnly: true,
             guildOnly: true,
@@ -22,7 +22,7 @@ module.exports = class SyncDBFeedsCommand extends mTxServCommand {
         const self = this
 
         const types = [
-            'feed_sub_',
+            'auth_',
         ]
 
         sqlite.open(path.join(__dirname, '../../settings.sqlite3'))
@@ -58,29 +58,23 @@ module.exports = class SyncDBFeedsCommand extends mTxServCommand {
                         }
                     }
 
-                    const game = value.substring(type.length)
-                    if (!game || game === '%tag%') {
-                        self.sayError(msg, `Game not found for \`${value}\``)
+                    const userId = value.substring(type.length)
+                    if (!userId) {
+                        self.sayError(msg, `User not found for \`${value}\``)
                     } else {
                         const dbValues = self.client.provider.sqlite.get(null, value, null)
-                        for (const dbValue of dbValues) {
-                            dbValue.locale = dbValue.locale || 'all'
-
-                            if (!dbValue.locale || !dbValue.channelId || !dbValue.guildId) {
-                                continue
-                            }
-
-                            await self.client.provider.rootRef
-                                .child(dbValue.guildId)
-                                .child('feeds_suscribed')
-                                .child(game)
-                                .child(dbValue.locale)
-                                .set(dbValue.channelId)
+                        if (!dbValues.clientId || !dbValues.clientSecret || !dbValues.clientSecret) {
+                            continue
                         }
+
+                        await self.client.provider.rootRef
+                            .child('users')
+                            .child(userId)
+                            .set(dbValues)
                     }
                 }
 
-                self.saySuccess(msg, 'SQLite **feeds** synchronized with **Firebase**.')
+                self.saySuccess(msg, 'SQLite **users** synchronized with **Firebase**.')
             })
             .catch(console.error)
     }
