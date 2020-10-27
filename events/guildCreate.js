@@ -12,7 +12,7 @@ module.exports = {
         ;
 
         guild
-            .owner
+            .ownerID
             .send({
                 embed: embed
             })
