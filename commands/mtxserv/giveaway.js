@@ -48,8 +48,8 @@ module.exports = class GiveawayCommand extends mTxServCommand {
         if (this.client.isMainGuild(msg.guild.id)) {
             embed.setDescription(`**Pour participer** au <#563304015924953108>: \n・Réagissez à ce message avec :gift:\n・et/ou retweetez le [message sur twitter](https://twitter.com/mTxServ) et suivez le compte [@mTxServ](https://twitter.com/mTxServ)\n\n${reaction} Tirage au sort le **${endDate}**\n\n:four_leaf_clover: **Augmentez vos chances** :four_leaf_clover:\n\n${actions.join('\n')}\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
         } else {
-            embed.setDescription(`**Pour participer** au giveaway organisé par [mTxServ](https://mtxserv.com), rendez-vous dans <#563304015924953108>.\n\n${reaction} Tirage au sort le **${endDate}**\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
-            embed.addField('Comment participer?', `[Participer au giveaway](${this.client.options.invite})`)
+            embed.setDescription(`**Pour participer** au giveaway organisé par [mTxServ](https://mtxserv.com), rendez-vous dans <#563304015924953108> (ou utilisez cette [invitation pour le discord du giveaway](${this.client.options.invite})).\n\n${reaction} Tirage au sort le **${endDate}**\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
+            embed.addField('Comment participer?', `[Rejoindre le discord du giveaway](${this.client.options.invite})`)
         }
 
         const giveawayMsg = await msg.say({
