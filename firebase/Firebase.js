@@ -1,7 +1,7 @@
 const Firebase = require("firebase-admin");
 
 const firebaseConfig = {
-    credential: Firebase.credential.cert(require("./firebase-account.json")),
+    credential: Firebase.credential.cert(require("../firebase-account.json")),
     databaseURL: process.env.FIREBASE_DB_URL
 }
 

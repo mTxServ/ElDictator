@@ -10,7 +10,7 @@ class FirebaseProvider extends SettingProvider {
     constructor(sqliteProvider) {
         super()
 
-        const { firebaseApp, database, databaseRef } = require('../firebase.js');
+        const { firebaseApp, database, databaseRef } = require('../firebase/Firebase.js');
 
         this.app = firebaseApp
         this.db = database
