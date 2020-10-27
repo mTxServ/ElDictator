@@ -44,7 +44,7 @@ module.exports = class SpigotSearchCommand extends mTxServCommand {
         plugins
             .map(plugin => {
                 embed.addField(`${plugin.name}`, `<${plugin.view_url}>` || 'n/a');
-                embed.addField(`${lang['plugin_search']['description']}`, `${plugin.description}` || 'n/a');
+                embed.addField(`${lang['plugin_search']['description']}`, `${plugin.description_en}` || 'n/a');
             })
         ;
 
