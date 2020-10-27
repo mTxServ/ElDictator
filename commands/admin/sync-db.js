@@ -53,7 +53,7 @@ module.exports = class SyncDBCommand extends mTxServCommand {
                     }
                 }
 
-                self.sayMessage(msg, `**SQLite**\n\n${dataToTransfer.map(value => `・ \`${value}\``).join('\n')}`.substr(0, 2048))
+                self.sayMessage(msg, `**SQLite (${dataToTransfer.length} items)**\n\n${dataToTransfer.map(value => `・ \`${value}\``).join('\n')}`.substr(0, 2048))
 
                 // self.saySuccess(msg, '**SQLite** synchronized with **Firebase**.')
             })
