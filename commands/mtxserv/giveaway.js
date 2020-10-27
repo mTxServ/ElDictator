@@ -29,14 +29,14 @@ module.exports = class GiveawayCommand extends mTxServCommand {
         ]
 
         const actions = [
-            '🔟 points - Réagissez à ce message avec :gift:',
-            '🔟 points - Suivre notre compte [Twitter](https://twitter.com/mTxServ) et retweet le [message suivant](https://twitter.com/mTxServ)',
-            //'🔟 points - rejoindre un discord partenaire: [GCA](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot) ou [Numerix](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot)',
-            '🔟 points - Partager le giveaway sur discord  avec \`m!giveaway\` (le <#769619263078006844> doit être sur votre serveur)',
+            '🔟 *points* ・ Réagissez à ce message avec :gift:',
+            '🔟 *points* ・ Suivre notre compte [Twitter](https://twitter.com/mTxServ) et retweet le [message suivant](https://twitter.com/mTxServ)',
+            //'🔟 *points* - rejoindre un discord partenaire: [GCA](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot) ou [Numerix](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot)',
+            '🔟 *points* ・ Partager le giveaway sur discord  avec \`m!giveaway\` (le <#769619263078006844> doit être sur votre serveur)',
         ]
 
         const reaction = ':alarm_clock:'
-        const endDate = '25 Oct 2020 à 20H'
+        const endDate = '01 Nov 2020 à 20H'
 
         const prizeLabel = prizes.map(prize => `> ❯ ${prize}`).join('\n')
 
@@ -45,7 +45,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
             .setColor('YELLOW')
         ;
 
-        if (msg.guild.id === '529605510219956233' || msg.guild.id === '726178170314817630') {
+        if (this.client.isMainGuild(msg.guild.id)) {
             embed.setDescription(`**Pour participer** au <#563304015924953108>: \n・Réagissez à ce message avec :gift:\n・et/ou retweetez le [message sur twitter](https://twitter.com/mTxServ) et suivez le compte [@mTxServ](https://twitter.com/mTxServ)\n\n${reaction} Tirage au sort le **${endDate}**\n\n:four_leaf_clover: **Augmentez vos chances** :four_leaf_clover:\n\n${actions.join('\n')}\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
         } else {
             embed.setDescription(`**Pour participer** au giveaway organisé par [mTxServ](https://mtxserv.com), rendez-vous dans <#563304015924953108>.\n\n${reaction} Tirage au sort le **${endDate}**\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
@@ -59,6 +59,10 @@ module.exports = class GiveawayCommand extends mTxServCommand {
         giveawayMsg.react('🎁')
 
         msg.delete()
+
+        if (!this.client.isMainGuild(msg.guild.id)) {
+            await this.client.provider.set(isDev ? 'giveaway_dev' : 'giveaway', msg.guild.id, giveawayMsg.id)
+        }
 
         return giveawayMsg
     }
