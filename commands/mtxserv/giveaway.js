@@ -31,7 +31,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
         const actions = [
             '🔟 points - Réagissez à ce message avec :gift:',
             '🔟 points - Suivre notre compte [Twitter](https://twitter.com/mTxServ) et retweet le [message suivant](https://twitter.com/mTxServ)',
-            //'🔟 points - rejoindre un discord partenaire: [GCA](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot) ou [Numerix](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot)',
+            //'🔟 points - rejoindre un discord partenaire: [GCA](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=68021457&scope=bot) ou [Numerix](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=68021457&scope=bot)',
             '🔟 points - Partager le giveaway sur discord  avec \`m!giveaway\` (le <#769619263078006844> doit être sur votre serveur)',
         ]
 

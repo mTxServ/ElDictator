@@ -34,7 +34,7 @@ module.exports = class BotStatusCommand extends mTxServCommand {
             .addField(lang['fork_me']['how'], lang['fork_me']['description'])
             .addField('❯ Home', `[mTxServ.com](https://mtxserv.com)`, true)
             .addField('❯ Discord', `[Join us](${this.client.options.invite})`, true)
-            .addField('❯ Invite Bot', '[Invite the bot](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot)', true)
+            .addField('❯ Invite Bot', '[Invite the bot](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=68021457&scope=bot)', true)
             .addField('❯ Source Code', '[mTxServ/ElDictator](https://github.com/mTxServ/ElDictator)', true)
             .addField('❯ Uptime', moment.duration(this.client.uptime).format('hh:mm:ss', { trim: false }), true)
             .addField('❯ Language', `:flag_${language == 'fr' ? language : 'us'}:`, true)
