@@ -1,18 +1,14 @@
-const { CommandoClient, SQLiteProvider } = require('discord.js-commando')
+const { CommandoClient } = require('discord.js-commando')
 const FeedMonitor = require('../services/FeedMonitor')
-const GuildSetting = require('../settings/GuildSetting')
 const StatusUpdater = require('@tmware/status-rotate')
 const Ranker = require('../services/Ranker')
 const FirebaseProvider = require('../provider/FirebaseProvider')
-const sqlite = require('sqlite')
-const path = require('path')
 
 module.exports = class mTxServClient extends CommandoClient {
     constructor(options) {
         super(options);
 
         this.feedMonitor = new FeedMonitor(options.feeds);
-        this.guildSettings = new GuildSetting()
         this.ranker = new Ranker()
 
         this.statusUpdater = new StatusUpdater(this, [
@@ -25,19 +21,8 @@ module.exports = class mTxServClient extends CommandoClient {
             '726178170314817630',
             '539501579137581071'
         ]
-    }
 
-    async initProvider() {
-        const self = this
-
-        sqlite.open(path.join(__dirname, '../settings.sqlite3'))
-            .then(function (db) {
-                const sqlite = new SQLiteProvider(db)
-                sqlite.init(self)
-
-                const provider = new FirebaseProvider(sqlite)
-                self.setProvider(provider).catch(console.error)
-            })
+        this.setProvider(new FirebaseProvider()).catch(console.error)
     }
 
     isMainGuild(guildId) {

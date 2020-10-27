@@ -5,9 +5,7 @@ const {SettingProvider} = require('discord.js-commando');
  * @extends {Provider}
  */
 class FirebaseProvider extends SettingProvider {
-    sqlite = null
-
-    constructor(sqliteProvider) {
+    constructor() {
         super()
 
         const { firebaseApp, database, databaseRef } = require('../firebase/Firebase.js');
@@ -15,7 +13,6 @@ class FirebaseProvider extends SettingProvider {
         this.app = firebaseApp
         this.db = database
         this.rootRef = databaseRef
-        this.sqlite = sqliteProvider
     }
 
     init() {}

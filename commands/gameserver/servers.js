@@ -25,7 +25,7 @@ module.exports = class GameServerListCommand extends mTxServCommand {
         const userLang = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${userLang}.json`)
 
-        let gameServers = this.client.guildSettings.gameServers(msg.guild.id)
+        let gameServers = await this.client.provider.get(msg.guild.id, 'servers', [])
 
         if (!gameServers.length) {
             const embed = new Discord.MessageEmbed()

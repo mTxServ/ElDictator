@@ -20,8 +20,6 @@ const client = global.client = new Client({
     feeds: require('./feeds.json')
 });
 
-client.initProvider()
-
 fs.readdir('./events/', (err, files) => {
     if (err) return console.error(err);
     files.forEach((file) => {

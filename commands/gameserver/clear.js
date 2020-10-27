@@ -1,7 +1,4 @@
 const mTxServCommand = require('../mTxServCommand.js')
-const mTxServApi = require('../../api/mTxServApi')
-const GameServerApi = require('../../api/GameServerApi')
-const Discord = require('discord.js')
 
 module.exports = class GameServerAddCommand extends mTxServCommand {
     constructor(client) {
@@ -23,7 +20,12 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
     }
 
     async run(msg) {
-        this.client.guildSettings.clearGameServers(msg.guild.id,)
+        await this.client.provider.set(
+            msg.guild.id,
+            'servers',
+            []
+        )
+
         return this.saySuccess(msg, 'Les serveurs de jeu ont été réinitialisés.')
     }
 };

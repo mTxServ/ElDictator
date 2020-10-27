@@ -89,12 +89,17 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
 
         this.saySuccess(msg, lang['server_add']['added'])
 
-        this.client.guildSettings.addGameServer(msg.guild.id, {
+        let gameServers = await this.client.provider.get(msg.guild.id, 'servers', [])
+        gameServers = gameServers.filter(gs => gs.address !== invoices[serverKey].address)
+        
+        gameServers.push({
             game: invoices[serverKey].game,
             address: invoices[serverKey].address,
             isHostedOnMtxServ: true,
             creatorId: msg.author.id
         })
+
+        await this.client.provider.set(msg.guild.id, 'servers', gameServers)
 
         embed = await gsApi.generateEmbed(msg, invoices[serverKey].game, invoices[serverKey].address, userLang)
         return msg.say({
