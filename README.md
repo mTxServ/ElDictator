@@ -21,7 +21,7 @@ Main features:
 * ranking system
 * generate your minecraft achievements
 
-This bot was created with `discord.js` and `discord commando`.
+This bot was created with `discord.js`, `discord commando` and use a `firebase` NoSQL database.
 
 ![Bot Command](https://github.com/mTxServ/ElDictator/raw/main/doc/bot.png)
 
@@ -157,6 +157,7 @@ Copy the `.env.dist` to `.env`. Don't forget to edit it.
 
 ```
 cp .env.dist .env
+cp firebase-account.json.dist firebase-account.json
 ```
 
 ### Dev
