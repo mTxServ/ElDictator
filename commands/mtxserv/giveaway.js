@@ -48,7 +48,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
 
         let giveawayMsg = null
 
-        if (this.client.isMainGuild(msg.guild.id) && this.hasPermission('ADMINISTRATOR')) {
+        if (this.client.isMainGuild(msg.guild.id) && this.client.isOwner(msg.author)) {
             embed.setDescription(`Tirage au sort le **${endDate}**\n\n:four_leaf_clover: **Participer et Augmenter ses chances** :four_leaf_clover:\n\n${actions.join('\n')}\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
 
             giveawayMsg = await msg.channel.messages.fetch('770702367049252874').catch(console.error)
@@ -58,6 +58,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
                     embed: embed
                 })
             } else {
+                return this.sayError(msg, 'Message not found')
                 giveawayMsg = await msg.channel.send({
                     //content: `@everyone C'est parti pour un nouveau giveaway!`,
                     embed: embed,
