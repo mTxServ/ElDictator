@@ -13,11 +13,13 @@ module.exports = {
 
         const owner = client.users.cache.get(guild.ownerID)
 
-        owner
-            .send({
-                embed: embed
-            })
-            .catch(console.error)
+        if (owner) {
+            owner
+                .send({
+                    embed: embed
+                })
+                .catch(console.error)
+        }
 
         if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
             client
