@@ -56,10 +56,10 @@ module.exports = class GiveawayCommand extends mTxServCommand {
 
             if (giveawayMsg) {
                 await giveawayMsg.edit({
+                    content: `C'est parti pour un nouveau giveaway!`,
                     embed: embed
                 })
             } else {
-                return this.sayError(msg, 'Message not found')
                 giveawayMsg = await msg.channel.send({
                     //content: `@everyone C'est parti pour un nouveau giveaway!`,
                     embed: embed,
