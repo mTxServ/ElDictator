@@ -6,7 +6,7 @@ module.exports = class ShareLogcommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'log',
-            aliases: ['share-log'],
+            aliases: ['share-log', 'gist'],
             group: 'gameserver',
             memberName: 'log',
             description: 'Share a log',
