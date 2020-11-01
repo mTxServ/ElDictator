@@ -38,7 +38,7 @@ module.exports = class StockCommand extends mTxServCommand {
             },
             {
                 icon: ':flag_gb:',
-                hasGameStock: true,
+                hasGameStock: false,
                 hasVpsGameStock: true,
                 hasVpsStock: false
             },
