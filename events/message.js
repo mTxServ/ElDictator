@@ -27,7 +27,7 @@ module.exports = {
         // share/img channels
         if (
             client.isMainGuild(msg.guild.id)
-            && ( -1 !== msg.channel.name.indexOf('-stream') || -1 !== msg.channel.name.indexOf('-images-liens'))
+            && ( -1 !== msg.channel.name.indexOf('-stream') || -1 !== msg.channel.name.indexOf('-images-liens') || -1 !== msg.channel.name.indexOf('-images-links'))
         ) {
             msg.react('👍').catch(console.error);
             msg.react('👎').catch(console.error);
@@ -47,6 +47,7 @@ module.exports = {
                 || -1 !== msg.channel.name.indexOf('-hytale-recrute')
                 || -1 !== msg.channel.name.indexOf('-giveaways')
                 || -1 !== msg.channel.name.indexOf('-lien-utiles')
+                || -1 !== msg.channel.name.indexOf('-usefull-links')
             )
         ) {
             const inviteLink = extractInviteLink(msg.content)
