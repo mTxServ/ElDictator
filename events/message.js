@@ -92,7 +92,7 @@ module.exports = {
                 }
             }
             
-            if (-1 === msg.channel.name.indexOf('-lien-utiles') && -1 === msg.channel.name.indexOf('-hytale-recrute')) {
+            if (-1 === msg.channel.name.indexOf('-lien-utiles') && -1 === msg.channel.name.indexOf('-usefull-links') && -1 === msg.channel.name.indexOf('-hytale-recrute')) {
                 const items = urls.values()
                 let item = items.next()
 
