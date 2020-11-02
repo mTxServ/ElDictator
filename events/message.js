@@ -45,7 +45,7 @@ module.exports = {
                 || -1 !== msg.channel.name.indexOf('-pub-addons')
                 || -1 !== msg.channel.name.indexOf('-family')
                 || -1 !== msg.channel.name.indexOf('-hytale-recrute')
-                || -1 !== msg.channel.name.indexOf('-giveaways')
+                || -1 !== msg.channel.name.indexOf('-giveaway')
                 || -1 !== msg.channel.name.indexOf('-lien-utiles')
                 || -1 !== msg.channel.name.indexOf('-usefull-links')
                 || -1 !== msg.channel.name.indexOf('-devenir-partenaire')
@@ -94,7 +94,7 @@ module.exports = {
                 }
             }
             
-            if (-1 === msg.channel.name.indexOf('-lien-utiles') && -1 === msg.channel.name.indexOf('-usefull-links') && -1 === msg.channel.name.indexOf('-hytale-recrute') && -1 === msg.channel.name.indexOf('-devenir-partenaire') && -1 === msg.channel.name.indexOf('-become-partner')) {
+            if (-1 === msg.channel.name.indexOf('-lien-utiles') && -1 === msg.channel.name.indexOf('-usefull-links') && -1 === msg.channel.name.indexOf('-hytale-recrute') && -1 === msg.channel.name.indexOf('-devenir-partenaire') && -1 === msg.channel.name.indexOf('-become-partner') && -1 === msg.channel.name.indexOf('-giveaway')) {
                 const items = urls.values()
                 let item = items.next()
 
