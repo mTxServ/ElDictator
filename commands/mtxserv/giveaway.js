@@ -22,18 +22,18 @@ module.exports = class GiveawayCommand extends mTxServCommand {
 
         const prizes = [
             '1x [VPS SSD 4 Go](https://mtxserv.com/fr/vps-ssd) - 1 mois',
-            '1x [Serveur Minecraft 3 Go](https://mtxserv.com/fr/hebergeur-serveur-minecraft) - 1 mois',
-            '1x [Serveur GMod Starter](https://mtxserv.com/fr/hebergeur-serveur-garry-s-mod) - 1 mois',
+            '2x [Nitro Boost](https://discord.com)',
+            //'3x [STEAM CARD 5€](https://store.steampowered.com/digitalgiftcards/)',
             //'1x [Serveur Rust Starter](https://mtxserv.com/fr/hebergeur-serveur-rust) - 1 mois',
             //'1x [Serveur ARK Starter](https://mtxserv.com/fr/hebergeur-serveur-ark) - 1 mois',
         ]
 
         const actions = [
+            '> **+30 points**・Boostez le serveur discord de mTxServ',
+            '> **+30 points**・Suivez le channel <#563304015924953108> sur votre serveur discord',
             '> **+10 points**・Réagissez à ce message avec :gift:',
             '> **+10 points**・Retweetez le [message sur twitter](https://twitter.com/mTxServ/status/1321140385880645634) et suivez le compte [@mTxServ](https://twitter.com/mTxServ)',
-            '> **+10 points**・Partager le giveaway sur discord  avec \`m!giveaway\` (le <#769619263078006844> doit être sur votre serveur)',
-            '> **+30 points**・Suivez le channel <#563304015924953108> sur votre serveur discord',
-            '> **+30 points**・Boostez le serveur discord de mTxServ',
+            '> **+10 points**・[Invitez le #769619263078006844 sur votre discord](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot) et poster le message du giveaway  avec \`m!giveaway\`',
         ]
 
         const reaction = ':alarm_clock:'
