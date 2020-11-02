@@ -32,18 +32,19 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
     }
 
     async getLangOfChannel(channel) {
-        const guildConf = await this.client.provider.get(channel.guild.id, 'language', process.env.DEFAULT_LANG)
-
-        if (!channel || !channel.parentID) {
-            return guildConf;
-        }
-
         const parentChannel = this.client.channels.cache.get(channel.parentID)
-        if (!parentChannel) {
-            return guildConf;
+
+        if (parentChannel) {
+            if (-1 !== parentChannel.name.indexOf('[FR]')) {
+                return 'fr';
+            }
+
+            if (-1 !== parentChannel.name.indexOf('[EN]')) {
+                return 'en';
+            }
         }
 
-        return -1 !== parentChannel.name.indexOf('[FR]') ? 'fr' : guildConf;
+        return await this.client.provider.get(channel.guild.id, 'language', process.env.DEFAULT_LANG)
     }
 
     getLangOfMember(member) {
