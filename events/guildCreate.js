@@ -19,39 +19,39 @@ module.exports = {
                     embed: embed
                 })
                 .catch(console.error)
-        }
 
-        if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
-            client
-                .channels
-                .cache
-                .get(process.env.LOG_CHANNEL_ID)
-                .send(null, {
-                    embed: {
-                        color: "BLUE",
-                        timestamp: new Date(),
-                        title: `Join a new guild`,
-                        description: `Bot is on a new guild **\`${guild.name.replace('`', '\`')}\`**`,
-                        fields: [
-                            {
-                                name: 'Owner',
-                                value: owner.tag,
-                                inline: true
-                            },
-                            {
-                                name: 'Guild ID',
-                                value: `\`${guild.id}\``,
-                                inline: true
-                            },
-                            {
-                                name: 'Members',
-                                value: `\`${guild.memberCount}\``,
-                                inline: true
-                            }
-                        ]
-                    }
-                })
-                .catch(console.error);
+            if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
+                client
+                    .channels
+                    .cache
+                    .get(process.env.LOG_CHANNEL_ID)
+                    .send(null, {
+                        embed: {
+                            color: "BLUE",
+                            timestamp: new Date(),
+                            title: `Join a new guild`,
+                            description: `Bot is on a new guild **\`${guild.name.replace('`', '\`')}\`**`,
+                            fields: [
+                                {
+                                    name: 'Owner',
+                                    value: owner.tag,
+                                    inline: true
+                                },
+                                {
+                                    name: 'Guild ID',
+                                    value: `\`${guild.id}\``,
+                                    inline: true
+                                },
+                                {
+                                    name: 'Members',
+                                    value: `\`${guild.memberCount}\``,
+                                    inline: true
+                                }
+                            ]
+                        }
+                    })
+                    .catch(console.error);
+            }
         }
     }
 };
