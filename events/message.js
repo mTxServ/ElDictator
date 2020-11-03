@@ -16,7 +16,7 @@ module.exports = {
             }
         }
 
-        if (-1 !== msg.content.indexOf('m!img')
+        if (   -1 !== msg.content.indexOf('m!img')
             || -1 !== msg.content.indexOf('m!url')
             || -1 !== msg.content.indexOf('m!cat')
             || -1 !== msg.content.indexOf('m!dog')
@@ -40,7 +40,7 @@ module.exports = {
         // gameservers pub
         if (
             client.isMainGuild(msg.guild.id)
-            && ( -1 !== msg.channel.name.indexOf('-pub-serveurs')
+            && (   -1 !== msg.channel.name.indexOf('-pub-serveurs')
                 || -1 !== msg.channel.name.indexOf('-servers-pub')
                 || -1 !== msg.channel.name.indexOf('-pub-addons')
                 || -1 !== msg.channel.name.indexOf('-family')
@@ -97,7 +97,16 @@ module.exports = {
                 }
             }
             
-            if (-1 === msg.channel.name.indexOf('-lien-utiles') && -1 === msg.channel.name.indexOf('-usefull-links') && -1 === msg.channel.name.indexOf('-hytale-recrute') && -1 === msg.channel.name.indexOf('-devenir-partenaire') && -1 === msg.channel.name.indexOf('-become-partner') && -1 === msg.channel.name.indexOf('-giveaway') && -1 === msg.channel.name.indexOf('-news') && -1 === msg.channel.name.indexOf('-annonces') && -1 === msg.channel.name.indexOf('-announcement')) {
+            if (   -1 === msg.channel.name.indexOf('-lien-utiles') 
+                && -1 === msg.channel.name.indexOf('-usefull-links') 
+                && -1 === msg.channel.name.indexOf('-hytale-recrute') 
+                && -1 === msg.channel.name.indexOf('-devenir-partenaire') 
+                && -1 === msg.channel.name.indexOf('-become-partner') 
+                && -1 === msg.channel.name.indexOf('-giveaway') 
+                && -1 === msg.channel.name.indexOf('-news') 
+                && -1 === msg.channel.name.indexOf('-annonces') 
+                && -1 === msg.channel.name.indexOf('-announcement')
+               ) {
                 const items = urls.values()
                 let item = items.next()
 
