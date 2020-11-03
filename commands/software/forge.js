@@ -35,7 +35,7 @@ module.exports = class GameSoftwareForgeCommand extends mTxServCommand {
             });
         }
 
-        const embed = api.generateSoftwareEmbed(softwares[softwares.length - 1], userLang, baseUrl)
+        const embed = api.generateSoftwareEmbed(softwares[0], userLang, baseUrl)
 
         if (userLang === 'fr') {
             embed.addField(':question: Comment activer le debug Forge', 'https://mtxserv.com/fr/article/12776/comment_activer_le_mode_debug_de_forge')
