@@ -51,6 +51,8 @@ module.exports = {
                 || -1 !== msg.channel.name.indexOf('-devenir-partenaire')
                 || -1 !== msg.channel.name.indexOf('-become-partner')
                 || -1 !== msg.channel.name.indexOf('-news')
+                || -1 !== msg.channel.name.indexOf('-annonces')
+                || -1 !== msg.channel.name.indexOf('-announcement')
             )
         ) {
             const inviteLink = extractInviteLink(msg.content)
@@ -95,7 +97,7 @@ module.exports = {
                 }
             }
             
-            if (-1 === msg.channel.name.indexOf('-lien-utiles') && -1 === msg.channel.name.indexOf('-usefull-links') && -1 === msg.channel.name.indexOf('-hytale-recrute') && -1 === msg.channel.name.indexOf('-devenir-partenaire') && -1 === msg.channel.name.indexOf('-become-partner') && -1 === msg.channel.name.indexOf('-giveaway') && -1 === msg.channel.name.indexOf('-news')) {
+            if (-1 === msg.channel.name.indexOf('-lien-utiles') && -1 === msg.channel.name.indexOf('-usefull-links') && -1 === msg.channel.name.indexOf('-hytale-recrute') && -1 === msg.channel.name.indexOf('-devenir-partenaire') && -1 === msg.channel.name.indexOf('-become-partner') && -1 === msg.channel.name.indexOf('-giveaway') && -1 === msg.channel.name.indexOf('-news') && -1 === msg.channel.name.indexOf('-annonces') && -1 === msg.channel.name.indexOf('-announcement')) {
                 const items = urls.values()
                 let item = items.next()
 
