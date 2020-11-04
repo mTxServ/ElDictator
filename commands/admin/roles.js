@@ -22,7 +22,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
             .setTimestamp();
 
         msg.guild.roles.cache.map(role => {
-            embed.addField(role.name, role.members.size)
+            embed.addField(role.name, role.members.size, true)
         })
 
         return msg.say({
