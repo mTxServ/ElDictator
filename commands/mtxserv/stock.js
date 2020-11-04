@@ -32,19 +32,19 @@ module.exports = class StockCommand extends mTxServCommand {
         const pop = [
             {
                 icon: ':flag_fr:',
-                hasGameStock: true,
+                hasGameStock: false,
                 hasVpsGameStock: true,
                 hasVpsStock: true
             },
             {
                 icon: ':flag_gb:',
-                hasGameStock: false,
+                hasGameStock: true,
                 hasVpsGameStock: true,
                 hasVpsStock: false
             },
             {
                 icon: ':flag_de:',
-                hasGameStock: false,
+                hasGameStock: flag_gb,
                 hasVpsGameStock: false,
                 hasVpsStock: false
             },
