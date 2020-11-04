@@ -5,15 +5,58 @@ const URL = require('url').URL
 const { stripInvites, extractInviteLink } = require('../util/Util');
 const mTxServApi = require('../api/mTxServApi')
 
+const notifyAchievment = (msg, role) => {
+    const embed = new Discord.MessageEmbed()
+        .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, 'https://mtxserv.com')
+        .setDescription(`Congratulations <@%userId%>, you have now the achievment **%role%**!`.replace('%userId%', msg.author.id).replace('%role%', role.name))
+        .setColor('GREEN')
+        .setTimestamp()
+    ;
+
+    if (client.channels.cache.has("773581118267457537")) {
+        client
+            .channels
+            .cache
+            .get("773581118267457537")
+            .send({
+                embed: embed
+            })
+            .catch(console.error);
+    } else {
+        msg.author
+            .send({
+                embed: embed
+            })
+            .catch(console.error);
+    }
+}
+
 module.exports = {
     run: async (msg) => {
         if (msg.channel.type !== 'text') return;
 
         if (
-            msg.channel.type !== 'dm' && (msg.guild.id === '529605510219956233' || msg.guild.id === '726178170314817630' || msg.guild.id === '539501579137581071')) {
-
+            !isDev
+            && msg.channel.type !== 'dm'
+            && client.isMainGuild(msg.guild.id)
+        ) {
             if (!msg.author.bot && msg.member.nickname) {
                 client.ranker.processMessage(msg)
+            }
+        }
+
+        if (msg.channel.type !== 'dm'
+            && client.isMainGuild(msg.guild.id)
+            && msg.channel.parent) {
+            for (const gameRolesSettings of client.gameRoles) {
+                if (-1 !== gameRolesSettings.categories.indexOf(msg.channel.parent.id)) {
+                    const role = msg.guild.roles.cache.get(gameRolesSettings.roleId)
+                    if (role) {
+                        msg.member.roles.add(role).catch(console.error);
+                        notifyAchievment(msg, role)
+                    }
+                    break;
+                }
             }
         }
 
@@ -50,17 +93,7 @@ module.exports = {
                 const role = msg.guild.roles.cache.get('773540951434985503')
                 if (role) {
                     msg.member.roles.add(role).catch(console.error);
-
-                    const embed = new Discord.MessageEmbed()
-                        .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, 'https://mtxserv.com')
-                        .setDescription(`Congratulations <@%userId%>, you have now the role **%role%**!`.replace('%userId%', msg.author.id).replace('%role%', role.name))
-                        .setColor('GREEN')
-                        .setTimestamp()
-                    ;
-
-                    msg.author.send({
-                        embed: embed
-                    });
+                    notifyAchievment(msg, role)
                 }
             }
         }
@@ -79,17 +112,7 @@ module.exports = {
                 const role = msg.guild.roles.cache.get('773500491245289472')
                 if (role) {
                     msg.member.roles.add(role).catch(console.error);
-
-                    const embed = new Discord.MessageEmbed()
-                        .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, 'https://mtxserv.com')
-                        .setDescription(`Congratulations <@%userId%>, you have now the role **%role%**!`.replace('%userId%', msg.author.id).replace('%role%', role.name))
-                        .setColor('GREEN')
-                        .setTimestamp()
-                    ;
-
-                    msg.author.send({
-                        embed: embed
-                    });
+                    notifyAchievment(msg, role)
                 }
             }
         }
@@ -229,17 +252,7 @@ module.exports = {
                     const role = msg.guild.roles.cache.get('773500803218538546')
                     if (role) {
                        msg.member.roles.add(role).catch(console.error);
-
-                        const embed = new Discord.MessageEmbed()
-                            .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, 'https://mtxserv.com')
-                            .setDescription(`Congratulations <@%userId%>, you have now the role **%role%**!`.replace('%userId%', msg.author.id).replace('%role%', role.name))
-                            .setColor('GREEN')
-                            .setTimestamp()
-                        ;
-
-                        msg.author.send({
-                            embed: embed
-                        });
+                        notifyAchievment(msg, role)
                     }
                 }
             }
