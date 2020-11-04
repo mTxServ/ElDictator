@@ -21,7 +21,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
             .setColor('RED')
             .setTimestamp();
 
-        msg.guild.roles.map(role => {
+        msg.guild.roles.cache.map(role => {
             embed.addField(role.name, role.members.size)
         })
 
