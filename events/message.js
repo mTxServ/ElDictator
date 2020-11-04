@@ -51,7 +51,7 @@ module.exports = {
             for (const gameRolesSettings of client.gameRoles) {
                 if (-1 !== gameRolesSettings.categories.indexOf(msg.channel.parent.id)) {
                     const role = msg.guild.roles.cache.get(gameRolesSettings.roleId)
-                    if (role) {
+                    if (role && !msg.member.roles.cache.has(role.id)) {
                         msg.member.roles.add(role).catch(console.error);
                         notifyAchievment(msg, role)
                     }
@@ -91,7 +91,7 @@ module.exports = {
         ) {
             if(!msg.member.roles.cache.has('773540951434985503')) {
                 const role = msg.guild.roles.cache.get('773540951434985503')
-                if (role) {
+                if (role && !msg.member.roles.cache.has(role.id)) {
                     msg.member.roles.add(role).catch(console.error);
                     notifyAchievment(msg, role)
                 }
@@ -110,7 +110,7 @@ module.exports = {
         ) {
             if(!msg.member.roles.cache.has('773500491245289472')) {
                 const role = msg.guild.roles.cache.get('773500491245289472')
-                if (role) {
+                if (role && !msg.member.roles.cache.has(role.id)) {
                     msg.member.roles.add(role).catch(console.error);
                     notifyAchievment(msg, role)
                 }
@@ -250,7 +250,7 @@ module.exports = {
             ) {
                 if(!msg.member.roles.cache.has('773500803218538546')) {
                     const role = msg.guild.roles.cache.get('773500803218538546')
-                    if (role) {
+                    if (role && !msg.member.roles.cache.has(role.id)) {
                        msg.member.roles.add(role).catch(console.error);
                         notifyAchievment(msg, role)
                     }
