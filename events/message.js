@@ -162,8 +162,21 @@ module.exports = {
 
             embedMsg.react('👍');
             embedMsg.react('👎');
+                
+            if (
+                -1 !== msg.channel.name.indexOf('-pub-serveurs')
+                || -1 !== msg.channel.name.indexOf('-servers-pub')
+            ) {
+                if(!msg.member.roles.cache.has('773500803218538546')) {
+                    const role = msg.member.roles.cache.get('773500803218538546')
+                    if (role) {
+                       msg.member.addRole(role).catch(console.error);
+                    }
+                }
+            }
 
             msg.delete()
+                
             return;
         }
     }
