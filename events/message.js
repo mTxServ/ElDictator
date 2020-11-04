@@ -42,7 +42,8 @@ module.exports = {
 
         // mtxserv user role
         if (
-            client.isMainGuild(msg.guild.id)
+            !isDev
+            && client.isMainGuild(msg.guild.id)
             && await mTxServUserApi.isAuthenticated(msg.author.id)
         ) {
             if(!msg.member.roles.cache.has('773540951434985503')) {
@@ -66,7 +67,8 @@ module.exports = {
 
         // streamers & youtubeur auto role
         if (
-            client.isMainGuild(msg.guild.id) &&
+            !isDev
+            && client.isMainGuild(msg.guild.id) &&
             (
                 -1 !== msg.channel.name.indexOf('-vidéos-streams')
                 || -1 !== msg.channel.name.indexOf('-videos-streams')
@@ -94,7 +96,8 @@ module.exports = {
 
         // gameservers pub
         if (
-            client.isMainGuild(msg.guild.id)
+            !isDev
+            && client.isMainGuild(msg.guild.id)
             && (   -1 !== msg.channel.name.indexOf('-pub-serveurs')
                 || -1 !== msg.channel.name.indexOf('-servers-pub')
                 || -1 !== msg.channel.name.indexOf('-pub-addons')

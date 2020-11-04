@@ -18,13 +18,16 @@ module.exports = class BotStopCommand extends mTxServCommand {
     async run(msg) {
         const embed = new Discord.MessageEmbed()
             .setAuthor(`${this.client.user.tag}`, `${this.client.user.displayAvatarURL()}`)
-            .setColor('RED')
+            .setColor('BLUE')
             .setTimestamp();
 
-        msg.guild.roles.cache.map(role => {
-            const count = msg.guild.members.cache.filter(m =>
-                m.roles.cache.has(role.id)
-            ).size
+        const all = (await msg.guild.members.fetch())
+
+        msg.guild.roles.cache.map(async role => {
+            const count = all
+                .filter(m =>
+                    m.roles.cache.has(role.id)
+                ).size
 
             embed.addField(role.name.replace("@everyone", "ALL"), count, true)
         })
