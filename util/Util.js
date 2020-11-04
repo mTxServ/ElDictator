@@ -49,4 +49,18 @@ module.exports = class Util {
 
         return client.users.cache.get(id);
     }
+
+    static getDefaultChannel(guild) {
+        let defaultChannel = false;
+
+        guild.channels.cache.forEach((channel) => {
+            if(channel.type == "text" && !defaultChannel) {
+                if(channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
+                    defaultChannel = channel;
+                }
+            }
+        })
+
+        return defaultChannel
+    }
 };
