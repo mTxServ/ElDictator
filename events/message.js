@@ -8,7 +8,7 @@ const mTxServApi = require('../api/mTxServApi')
 const notifyAchievment = (msg, role) => {
     const embed = new Discord.MessageEmbed()
         .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, 'https://mtxserv.com')
-        .setDescription(`Congratulations <@%userId%>, you have now the achievment **%role%**!`.replace('%userId%', msg.author.id).replace('%role%', role.name))
+        .setDescription(`Congratulations <@%userId%>, you have now the achievement **%role%**!`.replace('%userId%', msg.author.id).replace('%role%', role.name))
         .setColor('GREEN')
         .setTimestamp()
     ;
