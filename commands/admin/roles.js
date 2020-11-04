@@ -22,7 +22,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
             .setTimestamp();
 
         msg.guild.roles.cache.map(role => {
-            const count = msg.guild.members.filter(m =>
+            const count = msg.guild.members.cache.filter(m =>
                 m.roles.has(role.id)
             ).size
 
