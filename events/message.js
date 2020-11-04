@@ -173,6 +173,16 @@ module.exports = {
                        msg.member.addRole(role).catch(console.error);
                     }
                 }
+            } else if (
+                -1 !== msg.channel.name.indexOf('-vidéos-streams')
+                || -1 !== msg.channel.name.indexOf('-videos-streams')
+            ) {
+                if(!msg.member.roles.cache.has('773500491245289472')) {
+                    const role = msg.member.roles.cache.get('773500491245289472')
+                    if (role) {
+                       msg.member.addRole(role).catch(console.error);
+                    }
+                }
             }
 
             msg.delete()
