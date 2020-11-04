@@ -3,6 +3,7 @@ const Grabity = require("grabity");
 const getUrls = require('get-urls');
 const URL = require('url').URL
 const { stripInvites, extractInviteLink } = require('../util/Util');
+const mTxServApi = require('../api/mTxServApi')
 
 module.exports = {
     run: async (msg) => {
@@ -36,6 +37,60 @@ module.exports = {
         }
 
         if (msg.author.bot) return;
+
+        const mTxServUserApi = new mTxServApi()
+
+        // mtxserv user role
+        if (
+            client.isMainGuild(msg.guild.id)
+            && await mTxServUserApi.isAuthenticated(msg.author.id)
+        ) {
+            if(!msg.member.roles.cache.has('773540951434985503')) {
+                const role = msg.guild.roles.cache.get('773540951434985503')
+                if (role) {
+                    msg.member.roles.add(role).catch(console.error);
+
+                    const embed = new Discord.MessageEmbed()
+                        .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, 'https://mtxserv.com')
+                        .setDescription(`Congratulations <@%userId%>, you have now the role **%role%**!`.replace('%userId%', msg.author.id).replace('%role%', role.name))
+                        .setColor('GREEN')
+                        .setTimestamp()
+                    ;
+
+                    msg.author.send({
+                        embed: embed
+                    });
+                }
+            }
+        }
+
+        // streamers & youtubeur auto role
+        if (
+            client.isMainGuild(msg.guild.id) &&
+            (
+                -1 !== msg.channel.name.indexOf('-vidéos-streams')
+                || -1 !== msg.channel.name.indexOf('-videos-streams')
+                || -1 !== msg.channel.name.indexOf('-movie-streams')
+            )
+        ) {
+            if(!msg.member.roles.cache.has('773500491245289472')) {
+                const role = msg.guild.roles.cache.get('773500491245289472')
+                if (role) {
+                    msg.member.roles.add(role).catch(console.error);
+
+                    const embed = new Discord.MessageEmbed()
+                        .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, 'https://mtxserv.com')
+                        .setDescription(`Congratulations <@%userId%>, you have now the role **%role%**!`.replace('%userId%', msg.author.id).replace('%role%', role.name))
+                        .setColor('GREEN')
+                        .setTimestamp()
+                    ;
+
+                    msg.author.send({
+                        embed: embed
+                    });
+                }
+            }
+        }
 
         // gameservers pub
         if (
@@ -171,27 +226,6 @@ module.exports = {
                     const role = msg.guild.roles.cache.get('773500803218538546')
                     if (role) {
                        msg.member.roles.add(role).catch(console.error);
-
-                        const embed = new Discord.MessageEmbed()
-                            .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, 'https://mtxserv.com')
-                            .setDescription(`Congratulations <@%userId%>, you have now the role **%role%**!`.replace('%userId%', msg.author.id).replace('%role%', role.name))
-                            .setColor('GREEN')
-                            .setTimestamp()
-                        ;
-
-                        msg.author.send({
-                            embed: embed
-                        });
-                    }
-                }
-            } else if (
-                -1 !== msg.channel.name.indexOf('-vidéos-streams')
-                || -1 !== msg.channel.name.indexOf('-videos-streams')
-            ) {
-                if(!msg.member.roles.cache.has('773500491245289472')) {
-                    const role = msg.guild.roles.cache.get('773500491245289472')
-                    if (role) {
-                        msg.member.roles.add(role).catch(console.error);
 
                         const embed = new Discord.MessageEmbed()
                             .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, 'https://mtxserv.com')
