@@ -168,9 +168,20 @@ module.exports = {
                 || -1 !== msg.channel.name.indexOf('-servers-pub')
             ) {
                 if(!msg.member.roles.cache.has('773500803218538546')) {
-                    const role = msg.member.roles.cache.get('773500803218538546')
+                    const role = msg.guild.roles.cache.get('773500803218538546')
                     if (role) {
-                       msg.member.addRole(role).catch(console.error);
+                       msg.member.roles.add(role).catch(console.error);
+
+                        const embed = new Discord.MessageEmbed()
+                            .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, 'https://mtxserv.com')
+                            .setDescription(`Congratulations <@%userId%>, you have now the role **%role%**!`.replace('%userId%', msg.author.id).replace('%role%', role.name))
+                            .setColor('GREEN')
+                            .setTimestamp()
+                        ;
+
+                        msg.author.send({
+                            embed: embed
+                        });
                     }
                 }
             } else if (
@@ -178,9 +189,20 @@ module.exports = {
                 || -1 !== msg.channel.name.indexOf('-videos-streams')
             ) {
                 if(!msg.member.roles.cache.has('773500491245289472')) {
-                    const role = msg.member.roles.cache.get('773500491245289472')
+                    const role = msg.guild.roles.cache.get('773500491245289472')
                     if (role) {
-                       msg.member.addRole(role).catch(console.error);
+                        msg.member.roles.add(role).catch(console.error);
+
+                        const embed = new Discord.MessageEmbed()
+                            .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, 'https://mtxserv.com')
+                            .setDescription(`Congratulations <@%userId%>, you have now the role **%role%**!`.replace('%userId%', msg.author.id).replace('%role%', role.name))
+                            .setColor('GREEN')
+                            .setTimestamp()
+                        ;
+
+                        msg.author.send({
+                            embed: embed
+                        });
                     }
                 }
             }

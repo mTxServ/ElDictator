@@ -19,7 +19,6 @@ module.exports = class StockCommand extends mTxServCommand {
 
     async run(msg) {
         const userLang = await this.resolveLangOfMessage(msg)
-        const lang = require(`../../languages/${userLang}.json`);
 
         const faq = {
             fr: [
