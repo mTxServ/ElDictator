@@ -23,7 +23,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
 
         msg.guild.roles.cache.map(role => {
             const count = msg.guild.members.cache.filter(m =>
-                m.roles.has(role.id)
+                m.roles.cache.has(role.id)
             ).size
 
             embed.addField(role.name.replace("@everyone", " "), count, true)
