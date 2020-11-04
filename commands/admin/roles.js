@@ -22,7 +22,11 @@ module.exports = class BotStopCommand extends mTxServCommand {
             .setTimestamp();
 
         msg.guild.roles.cache.map(role => {
-            embed.addField(role.name, role.members.size, true)
+            const count = msg.guild.members.filter(m =>
+                m.roles.has(role.id)
+            ).size
+
+            embed.addField(role.name.replace("@everyone", " "), count, true)
         })
 
         return msg.say({
