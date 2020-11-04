@@ -26,7 +26,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
                 m.roles.cache.has(role.id)
             ).size
 
-            embed.addField(role.name.replace("@everyone", " "), count, true)
+            embed.addField(role.name.replace("@everyone", "ALL"), count, true)
         })
 
         return msg.say({
