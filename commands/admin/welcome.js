@@ -40,6 +40,7 @@ Notre bot est en open-source sur [GitHub](https://github.com/mTxServ/ElDictator)
 ・\`m!login\` pour lier votre compte discord avec celui de mTxServ
 ・\`m!rank\` pour voir votre profil/classement
 ・\`:-adopt\` pour adopter votre animal <#773865026985525268>
+・\`m!stock\` pour voir l'état de stocks
 
 **Lien utiles**
 ・discord.js <#774950747225456660>
