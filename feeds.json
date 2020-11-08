@@ -145,5 +145,19 @@
     "tags":["web"],
     "language": "en",
     "channels":[]
+  },
+  {
+    "url":"https://www.ecranlarge.com/rss",
+    "icon":null,
+    "tags":["film"],
+    "language": "fr",
+    "channels":[]
+  },
+  {
+    "url":"https://www.futura-sciences.com/rss/actualites.xml",
+    "icon":null,
+    "tags":["science"],
+    "language": "fr",
+    "channels":[]
   }
 ]
