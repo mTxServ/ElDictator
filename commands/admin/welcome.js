@@ -37,10 +37,10 @@ Vous pouvez rechercher un tutoriel avec \`m!howto\`, par exemple: \`m!howto "cr�
 Notre bot est en open-source sur [GitHub](https://github.com/mTxServ/ElDictator).
 
 ・Voir toutes les commandes: \`m!help\` ou <#769619263078006844>
-・\`m!login\` pour lier votre compte discord avec celui de mTxServ
-・\`m!rank\` pour voir votre profil/classement
+・\`m!login\` pour lier votre compte discord avec mTxServ
+・\`m!rank\` pour voir votre profil
 ・\`:-adopt\` pour adopter votre animal <#773865026985525268>
-・\`m!stock\` pour voir l'état de stocks
+・\`m!stock\` pour voir l'état des stocks
 
 **Lien utiles**
 ・discord.js <#774950747225456660>
