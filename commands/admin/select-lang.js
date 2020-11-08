@@ -7,7 +7,7 @@ module.exports = class SelectLangCommand extends mTxServCommand {
             name: 'select-lang',
             group: 'admin',
             memberName: 'select-lang',
-            description: 'Add select language message',
+            description: 'Send select language message',
             ownerOnly: true,
             hidden: true,
             guarded: true,
