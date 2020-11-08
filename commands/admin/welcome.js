@@ -26,7 +26,7 @@ module.exports = class WelcomeCommand extends mTxServCommand {
 
 **Bienvenue sur le discord d'entraide** de la communauté *mTxServ* 🧑‍ 🤝‍ :adult: 
 
-**:mega: Avant tout, merci de consulter le #📜-règlement **
+**:mega: Avant tout, merci de consulter le <#767489801632219136>**
 
 **Par où débuter ?**
 Consultez la <#772773444252860436> et les channels \`lien-utiles\` de chaque jeu, ils contiennent de nombreux **guides et tutoriels**.
@@ -36,9 +36,9 @@ Vous vous également recherche un tutoriel avec \`m!howto\`, par exemple: \`m!ho
 Notre bot est en open-source sur [GitHub](https://github.com/mTxServ/ElDictator).
 
 ・Voir toutes les commandes: \`m!help\` ou <#769619263078006844>
-・\`m!login\` pour lier votre discord avec celui de mTxServ
-・\`m!rank\` pour voir votre profil et classement
-・\`:-adopt\` pour activer votre animal de compagnie 🐷
+・\`m!login\` pour lier votre compte discord avec celui de mTxServ
+・\`m!rank\` pour voir votre profil/classement
+・\`:-adopt\` pour adopter votre animal <#773865026985525268>
 
 **Lien utiles**
 ・discord.js <#774950747225456660>
@@ -51,23 +51,19 @@ Notre bot est en open-source sur [GitHub](https://github.com/mTxServ/ElDictator)
 ・Hytale <#769550444694732810>
 
 **Besoin d'aide avec votre serveur de jeu ?**
-・Minecraft #⛏-aide-serveur 
-・Minecraft PE #⚒-aide-serveur 
-・GMod #🚔-aide-serveur 
-・ARK #🦕-aide-serveur 
-・Rust #🏹-aide-serveur 
-・Hytale #💬-discussions 
-・Onset #🚀-onset 
-・Arma 3 #🚔-arma3 
-・CS:GO #🔫-csgo 
+・Minecraft <#769567257289949184>
+・Minecraft PE <#769566580018642995>
+・GMod <#535090951841120257>
+・ARK <#769567076301144094>
+・Rust <#769566851579379752>
+・Hytale <#769534249288073226>
+・Onset <#655058043587002387>
+・Arma 3 <#529615462783385612>
+・CS:GO <#531059371086446592>
 
 **Besoin d'aide avec votre serveur VPS ?**
-・VPS SSD #🐧-aide-linux 
-・VPS GAME #🐧-aide-linux 
-・VPS GAME Windows #🖥-aide-windows 
-
-**Besoin d'aide avec votre serveur vocal ?**
-・Teamspeak 3 #🎤-teamspeak 
+・VPS SSD & GAME <#769552131887202314>
+・VPS GAME Windows <#769552096516898868>
 
 **Publicités et recrutements**
 ・Présentez votre serveur à la communauté: <#769557502706319380>
