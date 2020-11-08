@@ -30,7 +30,8 @@ module.exports = class WelcomeCommand extends mTxServCommand {
 
 **Par où débuter ?**
 Consultez la <#772773444252860436> et les channels \`lien-utiles\` de chaque jeu, ils contiennent de nombreux **guides et tutoriels**.
-Vous vous également recherche un tutoriel avec \`m!howto\`, par exemple: \`m!howto "créer serveur darkrp"\` dans <#772812905514532885>.
+
+Vous pouvez rechercher un tutoriel avec \`m!howto\`, par exemple: \`m!howto "créer serveur darkrp"\` dans <#772812905514532885>.
 
 **Commandes du bot**
 Notre bot est en open-source sur [GitHub](https://github.com/mTxServ/ElDictator).
