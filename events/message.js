@@ -51,7 +51,7 @@ module.exports = {
             for (const gameRolesSettings of client.gameRoles) {
                 if (-1 !== gameRolesSettings.categories.indexOf(msg.channel.parent.id)) {
                     const role = msg.guild.roles.cache.get(gameRolesSettings.roleId)
-                    if (role && !msg.member.roles.cache.has(role.id)) {
+                    if (role && msg.member && !msg.member.roles.cache.has(role.id)) {
                         msg.member.roles.add(role).catch(console.error);
                         notifyAchievment(msg, role)
                     }
