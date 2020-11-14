@@ -37,7 +37,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
         ]
 
         const reaction = ':alarm_clock:'
-        const endDate = '08 Nov 2020 à 20H'
+        const endDate = '21 Nov 2020 à 18H'
 
         const prizeLabel = prizes.map(prize => `> ❯ ${prize}`).join('\n')
 
