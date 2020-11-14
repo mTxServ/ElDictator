@@ -5,9 +5,8 @@ module.exports = class GiveawayEnCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'giveaway-en',
-            aliases: ['concour', 'concours'],
             group: 'mtxserv',
-            memberName: 'giveaway',
+            memberName: 'giveaway-en',
             description: 'Show current giveaway (in english)',
             clientPermissions: ['SEND_MESSAGES'],
             ownerOnly: true,
