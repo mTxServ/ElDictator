@@ -34,11 +34,10 @@ module.exports = class ImportEmojisCommand extends mTxServCommand {
                 const emojiName = file.replace('.png', '')
                 const isAlreadyAdded = msg.guild.emojis.cache.some(emoji => emoji.name === emojiName)
 
-                if (isAlreadyAdded) {
-                    return
+                if (!isAlreadyAdded) {
+                    console.log(`add emoji ${filePath}`)
+                    msg.guild.emojis.create(filePath, emojiName)
                 }
-
-                msg.guild.emojis.create(filePath, emojiName)
             });
         });
 
