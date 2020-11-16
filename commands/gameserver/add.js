@@ -30,6 +30,9 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
         if (!isAllowed) {
             return this.sayError(msg, lang['server_add']['permissions'])
         }
+        
+        const pages = []
+        let i = 1
 
         const api = new mTxServApi()
         const isAuthenticated = await api.isAuthenticated(msg.author.id)
@@ -73,12 +76,27 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
                 status: status
             })
         }
+        
+        for (const item of list) {
+            const embed = new Discord.MessageEmbed()
+                .setColor('BLUE')
+                .setTimestamp()
+            ;
+            
+            embed.setDescription(`**${i}.** ❯ __${item.status.params.used_slots||0}/${item.status.params.max_slots||0}__ ❯ **${item.invoice.address.toUpperCase()}**\n\`\`\`fix\n${item.status.params.host_name||item.invoice.cache_hostname||item.invoice.name||'n-a'}\`\`\``))
 
-        embed.setDescription(list.map((item, key) => `**${++key}.** ❯ __${item.status.params.used_slots||0}/${item.status.params.max_slots||0}__ ❯ **${item.invoice.address.toUpperCase()}**\n\`\`\`fix\n${item.status.params.host_name||item.invoice.cache_hostname||item.invoice.name||'n-a'}\`\`\``))
+            i++
+            pages.push(embed)
+        }
 
-        await msg.say({
-            embed
-        })
+        if (pages.length === 1) {
+            const embed = pages[0]
+            return msg.say({
+                embed
+            })
+        }
+
+        paginationEmbed(msg, pages);
 
         let serverKey = await this.getInput(msg, lang['server_add']['which'], true);
         serverKey--
