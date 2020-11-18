@@ -128,7 +128,7 @@ module.exports = class ConvertCommand extends mTxServCommand {
                                 message.edit("", embed2);
                             })
                         ;
-                    }, 1000);
+                    }, 3000);
                 }
 
             }).catch(console.error);
