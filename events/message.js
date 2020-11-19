@@ -137,6 +137,7 @@ module.exports = {
                 || -1 !== msg.channel.name.indexOf('-faq-serveur')
                 || -1 !== msg.channel.name.indexOf('-server-faq')
                 || -1 !== msg.channel.name.indexOf('-pub-recrutement')
+                || -1 !== msg.channel.name.indexOf('-translate-panel')
             )
         ) {
             const inviteLink = extractInviteLink(msg.content)
@@ -193,6 +194,7 @@ module.exports = {
                 && -1 === msg.channel.name.indexOf('-faq-serveur') 
                 && -1 === msg.channel.name.indexOf('-server-faq')
                 && -1 === msg.channel.name.indexOf('-pub-recrutement')
+                && -1 === msg.channel.name.indexOf('-translate-panel')
                ) {
                 const items = urls.values()
                 let item = items.next()
