@@ -22,21 +22,22 @@ module.exports = class GiveawayCommand extends mTxServCommand {
 
         const prizes = [
             '1x [VPS SSD 4 Go](https://mtxserv.com/fr/vps-ssd) - 1 mois',
-            '1x [Serveur Minecraft 3 Go](https://mtxserv.com/fr/hebergeur-serveur-minecraft) - 1 mois',
-            '1x [Serveur GMod Starter](https://mtxserv.com/fr/hebergeur-serveur-garry-s-mod) - 1 mois',
+            '2x [Nitro Boost](https://discord.com)',
+            //'3x [STEAM CARD 5€](https://store.steampowered.com/digitalgiftcards/)',
             //'1x [Serveur Rust Starter](https://mtxserv.com/fr/hebergeur-serveur-rust) - 1 mois',
             //'1x [Serveur ARK Starter](https://mtxserv.com/fr/hebergeur-serveur-ark) - 1 mois',
         ]
 
         const actions = [
-            '🔟 points - Réagissez à ce message avec :gift:',
-            '🔟 points - Suivre notre compte [Twitter](https://twitter.com/mTxServ) et retweet le [message suivant](https://twitter.com/mTxServ)',
-            //'🔟 points - rejoindre un discord partenaire: [GCA](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot) ou [Numerix](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot)',
-            '🔟 points - Partager le giveaway sur discord  avec \`m!giveaway\` (le <#769619263078006844> doit être sur votre serveur)',
+            '> **+30 points**・Boostez le serveur discord de mTxServ',
+            '> **+30 points**・Suivez le channel <#563304015924953108> sur votre serveur discord',
+            '> **+10 points**・Réagissez à ce message avec :gift:',
+            '> **+10 points**・Retweetez le [message sur twitter](https://twitter.com/mTxServ/status/1327650869656117251) et suivez le compte [@mTxServ](https://twitter.com/mTxServ)',
+            '> **+10 points**・[Invitez le <#769619263078006844> sur votre discord](https://discord.com/oauth2/authorize?client_id=535435520394657794&permissions=912577&scope=bot) puis poster le message du giveaway  avec \`m!giveaway\` sur son serveur',
         ]
 
         const reaction = ':alarm_clock:'
-        const endDate = '25 Oct 2020 à 20H'
+        const endDate = '21 Nov 2020 à 18H'
 
         const prizeLabel = prizes.map(prize => `> ❯ ${prize}`).join('\n')
 
@@ -45,20 +46,45 @@ module.exports = class GiveawayCommand extends mTxServCommand {
             .setColor('YELLOW')
         ;
 
-        if (msg.guild.id === '529605510219956233' || msg.guild.id === '726178170314817630') {
-            embed.setDescription(`**Pour participer** au <#563304015924953108>: \n・Réagissez à ce message avec :gift:\n・et/ou retweetez le [message sur twitter](https://twitter.com/mTxServ) et suivez le compte [@mTxServ](https://twitter.com/mTxServ)\n\n${reaction} Tirage au sort le **${endDate}**\n\n:four_leaf_clover: **Augmentez vos chances** :four_leaf_clover:\n\n${actions.join('\n')}\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
-        } else {
-            embed.setDescription(`**Pour participer** au giveaway organisé par [mTxServ](https://mtxserv.com), rendez-vous dans <#563304015924953108>.\n\n${reaction} Tirage au sort le **${endDate}**\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
-            embed.addField('Comment participer?', `[Participer au giveaway](${this.client.options.invite})`)
-        }
+        let giveawayMsg = null
 
-        const giveawayMsg = await msg.say({
-            embed
-        });
+        if (this.client.isMainGuild(msg.guild.id) && this.client.isOwner(msg.author)) {
+            embed.setDescription(`:four_leaf_clover: Pour participer, réagissez avec :gift: à ce message.\n\nTirage au sort le **${endDate}**\n\n:four_leaf_clover: **Participer et Augmenter ses chances** :four_leaf_clover:\n\n${actions.join('\n')}\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
+
+            const channel = await this.client.channels.cache.get('563304015924953108')
+            giveawayMsg = false // await channel.messages.fetch('770702367049252874').catch(console.error)
+
+            if (giveawayMsg) {
+                await giveawayMsg.edit({
+                    content: `C'est parti pour un nouveau giveaway!`,
+                    embed: embed
+                })
+            } else {
+                giveawayMsg = await msg.channel.send({
+                    //content: `@everyone C'est parti pour un nouveau giveaway!`,
+                    embed: embed,
+                })
+            }
+
+            msg.delete()
+        } else {
+            embed.setDescription(`**Pour participer** au giveaway organisé par [mTxServ](https://mtxserv.com/fr/), rendez-vous dans <#563304015924953108> (ou utilisez cette [invitation pour le discord du giveaway](${this.client.options.invite})).\n\n${reaction} Tirage au sort le **${endDate}**\n\n:gift_heart: **Lots** :gift_heart:\n\n${prizeLabel}`)
+            embed.addField('Comment participer?', `[Rejoindre le discord du giveaway](${this.client.options.invite})`)
+
+            giveawayMsg = await msg.say({
+                embed
+            });
+        }
 
         giveawayMsg.react('🎁')
 
-        msg.delete()
+        if (!this.client.isMainGuild(msg.guild.id)) {
+            await this.client.provider.set(isDev ? 'giveaway_msg_dev' : 'giveaway_msg', msg.author.id, {
+                guildId: msg.guild.id,
+                guildName: msg.guild.name,
+                messageId: giveawayMsg.id
+            })
+        }
 
         return giveawayMsg
     }

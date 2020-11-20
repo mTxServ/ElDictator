@@ -8,6 +8,7 @@ module.exports = class mTxServClient extends CommandoClient {
     constructor(options) {
         super(options);
 
+        this.gameRoles = options.gameRoles;
         this.feedMonitor = new FeedMonitor(options.feeds);
         this.ranker = new Ranker()
 
@@ -19,7 +20,7 @@ module.exports = class mTxServClient extends CommandoClient {
         this.mainGuilds = [
             '529605510219956233',
             '726178170314817630',
-            '539501579137581071'
+           // '539501579137581071'
         ]
 
         this.setProvider(new FirebaseProvider()).catch(console.error)

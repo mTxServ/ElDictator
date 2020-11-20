@@ -124,5 +124,40 @@
     "tags":["rocketleague"],
     "language": "fr",
     "channels":[]
+  },
+  {
+    "url":"https://www.abondance.com/feed",
+    "icon":null,
+    "tags":["web"],
+    "language": "fr",
+    "channels":[]
+  },
+  {
+    "url":"https://www.commitstrip.com/fr/feed/",
+    "icon":null,
+    "tags":["web"],
+    "language": "fr",
+    "channels":[]
+  },
+  {
+    "url":"https://www.commitstrip.com/feed/",
+    "icon":null,
+    "tags":["web"],
+    "language": "en",
+    "channels":[]
+  },
+  {
+    "url":"https://www.ecranlarge.com/rss",
+    "icon":null,
+    "tags":["film"],
+    "language": "fr",
+    "channels":[]
+  },
+  {
+    "url":"https://www.futura-sciences.com/rss/actualites.xml",
+    "icon":null,
+    "tags":["science"],
+    "language": "fr",
+    "channels":[]
   }
 ]

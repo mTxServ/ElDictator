@@ -71,6 +71,18 @@ module.exports = class FeedCommand extends mTxServCommand {
                 name: 'S&Box',
                 key: 'sandbox'
             },
+            {
+                name: 'Web',
+                key: 'web'
+            },
+            {
+                name: 'Science',
+                key: 'science'
+            },
+            {
+                name: 'Film & Series',
+                key: 'film'
+            },
         ]
 
         const embed = new Discord.MessageEmbed()
