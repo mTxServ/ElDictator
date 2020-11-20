@@ -1,8 +1,8 @@
 const got = require('got');
 
-const makeURLYoutube = (query) => `http://92.222.234.121:8080/${encodeURIComponent(query)}`;
+const makeURLYoutube = (query) => `http://92.222.234.121:8082/${encodeURIComponent(query)}`;
 const makeURLSoundcloud = (query) => `http://92.222.234.121/soundcloud/download.php?url=${encodeURIComponent(query)}`;
-const makeURLYTStatus = (query) => `http://92.222.234.121:8080/logs/${encodeURIComponent(query)}.txt`;
+const makeURLYTStatus = (query) => `http://92.222.234.121:8082/logs/${encodeURIComponent(query)}.txt`;
 
 class ConverterApi {
     async convertYoutube(query) {
