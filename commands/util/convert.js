@@ -120,7 +120,7 @@ module.exports = class ConvertCommand extends mTxServCommand {
 
                                     clearInterval(intervalObj);
                                 } else {
-                                    embed2.addField("Conversion en cours :", `${Math.round(result.progress.percentage)} %` )        // On continue le traitement
+                                    embed2.addField("Conversion en cours :", `${Math.round(result.percent)} %` )        // On continue le traitement
                                     embed2.setTimestamp();
                                 }
 
