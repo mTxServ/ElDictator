@@ -1,14 +1,12 @@
-const Discord = require('discord.js')
-
 module.exports = {
-    run: (oldmember, newmember) => {
-        if (client.isMainGuild(newmember.guild.id)
-            && null === oldmember.premiumSince
-            && null !== newmember.premiumSince) {
+    run: (oldMember, newMember) => {
+        if (client.isMainGuild(newMember.guild.id)) {
+            const hadRole = oldMember.roles.cache.find(role => role.name === 'VIP ★');
+            const hasRole = newMember.roles.cache.find(role => role.name === 'VIP ★');
 
-            console.log(`${newmember.username} boosted ${newmember.guild.name}`)
-
-            client.provider.set(isDev ? 'giveaway_boost_dev' : 'giveaway_boost_msg', newmember.id, newmember.premiumSinceTimestamp)
+            if (!hadRole && hasRole) {
+                console.log(`${newMember.username} boosted ${newMember.guild.name}`)
+            }
         }
     }
 };
