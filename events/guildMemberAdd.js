@@ -14,6 +14,13 @@ module.exports = {
         }
 
         const invitation = invitationFiltered[0];
+        const dateFilter = new Date().getTime() - (86400 * 7 * 1000)
+
+        if (invitation.creatorId === member.user.id
+            || !member.user.verified
+            || member.user.createdTimestamp > dateFilter) {
+            return;
+        }
 
         client.inviteManager.incrementUser(member.guild, invitation.code)
 
