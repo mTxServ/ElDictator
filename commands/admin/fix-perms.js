@@ -58,9 +58,9 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
                 }
             );
 
-            const isAvailableForEveryone = -1 !== msg.channel.name.indexOf('-select-lang')
-                || -1 !== msg.channel.name.indexOf('-giveaway-fr')
-                || -1 !== msg.channel.name.indexOf('-giveaway-en')
+            const isAvailableForEveryone = -1 !== channel.name.indexOf('-select-lang')
+                || -1 !== channel.name.indexOf('-giveaway-fr')
+                || -1 !== channel.name.indexOf('-giveaway-en')
             ;
 
             // everyone
@@ -106,42 +106,108 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
                     }
                 }
             } else {
-                channelLang = typeof mainChannels[channel.parentID] !== 'undefined' ? mainChannels[channel.parentID] : 'fr'
+                channelLang = typeof mainChannels[channel.id] !== 'undefined' ? mainChannels[channel.id] : 'fr'
             }
 
-            const isReadOnly = -1 !== msg.channel.name.indexOf('-news')
-                || -1 !== msg.channel.name.indexOf('-announcement')
-                || -1 !== msg.channel.name.indexOf('-annonces')
-                || -1 !== msg.channel.name.indexOf('-bot-help')
-                || -1 !== msg.channel.name.indexOf('-giveaway-en')
-                || -1 !== msg.channel.name.indexOf('-giveaway-fr')
-                || -1 !== msg.channel.name.indexOf('-translate-panel')
-                || -1 !== msg.channel.name.indexOf('-select-lang')
-                || -1 !== msg.channel.name.indexOf('-achievements')
-                || -1 !== msg.channel.name.indexOf('-bienvenue')
-                || -1 !== msg.channel.name.indexOf('-faq')
-                || -1 !== msg.channel.name.indexOf('-faq-en')
-                || -1 !== msg.channel.name.indexOf('-règlement')
-                || -1 !== msg.channel.name.indexOf('-rules')
-                || -1 !== msg.channel.name.indexOf('-jeux-gratuits')
-                || -1 !== msg.channel.name.indexOf('-family')
-                || -1 !== msg.channel.name.indexOf('-suggestions')
-                || -1 !== msg.channel.name.indexOf('-devenir-partenaire')
-                || -1 !== msg.channel.name.indexOf('-gca')
-                || -1 !== msg.channel.name.indexOf('-lien-utiles')
-                || -1 !== msg.channel.name.indexOf('-new-versions')
-                || -1 !== msg.channel.name.indexOf('-gca')
-                || -1 !== msg.channel.name.indexOf('-faq-serveur')
-                || -1 !== msg.channel.name.indexOf('-usefull-links')
-                || -1 !== msg.channel.name.indexOf('-introduce-yourself')
-                || -1 !== msg.channel.name.indexOf('-feedbacks')
-                || -1 !== msg.channel.name.indexOf('-become-partner')
+            if (channel.id === '602891962638401546'
+                || (channel.parentID && channel.parentID === '602891962638401546')) {
+                // en
+                channel.createOverwrite(
+                    '602918941417013251',
+                    {
+                        CREATE_INSTANT_INVITE: false,
+                        ADD_REACTIONS: false,
+                        KICK_MEMBERS: false,
+                        BAN_MEMBERS: false,
+                        VIEW_AUDIT_LOG: false,
+                        VIEW_CHANNEL: false,
+                        READ_MESSAGES: false,
+                        SEND_MESSAGES: false,
+                        SEND_TTS_MESSAGES: false,
+                        MANAGE_MESSAGES: false,
+                        EMBED_LINKS: false,
+                        ATTACH_FILES: false,
+                        READ_MESSAGE_HISTORY: false,
+                        MENTION_EVERYONE: false,
+                        USE_EXTERNAL_EMOJIS: false,
+                        EXTERNAL_EMOJIS: false,
+                        SPEAK: false,
+                        CONNECT: false,
+                        MUTE_MEMBERS: false,
+                        DEAFEN_MEMBERS: false,
+                        MOVE_MEMBERS: false,
+                        USE_VAD: false,
+                        CHANGE_NICKNAME: false,
+                        MANAGE_NICKNAMES: false,
+                    }
+                );
+
+                // fr
+                channel.createOverwrite(
+                    '602918672482172978',
+                    {
+                        CREATE_INSTANT_INVITE: false,
+                        ADD_REACTIONS: false,
+                        KICK_MEMBERS: false,
+                        BAN_MEMBERS: false,
+                        VIEW_AUDIT_LOG: false,
+                        VIEW_CHANNEL: false,
+                        READ_MESSAGES: false,
+                        SEND_MESSAGES: false,
+                        SEND_TTS_MESSAGES: false,
+                        MANAGE_MESSAGES: false,
+                        EMBED_LINKS: false,
+                        ATTACH_FILES: false,
+                        READ_MESSAGE_HISTORY: false,
+                        MENTION_EVERYONE: false,
+                        USE_EXTERNAL_EMOJIS: false,
+                        EXTERNAL_EMOJIS: false,
+                        SPEAK: false,
+                        CONNECT: false,
+                        MUTE_MEMBERS: false,
+                        DEAFEN_MEMBERS: false,
+                        MOVE_MEMBERS: false,
+                        USE_VAD: false,
+                        CHANGE_NICKNAME: false,
+                        MANAGE_NICKNAMES: false,
+                    }
+                );
+
+                continue;
+            }
+
+            const isReadOnly = -1 !== channel.name.indexOf('-news')
+                || -1 !== channel.name.indexOf('-announcement')
+                || -1 !== channel.name.indexOf('-annonces')
+                || -1 !== channel.name.indexOf('-bot-help')
+                || -1 !== channel.name.indexOf('-giveaway-en')
+                || -1 !== channel.name.indexOf('-giveaway-fr')
+                || -1 !== channel.name.indexOf('-translate-panel')
+                || -1 !== channel.name.indexOf('-select-lang')
+                || -1 !== channel.name.indexOf('-achievements')
+                || -1 !== channel.name.indexOf('-bienvenue')
+                || -1 !== channel.name.indexOf('-faq')
+                || -1 !== channel.name.indexOf('-faq-en')
+                || -1 !== channel.name.indexOf('-règlement')
+                || -1 !== channel.name.indexOf('-rules')
+                || -1 !== channel.name.indexOf('-jeux-gratuits')
+                || -1 !== channel.name.indexOf('-family')
+                || -1 !== channel.name.indexOf('-suggestions')
+                || -1 !== channel.name.indexOf('-devenir-partenaire')
+                || -1 !== channel.name.indexOf('-gca')
+                || -1 !== channel.name.indexOf('-lien-utiles')
+                || -1 !== channel.name.indexOf('-new-versions')
+                || -1 !== channel.name.indexOf('-gca')
+                || -1 !== channel.name.indexOf('-faq-serveur')
+                || -1 !== channel.name.indexOf('-usefull-links')
+                || -1 !== channel.name.indexOf('-feedbacks')
+                || -1 !== channel.name.indexOf('-become-partner')
             ;
 
             if (channelLang === 'fr') {
                 // fr
                 channel.createOverwrite(
-                    '602918941417013251',
+                    '602918672482172978',
                     {
                         CREATE_INSTANT_INVITE: false,
                         ADD_REACTIONS: true,
@@ -172,7 +238,7 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
 
                 // en
                 channel.createOverwrite(
-                    '602918672482172978',
+                    '602918941417013251',
                     {
                         CREATE_INSTANT_INVITE: false,
                         ADD_REACTIONS: false,
@@ -203,7 +269,7 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
             } else {
                 // en
                 channel.createOverwrite(
-                    '602918672482172978',
+                    '602918941417013251',
                     {
                         CREATE_INSTANT_INVITE: false,
                         ADD_REACTIONS: true,
@@ -234,7 +300,7 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
 
                 // fr
                 channel.createOverwrite(
-                    '602918941417013251',
+                    '602918672482172978',
                     {
                         CREATE_INSTANT_INVITE: false,
                         ADD_REACTIONS: false,
