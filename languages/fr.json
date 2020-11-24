@@ -156,5 +156,8 @@
     "search": "Recherche",
     "no_result": ":no_entry_sign: Aucun résultat trouvé",
     "description": "Description :"
+  },
+  "achievement": {
+    "new": "Félicitation <@%userId%>, vous avez gagné le trophée **%role%**!"
   }
 }

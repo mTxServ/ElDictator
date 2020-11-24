@@ -156,5 +156,8 @@
     "search": "Search",
     "no_result": ":no_entry_sign: No result found",
     "description": "Description :"
+  },
+  "achievement": {
+    "new": "Congratulations <@%userId%>, you have now the achievement **%role%**!"
   }
 }
