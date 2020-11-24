@@ -23,7 +23,7 @@ const notifyAchievment = (msg, role) => {
             .cache
             .get(channelId)
             .send({
-                content: `<@${msg.author.id}>`,
+                // content: `<@${msg.author.id}>`,
                 embed: embed
             })
             .catch(console.error);
