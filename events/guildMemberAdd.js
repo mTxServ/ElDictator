@@ -22,7 +22,7 @@ module.exports = {
             return;
         }
 
-        client.inviteManager.incrementUser(member.guild, invitation.code)
+        client.inviteManager.incrementUser(member.guild, invitation.code, member.user.id)
 
         if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
             client

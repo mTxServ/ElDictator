@@ -11,6 +11,10 @@ class InviteManager {
         return isDev ? 'scores_invites_dev' : 'scores_invites'
     }
 
+    getIgnoredCacheKey() {
+        return isDev ? 'ignored_invites_dev' : 'ignored_invites'
+    }
+
     async warmup() {
         const guilds = client.guilds.cache.array()
         for (const guild of guilds) {
@@ -90,8 +94,45 @@ class InviteManager {
         return await client.provider.get(guild.id, this.getScoresCacheKey(), {})
     }
 
-    async incrementUser(guild, invitationCode) {
+    async getIgnored(guild) {
         if (!client.isMainGuild(guild.id)) {
+            return
+        }
+
+        return await client.provider.get(guild.id, this.getIgnoredCacheKey(), {})
+    }
+
+    async isIgnoredUser(guild, userId) {
+        if (!client.isMainGuild(guild.id)) {
+            return
+        }
+
+        const users = await this.getIgnored(guild);
+        return typeof users[userId] !== 'undefined'
+    }
+
+    async ignoredUser(guild, userId, inviterId, inviterName) {
+        if (!client.isMainGuild(guild.id)) {
+            return
+        }
+
+        const users = await this.getIgnored(guild);
+        users[userId] = {
+            'inviterId': inviterId,
+            'inviterName': inviterName,
+            'createdAt': Math.ceil(new Date().getTime() / 1000),
+        };
+
+        return await client.provider.set(guild.id, this.getIgnoredCacheKey(), users)
+    }
+
+    async incrementUser(guild, invitationCode, userId) {
+        if (!client.isMainGuild(guild.id)) {
+            return
+        }
+
+        const isIgnoredUser = await this.isIgnoredUser(guild, userId)
+        if (isIgnoredUser) {
             return
         }
 
@@ -106,6 +147,7 @@ class InviteManager {
         scores[invitation.creatorId] = ++scores[invitation.creatorId] || 1;
 
         await client.provider.set(guild.id, this.getScoresCacheKey(), scores)
+        await this.ignoredUser(guild, userId, invitation.creatorId, invitation.creatorName)
     }
 }
 
