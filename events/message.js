@@ -129,6 +129,7 @@ module.exports = {
             && (   -1 !== msg.channel.name.indexOf('-pub-serveurs')
                 || -1 !== msg.channel.name.indexOf('-servers-pub')
                 || -1 !== msg.channel.name.indexOf('-pub-addons')
+                || -1 !== msg.channel.name.indexOf('-pub')
                 || -1 !== msg.channel.name.indexOf('-family')
                 || -1 !== msg.channel.name.indexOf('-hytale-recrute')
                 || -1 !== msg.channel.name.indexOf('-giveaway')
@@ -200,6 +201,7 @@ module.exports = {
                 && -1 === msg.channel.name.indexOf('-server-faq')
                 && -1 === msg.channel.name.indexOf('-pub-recrutement')
                 && -1 === msg.channel.name.indexOf('-translate-panel')
+                && -1 === msg.channel.name.indexOf('-pub')
                ) {
                 const items = urls.values()
                 let item = items.next()

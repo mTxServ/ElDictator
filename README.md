@@ -21,7 +21,9 @@ Main features:
 * search map and addon in the STEAM Workshop
 * multi-languages (fr/en)
 * ranking system
+* grades system
 * generate your minecraft achievements
+* invitation manager & leaderboard
 
 This bot was created with `discord.js`, `discord commando` and use a `firebase` NoSQL database.
 
