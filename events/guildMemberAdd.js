@@ -4,6 +4,10 @@ module.exports = {
             return
         }
 
+        if (!client.isMainGuild(member.guild.id)) {
+            return
+        }
+
         const oldInvitations = await client.inviteManager.get(member.guild)
         const newInvitations = await client.inviteManager.update(member.guild)
 
@@ -22,7 +26,7 @@ module.exports = {
             return;
         }
 
-        client.inviteManager.incrementUser(member.guild, invitation.code, member.user.id)
+        client.inviteManager.incrementInviteCounter(member.guild, invitation.code, member.user.id)
 
         if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
             client

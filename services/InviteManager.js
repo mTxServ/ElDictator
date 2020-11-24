@@ -111,22 +111,33 @@ class InviteManager {
         return typeof users[userId] !== 'undefined'
     }
 
-    async ignoredUser(guild, userId, inviterId, inviterName) {
+    async getIgnoredUser(guild, userId) {
+        if (!client.isMainGuild(guild.id)) {
+            return
+        }
+
+        const users = await this.getIgnored(guild);
+        return typeof users[userId] !== 'undefined' ? users[userId] : null
+    }
+
+    async ignoreUser(guild, userId, invitation) {
         if (!client.isMainGuild(guild.id)) {
             return
         }
 
         const users = await this.getIgnored(guild);
         users[userId] = {
-            'inviterId': inviterId,
-            'inviterName': inviterName,
+            'userId': userId,
+            'inviterId': invitation.creatorId,
+            'inviterName':  invitation.creatorName,
             'createdAt': Math.ceil(new Date().getTime() / 1000),
+            'invitationCode': invitation.code,
         };
 
         return await client.provider.set(guild.id, this.getIgnoredCacheKey(), users)
     }
 
-    async incrementUser(guild, invitationCode, userId) {
+    async incrementInviteCounter(guild, invitationCode, userId) {
         if (!client.isMainGuild(guild.id)) {
             return
         }
@@ -144,10 +155,51 @@ class InviteManager {
         const invitation = invitations[invitationCode]
 
         const scores = await this.getScores(guild)
-        scores[invitation.creatorId] = ++scores[invitation.creatorId] || 1;
+        if (typeof scores[invitation.creatorId] === 'undefined') {
+            scores[invitation.creatorId] = {
+                userId: invitation.creatorId,
+                userName: invitation.creatorName,
+                inviteCount: 0,
+                leaveCount: 0,
+            }
+        }
+
+        ++scores[invitation.creatorId]['inviteCount']
 
         await client.provider.set(guild.id, this.getScoresCacheKey(), scores)
-        await this.ignoredUser(guild, userId, invitation.creatorId, invitation.creatorName)
+        await this.ignoreUser(guild, userId, invitation)
+    }
+
+    async incrementLeaveCounter(guild, userId) {
+        if (!client.isMainGuild(guild.id)) {
+            return
+        }
+
+        const userData = await this.getIgnoredUser(guild, userId)
+        if (!userData) {
+            return
+        }
+
+        const invitations = await this.get(guild)
+        if (typeof invitations[userData.invitationCode] === 'undefined') {
+            return;
+        }
+
+        const invitation = invitations[userData.invitationCode]
+
+        const scores = await this.getScores(guild)
+        if (typeof scores[invitation.creatorId] === 'undefined') {
+            scores[invitation.creatorId] = {
+                userId: invitation.creatorId,
+                userName: invitation.creatorName,
+                inviteCount: 0,
+                leaveCount: 0,
+            }
+        }
+
+        ++scores[invitation.creatorId]['leaveCount']
+
+        await client.provider.set(guild.id, this.getScoresCacheKey(), scores)
     }
 }
 
