@@ -22,8 +22,30 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
             console.log(channel.name)
 
             channel.createOverwrite(
+                '529605510219956233',
+                {
+                    CREATE_INSTANT_INVITE: false,
+                }
+            );
+            
+            channel.createOverwrite(
+                '602918941417013251',
+                {
+                    CREATE_INSTANT_INVITE: false,
+                }
+            );
+
+            channel.createOverwrite(
+                '602918672482172978',
+                {
+                    CREATE_INSTANT_INVITE: false,
+                }
+            );
+            
+            channel.createOverwrite(
                 '773493168087629846',
                 {
+                    CREATE_INSTANT_INVITE: false,
                     ADD_REACTIONS: true,
                     KICK_MEMBERS: true,
                     BAN_MEMBERS: true,
