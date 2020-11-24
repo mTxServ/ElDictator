@@ -8,7 +8,7 @@ const mTxServApi = require('../api/mTxServApi')
 const notifyAchievment = (msg, role) => {
     const userLang = msg.member.roles.cache.some(role => role.name === '🇫🇷') ? 'fr' : 'en';
     const channelId = userLang === 'fr' ? '773581118267457537' : '780827321660866581'
-    const lang = require(`../../languages/${userLang}.json`)
+    const lang = require(`../languages/${userLang}.json`)
 
     const embed = new Discord.MessageEmbed()
         .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, userLang === 'en' ? 'https://mtxserv.com/' : 'https://mtxserv.com/fr/')
