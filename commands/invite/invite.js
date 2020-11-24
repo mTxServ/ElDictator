@@ -30,12 +30,13 @@ module.exports = class SupportCommand extends mTxServCommand {
         }
 
         const embed = new Discord.MessageEmbed()
-            .setDescription(`Votre lien d'invitation personnel est: https://discord.com/invite/${invitation.code}.\nPour consulter le classement, utilisez \`m!invite-ranks\``)
+            .setDescription(`Votre lien d'invitation personnel est: https://discord.com/invite/${invitation.code}.`)
             .setColor('BLUE')
         ;
 
         return msg.say({
-            embed
+            content: `https://discord.com/invite/${invitation.code}`,
+            embed: embed,
         })
     }
 };

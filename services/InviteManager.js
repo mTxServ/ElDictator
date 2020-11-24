@@ -243,7 +243,6 @@ class InviteManager {
             unique: false,
             reason: userId,
         })
-        console.log(invite)
 
         return invite
     }
