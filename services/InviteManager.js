@@ -23,8 +23,8 @@ class InviteManager {
                         maxUses: invite.maxUses,
                         createdAt: invite.createdTimestamp,
                         creatorId: invite.inviter ? invite.inviter.id : null,
-                        creatorName: invite.inviter ? invite.inviter.username : null,
-                        creatorBot: invite.inviter ? invite.inviter.bot : false,
+                        creatorName: invite.inviter ? invite.inviter.username : 'Widget',
+                        creatorBot: invite.inviter ? invite.inviter.bot : true,
                     };
                 });
 
