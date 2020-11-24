@@ -201,6 +201,52 @@ class InviteManager {
 
         await client.provider.set(guild.id, this.getScoresCacheKey(), scores)
     }
+
+    async hasInvitationLink(guild, userId) {
+        const invitations = await this.get(guild);
+        const filtered = Object.values(invitations).filter(invitation => invitation.creatorId === userId)
+        return filtered.length ? true : false;
+    }
+
+    async getInvitationLink(guild, userId) {
+        const invitations = await this.get(guild);
+        const filtered = Object.values(invitations).filter(invitation => invitation.creatorId === userId)
+        return filtered.length ? filtered[0] : null;
+    }
+
+    async createInvitationLink(guild, userId) {
+        const hasLink = await this.hasInvitationLink(guild, userId)
+        if (hasLink) {
+            return await this.getInvitationLink(guild, userId)
+        }
+
+        const channelId = '770584283537997834'
+
+        if (!client.channels.cache.has(channelId)) {
+            console.error('Channel used to create invitation is not found')
+            return
+        }
+
+        const channel = client
+            .channels
+            .cache
+            .get(channelId);
+
+        if (!channel) {
+            console.error('Cant retrieve channel used to create invitation is not found')
+            return
+        }
+
+        const invite = await channel.createInvite({
+            maxAge: 0,
+            maxUses: 0,
+            unique: false,
+            reason: userId,
+        })
+        console.log(invite)
+
+        return invite
+    }
 }
 
 module.exports = InviteManager;
