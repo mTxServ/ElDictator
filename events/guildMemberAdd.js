@@ -1,13 +1,10 @@
 module.exports = {
     run: async (member) => {
-        console.log('new member')
-
         if (member.user.bot) {
             return
         }
 
         if (!client.isMainGuild(member.guild.id)) {
-            console.log('not a main guild server')
             return
         }
 
@@ -17,7 +14,6 @@ module.exports = {
         // Look through the invites, find the one for which the uses went up.
         const invitationFiltered = Object.values(newInvitations).filter(i => oldInvitations[i.code].uses < i.uses);
         if (!invitationFiltered.length) {
-            console.log('no invitation found')
             return;
         }
 
@@ -27,13 +23,11 @@ module.exports = {
         if (invitation.creatorId === member.user.id
             || !member.user.verified
             || member.user.createdTimestamp > dateFilter) {
-            //return;
+            return;
         }
 
-        console.log('increment')
         client.inviteManager.incrementInviteCounter(member.guild, invitation.code, member.user.id)
 
-        console.log('sent log')
         if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
             client
                 .channels
