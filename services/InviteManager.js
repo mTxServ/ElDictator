@@ -26,10 +26,6 @@ class InviteManager {
 
             const invites = await guild.fetchInvites();
             invites.forEach(invite => {
-                if (invite.temporary || !invite.inviter || invite.inviter.bot) {
-                    return;
-                }
-
                 invitations[invite.code] = {
                     code: invite.code,
                     temporary: invite.temporary,
@@ -56,10 +52,6 @@ class InviteManager {
 
         const invites = await guild.fetchInvites();
         invites.forEach(invite => {
-            if (invite.temporary || !invite.inviter || invite.inviter.bot) {
-                return;
-            }
-
             invitations[invite.code] = {
                 code: invite.code,
                 temporary: invite.temporary,
