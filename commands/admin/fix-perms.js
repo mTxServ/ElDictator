@@ -16,6 +16,8 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
     }
 
     async run(msg) {
+        return;
+
         const channels = await msg.guild.channels.cache.array();
 
         const mainChannels = {
@@ -27,37 +29,6 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
         };
 
         for (const channel of channels) {
-            // Moderator
-            channel.createOverwrite(
-                '773493168087629846',
-                {
-                    CREATE_INSTANT_INVITE: false,
-                    ADD_REACTIONS: true,
-                    KICK_MEMBERS: true,
-                    BAN_MEMBERS: true,
-                    VIEW_AUDIT_LOG: true,
-                    VIEW_CHANNEL: true,
-                    READ_MESSAGES: true,
-                    SEND_MESSAGES: true,
-                    SEND_TTS_MESSAGES: false,
-                    MANAGE_MESSAGES: true,
-                    EMBED_LINKS: true,
-                    ATTACH_FILES: true,
-                    READ_MESSAGE_HISTORY: true,
-                    MENTION_EVERYONE: false,
-                    USE_EXTERNAL_EMOJIS: true,
-                    EXTERNAL_EMOJIS: true,
-                    SPEAK: true,
-                    CONNECT: true,
-                    MUTE_MEMBERS: true,
-                    DEAFEN_MEMBERS: true,
-                    MOVE_MEMBERS: true,
-                    USE_VAD: true,
-                    CHANGE_NICKNAME: true,
-                    MANAGE_NICKNAMES: true,
-                }
-            );
-
             const isAvailableForEveryone = -1 !== channel.name.indexOf('-select-lang')
                 || -1 !== channel.name.indexOf('-giveaway-fr')
                 || -1 !== channel.name.indexOf('-giveaway-en')
@@ -115,7 +86,7 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
                 channel.createOverwrite(
                     '602918941417013251',
                     {
-                        CREATE_INSTANT_INVITE: false,
+                        CREATE_INSTANT_INVITE: true,
                         ADD_REACTIONS: false,
                         KICK_MEMBERS: false,
                         BAN_MEMBERS: false,
@@ -146,7 +117,7 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
                 channel.createOverwrite(
                     '602918672482172978',
                     {
-                        CREATE_INSTANT_INVITE: false,
+                        CREATE_INSTANT_INVITE: true,
                         ADD_REACTIONS: false,
                         KICK_MEMBERS: false,
                         BAN_MEMBERS: false,
@@ -209,7 +180,7 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
                 channel.createOverwrite(
                     '602918672482172978',
                     {
-                        CREATE_INSTANT_INVITE: false,
+                        CREATE_INSTANT_INVITE: true,
                         ADD_REACTIONS: true,
                         KICK_MEMBERS: false,
                         BAN_MEMBERS: false,
@@ -240,7 +211,7 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
                 channel.createOverwrite(
                     '602918941417013251',
                     {
-                        CREATE_INSTANT_INVITE: false,
+                        CREATE_INSTANT_INVITE: true,
                         ADD_REACTIONS: false,
                         KICK_MEMBERS: false,
                         BAN_MEMBERS: false,
@@ -271,7 +242,7 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
                 channel.createOverwrite(
                     '602918941417013251',
                     {
-                        CREATE_INSTANT_INVITE: false,
+                        CREATE_INSTANT_INVITE: true,
                         ADD_REACTIONS: true,
                         KICK_MEMBERS: false,
                         BAN_MEMBERS: false,
@@ -302,7 +273,7 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
                 channel.createOverwrite(
                     '602918672482172978',
                     {
-                        CREATE_INSTANT_INVITE: false,
+                        CREATE_INSTANT_INVITE: true,
                         ADD_REACTIONS: false,
                         KICK_MEMBERS: false,
                         BAN_MEMBERS: false,
