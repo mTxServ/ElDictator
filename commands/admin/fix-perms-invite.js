@@ -21,7 +21,7 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
         for (const channel of channels) {
             // fr
             channel.updateOverwrite(
-                '770584275329482754',
+                '602918672482172978',
                 {
                     CREATE_INSTANT_INVITE: true,
                 }
@@ -29,7 +29,7 @@ module.exports = class FixPermissionsCommand extends mTxServCommand {
 
             // en
             channel.updateOverwrite(
-                '770584276248690689',
+                '602918941417013251',
                 {
                     CREATE_INSTANT_INVITE: true,
                 }
