@@ -23,7 +23,7 @@ module.exports = {
         if (invitation.creatorId === member.user.id
             || !member.user.verified
             || member.user.createdTimestamp > dateFilter) {
-            return;
+            //return;
         }
 
         client.inviteManager.incrementInviteCounter(member.guild, invitation.code, member.user.id)
