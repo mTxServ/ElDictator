@@ -9,7 +9,7 @@ module.exports = class BotStatusCommand extends mTxServCommand {
     constructor(client) {
         super(client, {
             name: 'bot',
-            aliases: ['bot-status', 'info', 'bot-info', 'bot', 'fork', 'forkme', 'bot-invite'],
+            aliases: ['bot-status', 'info', 'bot-info', 'bot', 'fork', 'forkme', 'bot-invite', 'invite'],
             group: 'bot',
             memberName: 'bot-info',
             description: 'Display bot infos.',
