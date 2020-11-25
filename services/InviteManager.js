@@ -153,10 +153,12 @@ class InviteManager {
                 userName: invitation.creatorName,
                 inviteCount: 0,
                 leaveCount: 0,
+                totalCount: 0,
             }
         }
 
         ++scores[invitation.creatorId]['inviteCount']
+        ++scores[invitation.creatorId]['totalCount']
 
         await client.provider.set(guild.id, this.getScoresCacheKey(), scores)
         await this.ignoreUser(guild, userId, invitation)
@@ -186,10 +188,12 @@ class InviteManager {
                 userName: invitation.creatorName,
                 inviteCount: 0,
                 leaveCount: 0,
+                totalCount: 0,
             }
         }
 
         ++scores[invitation.creatorId]['leaveCount']
+        --scores[invitation.creatorId]['totalCount']
 
         await client.provider.set(guild.id, this.getScoresCacheKey(), scores)
     }

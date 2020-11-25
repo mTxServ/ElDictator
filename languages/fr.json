@@ -159,5 +159,10 @@
   },
   "achievement": {
     "new": "Félicitation <@%userId%>, vous avez gagné le trophée **%role%**!"
+  },
+  "invite_ranking": {
+    "description": "**Invitez vos amis**, tentez de **gagner des lots** tous les mois !\nLe classement est remis à zéro et les gagnants annoncés **à la fin du mois**.",
+    "empty": "`Aucun membre dans le classement pour l'instant!`",
+    "headers": "**```Total   Join    Leave```**"
   }
 }
