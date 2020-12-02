@@ -37,7 +37,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
         ]
 
         const reaction = ':alarm_clock:'
-        const endDate = '21 Nov 2020 à 18H'
+        const endDate = '6 Dec à 18H'
 
         const prizeLabel = prizes.map(prize => `> ❯ ${prize}`).join('\n')
 
@@ -61,7 +61,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
                 })
             } else {
                 giveawayMsg = await msg.channel.send({
-                    //content: `@everyone C'est parti pour un nouveau giveaway!`,
+                    content: `@everyone C'est parti pour un nouveau giveaway!`,
                     embed: embed,
                 })
             }
