@@ -61,7 +61,7 @@ module.exports = class GiveawayCommand extends mTxServCommand {
                 })
             } else {
                 giveawayMsg = await msg.channel.send({
-                    content: `@everyone C'est parti pour un nouveau giveaway!`,
+                    //content: `@everyone C'est parti pour un nouveau giveaway!`,
                     embed: embed,
                 })
             }
