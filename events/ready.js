@@ -5,7 +5,7 @@ module.exports = {
         console.log(`Logged in as ${client.user.tag}! (${client.user.id})`);
 
         client.feedMonitor.warmup()
-        client.inviteManager.warmup()
+        //client.inviteManager.warmup()
         client.statusUpdater.updateStatus()
 
         client.setInterval(() => client.statusUpdater.updateStatus(), 1000 * 60)
