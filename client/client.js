@@ -15,8 +15,9 @@ module.exports = class mTxServClient extends CommandoClient {
         this.ranker = new Ranker()
 
         this.statusUpdater = new StatusUpdater(this, [
-            { type: 'PLAYING', name: `${process.env.BOT_COMMAND_PREFIX}help | mTxServ.com`},
-            { type: 'PLAYING', name: 'Server by mTxServ.com' },
+            { type: 'PLAYING', name: `${process.env.BOT_COMMAND_PREFIX}giveaway | Win prizes!`},
+            // { type: 'PLAYING', name: `${process.env.BOT_COMMAND_PREFIX}help | mTxServ.com`},
+            // { type: 'PLAYING', name: 'Server by mTxServ.com' },
         ])
 
         this.mainGuilds = [
