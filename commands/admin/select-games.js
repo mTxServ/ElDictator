@@ -26,6 +26,7 @@ module.exports = class SelectGamesCommand extends mTxServCommand {
             ・🚔 Garry's Mod / GMod
             ・🦕 ARK
             ・🏹 Rust
+            ・💎 Hytale
             ・🤖 Dev PHP / Discord.js
             ・🐧 VPS (Linux, Windows)
             ・➕ Onset, Arma3, CS:GO`)
@@ -40,6 +41,7 @@ module.exports = class SelectGamesCommand extends mTxServCommand {
         langMsg.react('🚔')
         langMsg.react('🦕')
         langMsg.react('🏹')
+        langMsg.react('💎')
         langMsg.react('🤖')
         langMsg.react('🐧')
         langMsg.react('➕')
