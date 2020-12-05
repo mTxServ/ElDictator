@@ -36,14 +36,5 @@ module.exports = class SelectGamesCommand extends mTxServCommand {
             embed
         })
 
-        langMsg.react('⛏')
-        langMsg.react('⚒')
-        langMsg.react('🚔')
-        langMsg.react('🦕')
-        langMsg.react('🏹')
-        langMsg.react('💎')
-        langMsg.react('🤖')
-        langMsg.react('🐧')
-        langMsg.react('➕')
     }
 };
