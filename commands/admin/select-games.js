@@ -28,7 +28,7 @@ module.exports = class SelectGamesCommand extends mTxServCommand {
             ・🏹 Rust
             ・🤖 Dev PHP / Discord.js
             ・🐧 VPS (Linux, Windows)
-            ・➕ Onset, Arma3, CS:GO`);
+            ・➕ Onset, Arma3, CS:GO`)
             .setFooter('Choose your games / Choisissez vos jeux - mTxServ.com');
 
         const langMsg = await msg.say({
