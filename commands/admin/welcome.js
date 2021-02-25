@@ -83,17 +83,11 @@ Notre bot est en open-source sur [GitHub](https://github.com/mTxServ/ElDictator)
 ・<#563310350611775498>
 ・<#767487492571004960>`)
             .setFooter('Bienvenue sur mTxServ !');
-
-    msg.channel.fetchMessages({around: 774997378372993064, limit: 1})
-        .then(msg => {
-            const fetchedMsg = msg.first();
-            fetchedMsg.edit(embed);
-        });
         
-       /* const langMsg = await msg.say({
+       const langMsg = await msg.say({
             embed
         })
 
-        langMsg.react('👌')*/
+        langMsg.react('👌')
     }
 };
