@@ -32,7 +32,7 @@ module.exports = class GiveawayEnCommand extends mTxServCommand {
         ]
 
         const reaction = ':alarm_clock:'
-        const endDate = 'Nov 21, 2020 at 6 PM'
+        const endDate = 'December 6, 2020 at 6 PM\n'
 
         const prizeLabel = prizes.map(prize => `> ❯ ${prize}`).join('\n')
 
@@ -47,7 +47,7 @@ module.exports = class GiveawayEnCommand extends mTxServCommand {
             const channel = await this.client.channels.cache.get('563304015924953108')
 
             const giveawayMsg = await msg.channel.send({
-                    embed: embed,
+                embed: embed,
            })
 
             msg.delete()

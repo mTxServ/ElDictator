@@ -156,5 +156,13 @@
     "search": "Search",
     "no_result": ":no_entry_sign: No result found",
     "description": "Description :"
+  },
+  "achievement": {
+    "new": "Congratulations <@%userId%>, you have now the achievement **%role%**!"
+  },
+  "invite_ranking": {
+    "description": "**Invite your friends**, try to **win prizes** every month!\nThe ranking is reset and the winners announced at the **end of the month**.",
+    "empty": "`No member in the ranking yet!`",
+    "headers": "**```Total   Join    Leave```**"
   }
 }

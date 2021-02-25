@@ -1,14 +1,40 @@
-const Discord = require('discord.js')
-
 module.exports = {
-    run: (oldmember, newmember) => {
-        if (client.isMainGuild(newmember.guild.id)
-            && null === oldmember.premiumSince
-            && null !== newmember.premiumSince) {
+    run: async (oldMember, newMember) => {
+        if (newMember.user.bot) {
+            return
+        }
 
-            console.log(`${newmember.username} boosted ${newmember.guild.name}`)
+        if (!client.isMainGuild(newMember.guild.id)) {
+            return
+        }
 
-            client.provider.set(isDev ? 'giveaway_boost_dev' : 'giveaway_boost_msg', newmember.id, newmember.premiumSinceTimestamp)
+        const hadRole = oldMember.roles.cache.find(role => role.name === 'VIP ★');
+        const hasRole = newMember.roles.cache.find(role => role.name === 'VIP ★');
+
+        if (!hadRole && hasRole) {
+            console.log(`${newMember.username} boosted ${newMember.guild.name}`)
+
+            await client.provider.set(isDev ? 'giveaway_boost_dev' : 'giveaway_boost', newMember.user.id, {
+                userId: newMember.user.id,
+                userName: newMember.user.tag,
+                guildName: newMember.guild.name,
+                createdAt: Math.ceil(new Date().getTime() / 1000),
+            })
+
+            if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
+                client
+                    .channels
+                    .cache
+                    .get(process.env.LOG_CHANNEL_ID)
+                    .send(null, {
+                        embed: {
+                            color: 'BLUE',
+                            timestamp: new Date(),
+                            description: `**${newMember.user.tag}** boosted \`${newMember.guild.name}\`.`,
+                        }
+                    })
+                    .catch(console.error);
+            }
         }
     }
 };

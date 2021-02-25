@@ -100,8 +100,8 @@ module.exports = class ConvertCommand extends mTxServCommand {
                                     .setTimestamp()
                                 ;
                                 
-                                console.log(typeof(result))
-                                if (!result.progress && !result.videoTitle) {
+                                //console.log(typeof(result))
+                                if (!result.percent && !result.title) {
                                     msg.reactions.cache.get('🔃').remove();
                                     msg.react('❌');
                                     message.delete();
@@ -111,7 +111,7 @@ module.exports = class ConvertCommand extends mTxServCommand {
                                     return   
                                 }
 
-                                if ( (result.progress && result.progress.percentage == 100) || result.videoTitle) {
+                                if ( (result.percent && result.percent == 100) || result.title) {
                                     embed2.addField('La musique est disponible :', results.link);                       // On a fini le traitement
                                     embed2.setTitle(`Conversion de : ${phrase}`)
 
@@ -120,8 +120,7 @@ module.exports = class ConvertCommand extends mTxServCommand {
 
                                     clearInterval(intervalObj);
                                 } else {
-                                    embed2.addField("Conversion en cours :", `${Math.round(result.progress.percentage)} %` )        // On continuue le traitement
-                                    embed2.addField("Temps estimée :", `${result.progress.eta} secondes`)
+                                    embed2.addField("Conversion en cours :", `${Math.round(result.percent)} %` )        // On continue le traitement
                                     embed2.setTimestamp();
                                 }
 

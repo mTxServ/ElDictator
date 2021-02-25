@@ -6,19 +6,24 @@ const { stripInvites, extractInviteLink } = require('../util/Util');
 const mTxServApi = require('../api/mTxServApi')
 
 const notifyAchievment = (msg, role) => {
+    const userLang = msg.member.roles.cache.some(role => role.name === '🇫🇷') ? 'fr' : 'en';
+    const channelId = userLang === 'fr' ? '773581118267457537' : '780827321660866581'
+    const lang = require(`../languages/${userLang}.json`)
+
     const embed = new Discord.MessageEmbed()
-        .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, 'https://mtxserv.com')
-        .setDescription(`Congratulations <@%userId%>, you have now the achievement **%role%**!`.replace('%userId%', msg.author.id).replace('%role%', role.name))
+        .setAuthor(`${client.user.tag}`, `${client.user.displayAvatarURL()}`, userLang === 'en' ? 'https://mtxserv.com/' : 'https://mtxserv.com/fr/')
+        .setDescription(lang['achievement']['new'].replace('%userId%', msg.author.id).replace('%role%', role.name))
         .setColor('GREEN')
         .setTimestamp()
     ;
 
-    if (client.channels.cache.has("773581118267457537")) {
+    if (client.channels.cache.has(channelId)) {
         client
             .channels
             .cache
-            .get("773581118267457537")
+            .get(channelId)
             .send({
+                // content: `<@${msg.author.id}>`,
                 embed: embed
             })
             .catch(console.error);
@@ -124,6 +129,7 @@ module.exports = {
             && (   -1 !== msg.channel.name.indexOf('-pub-serveurs')
                 || -1 !== msg.channel.name.indexOf('-servers-pub')
                 || -1 !== msg.channel.name.indexOf('-pub-addons')
+                || -1 !== msg.channel.name.indexOf('-pub')
                 || -1 !== msg.channel.name.indexOf('-family')
                 || -1 !== msg.channel.name.indexOf('-hytale-recrute')
                 || -1 !== msg.channel.name.indexOf('-giveaway')
@@ -195,6 +201,7 @@ module.exports = {
                 && -1 === msg.channel.name.indexOf('-server-faq')
                 && -1 === msg.channel.name.indexOf('-pub-recrutement')
                 && -1 === msg.channel.name.indexOf('-translate-panel')
+                && -1 === msg.channel.name.indexOf('-pub')
                ) {
                 const items = urls.values()
                 let item = items.next()
