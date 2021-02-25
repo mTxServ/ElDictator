@@ -30,7 +30,7 @@ module.exports = class SelectGamesCommand extends mTxServCommand {
             ・🤖 Dev PHP / Discord.js
             ・🐧 VPS (Linux, Windows)
             ・➕ Onset, Arma3, CS:GO
-            ・🪓 Valheim`)
+            ・⚔ Valheim`)
             .setFooter('Choose your games / Choisissez vos jeux - mTxServ.com');
 
         msg.channel.fetchMessages({around: 784686134575366205, limit: 1})
