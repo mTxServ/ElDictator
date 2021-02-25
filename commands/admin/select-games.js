@@ -29,12 +29,19 @@ module.exports = class SelectGamesCommand extends mTxServCommand {
             ・💎 Hytale
             ・🤖 Dev PHP / Discord.js
             ・🐧 VPS (Linux, Windows)
-            ・➕ Onset, Arma3, CS:GO`)
+            ・➕ Onset, Arma3, CS:GO
+            ・🪓 Valheim`)
             .setFooter('Choose your games / Choisissez vos jeux - mTxServ.com');
 
-        const langMsg = await msg.say({
+        msg.channel.fetchMessages({around: 784686134575366205, limit: 1})
+            .then(msg => {
+                const fetchedMsg = msg.first();
+                fetchedMsg.edit(embed);
+            });
+        
+        /*const langMsg = await msg.say({
             embed
-        })
+        })*/
 
     }
 };
