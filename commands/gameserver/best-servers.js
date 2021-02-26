@@ -18,7 +18,7 @@ module.exports = class GameServerListCommand extends mTxServCommand {
                     key: 'game',
                     prompt: 'Which game ranking (minecraft, gmod, fivem, rust, ark, etc)?',
                     type: 'string',
-                    oneOf: ['gmod', 'minecraft', 'rust', 'ark', 'csgo', 'fivem', 'onset', 'hytale', 'discord', 'tf2', 'l4d2', 'arma3', 'gta', 'conan-exile', 'dayz', 'unturned']
+                    oneOf: ['gmod', 'minecraft', 'rust', 'ark', 'csgo', 'valheim', 'fivem', 'onset', 'hytale', 'discord', 'tf2', 'l4d2', 'arma3', 'gta', 'conan-exile', 'dayz', 'unturned']
                 },
             ],
             throttling: {
