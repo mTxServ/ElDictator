@@ -70,10 +70,9 @@ Notre bot est en open-source sur [GitHub](https://github.com/mTxServ/ElDictator)
 ・VPS GAME Windows <#769552096516898868>
 
 **Publicités et recrutements**
-・Présentez votre serveur à la communauté: <#769557502706319380>
-・Youtubeur, Streameur? Publiez vos vidéos: <#773857435013087262>
-・Publier vos annonces de recrutement: <#774985926006276107>
-・Développeur d'addon GMod? Diffusez vos créations dans <#768150606501904415>
+・Présentez votre serveur à la communauté dans les channels **pub-serveurs**
+・Youtubeur, Streameur? Publiez vos vidéos dans les channels **vidéos-streams**
+・Publiez vos annonces de recrutement sur [GCA](https://g-ca.fr/compte/offres/nouveau)
 
 **Communauté**
 ・<#563304015924953108>
