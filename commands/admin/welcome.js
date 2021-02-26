@@ -51,6 +51,7 @@ Notre bot est en open-source sur [GitHub](https://github.com/mTxServ/ElDictator)
 ・ARK <#692079309640302682>
 ・Rust <#692079499851858050>
 ・Hytale <#769550444694732810>
+・Valheim <#814556187369668619>
 
 **Besoin d'aide avec votre serveur de jeu ?**
 ・Minecraft <#769567257289949184>
@@ -62,6 +63,7 @@ Notre bot est en open-source sur [GitHub](https://github.com/mTxServ/ElDictator)
 ・Onset <#655058043587002387>
 ・Arma 3 <#529615462783385612>
 ・CS:GO <#531059371086446592>
+・Valheim <#808730842784202824>
 
 **Besoin d'aide avec votre serveur VPS ?**
 ・VPS SSD & GAME <#769552131887202314>
@@ -75,18 +77,14 @@ Notre bot est en open-source sur [GitHub](https://github.com/mTxServ/ElDictator)
 
 **Communauté**
 ・<#563304015924953108>
-・<#773209448989982762>
 ・<#529992305885708323>
-・<#773868338743869460>
-・<#774966075111505941>
-・<#774943644061794324>
 ・<#773865026985525268>
 ・<#774231272033746944>
 ・<#563310350611775498>
 ・<#767487492571004960>`)
             .setFooter('Bienvenue sur mTxServ !');
-
-        const langMsg = await msg.say({
+        
+       const langMsg = await msg.say({
             embed
         })
 

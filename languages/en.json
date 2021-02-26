@@ -33,7 +33,8 @@
   "gs_status": {
     "invalid_format": ":no_entry_sign: Invalid address, port is probably missing",
     "offline": ":red_circle: This game server is offline.",
-    "online": ":green_circle: This game server is online."
+    "online": ":green_circle: This game server is online.",
+    "unknown": "Unknown"
   },
   "help": {
     "dm_closed": "Unable to send you the help DM. You probably have DMs disabled.",
@@ -47,7 +48,7 @@
   },
   "rules": {
     "title": ":loudspeaker: Rules",
-    "description": "Welcome on the mTxServ community discord. It's dedicated to **mutual support between members** of the community.\n\n:writing_hand:  The **official support** is only provided on our website, we can't verify informations about user's identity here -> <https://mtxserv.com/support/list>. No question through private message will be processed, except in case of private/sensitive information disclosure.\n\n:writing_hand:  **Before posting any help request**, check **helpful links** channels, **pinned messages** and **tutorials** (<https://mtxserv.com/help>).\n\n:writing_hand:  **For any help request**, post in the **relevant channel** (general __**is not the relevant channel!**__) with any useful information. At least the host (GAME-XX-XX), the server version and error log available in console (in case of crash). __***I've got a problem***__ doesn't allow to help you out!\n\n:writing_hand:  This Discord is a **community space**: the **friendliness is important**, especially towards the other people that takes time to help you.\n\n:writing_hand:  **Any disrespectful behavior** may be punished with a kick or a ban.\n\n:writing_hand:  **Advertising** is **ONLY** allowed in **server-presentations** channels. Any advertisement out of these channels or through private messages = ban.\n\n:writing_hand:  Inappropriate content (leaked addon, personal informations, inappropriate images, private conversation, etc) = ban."
+    "description": "Welcome on the mTxServ community discord. It's dedicated to **mutual support between members** of the community.\n\n:writing_hand:  The **official support** is only provided on our website, we can't verify informations about user's identity here -> <https://mtxserv.com/support/list>. No question through private message will be processed, except in case of private/sensitive information disclosure.\n\n:writing_hand:  **Before posting any help request**, check **helpful links** channels, **pinned messages** and **tutorials** (<https://mtxserv.com/help>).\n\n:writing_hand:  **For any help request**, post in the **relevant channel** (general __**is not the relevant channel!**__) with any useful information. At least the host (GAME-XX-XX), the server version and error log available in console (in case of crash). __***I've got a problem***__ doesn't allow to help you out!\n\n:writing_hand:  This Discord is a **community space**: the **friendliness is important**, especially towards the other people that takes time to help you.\n\n:writing_hand:  **Any disrespectful behavior** may be punished with a kick or a ban.\n\n:writing_hand:  **Advertising** is **ONLY** allowed in **server-pubs** channels. Any advertisement out of these channels or through private messages = ban.\n\n:writing_hand:  Inappropriate content (leaked addon, personal informations, inappropriate images, private conversation, etc) = ban."
   },
   "stock": {
     "title_game": ":bar_chart: Game Server",
