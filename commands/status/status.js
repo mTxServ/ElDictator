@@ -14,7 +14,7 @@ module.exports = class GameServerStatusCommand extends mTxServCommand {
             args: [
                 {
                     key: 'game',
-                    prompt: 'Game (minecraft/gmod/ark/rust/onset/arma3)?',
+                    prompt: 'Game (minecraft/gmod/ark/rust/onset/arma3/valheim)?',
                     type: 'string',
                     oneOf: ['minecraft', 'gmod', 'ark', 'rust', 'onset', 'arma3', 'valheim'],
                 },
