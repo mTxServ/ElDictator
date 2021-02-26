@@ -33,7 +33,8 @@
   "gs_status": {
     "invalid_format": ":no_entry_sign: Adresse invalide, le port est probablement manquant",
     "offline": ":red_circle: Ce serveur est offline.",
-    "online": ":green_circle: Le serveur est online."
+    "online": ":green_circle: Le serveur est online.",
+    "unknow": "Inconnu"
   },
   "help": {
     "dm_closed": "Impossible de vous envoyer le DM d'aide. Vous avez probablement des DM désactivés.",
