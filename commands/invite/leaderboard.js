@@ -30,11 +30,17 @@ module.exports = class StockCommand extends mTxServCommand {
 
         let description = `${lang['invite_ranking']['description']}\n`
 
-        const topMembers = Object.values(await this.client.inviteManager.getScores(msg.guild))
+        let topMembers = await this.client.inviteManager.getScores(msg.guild)
             .sort((a, b) => (a.totalCount < b.totalCount) ? 1 : -1 )
             .slice(0, 30)
-
-        if (!topMembers.length) {
+        
+        if (topMembers !== null) {
+            topMembers = Object.values(topMembers)
+                .sort((a, b) => (a.totalCount < b.totalCount) ? 1 : -1 )
+                .slice(0, 30)
+        }
+        
+        if (!topMembers || !topMembers.length) {
             description += `\n${lang['invite_ranking']['empty']}`
         } else {
             description += `\n${lang['invite_ranking']['headers']}`
