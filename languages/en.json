@@ -33,7 +33,8 @@
   "gs_status": {
     "invalid_format": ":no_entry_sign: Invalid address, port is probably missing",
     "offline": ":red_circle: This game server is offline.",
-    "online": ":green_circle: This game server is online."
+    "online": ":green_circle: This game server is online.",
+    "unknown": "Unknown"
   },
   "help": {
     "dm_closed": "Unable to send you the help DM. You probably have DMs disabled.",
