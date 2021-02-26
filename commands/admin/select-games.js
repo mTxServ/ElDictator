@@ -33,7 +33,7 @@ module.exports = class SelectGamesCommand extends mTxServCommand {
             ・⚔ Valheim`)
             .setFooter('Choose your games / Choisissez vos jeux - mTxServ.com');
 
-        const newMsg = await message.channel.messages.fetch('784686134575366205')
+        const newMsg = await msg.channel.messages.fetch('784686134575366205')
         
         if (newMsg !== null) {
             newMsg.edit(embed)   
