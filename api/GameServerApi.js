@@ -49,15 +49,32 @@ class GameServerApi {
         }
 
         const iconUrl = `https://mtxserv.com/build/manager-game/img/game/${game}.png`;
-
+        
+        let game
+        if (results.params.type === null || results.params.type === "") {
+            game = lang['gs_status']['unknown']
+        } 
+        else {
+            game = results.params.type
+        }
+        
+        let map
+        if (results.params.map === null || results.params.map === "") {
+            map = lang['gs_status']['unknown']
+        } 
+        else {
+            map = results.params.map
+        }
+            
+            
         embed
             .setColor('GREEN')
             .setAuthor(`${results.params.host_name}`, iconUrl)
             .setTimestamp()
             .addField('Address', `\`${address.toUpperCase()}\``)
             .addField('Players', `${results.params.used_slots}/${results.params.max_slots}`, true)
-            .addField('Game', results.params.type===""?results.params.type:lang['gs_status']['unknown'], true)
-            .addField('Map',  results.params.map ===""?results.params.map :lang['gs_status']['unknown'], true)
+            .addField('Game', game, true)
+            .addField('Map',  map, true)
             .setFooter('by mTxServ.com')
         ;
 
