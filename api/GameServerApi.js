@@ -50,20 +50,20 @@ class GameServerApi {
 
         const iconUrl = `https://mtxserv.com/build/manager-game/img/game/${game}.png`;
         
-        let game
+        let gameName
         if (results.params.type === null || results.params.type === "") {
-            game = lang['gs_status']['unknown']
+            gameName = lang['gs_status']['unknown']
         } 
         else {
-            game = results.params.type
+            gameName = results.params.type
         }
         
-        let map
+        let mapName
         if (results.params.map === null || results.params.map === "") {
-            map = lang['gs_status']['unknown']
+            mapName = lang['gs_status']['unknown']
         } 
         else {
-            map = results.params.map
+            mapName = results.params.map
         }
             
             
@@ -73,8 +73,8 @@ class GameServerApi {
             .setTimestamp()
             .addField('Address', `\`${address.toUpperCase()}\``)
             .addField('Players', `${results.params.used_slots}/${results.params.max_slots}`, true)
-            .addField('Game', game, true)
-            .addField('Map',  map, true)
+            .addField('Game', gameName, true)
+            .addField('Map',  mapName, true)
             .setFooter('by mTxServ.com')
         ;
 
