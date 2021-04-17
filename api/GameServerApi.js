@@ -85,7 +85,7 @@ class GameServerApi {
 
         if (results.params.plugins) {
             const plugins = results.params.plugins.split(': ').join('; ').split('; ').map(plugin =>  `\`${plugin}\``).join(' ')
-            embed.addField('Plugins', plugins.substring(0, 1023));
+            embed.addField('Plugins', plugins);
         }
 
         return embed;
