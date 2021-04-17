@@ -3,7 +3,7 @@ const FeedMonitor = require('../services/FeedMonitor')
 const InviteManager = require('../services/InviteManager')
 const StatusUpdater = require('@tmware/status-rotate')
 const Ranker = require('../services/Ranker')
-const FirebaseProvider = require('../provider/FirebaseProvider')
+//const FirebaseProvider = require('../provider/FirebaseProvider')
 
 module.exports = class mTxServClient extends CommandoClient {
     constructor(options) {
@@ -23,10 +23,11 @@ module.exports = class mTxServClient extends CommandoClient {
         this.mainGuilds = [
             '529605510219956233',
             '726178170314817630',
+            '832981907503185921',
            // '539501579137581071'
         ]
 
-        this.setProvider(new FirebaseProvider()).catch(console.error)
+        //this.setProvider(new FirebaseProvider()).catch(console.error)
     }
 
     isMainGuild(guildId) {
