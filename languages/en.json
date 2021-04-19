@@ -165,5 +165,17 @@
     "description": "**Invite your friends**, try to **win prizes** every month!\nThe ranking is reset and the winners announced at the **end of the month**.",
     "empty": "`No member in the ranking yet!`",
     "headers": "**```Total   Join    Leave```**"
+  },
+  "gameserver" : {
+    "address" : "Address",
+    "players" : "Players",
+    "game"    : "Game",
+    "map"     : "Map",
+    "by"      : "by"
+  },
+  "gamesoftware" : {
+    "version" : "Latest version",
+    "website" : "Offcial website",
+    "howto"   : "How-To Install & Update"
   }
 }
