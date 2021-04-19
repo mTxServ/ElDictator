@@ -165,5 +165,17 @@
     "description": "**Invitez vos amis**, tentez de **gagner des lots** tous les mois !\nLe classement est remis à zéro et les gagnants annoncés **à la fin du mois**.",
     "empty": "`Aucun membre dans le classement pour l'instant!`",
     "headers": "**```Total   Join    Leave```**"
+  },
+  "gameserver" : {
+    "address" : "Addresss",
+    "players" : "Joueurs",
+    "game"    : "Jeu",
+    "map"     : "Carte",
+    "by"      : "par"
+  },
+  "gamesoftware" : {
+    "version" : "Dernière version",
+    "website" : "Site Offciel",
+    "howto"   : "Comment installer et mettre à jour"
   }
 }
