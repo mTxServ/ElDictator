@@ -179,6 +179,9 @@ module.exports = class BotStopCommand extends mTxServCommand {
 				.then( async channel => {
 					await channel.setParent(catFRID);
 					await channel.lockPermissions();
+
+					if (name === "serveurs")
+						await channel.setRateLimitPerUser(6*60*60 , "slowmode");
 				})
 				.catch(console.error);
 		});
@@ -223,6 +226,9 @@ module.exports = class BotStopCommand extends mTxServCommand {
 				.then( async channel => {
 					await channel.setParent(catENID);
 					await channel.lockPermissions();
+
+					if (name === "servers")
+						await channel.setRateLimitPerUser(6*60*60 , "slowmode");
 				})
 				.catch(console.error);
 		});
