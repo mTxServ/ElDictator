@@ -38,10 +38,10 @@ module.exports = class BotStopCommand extends mTxServCommand {
 		}
 
 		const roleMod = '833382326263742494';
+		const roleFRPos = msg.guild.roles.cache.find(r => r.name === "FR").position
 
 		let roleFRID;
 		let roleENID;
-		
 
 		/*-----------------------*/
 		/* Création role FR      */
@@ -62,9 +62,11 @@ module.exports = class BotStopCommand extends mTxServCommand {
 					'CONNECT',
 					'SPEAK',
 					'USE_VAD',
+					'SEND_MESSAGES',
 				],
 				mentionable: false,
-				hoist: true,
+				hoist: false,
+				position: roleFRPos+1
 			},
 		})
 		.then(role => roleFRID = role.id)
@@ -90,9 +92,11 @@ module.exports = class BotStopCommand extends mTxServCommand {
 					'CONNECT',
 					'SPEAK',
 					'USE_VAD',
+					'SEND_MESSAGES',
 				],
 				mentionable: false,
-				hoist: true,
+				hoist: false,
+				position: roleFRPos+1
 			},
 		})
 		.then(role => roleENID = role.id)
