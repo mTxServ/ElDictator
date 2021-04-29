@@ -14,7 +14,7 @@ const isDev = global.isDev = process.argv.includes('-dev')
 // create discord bot
 const client = global.client = new Client({
     commandPrefix: process.env.BOT_COMMAND_PREFIX,
-    owner: 311931325240180736, // process.env.BOT_OWNER_ID.split(','),
+    owner: process.env.BOT_OWNER_ID.split(','),
     invite: process.env.BOT_INVITE_URL,
     gameRoles: require('./game-roles.json'),
     feeds: require('./feeds.json')
