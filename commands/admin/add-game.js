@@ -1,7 +1,7 @@
 const mTxServCommand = require('../mTxServCommand.js');
 const Discord = require('discord.js')
 
-module.exports = class BotStopCommand extends mTxServCommand {
+module.exports = class AddGameCommand extends mTxServCommand {
 	constructor(client) {
 		super(client, {
 			name: 'add-game',
@@ -23,6 +23,12 @@ module.exports = class BotStopCommand extends mTxServCommand {
 					type: 'string',
 					validate: text => text.length >= 1,
 				},
+				{
+					key: 'emoji',
+					prompt: 'Which emoji ?',
+					type: 'string',
+					validate: text => text.length >= 1,
+				},
 				
 			],
 			ownerOnly: true,
@@ -32,7 +38,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
 		});
 	}
 
-	async run(msg, {game, color}) {
+	async run(msg, {game, color, emoji}) {
 		if (msg.channel.type === 'dm') {
 			return msg.say(`This command is only available is server`)
 		}
@@ -49,7 +55,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
 
 		await msg.guild.roles.create({
 			data: {
-				name: "[FR] " + game,
+				name: "[FR] " + game + " " + emoji,
 				color: color,
 				permissions:
 				[
@@ -79,7 +85,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
 
 		await msg.guild.roles.create({
 			data: {
-				name: "[EN] " + game,
+				name: "[EN] " + game + " " + emoji,
 				color: color,
 				permissions:
 				[
@@ -110,7 +116,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
 		/* Création catégorie FR */
 		/*-----------------------*/
 
-		await msg.guild.channels.create("[FR] " + game, { type: 'category', })
+		await msg.guild.channels.create("[FR] " + game + " " + emoji, { type: 'category', })
 			.then(channel => {
 				channel.createOverwrite(msg.guild.roles.everyone, {
 					'VIEW_CHANNEL'          : false,
@@ -133,7 +139,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
 		/* Création catégorie EN */
 		/*-----------------------*/
 
-		await msg.guild.channels.create("[EN] " + game, { type: 'category', })
+		await msg.guild.channels.create("[EN] " + game + " " + emoji, { type: 'category', })
 			.then(channel => {
 				channel.createOverwrite(msg.guild.roles.everyone, {
 					'VIEW_CHANNEL'          : false,
@@ -155,7 +161,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
 		/* Création channels FR  */
 		/*-----------------------*/
 
-		await msg.guild.channels.create("nouveautés", { type: 'news', })
+		await msg.guild.channels.create("nouveautés" + "-" + game.toLowerCase(), { type: 'news', })
 			.then( async channel => {
 				await channel.setParent(catFRID);
 
@@ -179,7 +185,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
 		const tabChanFR = ["discussion", "entraide", "serveurs"];
 
 		tabChanFR.forEach( async name => {
-			await msg.guild.channels.create(name, { type: 'text', })
+			await msg.guild.channels.create(name + "-" + game.toLowerCase(), { type: 'text', })
 				.then( async channel => {
 					await channel.setParent(catFRID);
 					await channel.lockPermissions();
@@ -202,7 +208,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
 		/* Création channels EN  */
 		/*-----------------------*/
 
-		await msg.guild.channels.create("news", { type: 'news', })
+		await msg.guild.channels.create("news" + "-" + game.toLowerCase(), { type: 'news', })
 			.then( async channel => {
 				await channel.setParent(catENID);
 
@@ -226,7 +232,7 @@ module.exports = class BotStopCommand extends mTxServCommand {
 		const tabChanEN = ["discussion", "help", "servers"];
 
 		tabChanEN.forEach( async name => {
-			await msg.guild.channels.create(name, { type: 'text', })
+			await msg.guild.channels.create(name + "-" + game.toLowerCase(), { type: 'text', })
 				.then( async channel => {
 					await channel.setParent(catENID);
 					await channel.lockPermissions();
@@ -300,6 +306,6 @@ module.exports = class BotStopCommand extends mTxServCommand {
 			})
 		});
 
-		return this.saySuccess(msg, `\`${game}\`` + ' role and channel added successfuly.')
+		return this.saySuccess(msg, `\`${game} ${emoji}\`` + ' role and channel added successfuly.')
 	}
 };
