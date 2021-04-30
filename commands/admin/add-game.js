@@ -49,7 +49,7 @@ module.exports = class AddGameCommand extends mTxServCommand {
 			return msg.say(`This command is only available is server`)
 		}
 
-		const roleMod = '833382326263742494';
+		const roleMod = '773493168087629846';
 		const roleFRPos = msg.guild.roles.cache.find(r => r.name === "FR").position
 
 		let roleFRID;
@@ -278,7 +278,7 @@ module.exports = class AddGameCommand extends mTxServCommand {
 			/* Création channels FR  */
 			/*-----------------------*/
 			let chanFRID
-			const catOtherFR = '837759110166085712'
+			const catOtherFR = '837788960432062489'
 			await msg.guild.channels.create(game.toLowerCase(), { type: 'text', })
 				.then( async channel => {
 					await channel.setParent(catOtherFR);
@@ -300,7 +300,7 @@ module.exports = class AddGameCommand extends mTxServCommand {
 			/* Création channels EN  */
 			/*-----------------------*/
 			let chanENID
-			const catOtherEN = '837759161629409301'
+			const catOtherEN = '837787904817889350'
 			await msg.guild.channels.create(game.toLowerCase(), { type: 'text', })
 				.then( async channel => {
 					await channel.setParent(catOtherEN);
@@ -332,7 +332,7 @@ module.exports = class AddGameCommand extends mTxServCommand {
 		/* Mise à jour perm catégorie général FR */
 		/*---------------------------------------*/
 
-		const tabCatFR = ['833377601060864041', '833375133103816707', '833375133103816708']
+		const tabCatFR = ['837786839904550962', '769556888463081492', '529605510694174732']
 
 		tabCatFR.forEach( async id => {
 			await msg.guild.channels.cache.get(id).createOverwrite(roleFRID, {
@@ -340,19 +340,19 @@ module.exports = class AddGameCommand extends mTxServCommand {
 			})
 		});
 
-		const tabChanAdminFR = ['833377409046413333', '833377427123863593'];
+		/*const tabChanAdminFR = ['833377409046413333', '833377427123863593'];
 
 		tabChanAdminFR.forEach( async id => {
 			await msg.guild.channels.cache.get(id).createOverwrite(roleFRID, {
 				'VIEW_CHANNEL'          : true,
 			})
-		})
+		})*/
 
 		/*---------------------------------------*/
 		/* Mise à jour perm catégorie général EN */
 		/*---------------------------------------*/
 
-		const tabCatEN = ['833380811318362143', '833380811318362143', '833375133103816708']
+		const tabCatEN = ['837786989775290408', '837787904817889350', '529605510694174732']
 
 		tabCatEN.forEach( async id => {
 			await msg.guild.channels.cache.get(id).createOverwrite(roleENID, {
@@ -361,13 +361,13 @@ module.exports = class AddGameCommand extends mTxServCommand {
 		});
 
 
-		const tabChanAdminEN = ['833381005753843783', '833381059688398908'];
+		/*const tabChanAdminEN = ['833381005753843783', '833381059688398908'];
 
 		tabChanAdminEN.forEach( async id => {
 			await msg.guild.channels.cache.get(id).createOverwrite(roleENID, {
 				'VIEW_CHANNEL'          : true,
 			})
-		});
+		});*/
 
 		return this.saySuccess(msg, `\`${game} ${emoji}\`` + ' role and channel added successfuly.')
 	}
