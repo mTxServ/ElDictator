@@ -198,7 +198,7 @@ module.exports = class AddGameCommand extends mTxServCommand {
 						await channel.setParent(catFRID);
 						await channel.lockPermissions();
 
-						if (name === "serveurs")
+						if (name === "serveurs" + "-" + game.toLowerCase())
 							await channel.setRateLimitPerUser(6*60*60 , "slowmode");
 					})
 					.catch(console.error);
@@ -245,7 +245,7 @@ module.exports = class AddGameCommand extends mTxServCommand {
 						await channel.setParent(catENID);
 						await channel.lockPermissions();
 
-						if (name === "servers")
+						if (name === "servers" + "-" + game.toLowerCase())
 							await channel.setRateLimitPerUser(6*60*60 , "slowmode");
 					})
 					.catch(console.error);
