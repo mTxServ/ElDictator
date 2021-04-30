@@ -332,7 +332,7 @@ module.exports = class AddGameCommand extends mTxServCommand {
 		/* Mise à jour perm catégorie général FR */
 		/*---------------------------------------*/
 
-		const tabCatFR = ['837786839904550962', '769556888463081492', '529605510694174732']
+		const tabCatFR = ['837786839904550962', '769556888463081492']
 
 		tabCatFR.forEach( async id => {
 			await msg.guild.channels.cache.get(id).createOverwrite(roleFRID, {
@@ -352,7 +352,7 @@ module.exports = class AddGameCommand extends mTxServCommand {
 		/* Mise à jour perm catégorie général EN */
 		/*---------------------------------------*/
 
-		const tabCatEN = ['837786989775290408', '837787904817889350', '529605510694174732']
+		const tabCatEN = ['837786989775290408', '837787904817889350']
 
 		tabCatEN.forEach( async id => {
 			await msg.guild.channels.cache.get(id).createOverwrite(roleENID, {
