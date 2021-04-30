@@ -5,7 +5,7 @@ const URL = require('url').URL
 const { stripInvites, extractInviteLink } = require('../util/Util');
 const mTxServApi = require('../api/mTxServApi')
 
-const notifyAchievment = (msg, role) => {
+/*const notifyAchievment = (msg, role) => {
     const userLang = msg.member.roles.cache.some(role => role.name === 'FR') ? 'fr' : 'en';
     const channelId = userLang === 'fr' ? '773581118267457537' : '780827321660866581'
     const lang = require(`../languages/${userLang}.json`)
@@ -34,7 +34,7 @@ const notifyAchievment = (msg, role) => {
             })
             .catch(console.error);
     }
-}
+}*/
 
 module.exports = {
     run: async (msg) => {
@@ -58,7 +58,7 @@ module.exports = {
                     const role = msg.guild.roles.cache.get(gameRolesSettings.roleId)
                     if (role && msg.member && !msg.member.roles.cache.has(role.id)) {
                         msg.member.roles.add(role).catch(console.error);
-                        notifyAchievment(msg, role)
+                        //notifyAchievment(msg, role)
                     }
                     break;
                 }
@@ -105,7 +105,7 @@ module.exports = {
             const role = msg.guild.roles.cache.get(roleMtxServ)
             if (role && !msg.member.roles.cache.has(role.id)) {
                 msg.member.roles.add(role).catch(console.error);
-                notifyAchievment(msg, role)
+                //notifyAchievment(msg, role)
             }
         }
 
@@ -275,7 +275,7 @@ module.exports = {
                 const role = msg.guild.roles.cache.get(roleGameServ)
                 if (role && !msg.member.roles.cache.has(role.id)) {
                     msg.member.roles.add(role).catch(console.error);
-                    notifyAchievment(msg, role)
+                    //notifyAchievment(msg, role)
                 }
             }
 
