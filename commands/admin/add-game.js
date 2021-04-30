@@ -29,6 +29,12 @@ module.exports = class AddGameCommand extends mTxServCommand {
 					type: 'string',
 					validate: text => text.length >= 1,
 				},
+				{
+					key: 'other',
+					prompt: 'For other category ?',
+					type: 'string',
+					oneOf: ['yes', 'no'],
+				},
 				
 			],
 			ownerOnly: true,
@@ -38,7 +44,7 @@ module.exports = class AddGameCommand extends mTxServCommand {
 		});
 	}
 
-	async run(msg, {game, color, emoji}) {
+	async run(msg, {game, color, emoji, other}) {
 		if (msg.channel.type === 'dm') {
 			return msg.say(`This command is only available is server`)
 		}
@@ -109,160 +115,217 @@ module.exports = class AddGameCommand extends mTxServCommand {
 		.catch(console.error);
 
 
-		let catFRID;
-		let catENID;
+		if ( other === "no")
+		{
+			let catFRID;
+			let catENID;
 
-		/*-----------------------*/
-		/* Création catégorie FR */
-		/*-----------------------*/
+			/*-----------------------*/
+			/* Création catégorie FR */
+			/*-----------------------*/
 
-		await msg.guild.channels.create("[FR] " + game + " " + emoji, { type: 'category', })
-			.then(channel => {
-				channel.createOverwrite(msg.guild.roles.everyone, {
-					'VIEW_CHANNEL'          : false,
+			await msg.guild.channels.create("[FR] " + game + " " + emoji, { type: 'category', })
+				.then(channel => {
+					channel.createOverwrite(msg.guild.roles.everyone, {
+						'VIEW_CHANNEL'          : false,
+					})
+
+					channel.createOverwrite(roleFRID, {
+						'VIEW_CHANNEL'          : true,
+					})
+
+					channel.createOverwrite(roleMod, {
+						'VIEW_CHANNEL'          : true,
+					})
+
+					catFRID = channel.id;
 				})
+				.catch(console.error);
+		
 
-				channel.createOverwrite(roleFRID, {
-					'VIEW_CHANNEL'          : true,
+			/*-----------------------*/
+			/* Création catégorie EN */
+			/*-----------------------*/
+
+			await msg.guild.channels.create("[EN] " + game + " " + emoji, { type: 'category', })
+				.then(channel => {
+					channel.createOverwrite(msg.guild.roles.everyone, {
+						'VIEW_CHANNEL'          : false,
+					})
+
+					channel.createOverwrite(roleENID, {
+						'VIEW_CHANNEL'          : true,
+					})
+
+					channel.createOverwrite(roleMod, {
+						'VIEW_CHANNEL'          : true,
+					})
+
+					catENID = channel.id;
 				})
+				.catch(console.error);
 
-				channel.createOverwrite(roleMod, {
-					'VIEW_CHANNEL'          : true,
-				})
+			/*-----------------------*/
+			/* Création channels FR  */
+			/*-----------------------*/
 
-				catFRID = channel.id;
-			})
-			.catch(console.error);
-	
-
-		/*-----------------------*/
-		/* Création catégorie EN */
-		/*-----------------------*/
-
-		await msg.guild.channels.create("[EN] " + game + " " + emoji, { type: 'category', })
-			.then(channel => {
-				channel.createOverwrite(msg.guild.roles.everyone, {
-					'VIEW_CHANNEL'          : false,
-				})
-
-				channel.createOverwrite(roleENID, {
-					'VIEW_CHANNEL'          : true,
-				})
-
-				channel.createOverwrite(roleMod, {
-					'VIEW_CHANNEL'          : true,
-				})
-
-				catENID = channel.id;
-			})
-			.catch(console.error);
-
-		/*-----------------------*/
-		/* Création channels FR  */
-		/*-----------------------*/
-
-		await msg.guild.channels.create("nouveautés" + "-" + game.toLowerCase(), { type: 'news', })
-			.then( async channel => {
-				await channel.setParent(catFRID);
-
-				channel.createOverwrite(msg.guild.roles.everyone, {
-					'VIEW_CHANNEL'          : false,
-					'SEND_MESSAGES'         : false,
-					'EMBED_LINKS'           : false,
-					'ATTACH_FILES'          : false,
-				})
-
-				channel.createOverwrite(roleFRID, {
-					'VIEW_CHANNEL'          : true,
-				})
-
-				channel.createOverwrite(roleMod, {
-					'VIEW_CHANNEL'          : true,
-				})
-			})
-			.catch(console.error);
-
-		const tabChanFR = ["discussion", "entraide", "serveurs"];
-
-		tabChanFR.forEach( async name => {
-			await msg.guild.channels.create(name + "-" + game.toLowerCase(), { type: 'text', })
+			await msg.guild.channels.create("nouveautés" + "-" + game.toLowerCase(), { type: 'news', })
 				.then( async channel => {
 					await channel.setParent(catFRID);
-					await channel.lockPermissions();
 
-					if (name === "serveurs")
-						await channel.setRateLimitPerUser(6*60*60 , "slowmode");
+					channel.createOverwrite(msg.guild.roles.everyone, {
+						'VIEW_CHANNEL'          : false,
+						'SEND_MESSAGES'         : false,
+						'EMBED_LINKS'           : false,
+						'ATTACH_FILES'          : false,
+					})
+
+					channel.createOverwrite(roleFRID, {
+						'VIEW_CHANNEL'          : true,
+					})
+
+					channel.createOverwrite(roleMod, {
+						'VIEW_CHANNEL'          : true,
+					})
 				})
 				.catch(console.error);
-		});
 
-		await msg.guild.channels.create(game + " #1", { type: 'voice', })
-				.then( async channel => {
-					await channel.setParent(catFRID);
-					await channel.lockPermissions();
-				})
-				.catch(console.error);
+			const tabChanFR = ["discussion", "entraide", "serveurs"];
+
+			tabChanFR.forEach( async name => {
+				await msg.guild.channels.create(name + "-" + game.toLowerCase(), { type: 'text', })
+					.then( async channel => {
+						await channel.setParent(catFRID);
+						await channel.lockPermissions();
+
+						if (name === "serveurs")
+							await channel.setRateLimitPerUser(6*60*60 , "slowmode");
+					})
+					.catch(console.error);
+			});
+
+			await msg.guild.channels.create(game + " #1", { type: 'voice', })
+					.then( async channel => {
+						await channel.setParent(catFRID);
+						await channel.lockPermissions();
+					})
+					.catch(console.error);
 
 
-		/*-----------------------*/
-		/* Création channels EN  */
-		/*-----------------------*/
+			/*-----------------------*/
+			/* Création channels EN  */
+			/*-----------------------*/
 
-		await msg.guild.channels.create("news" + "-" + game.toLowerCase(), { type: 'news', })
-			.then( async channel => {
-				await channel.setParent(catENID);
-
-				channel.createOverwrite(msg.guild.roles.everyone, {
-					'VIEW_CHANNEL'          : false,
-					'SEND_MESSAGES'         : false,
-					'EMBED_LINKS'           : false,
-					'ATTACH_FILES'          : false,
-				})
-
-				channel.createOverwrite(roleENID, {
-					'VIEW_CHANNEL'          : true,
-				})
-
-				channel.createOverwrite(roleMod, {
-					'VIEW_CHANNEL'          : true,
-				})
-			})
-			.catch(console.error);
-
-		const tabChanEN = ["discussion", "help", "servers"];
-
-		tabChanEN.forEach( async name => {
-			await msg.guild.channels.create(name + "-" + game.toLowerCase(), { type: 'text', })
-				.then( async channel => {
-					await channel.setParent(catENID);
-					await channel.lockPermissions();
-
-					if (name === "servers")
-						await channel.setRateLimitPerUser(6*60*60 , "slowmode");
-				})
-				.catch(console.error);
-		});
-
-		await msg.guild.channels.create(game + " #1", { type: 'voice', })
+			await msg.guild.channels.create("news" + "-" + game.toLowerCase(), { type: 'news', })
 				.then( async channel => {
 					await channel.setParent(catENID);
-					await channel.lockPermissions();
+
+					channel.createOverwrite(msg.guild.roles.everyone, {
+						'VIEW_CHANNEL'          : false,
+						'SEND_MESSAGES'         : false,
+						'EMBED_LINKS'           : false,
+						'ATTACH_FILES'          : false,
+					})
+
+					channel.createOverwrite(roleENID, {
+						'VIEW_CHANNEL'          : true,
+					})
+
+					channel.createOverwrite(roleMod, {
+						'VIEW_CHANNEL'          : true,
+					})
 				})
 				.catch(console.error);
 
+			const tabChanEN = ["discussion", "help", "servers"];
 
-		/*------------------------*/
-		/* Mise à jour liste role */
-		/*------------------------*/
+			tabChanEN.forEach( async name => {
+				await msg.guild.channels.create(name + "-" + game.toLowerCase(), { type: 'text', })
+					.then( async channel => {
+						await channel.setParent(catENID);
+						await channel.lockPermissions();
 
-		const fs = require('fs');
-		let data = JSON.parse(fs.readFileSync('./game-roles.json', 'utf8'));
-		
-		data[data.length] = {"name": "[FR] " + game, "roleID" : roleFRID, "categories": [catFRID,] };
-		data[data.length] = {"name": "[EN] " + game, "roleID" : roleENID, "categories": [catENID,] };
-		
-		fs.writeFileSync('./game-roles.json', JSON.stringify(data, null, 2));
+						if (name === "servers")
+							await channel.setRateLimitPerUser(6*60*60 , "slowmode");
+					})
+					.catch(console.error);
+			});
 
+			await msg.guild.channels.create(game + " #1", { type: 'voice', })
+					.then( async channel => {
+						await channel.setParent(catENID);
+						await channel.lockPermissions();
+					})
+					.catch(console.error);
+
+
+			/*------------------------*/
+			/* Mise à jour liste role */
+			/*------------------------*/
+
+			const fs = require('fs');
+			let data = JSON.parse(fs.readFileSync('./game-roles.json', 'utf8'));
+			
+			data[data.length] = {"name": "[FR] " + game, "roleID" : roleFRID, "categories": [catFRID,] };
+			data[data.length] = {"name": "[EN] " + game, "roleID" : roleENID, "categories": [catENID,] };
+			
+			fs.writeFileSync('./game-roles.json', JSON.stringify(data, null, 2));
+
+		}
+		else
+		{
+			/*-----------------------*/
+			/* Création channels FR  */
+			/*-----------------------*/
+			let chanFRID
+			const catOtherFR = '837759110166085712'
+			await msg.guild.channels.create(game.toLowerCase(), { type: 'text', })
+				.then( async channel => {
+					await channel.setParent(catOtherFR);
+					
+					channel.createOverwrite(roleFRID, {
+						'VIEW_CHANNEL'          : true,
+					})
+
+					channel.createOverwrite(roleMod, {
+						'VIEW_CHANNEL'          : true,
+					})
+
+					chanFRID = channel.id
+					
+				})
+				.catch(console.error);
+
+			/*-----------------------*/
+			/* Création channels EN  */
+			/*-----------------------*/
+			let chanENID
+			const catOtherEN = '837759161629409301'
+			await msg.guild.channels.create(game.toLowerCase(), { type: 'text', })
+				.then( async channel => {
+					await channel.setParent(catOtherEN);
+					
+					channel.createOverwrite(roleENID, {
+						'VIEW_CHANNEL'          : true,
+					})
+
+					channel.createOverwrite(roleMod, {
+						'VIEW_CHANNEL'          : true,
+					})
+
+					chanENID = channel.id
+					
+				})
+				.catch(console.error);
+
+			const fs = require('fs');
+			let data = JSON.parse(fs.readFileSync('./game-roles.json', 'utf8'));
+			
+			data[data.length] = {"name": "[FR] " + game, "roleID" : roleFRID, "categories": ['',], "channel": chanFRID };
+			data[data.length] = {"name": "[EN] " + game, "roleID" : roleENID, "categories": ['',], "channel": chanENID };
+			
+			fs.writeFileSync('./game-roles.json', JSON.stringify(data, null, 2));
+		}
 
 
 		/*---------------------------------------*/
