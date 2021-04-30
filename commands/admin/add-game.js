@@ -300,7 +300,7 @@ module.exports = class AddGameCommand extends mTxServCommand {
 			/* Création channels EN  */
 			/*-----------------------*/
 			let chanENID
-			const catOtherEN = '837787904817889350'
+			const catOtherEN = '837789018896597033'
 			await msg.guild.channels.create(game.toLowerCase(), { type: 'text', })
 				.then( async channel => {
 					await channel.setParent(catOtherEN);
