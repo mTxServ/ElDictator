@@ -71,11 +71,11 @@ class GameServerApi {
             .setColor('GREEN')
             .setAuthor(`${results.params.host_name}`, iconUrl)
             .setTimestamp()
-            .addField('Address', `\`${address.toUpperCase()}\``)
-            .addField('Players', `${results.params.used_slots}/${results.params.max_slots}`, true)
-            .addField('Game', gameName, true)
-            .addField('Map',  mapName, true)
-            .setFooter('by mTxServ.com')
+            .addField(lang['gameserver']['address'], `\`${address.toUpperCase()}\``)
+            .addField(lang['gameserver']['players'], `${results.params.used_slots}/${results.params.max_slots}`, true)
+            .addField(lang['gameserver']['game'], gameName, true)
+            .addField(lang['gameserver']['map'],  mapName, true)
+            .setFooter(lang['gameserver']['by'] + ' mTxServ.com')
         ;
 
         if (results.params.joinlink) {
@@ -85,7 +85,7 @@ class GameServerApi {
 
         if (results.params.plugins) {
             const plugins = results.params.plugins.split(': ').join('; ').split('; ').map(plugin =>  `\`${plugin}\``).join(' ')
-            embed.addField('Plugins', plugins);
+            embed.addField(lang['gameserver']['plugins'], plugins.substring(0, 1023));
         }
 
         return embed;

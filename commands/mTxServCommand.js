@@ -11,7 +11,9 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
             .setTimestamp()
             .setTitle('Error')
             .setDescription(description)
-            .addField('Command:', `${message.content.split(' ').join(' ')}`);
+            .addField('Command:', `${message.content.split(' ').join(' ')}`, true)
+            .addField('Server ID:', `${message.guild.id}`, true)
+            .addField('User ID:', `<@${message.author.id}>`, true);
 
         this.client
             .channels
@@ -52,7 +54,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
             return process.env.DEFAULT_LANG;
         }
 
-        return member.roles.cache.some(role => role.name === '🇫🇷') ? 'fr' : 'en';
+        return member.roles.cache.some(role => role.name === 'FR') ? 'fr' : 'en';
     }
 
     sayMessage(msg, title) {

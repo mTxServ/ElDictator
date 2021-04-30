@@ -17,6 +17,8 @@ class GameSoftwareApi {
     }
 
     generateSoftwareEmbed(software, userLang, baseUrl) {
+        const lang = require(`../languages/${userLang}.json`);
+
         const embed = new Discord.MessageEmbed()
             .setTitle(`${software.name}`)
             .setColor('BLUE')
@@ -31,15 +33,15 @@ class GameSoftwareApi {
 
 
         if (software.latest_version) {
-            embed.addField(':hammer_pick: Latest version', software.latest_version.replace('pour ', ''), true)
+            embed.addField(':hammer_pick: ' + lang['gamesoftware']['version'], software.latest_version.replace('pour ', ''), true)
         }
 
         if (software.website_url) {
-            embed.addField(':link: Official Website', software.website_url, true)
+            embed.addField(':link: ' + lang['gamesoftware']['website'], software.website_url, true)
         }
 
         const link = `${baseUrl}/${software.id}-${software.slug}`
-        embed.addField(':book: How-To Install & Update', link)
+        embed.addField(':book: ' + lang['gamesoftware']['howto'], link)
 
         return embed
     }

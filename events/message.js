@@ -6,7 +6,7 @@ const { stripInvites, extractInviteLink } = require('../util/Util');
 const mTxServApi = require('../api/mTxServApi')
 
 const notifyAchievment = (msg, role) => {
-    const userLang = msg.member.roles.cache.some(role => role.name === '🇫🇷') ? 'fr' : 'en';
+    const userLang = msg.member.roles.cache.some(role => role.name === 'FR') ? 'fr' : 'en';
     const channelId = userLang === 'fr' ? '773581118267457537' : '780827321660866581'
     const lang = require(`../languages/${userLang}.json`)
 
@@ -44,10 +44,10 @@ module.exports = {
             !isDev
             && msg.channel.type !== 'dm'
             && client.isMainGuild(msg.guild.id)
+            && !msg.author.bot 
+            && msg.member.nickname
         ) {
-            if (!msg.author.bot && msg.member.nickname) {
-                client.ranker.processMessage(msg)
-            }
+            client.ranker.processMessage(msg)
         }
 
         if (msg.channel.type !== 'dm'
@@ -73,73 +73,91 @@ module.exports = {
             return;
         }
 
-        // share/img channels
-        if (
-            client.isMainGuild(msg.guild.id)
-            && ( -1 !== msg.channel.name.indexOf('-images-liens') || -1 !== msg.channel.name.indexOf('-images-links'))
-        ) {
-            msg.react('👍').catch(console.error);
-            msg.react('👎').catch(console.error);
-            msg.react('🤷').catch(console.error);
-            return;
-        }
+
+        /*--------------------*/
+        /* share/img channels */
+        /*--------------------*/
+
+        // if (
+        //     client.isMainGuild(msg.guild.id)
+        //     && ( -1 !== msg.channel.name.indexOf('images-liens') || -1 !== msg.channel.name.indexOf('images-links'))
+        // ) {
+        //     msg.react('👍').catch(console.error);
+        //     msg.react('👎').catch(console.error);
+        //     msg.react('🤷').catch(console.error);
+        //     return;
+        // }
 
         if (msg.author.bot) return;
 
+        
+        /*--------------------*/
+        /* mTxServ user role  */
+        /*--------------------*/
         const mTxServUserApi = new mTxServApi()
-
-        // mtxserv user role
+        const roleMtxServ = '773540951434985503';
         if (
             !isDev
             && client.isMainGuild(msg.guild.id)
             && await mTxServUserApi.isAuthenticated(msg.author.id)
+            && !msg.member.roles.cache.has(roleMtxServ)
         ) {
-            if(!msg.member.roles.cache.has('773540951434985503')) {
-                const role = msg.guild.roles.cache.get('773540951434985503')
-                if (role && !msg.member.roles.cache.has(role.id)) {
-                    msg.member.roles.add(role).catch(console.error);
-                    notifyAchievment(msg, role)
-                }
+            const role = msg.guild.roles.cache.get(roleMtxServ)
+            if (role && !msg.member.roles.cache.has(role.id)) {
+                msg.member.roles.add(role).catch(console.error);
+                notifyAchievment(msg, role)
             }
         }
 
-        // streamers & youtubeur auto role
-        if (
-            !isDev
-            && client.isMainGuild(msg.guild.id) &&
-            (
-                -1 !== msg.channel.name.indexOf('-vidéos-streams')
-                || -1 !== msg.channel.name.indexOf('-videos-streams')
-                || -1 !== msg.channel.name.indexOf('-movie-streams')
-            )
-        ) {
-            if(!msg.member.roles.cache.has('773500491245289472')) {
-                const role = msg.guild.roles.cache.get('773500491245289472')
-                if (role && !msg.member.roles.cache.has(role.id)) {
-                    msg.member.roles.add(role).catch(console.error);
-                    notifyAchievment(msg, role)
-                }
-            }
-        }
 
-        // gameservers pub
+        /*----------------------------------*/
+        /* streamers & youtubeur auto role  */
+        /*----------------------------------*/
+        // const roleSteamYT = '773500491245289472';
+        // if (
+        //     !isDev
+        //     && client.isMainGuild(msg.guild.id) &&
+        //     (
+        //            -1 !== msg.channel.name.indexOf('vidéos-streams')
+        //         || -1 !== msg.channel.name.indexOf('videos-streams')
+        //         || -1 !== msg.channel.name.indexOf('movie-streams')
+        //     )
+        //     && !msg.member.roles.cache.has(roleSteamYT)
+        // ) {
+        //     const role = msg.guild.roles.cache.get(roleSteamYT)
+        //     if (role && !msg.member.roles.cache.has(role.id)) {
+        //         msg.member.roles.add(role).catch(console.error);
+        //         notifyAchievment(msg, role)
+        //     }
+        // }
+
+
+        /*-------------------------*/
+        /* Channel with embed auto */
+        /*-------------------------*/
+        const roleGameServ = '773500803218538546'
         if (
             !isDev
             && client.isMainGuild(msg.guild.id)
-            && (   -1 !== msg.channel.name.indexOf('-pub-serveurs')
-                || -1 !== msg.channel.name.indexOf('-servers-pub')
-                || -1 !== msg.channel.name.indexOf('-pub-addons')
-                || -1 !== msg.channel.name.indexOf('-pub')
-                || -1 !== msg.channel.name.indexOf('-family')
-                || -1 !== msg.channel.name.indexOf('-hytale-recrute')
-                || -1 !== msg.channel.name.indexOf('-lien-utiles')
-                || -1 !== msg.channel.name.indexOf('-usefull-links')
-                || -1 !== msg.channel.name.indexOf('-devenir-partenaire')
-                || -1 !== msg.channel.name.indexOf('-become-partner')
-                || -1 !== msg.channel.name.indexOf('-faq-serveur')
-                || -1 !== msg.channel.name.indexOf('-server-faq')
-                || -1 !== msg.channel.name.indexOf('-pub-recrutement')
-                || -1 !== msg.channel.name.indexOf('-translate-panel')
+            && (   -1 !== msg.channel.name.indexOf('serveurs')
+                || -1 !== msg.channel.name.indexOf('servers')
+                || -1 !== msg.channel.name.indexOf('règlement')
+                || -1 !== msg.channel.name.indexOf('rules')
+                || -1 !== msg.channel.name.indexOf('recrutements')
+                || -1 !== msg.channel.name.indexOf('partenaires')
+                || -1 !== msg.channel.name.indexOf('partners')
+                // || -1 !== msg.channel.name.indexOf('pub-addons')
+                // || -1 !== msg.channel.name.indexOf('pub')
+                // || -1 !== msg.channel.name.indexOf('family')
+                // || -1 !== msg.channel.name.indexOf('hytale-recrute')
+                // || -1 !== msg.channel.name.indexOf('lien-utiles')
+                // || -1 !== msg.channel.name.indexOf('usefull-links')
+                // || -1 !== msg.channel.name.indexOf('devenir-partenaire')
+                // || -1 !== msg.channel.name.indexOf('become-partner')
+                // || -1 !== msg.channel.name.indexOf('faq-serveur')
+                // || -1 !== msg.channel.name.indexOf('server-faq')
+                // || -1 !== msg.channel.name.indexOf('pub-recrutement')
+                // || -1 !== msg.channel.name.indexOf('translate-panel')
             )
         ) {
             const inviteLink = extractInviteLink(msg.content)
@@ -184,16 +202,16 @@ module.exports = {
                 }
             }
             
-            if (   -1 === msg.channel.name.indexOf('-lien-utiles') 
-                && -1 === msg.channel.name.indexOf('-usefull-links') 
-                && -1 === msg.channel.name.indexOf('-hytale-recrute') 
-                && -1 === msg.channel.name.indexOf('-devenir-partenaire') 
-                && -1 === msg.channel.name.indexOf('-become-partner') 
-                && -1 === msg.channel.name.indexOf('-faq-serveur') 
-                && -1 === msg.channel.name.indexOf('-server-faq')
-                && -1 === msg.channel.name.indexOf('-pub-recrutement')
-                && -1 === msg.channel.name.indexOf('-translate-panel')
-                && -1 === msg.channel.name.indexOf('-pub')
+            if (   -1 === msg.channel.name.indexOf('lien-utiles') 
+                && -1 === msg.channel.name.indexOf('usefull-links') 
+                && -1 === msg.channel.name.indexOf('hytale-recrute') 
+                && -1 === msg.channel.name.indexOf('devenir-partenaire') 
+                && -1 === msg.channel.name.indexOf('become-partner') 
+                && -1 === msg.channel.name.indexOf('faq-serveur') 
+                && -1 === msg.channel.name.indexOf('server-faq')
+                && -1 === msg.channel.name.indexOf('pub-recrutement')
+                && -1 === msg.channel.name.indexOf('translate-panel')
+                && -1 === msg.channel.name.indexOf('pub')
                ) {
                 const items = urls.values()
                 let item = items.next()
@@ -248,15 +266,16 @@ module.exports = {
             embedMsg.react('👎');
                 
             if (
-                -1 !== msg.channel.name.indexOf('-pub-serveurs')
-                || -1 !== msg.channel.name.indexOf('-servers-pub')
+                ( 
+                       -1 !== msg.channel.name.indexOf('serveurs')
+                    || -1 !== msg.channel.name.indexOf('servers') 
+                )
+                && !msg.member.roles.cache.has(roleGameServ)
             ) {
-                if(!msg.member.roles.cache.has('773500803218538546')) {
-                    const role = msg.guild.roles.cache.get('773500803218538546')
-                    if (role && !msg.member.roles.cache.has(role.id)) {
-                       msg.member.roles.add(role).catch(console.error);
-                        notifyAchievment(msg, role)
-                    }
+                const role = msg.guild.roles.cache.get(roleGameServ)
+                if (role && !msg.member.roles.cache.has(role.id)) {
+                    msg.member.roles.add(role).catch(console.error);
+                    notifyAchievment(msg, role)
                 }
             }
 
