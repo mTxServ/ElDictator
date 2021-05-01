@@ -12,7 +12,7 @@ module.exports = class mTxServCommand extends DiscordCommando.Command {
             .setTitle('Error')
             .setDescription(description)
             .addField('Command:', `${message.content.split(' ').join(' ')}`, true)
-            .addField('Server ID:', `${message.guild.id}`, true)
+            .addField('Server ID:', `${message.channel.type !== 'dm'?message.guild.id:'DM'}`, true)
             .addField('User ID:', `<@${message.author.id}>`, true);
 
         this.client
