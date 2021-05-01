@@ -145,7 +145,7 @@ module.exports = {
                 || -1 !== msg.channel.name.indexOf('rules')
                 || -1 !== msg.channel.name.indexOf('recrutements')
                 || -1 !== msg.channel.name.indexOf('partenaires')
-                || -1 !== msg.channel.name.indexOf('partners')
+                || ( -1 !== msg.channel.name.indexOf('partners') && -1 === msg.channel.name.indexOf('discuss-partners') )
                 // || -1 !== msg.channel.name.indexOf('pub-addons')
                 // || -1 !== msg.channel.name.indexOf('pub')
                 // || -1 !== msg.channel.name.indexOf('family')
