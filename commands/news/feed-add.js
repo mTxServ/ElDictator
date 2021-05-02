@@ -20,7 +20,7 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
                     key: 'game',
                     prompt: 'Which game do you want to follow?',
                     type: 'string',
-                    oneOf: ['minecraft', 'ark', 'rust', 'gmod', 'sandbox', 'hytale', 'fivem', 'csgo', 'valorant', 'lol', 'overwatch', 'fortnite', 'rocketleague', 'web', 'film', 'science'],
+                    oneOf: ['minecraft', 'ark', 'rust', 'gmod', 'sandbox', 'hytale', 'csgo', 'valorant', 'lol', 'overwatch', 'fortnite', 'rocketleague', 'web', 'film', 'science'],
                 },
                 {
                     key: 'channel',
