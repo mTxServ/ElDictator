@@ -109,7 +109,14 @@
     "closed": "Vos DMs ne sont pas ouvert!"
   },
   "suggest": {
-    "confirm": "Merci pour votre suggestion %name%! Nous apprécions tous les feedbacks."
+    "confirm": "Merci pour votre suggestion %name%! Nous apprécions tous les feedbacks.",
+    "update-succes": "Changement du status de la suggestion avec succès.",
+    "accepted": "accepté",
+    "refused": "refusé",
+    "implemented": "implémenté",
+    "by": "par",
+    "ask_reason": "Entrez une raison s'il vous plaît.",
+    "reason": "Raison"
   },
   "ark_version": {
     "message": "La dernière version des **serveurs ARK** est là `%version%`."
