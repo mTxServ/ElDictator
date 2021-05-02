@@ -11,7 +11,7 @@ module.exports = class mTxServClient extends CommandoClient {
 
         this.gameRoles = options.gameRoles;
         this.feedMonitor = new FeedMonitor(options.feeds);
-        this.inviteManager = new InviteManager();
+        //this.inviteManager = new InviteManager();
         this.ranker = new Ranker()
 
         this.statusUpdater = new StatusUpdater(this, [
