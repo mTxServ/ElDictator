@@ -1,5 +1,7 @@
 module.exports = {
     run: async (member) => {
+        return
+        
         if (member.user.bot) {
             return
         }
