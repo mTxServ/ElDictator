@@ -103,7 +103,7 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
             .channels
             .cache
             .get(process.env.LOG_CHANNEL_ID)
-            .send(invoices[serverKey].game)
+            .send(serverKey)
         ;
 
         await this.client.provider.set(msg.guild.id, 'servers', gameServers)
