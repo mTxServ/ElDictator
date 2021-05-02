@@ -117,7 +117,8 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
 
         await this.client.provider.set(msg.guild.id, 'servers', gameServers)
 
-        embed = await gsApi.generateEmbed(msg, invoices[serverKey].game, invoices[serverKey].address, userLang)
+        //embed = await gsApi.generateEmbed(msg, invoices[serverKey].game, invoices[serverKey].address, userLang)
+        embed = await gsApi.generateEmbed(msg, list[serverKey].invoice.game, list[serverKey].invoice.address, userLang)
         return msg.say({
             embed
         })
