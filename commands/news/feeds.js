@@ -40,10 +40,6 @@ module.exports = class FeedCommand extends mTxServCommand {
                 key: 'ark'
             },
             {
-                name: 'FiveM',
-                key: 'fivem'
-            },
-            {
                 name: 'CS:GO',
                 key: 'csgo'
             },
