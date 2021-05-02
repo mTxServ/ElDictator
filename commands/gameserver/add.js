@@ -89,16 +89,7 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
 
         this.saySuccess(msg, lang['server_add']['added'])
 
-        let gameServers = await this.client.provider.get(msg.guild.id, 'servers', [])
-        /*gameServers = gameServers.filter(gs => gs.address !== invoices[serverKey].address)
-        
-        gameServers.push({
-            game: invoices[serverKey].game,
-            address: invoices[serverKey].address,
-            isHostedOnMtxServ: true,
-            creatorId: msg.author.id
-        })*/
-        
+        let gameServers = await this.client.provider.get(msg.guild.id, 'servers', [])        
         gameServers = gameServers.filter(gs => gs.address !== list[serverKey].invoice.address)
         
         gameServers.push({
@@ -107,17 +98,9 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
             isHostedOnMtxServ: true,
             creatorId: msg.author.id
         })
-        
-//         this.client
-//             .channels
-//             .cache
-//             .get(process.env.LOG_CHANNEL_ID)
-//             .send(serverKey)
-//         ;
 
         await this.client.provider.set(msg.guild.id, 'servers', gameServers)
 
-        //embed = await gsApi.generateEmbed(msg, invoices[serverKey].game, invoices[serverKey].address, userLang)
         embed = await gsApi.generateEmbed(msg, list[serverKey].invoice.game, list[serverKey].invoice.address, userLang)
         return msg.say({
             embed
