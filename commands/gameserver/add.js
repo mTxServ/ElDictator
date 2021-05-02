@@ -90,21 +90,30 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
         this.saySuccess(msg, lang['server_add']['added'])
 
         let gameServers = await this.client.provider.get(msg.guild.id, 'servers', [])
-        gameServers = gameServers.filter(gs => gs.address !== invoices[serverKey].address)
+        /*gameServers = gameServers.filter(gs => gs.address !== invoices[serverKey].address)
         
         gameServers.push({
             game: invoices[serverKey].game,
             address: invoices[serverKey].address,
             isHostedOnMtxServ: true,
             creatorId: msg.author.id
+        })*/
+        
+        gameServers = gameServers.filter(gs => gs.address !== list[serverKey].invoice.address)
+        
+        gameServers.push({
+            game: list[serverKey].invoice.game,
+            address: list[serverKey].invoice.address,
+            isHostedOnMtxServ: true,
+            creatorId: msg.author.id
         })
         
-        this.client
-            .channels
-            .cache
-            .get(process.env.LOG_CHANNEL_ID)
-            .send(serverKey)
-        ;
+//         this.client
+//             .channels
+//             .cache
+//             .get(process.env.LOG_CHANNEL_ID)
+//             .send(serverKey)
+//         ;
 
         await this.client.provider.set(msg.guild.id, 'servers', gameServers)
 
