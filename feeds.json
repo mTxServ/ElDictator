@@ -84,13 +84,6 @@
     "channels":[]
   },
   {
-    "url":"https://docs.fivem.net/docs/index.xml",
-    "icon":null,
-    "tags":["fivem"],
-    "language": "en",
-    "channels":[]
-  },
-  {
     "url":"https://feeds.win.gg/news/rss",
     "icon":null,
     "tags":["lol"],
