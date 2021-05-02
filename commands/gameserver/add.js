@@ -98,6 +98,13 @@ module.exports = class GameServerAddCommand extends mTxServCommand {
             isHostedOnMtxServ: true,
             creatorId: msg.author.id
         })
+        
+        this.client
+            .channels
+            .cache
+            .get(process.env.LOG_CHANNEL_ID)
+            .send(invoices[serverKey].game)
+        ;
 
         await this.client.provider.set(msg.guild.id, 'servers', gameServers)
 
