@@ -9,6 +9,7 @@ module.exports = class SuggestUpdateCommand extends mTxServCommand {
             group: 'bot',
             memberName: 'suggest-update',
             description: 'Update a feedback',
+            userPermissions: ['ADMINISTRATOR'],
             clientPermissions: ['SEND_MESSAGES'],
             guarded: true,
             args: [
@@ -29,7 +30,7 @@ module.exports = class SuggestUpdateCommand extends mTxServCommand {
                 usages: 2,
                 duration: 5,
             },
-            ownerOnly: true,
+            guildOnly: true,
         });
     }
 
