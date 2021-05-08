@@ -18,14 +18,15 @@ module.exports = class BotStatusCommand extends mTxServCommand {
     }
 
     async run(msg) {
+        if (msg.channel.type === 'dm') return;
+        
         let language = await this.resolveLangOfMessage(msg)
         const lang = require(`../../languages/${language}.json`)
 
         const memberTotal = this.client.guilds.cache.reduce((a, g) => a + g.memberCount, 0)
 
-        if (msg.channel.type !== 'dm') {
-            language = await this.client.provider.get(msg.guild.id, 'language', process.env.DEFAULT_LANG)
-        }
+        
+       language = await this.client.provider.get(msg.guild.id, 'language', process.env.DEFAULT_LANG)
 
         const embed = new Discord.MessageEmbed()
             .setAuthor(`${this.client.user.tag}`, `${this.client.user.displayAvatarURL()}`, 'https://mtxserv.com')
