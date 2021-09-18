@@ -73,6 +73,11 @@ class FeedMonitor {
                 for (const guild of client.guilds.cache.array()) {
                     const followAll = await FeedMonitor.isFollowing(guild.id, primaryTag, 'all', false)
                     const followLocalized = await FeedMonitor.isFollowing(guild.id, primaryTag, feed.language, false)
+                    
+                     if (!guild.me.hasPermission("SEND_MESSAGES")) {
+                            console.error(`Bot on server ${guild.id} has not send messages permission`)
+                            continue
+                     }
 
                     // send to specified channels configured in feeds.json
                     for (const channelId of feed.channels) {
@@ -80,7 +85,7 @@ class FeedMonitor {
                             console.error(`Channel ${channelId} not found`)
                             continue
                         }
-
+                        
                         const channel = client.channels.cache.get(channelId);
                         channel.send({
                             embed: embed
