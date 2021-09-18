@@ -86,6 +86,28 @@ class FeedMonitor {
                             continue
                         }
                         
+                        if( !guild.me.permissionsIn(channelId).has("SEND_MESSAGES") )
+                        {
+                            console.error(`Bot on server ${guild.id} has not send messages permission in channel {channelId}`)
+                            
+                            if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
+                                client
+                                    .channels
+                                    .cache
+                                    .get(process.env.LOG_CHANNEL_ID)
+                                    .send(null, {
+                                        embed: {
+                                            color: 15684432,
+                                            timestamp: new Date(),
+                                            title: 'Error',
+                                            description: `Bot on server ${guild.id} has not send messages permission in channel {channelId}`
+                                        }
+                                    })
+                                ;
+                            }
+                            continue
+                        }
+                        
                         const channel = client.channels.cache.get(channelId);
                         channel.send({
                             embed: embed
@@ -98,6 +120,28 @@ class FeedMonitor {
                             console.error(`Channel ${followAll} not found`)
                             continue
                         }
+                        
+                        if( !guild.me.permissionsIn(followAll).has("SEND_MESSAGES") )
+                        {
+                            console.error(`Bot on server ${guild.id} has not send messages permission in channel {followAll}`)
+                            
+                            if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
+                                client
+                                    .channels
+                                    .cache
+                                    .get(process.env.LOG_CHANNEL_ID)
+                                    .send(null, {
+                                        embed: {
+                                            color: 15684432,
+                                            timestamp: new Date(),
+                                            title: 'Error',
+                                            description: `Bot on server ${guild.id} has not send messages permission in channel {followAll}`
+                                        }
+                                    })
+                                ;
+                            }
+                            continue
+                        }
 
                         client.channels.cache.get(followAll).send({
                             embed: embed
@@ -107,6 +151,28 @@ class FeedMonitor {
                     if (followLocalized) {
                         if (!client.channels.cache.has(followLocalized)) {
                             console.error(`Channel ${followLocalized} not found`)
+                            continue
+                        }
+                        
+                        if( !guild.me.permissionsIn(followLocalized).has("SEND_MESSAGES") )
+                        {
+                            console.error(`Bot on server ${guild.id} has not send messages permission in channel {followLocalized}`)
+                            
+                            if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
+                                client
+                                    .channels
+                                    .cache
+                                    .get(process.env.LOG_CHANNEL_ID)
+                                    .send(null, {
+                                        embed: {
+                                            color: 15684432,
+                                            timestamp: new Date(),
+                                            title: 'Error',
+                                            description: `Bot on server ${guild.id} has not send messages permission in channel {followLocalized}`
+                                        }
+                                    })
+                                ;
+                            }
                             continue
                         }
 
