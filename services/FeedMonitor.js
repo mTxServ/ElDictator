@@ -4,239 +4,138 @@ const Discord = require('discord.js')
 const Grabity = require("grabity");
 
 class FeedMonitor {
-    constructor(feeds) {
-        this.feeds = feeds
-        this.rssFeeder = new RssFeederApi()
-    }
+	constructor(feeds) {
+		this.feeds = feeds
+		this.rssFeeder = new RssFeederApi()
+	}
 
-    getCacheKey() {
-        return isDev ? 'feeds_cache_dev' : 'feeds_cache'
-    }
+	getCacheKey() {
+		return isDev ? 'feeds_cache_dev' : 'feeds_cache'
+	}
 
-    async warmup() {
-        const links = [];
+	async warmup() {
+		const links = [];
 
-        for (const feed of this.feeds) {
-            const results = await this.rssFeeder.get(feed.url)
-            const articles = Object.values(results.items)
+		for (const feed of this.feeds) {
+			const results = await this.rssFeeder.get(feed.url)
+			const articles = Object.values(results.items)
 
-            for (const article of articles) {
-                links.push(article.link)
-            }
-        }
+			for (const article of articles) {
+				links.push(article.link)
+			}
+		}
 
-        await client.settings.set(this.getCacheKey(), links)
-    }
+		await client.settings.set(this.getCacheKey(), links)
+	}
 
-    async process() {
-        const links = [];
+	async process() {
+		let oldArticles = await client.settings.get(this.getCacheKey(), [])
 
-        let oldArticles = await client.settings.get(this.getCacheKey(), [])
+		for (const feed of this.feeds) {
+			const results = await this.rssFeeder.get(feed.url)
+			const articles = Object.values(results.items)
 
-        for (const feed of this.feeds) {
-            const results = await this.rssFeeder.get(feed.url)
-            const articles = Object.values(results.items)
+			for (const article of articles) {
+				if (oldArticles.indexOf(article.link) !== -1) {
+					continue
+				}
 
-            for (const article of articles) {
-                links.push(article.link)
+				oldArticles.push(article.link)
 
-                if (-1 !== oldArticles.indexOf(article.link)) {
-                    continue
-                }
+				const embed = new Discord.MessageEmbed()
+					.setAuthor(results.title, feed.icon, article.link)
+					.setTitle(`:newspaper: ${article.title}`)
+					.setColor('BLUE')
+					.setTimestamp()
+				;
 
-                const embed = new Discord.MessageEmbed()
-                    .setAuthor(results.title, feed.icon, article.link)
-                    .setTitle(`:newspaper: ${article.title}`)
-                    .setColor('BLUE')
-                    .setTimestamp()
-                ;
+				let it = await Grabity.grabIt(article.link)
+				let content = ''
 
-                let it = await Grabity.grabIt(article.link)
-                let content = ''
+				if (it.content || it.description) {
+					content = it.content || it.description
+					if (it.image) {
+						embed.setImage(it.image)
+					}
+				} else {
+					content = article['contentSnippet'] || article['content'] || article['content:encodedSnippet']
+				}
 
-                if (it.content || it.description) {
-                    content = it.content || it.description
-                    if (it.image) {
-                        embed.setImage(it.image)
-                    }
-                } else {
-                    content = article['contentSnippet'] || article['content'] || article['content:encodedSnippet']
-                }
+				content = striptags(content).replace(/(?:https?|ftp):\/\/[\n\S]+/g, '').trim();
+				content = content.length > 300 ? content.substr(0, 300) : content
 
-                content = striptags(content).replace(/(?:https?|ftp):\/\/[\n\S]+/g, '').trim();
-                content = content.length > 300 ? content.substr(0, 300) : content
+				embed.setDescription(`${content}\n${article.link}`)
 
-                embed.setDescription(`${content}\n${article.link}`)
+				const primaryTag = feed.tags[0]
 
-                const primaryTag = feed.tags[0]
+				for (const guild of client.guilds.cache.array()) {
+					const followAll       = await FeedMonitor.isFollowing(guild.id, primaryTag, 'all', false)
+					const followLocalized = await FeedMonitor.isFollowing(guild.id, primaryTag, feed.language, false)
 
-                for (const guild of client.guilds.cache.array()) {
-                    const followAll = await FeedMonitor.isFollowing(guild.id, primaryTag, 'all', false)
-                    const followLocalized = await FeedMonitor.isFollowing(guild.id, primaryTag, feed.language, false)
-                    
-                    if (!guild.me.hasPermission("SEND_MESSAGES")) {
-                            console.error(`Bot on server ${guild.id} has not send messages permission`)
-                            continue
-                    }
-                    
-                    console.log(`Running feeds on server ${guild.id}`)
+					// send to specified channels configured in feeds.json
+					for (const channelId of feed.channels) {
+						FeedMonitor.sendArticle(guild.id, channelId, embed)
+					}
 
-                    if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
-                        client
-                            .channels
-                            .cache
-                            .get(process.env.LOG_CHANNEL_ID)
-                            .send(null, {
-                                embed: {
-                                    color: 15684432,
-                                    timestamp: new Date(),
-                                    title: 'Info Debug',
-                                    description: `Running feeds on server ${guild.id}`
-                                }
-                            })
-                        ;
-                    }
+					// send to specified guild channel (user conf)
+					if (followAll) {
+						FeedMonitor.sendArticle(guild.id, followAll, embed)
+					}
 
-                    // send to specified channels configured in feeds.json
-                    for (const channelId of feed.channels) {
-                        if (!client.channels.cache.has(channelId)) {
-                            console.error(`Channel ${channelId} not found`)
-                            continue
-                        }
-                        
-                        if( !guild.me.permissionsIn(channelId).has("SEND_MESSAGES") )
-                        {
-                            console.error(`Bot on server ${guild.id} has not send messages permission in channel ${channelId}`)
+					if (followLocalized) {
+						FeedMonitor.sendArticle(guild.id, followLocalized, embed)
+					}
+				}
+			}
+		}
 
-                            if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
-                                client
-                                    .channels
-                                    .cache
-                                    .get(process.env.LOG_CHANNEL_ID)
-                                    .send(null, {
-                                        embed: {
-                                            color: 15684432,
-                                            timestamp: new Date(),
-                                            title: 'Error',
-                                            description: `Bot on server ${guild.id} has not send messages permission in channel ${channelId}`
-                                        }
-                                    })
-                                ;
-                        }
-                            continue
-                        }
-                        
-                        try
-                        {
-                            client.channels.cache.get(channelId).send({
-                                embed: embed
-                            })
-                        } 
-                        catch(error)
-                        {
-                            console.log(`Bot on server ${guild.id} can't send message in channel ${channelId}`)
-                        }
-                    }
+		if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
+			client
+				.channels
+				.cache
+				.get(process.env.LOG_CHANNEL_ID)
+				.send(null, {
+					embed: {
+						color: 15684432,
+						timestamp: new Date(),
+						title: 'Error',
+						description: `We have finiched all articles and are updating the database`
+					}
+				})
+			;
+		}
+		client.settings.set(this.getCacheKey(), oldArticles)
+	}
 
-                    // send to specified guild channel (user conf)
-                    if (followAll) {
-                        if (!client.channels.cache.has(followAll)) {
-                            console.error(`Channel ${followAll} not found`)
-                            continue
-                        }
-                        
-                        if( !guild.me.permissionsIn(followAll).has("SEND_MESSAGES") )
-                        {
-                            console.error(`Bot on server ${guild.id} has not send messages permission in channel ${followAll}`)
-                            
-                            if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
-                                client
-                                    .channels
-                                    .cache
-                                    .get(process.env.LOG_CHANNEL_ID)
-                                    .send(null, {
-                                        embed: {
-                                            color: 15684432,
-                                            timestamp: new Date(),
-                                            title: 'Error',
-                                            description: `Bot on server ${guild.id} has not send messages permission in channel ${followAll}`
-                                        }
-                                    })
-                                ;
-                            }
-                            continue
-                        }
+	static sendArticle(guildId, channel, article)
+	{
+		if (!client.channels.cache.has(channel)) {
+			console.error(`Channel ${channel} not found`)
+			return
+		}
+		
+		try
+		{
+			client.channels.cache.get(channel).send({ embed: article })
+		} 
+		catch(error)
+		{
+			console.log(`Bot on server ${guildId} can't send message in channel ${channel}`)
+		}
+	}
 
-                        try
-                        {
-                            client.channels.cache.get(followAll).send({
-                                embed: embed
-                            })
-                        } 
-                        catch(error)
-                        {
-                            console.log(`Bot on server ${guild.id} can't send message in channel ${followAll}`)
-                        }
-                    }
+	static async isFollowing(guildId, game, language, defaultValue) {
+		const snapshot = await client.provider.rootRef
+			.child(guildId)
+			.child('feeds_suscribed')
+			.child(game)
+			.child(language)
+			.once("value")
 
-                    if (followLocalized) {
-                        if (!client.channels.cache.has(followLocalized)) {
-                            console.error(`Channel ${followLocalized} not found`)
-                            continue
-                        }
-                        
-                        if( !guild.me.permissionsIn(followLocalized).has("SEND_MESSAGES") )
-                        {
-                            console.error(`Bot on server ${guild.id} has not send messages permission in channel ${followLocalized}`)
-                            
-                            if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
-                                client
-                                    .channels
-                                    .cache
-                                    .get(process.env.LOG_CHANNEL_ID)
-                                    .send(null, {
-                                        embed: {
-                                            color: 15684432,
-                                            timestamp: new Date(),
-                                            title: 'Error',
-                                            description: `Bot on server ${guild.id} has not send messages permission in channel ${followLocalized}`
-                                        }
-                                    })
-                                ;
-                            }
-                            continue
-                        }
-                        
-                        try
-                        {
-                            client.channels.cache.get(followLocalized).send({
-                                embed: embed
-                            })
-                        } 
-                        catch(error)
-                        {
-                            console.log(`Bot on server ${guild.id} can't send message in channel ${followLocalized}`)
-                        }
-                    }
-                }
-            }
-        }
+		const value = snapshot.val()
 
-        client.settings.set(this.getCacheKey(), links)
-    }
-
-    static async isFollowing(guildId, game, language, defaultValue) {
-        const snapshot = await client.provider.rootRef
-            .child(guildId)
-            .child('feeds_suscribed')
-            .child(game)
-            .child(language)
-            .once("value")
-
-        const value = snapshot.val()
-
-        return value == null ? defaultValue : value;
-    }
+		return value == null ? defaultValue : value;
+	}
 }
 
 module.exports = FeedMonitor;
