@@ -41,6 +41,9 @@ class FeedMonitor {
 				}
 
 				oldArticles.push(article.link)
+				
+				FeedMonitor.sendErrorMessage(`Put the article in the database`)
+				client.settings.set(this.getCacheKey(), oldArticles)
 
 				const embed = new Discord.MessageEmbed()
 					.setAuthor(results.title, feed.icon, article.link)
@@ -95,7 +98,6 @@ class FeedMonitor {
 		}
 
 		FeedMonitor.sendErrorMessage(`We have finiched all articles and are updating the database`)
-		client.settings.set(this.getCacheKey(), oldArticles)
 	}
 
 	static sendArticle(guildId, channel, article)
