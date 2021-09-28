@@ -42,7 +42,7 @@
     "channels":[]
   },
   {
-    "url":"https://ark-france.fr/rss/1-flux-rss-news.xml/",
+    "url":"https://ark-france.fr/rss/",
     "icon":"https://mtxserv.com/build/manager-game/img/game/ark.png",
     "tags":["ark"],
     "language": "fr",
