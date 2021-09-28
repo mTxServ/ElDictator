@@ -89,21 +89,7 @@ class FeedMonitor {
 			}
 		}
 
-		if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
-			client
-				.channels
-				.cache
-				.get(process.env.LOG_CHANNEL_ID)
-				.send(null, {
-					embed: {
-						color: 15684432,
-						timestamp: new Date(),
-						title: 'Error',
-						description: `We have finiched all articles and are updating the database`
-					}
-				})
-			;
-		}
+		FeedMonitor.sendErrorMessage(`We have finiched all articles and are updating the database`)
 		client.settings.set(this.getCacheKey(), oldArticles)
 	}
 
@@ -121,6 +107,26 @@ class FeedMonitor {
 		catch(error)
 		{
 			console.log(`Bot on server ${guildId} can't send message in channel ${channel}`)
+			FeedMonitor.sendErrorMessage(`Bot on server ${guildId} can't send message in channel ${channel}`)
+		}
+	}
+
+	static sendErrorMessage(message)
+	{
+		if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
+			client
+				.channels
+				.cache
+				.get(process.env.LOG_CHANNEL_ID)
+				.send(null, {
+					embed: {
+						color: 15684432,
+						timestamp: new Date(),
+						title: 'Error',
+						description: message
+					}
+				})
+			;
 		}
 	}
 
