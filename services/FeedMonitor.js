@@ -78,13 +78,18 @@ class FeedMonitor {
 					}
 
 					// send to specified guild channel (user conf)
-					if (followAll) {
-						FeedMonitor.sendArticle(guild.id, followAll, embed)
+					try{
+						if (followAll) {
+							FeedMonitor.sendArticle(guild.id, followAll, embed)
+						}
+	
+						if (followLocalized) {
+							FeedMonitor.sendArticle(guild.id, followLocalized, embed)
+						}
+					} catch(error){
+						FeedMonitor.sendErrorMessage(`Can't send the article`)
 					}
-
-					if (followLocalized) {
-						FeedMonitor.sendArticle(guild.id, followLocalized, embed)
-					}
+					
 				}
 			}
 		}
