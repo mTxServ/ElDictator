@@ -76,23 +76,18 @@ class FeedMonitor {
 					const followLocalized = await FeedMonitor.isFollowing(guild.id, primaryTag, feed.language, false)
 
 					// send to specified channels configured in feeds.json
-					for (const channelId of feed.channels) {
-						FeedMonitor.sendArticle(guild.id, channelId, embed)
-					}
+					//for (const channelId of feed.channels) {
+					//	FeedMonitor.sendArticle(guild.id, channelId, embed)
+					//}
 
 					// send to specified guild channel (user conf)
-					try{
-						if (followAll) {
-							FeedMonitor.sendArticle(guild.id, followAll, embed)
-						}
-	
-						if (followLocalized) {
-							FeedMonitor.sendArticle(guild.id, followLocalized, embed)
-						}
-					} catch(error){
-						FeedMonitor.sendErrorMessage(`Can't send the article`)
+					if (followAll) {
+						FeedMonitor.sendArticle(guild, followAll, embed)
 					}
-					
+	
+					if (followLocalized) {
+						FeedMonitor.sendArticle(guild, followLocalized, embed)
+					}				
 				}
 			}
 		}
@@ -100,22 +95,18 @@ class FeedMonitor {
 		FeedMonitor.sendErrorMessage(`We have finiched all articles and are updating the database`)
 	}
 
-	static sendArticle(guildId, channel, article)
+	static sendArticle(guild, channel, article)
 	{
 		if (!client.channels.cache.has(channel)) {
 			console.error(`Channel ${channel} not found`)
 			return
 		}
 		
-		try
-		{
-			client.channels.cache.get(channel).send({ embed: article })
-		} 
-		catch(error)
-		{
-			console.log(`Bot on server ${guildId} can't send message in channel ${channel}`)
-			FeedMonitor.sendErrorMessage(`Bot on server ${guildId} can't send message in channel ${channel}`)
+		if( !guild.me.permissionsIn(channel).has("SEND_MESSAGES") ) {
+			return
 		}
+		
+		client.channels.cache.get(channel).send({ embed: article })	
 	}
 
 	static sendErrorMessage(message)
