@@ -41,8 +41,6 @@ class FeedMonitor {
 				}
 
 				oldArticles.push(article.link)
-				
-				FeedMonitor.sendErrorMessage(`Put the article in the database`)
 				client.settings.set(this.getCacheKey(), oldArticles)
 
 				const embed = new Discord.MessageEmbed()
@@ -75,11 +73,6 @@ class FeedMonitor {
 					const followAll       = await FeedMonitor.isFollowing(guild.id, primaryTag, 'all', false)
 					const followLocalized = await FeedMonitor.isFollowing(guild.id, primaryTag, feed.language, false)
 
-					// send to specified channels configured in feeds.json
-					//for (const channelId of feed.channels) {
-					//	FeedMonitor.sendArticle(guild.id, channelId, embed)
-					//}
-
 					// send to specified guild channel (user conf)
 					if (followAll) {
 						FeedMonitor.sendArticle(guild, followAll, embed)
@@ -91,8 +84,6 @@ class FeedMonitor {
 				}
 			}
 		}
-
-		FeedMonitor.sendErrorMessage(`We have finiched all articles and are updating the database`)
 	}
 
 	static sendArticle(guild, channel, article)
@@ -107,25 +98,6 @@ class FeedMonitor {
 		}
 		
 		client.channels.cache.get(channel).send({ embed: article })	
-	}
-
-	static sendErrorMessage(message)
-	{
-		if (client.channels.cache.has(process.env.LOG_CHANNEL_ID)) {
-			client
-				.channels
-				.cache
-				.get(process.env.LOG_CHANNEL_ID)
-				.send(null, {
-					embed: {
-						color: 15684432,
-						timestamp: new Date(),
-						title: 'Error',
-						description: message
-					}
-				})
-			;
-		}
 	}
 
 	static async isFollowing(guildId, game, language, defaultValue) {
